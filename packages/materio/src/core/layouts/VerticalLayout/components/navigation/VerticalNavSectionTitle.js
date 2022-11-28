@@ -5,19 +5,18 @@ import { styled, useTheme } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 
 // ** Custom Components Imports
-import Translations from 'src/shared/materio/layouts/components/Translations'
 
 // ** Styled Components
-const ListSubheader = styled((props) => <MuiListSubheader component='li' {...props} />)(
-  ({ theme }) => ({
-    lineHeight: 1,
-    display: 'flex',
-    position: 'static',
-    marginTop: theme.spacing(7),
-    marginBottom: theme.spacing(2),
-    backgroundColor: 'transparent'
-  })
-)
+const ListSubheader = styled(props => (
+  <MuiListSubheader component='li' {...props} />
+))(({ theme }) => ({
+  lineHeight: 1,
+  display: 'flex',
+  position: 'static',
+  marginTop: theme.spacing(7),
+  marginBottom: theme.spacing(2),
+  backgroundColor: 'transparent'
+}))
 
 const TypographyHeaderText = styled(Typography)(({ theme }) => ({
   fontSize: '0.75rem',
@@ -28,9 +27,10 @@ const TypographyHeaderText = styled(Typography)(({ theme }) => ({
   fontWeight: theme.typography.fontWeightMedium
 }))
 
-const VerticalNavSectionTitle = (props) => {
+const VerticalNavSectionTitle = props => {
   // ** Props
-  const { item, navHover, settings, collapsedNavWidth, navigationBorderWidth } = props
+  const { item, navHover, settings, collapsedNavWidth, navigationBorderWidth } =
+    props
 
   // ** Hook
   const theme = useTheme()
@@ -94,13 +94,17 @@ const VerticalNavSectionTitle = (props) => {
                 width: '100%',
                 textTransform: 'uppercase',
                 '&:before, &:after': { top: 7, transform: 'none' },
-                '& .MuiDivider-wrapper': { px: 2.5, fontSize: '0.75rem', letterSpacing: '0.21px' }
+                '& .MuiDivider-wrapper': {
+                  px: 2.5,
+                  fontSize: '0.75rem',
+                  letterSpacing: '0.21px'
+                }
               })
         }}
       >
         {navCollapsed && !navHover ? null : (
           <TypographyHeaderText noWrap>
-            <Translations text={item.sectionTitle} />
+            {item.sectionTitle}
           </TypographyHeaderText>
         )}
       </Divider>

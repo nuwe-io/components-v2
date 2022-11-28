@@ -8,9 +8,10 @@ import IconButton from '@mui/material/IconButton'
 import MenuIcon from 'mdi-material-ui/Menu'
 
 // ** Components
-import LanguageDropdown from 'core/layouts/components/shared-components/LanguageDropdown'
-import ModeToggler from 'core/layouts/components/shared-components/ModeToggler'
-import UserDropdown from 'layouts/UserDropdown.js/UserDropdown'
+import LanguageDropdown from 'core/layouts/components/LanguageDropdown'
+import ModeToggler from 'core/layouts/components/ModeToggler'
+
+import UserDropdown from 'layouts/components/UserDropdown/UserDropdown'
 
 const AppBarContent = props => {
   const {

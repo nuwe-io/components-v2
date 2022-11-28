@@ -12,14 +12,13 @@ import { styled, useTheme } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 
 // ** Configs Import
-import themeConfig from 'src/shared/materio/configs/themeConfig'
+import themeConfig from 'configs/themeConfig'
 
 // ** Custom Components Imports
-import Translations from 'src/shared/materio/layouts/components/Translations'
-import UserIcon from 'src/shared/materio/layouts/components/UserIcon'
+import UserIcon from 'layouts/components/UserIcon'
 
 // ** Utils
-import { handleURLQueries } from 'src/shared/materio/@core/layouts/utils'
+import { handleURLQueries } from 'core/layouts/utils'
 
 // ** Styled Components
 const MenuNavLink = styled(ListItemButton)(({ theme }) => ({
@@ -110,7 +109,7 @@ const VerticalNavLink = ({
           component={'a'}
           className={isNavLinkActive() ? 'active' : ''}
           {...(item.openInNewTab ? { target: '_blank' } : null)}
-          onClick={(e) => {
+          onClick={e => {
             if (item.path === undefined) {
               e.preventDefault()
               e.stopPropagation()
@@ -122,7 +121,9 @@ const VerticalNavLink = ({
           sx={{
             py: 2.25,
             ...conditionalBgColor(),
-            ...(item.disabled ? { pointerEvents: 'none' } : { cursor: 'pointer' }),
+            ...(item.disabled
+              ? { pointerEvents: 'none' }
+              : { cursor: 'pointer' }),
             pl:
               navCollapsed && !navHover
                 ? (collapsedNavWidth - navigationBorderWidth - 24) / 8
@@ -164,11 +165,13 @@ const VerticalNavLink = ({
           >
             <Typography
               {...((themeConfig.menuTextTruncate ||
-                (!themeConfig.menuTextTruncate && navCollapsed && !navHover)) && {
+                (!themeConfig.menuTextTruncate &&
+                  navCollapsed &&
+                  !navHover)) && {
                 noWrap: true
               })}
             >
-              <Translations text={item.title} />
+              {item.title}
             </Typography>
             {item.badgeContent ? (
               <Chip

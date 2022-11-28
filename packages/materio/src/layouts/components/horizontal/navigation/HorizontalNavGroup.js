@@ -26,16 +26,16 @@ import ChevronLeft from 'mdi-material-ui/ChevronLeft'
 import ChevronRight from 'mdi-material-ui/ChevronRight'
 
 // ** Theme Config Import
-import themeConfig from 'src/shared/materio/configs/themeConfig'
+import themeConfig from 'configs/themeConfig'
 
 // ** Custom Components Imports
-import Translations from 'src/shared/materio/layouts/components/Translations'
-import UserIcon from 'src/shared/materio/layouts/components/UserIcon'
+import UserIcon from 'layouts/components/UserIcon'
 import HorizontalNavItems from './HorizontalNavItems'
 
 // ** Utils
-import { hasActiveChild } from 'src/shared/materio/@core/layouts/utils'
-import { hexToRGBA } from 'src/shared/materio/@core/utils/hex-to-rgba'
+import { hasActiveChild } from 'core/layouts/utils'
+
+import { hexToRGBA } from 'core/utils/hex-to-rgba'
 
 // ** Styled Components
 const ListItem = styled(MuiListItem)(({ theme }) => ({
@@ -59,7 +59,10 @@ const NavigationMenu = styled(Paper)(({ theme }) => ({
   },
   '&::-webkit-scrollbar-thumb': {
     borderRadius: 20,
-    background: hexToRGBA(theme.palette.mode === 'light' ? '#B0ACB5' : '#575468', 0.6)
+    background: hexToRGBA(
+      theme.palette.mode === 'light' ? '#B0ACB5' : '#575468',
+      0.6
+    )
   },
   '&::-webkit-scrollbar-track': {
     borderRadius: 20,
@@ -75,7 +78,7 @@ const NavigationMenu = styled(Paper)(({ theme }) => ({
   }
 }))
 
-const HorizontalNavGroup = (props) => {
+const HorizontalNavGroup = props => {
   // ** Props
   const { item, hasParent, settings } = props
 
@@ -85,13 +88,18 @@ const HorizontalNavGroup = (props) => {
   const currentURL = router.pathname
   const { skin, direction } = settings
 
-  const { navSubItemIcon, menuTextTruncate, horizontalMenuToggle, horizontalMenuAnimation } =
-    themeConfig
+  const {
+    navSubItemIcon,
+    menuTextTruncate,
+    horizontalMenuToggle,
+    horizontalMenuAnimation
+  } = themeConfig
 
   const popperOffsetHorizontal = direction === 'rtl' ? 22 : -22
   const popperPlacement = direction === 'rtl' ? 'bottom-end' : 'bottom-start'
 
-  const popperPlacementSubMenu = direction === 'rtl' ? 'left-start' : 'right-start'
+  const popperPlacementSubMenu =
+    direction === 'rtl' ? 'left-start' : 'right-start'
 
   // ** States
   const [menuOpen, setMenuOpen] = useState(false)
@@ -99,29 +107,33 @@ const HorizontalNavGroup = (props) => {
   const [anchorEl, setAnchorEl] = useState(null)
   const [referenceElement, setReferenceElement] = useState(null)
 
-  const { styles, attributes, update } = usePopper(referenceElement, popperElement, {
-    placement: hasParent ? popperPlacementSubMenu : popperPlacement,
-    modifiers: [
-      {
-        name: 'offset',
-        enabled: true,
-        options: {
-          offset: hasParent ? [-8, 15] : [popperOffsetHorizontal, 5]
+  const { styles, attributes, update } = usePopper(
+    referenceElement,
+    popperElement,
+    {
+      placement: hasParent ? popperPlacementSubMenu : popperPlacement,
+      modifiers: [
+        {
+          name: 'offset',
+          enabled: true,
+          options: {
+            offset: hasParent ? [-8, 15] : [popperOffsetHorizontal, 5]
+          }
+        },
+        {
+          name: 'flip',
+          enabled: true,
+          options: {
+            // @ts-ignore
+            boundary: window,
+            fallbackPlacements: ['auto-start', 'right']
+          }
         }
-      },
-      {
-        name: 'flip',
-        enabled: true,
-        options: {
-          // @ts-ignore
-          boundary: window,
-          fallbackPlacements: ['auto-start', 'right']
-        }
-      }
-    ]
-  })
+      ]
+    }
+  )
 
-  const handleGroupOpen = (event) => {
+  const handleGroupOpen = event => {
     setAnchorEl(event.currentTarget)
     setMenuOpen(true)
     update ? update() : null
@@ -132,7 +144,7 @@ const HorizontalNavGroup = (props) => {
     setMenuOpen(false)
   }
 
-  const handleMenuToggleOnClick = (event) => {
+  const handleMenuToggleOnClick = event => {
     if (anchorEl) {
       handleGroupClose()
     } else {
@@ -191,7 +203,9 @@ const HorizontalNavGroup = (props) => {
             className={clsx('menu-group', {
               'Mui-selected': hasActiveChild(item, currentURL)
             })}
-            {...(horizontalMenuToggle === 'click' ? { onClick: handleMenuToggleOnClick } : {})}
+            {...(horizontalMenuToggle === 'click'
+              ? { onClick: handleMenuToggleOnClick }
+              : {})}
             sx={{
               ...(menuOpen
                 ? {
@@ -248,7 +262,7 @@ const HorizontalNavGroup = (props) => {
                   />
                 </ListItemIcon>
                 <Typography {...(menuTextTruncate && { noWrap: true })}>
-                  <Translations text={item.title} />
+                  {item.title}
                 </Typography>
               </Box>
               <Box sx={{ ml: 1.6, display: 'flex', alignItems: 'center' }}>
@@ -275,7 +289,9 @@ const HorizontalNavGroup = (props) => {
                     }}
                   />
                 ) : (
-                  <ChevronDown sx={{ fontSize: '1.375rem', color: 'text.primary' }} />
+                  <ChevronDown
+                    sx={{ fontSize: '1.375rem', color: 'text.primary' }}
+                  />
                 )}
               </Box>
             </Box>
@@ -295,8 +311,18 @@ const HorizontalNavGroup = (props) => {
                 ...(!horizontalMenuAnimation && {
                   display: menuOpen ? 'block' : 'none'
                 }),
-                pl: childMenuGroupStyles() === 'left' ? (skin === 'bordered' ? 2.5 : 2.25) : 0,
-                pr: childMenuGroupStyles() === 'right' ? (skin === 'bordered' ? 2.5 : 2.25) : 0,
+                pl:
+                  childMenuGroupStyles() === 'left'
+                    ? skin === 'bordered'
+                      ? 2.5
+                      : 2.25
+                    : 0,
+                pr:
+                  childMenuGroupStyles() === 'right'
+                    ? skin === 'bordered'
+                      ? 2.5
+                      : 2.25
+                    : 0,
                 ...(hasParent
                   ? { position: 'fixed !important' }
                   : { pt: skin === 'bordered' ? 5.5 : 5.75 })
@@ -319,7 +345,11 @@ const HorizontalNavGroup = (props) => {
                     : { boxShadow: theme.shadows[4] })
                 }}
               >
-                <HorizontalNavItems {...props} hasParent horizontalNavItems={item.children} />
+                <HorizontalNavItems
+                  {...props}
+                  hasParent
+                  horizontalNavItems={item.children}
+                />
               </NavigationMenu>
             </Box>
           </AnimationWrapper>

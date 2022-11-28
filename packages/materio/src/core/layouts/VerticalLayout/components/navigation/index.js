@@ -7,8 +7,8 @@ import List from '@mui/material/List'
 import { styled, useTheme } from '@mui/material/styles'
 
 // ** Third Party Components
+import themeConfig from 'configs/themeConfig'
 import PerfectScrollbar from 'react-perfect-scrollbar'
-import themeConfig from 'src/shared/materio/configs/themeConfig'
 
 // ** Component Imports
 import Drawer from './Drawer'
@@ -16,7 +16,7 @@ import VerticalNavHeader from './VerticalNavHeader'
 import VerticalNavItems from './VerticalNavItems'
 
 // ** Util Import
-import { hexToRGBA } from 'src/shared/materio/@core/utils/hex-to-rgba'
+import { hexToRGBA } from 'core/utils/hex-to-rgba'
 
 const StyledBoxForShadow = styled(Box)(({ theme }) => ({
   top: 60,
@@ -32,7 +32,7 @@ const StyledBoxForShadow = styled(Box)(({ theme }) => ({
   }
 }))
 
-const Navigation = (props) => {
+const Navigation = props => {
   // ** Props
   const {
     hidden,
@@ -55,10 +55,13 @@ const Navigation = (props) => {
 
   // ** Var
   const { skin, navCollapsed } = settings
-  const { afterVerticalNavMenuContentPosition, beforeVerticalNavMenuContentPosition } = themeConfig
+  const {
+    afterVerticalNavMenuContentPosition,
+    beforeVerticalNavMenuContentPosition
+  } = themeConfig
 
   // ** Fixes Navigation InfiniteScroll
-  const handleInfiniteScroll = (ref) => {
+  const handleInfiniteScroll = ref => {
     if (ref) {
       // @ts-ignore
       ref._getBoundingClientRect = ref.getBoundingClientRect
@@ -72,8 +75,11 @@ const Navigation = (props) => {
   }
 
   // ** Scroll Menu
-  const scrollMenu = (container) => {
-    if (beforeVerticalNavMenuContentPosition === 'static' || !beforeVerticalNavMenuContent) {
+  const scrollMenu = container => {
+    if (
+      beforeVerticalNavMenuContentPosition === 'static' ||
+      !beforeVerticalNavMenuContent
+    ) {
       container = hidden ? container.target : container
       if (shadowRef && container.scrollTop > 0) {
         // @ts-ignore
@@ -90,26 +96,38 @@ const Navigation = (props) => {
 
   const shadowBgColor = () => {
     if (skin === 'semi-dark' && theme.palette.mode === 'light') {
-      return `linear-gradient(${theme.palette.customColors.darkBg} 5%,${hexToRGBA(
+      return `linear-gradient(${
+        theme.palette.customColors.darkBg
+      } 5%,${hexToRGBA(
         theme.palette.customColors.darkBg,
         0.85
-      )} 30%,${hexToRGBA(theme.palette.customColors.darkBg, 0.5)} 65%,${hexToRGBA(
+      )} 30%,${hexToRGBA(
+        theme.palette.customColors.darkBg,
+        0.5
+      )} 65%,${hexToRGBA(
         theme.palette.customColors.darkBg,
         0.3
       )} 75%,transparent)`
     } else if (skin === 'semi-dark' && theme.palette.mode === 'dark') {
-      return `linear-gradient(${theme.palette.customColors.lightBg} 5%,${hexToRGBA(
+      return `linear-gradient(${
+        theme.palette.customColors.lightBg
+      } 5%,${hexToRGBA(
         theme.palette.customColors.lightBg,
         0.85
-      )} 30%,${hexToRGBA(theme.palette.customColors.lightBg, 0.5)} 65%,${hexToRGBA(
+      )} 30%,${hexToRGBA(
+        theme.palette.customColors.lightBg,
+        0.5
+      )} 65%,${hexToRGBA(
         theme.palette.customColors.lightBg,
         0.3
       )} 75%,transparent)`
     } else {
-      return `linear-gradient(${theme.palette.background.default} 5%,${hexToRGBA(
+      return `linear-gradient(${
+        theme.palette.background.default
+      } 5%,${hexToRGBA(theme.palette.background.default, 0.85)} 30%,${hexToRGBA(
         theme.palette.background.default,
-        0.85
-      )} 30%,${hexToRGBA(theme.palette.background.default, 0.5)} 65%,${hexToRGBA(
+        0.5
+      )} 65%,${hexToRGBA(
         theme.palette.background.default,
         0.3
       )} 75%,transparent)`
@@ -120,25 +138,31 @@ const Navigation = (props) => {
   return (
     <Drawer {...props}>
       <VerticalNavHeader {...props} />
-      {beforeVerticalNavMenuContent && beforeVerticalNavMenuContentPosition === 'fixed'
+      {beforeVerticalNavMenuContent &&
+      beforeVerticalNavMenuContentPosition === 'fixed'
         ? beforeVerticalNavMenuContent(props)
         : null}
-      {(beforeVerticalNavMenuContentPosition === 'static' || !beforeVerticalNavMenuContent) && (
-        <StyledBoxForShadow ref={shadowRef} sx={{ background: shadowBgColor() }} />
+      {(beforeVerticalNavMenuContentPosition === 'static' ||
+        !beforeVerticalNavMenuContent) && (
+        <StyledBoxForShadow
+          ref={shadowRef}
+          sx={{ background: shadowBgColor() }}
+        />
       )}
       <Box sx={{ position: 'relative', overflow: 'hidden' }}>
         <ScrollWrapper
           {...(hidden
             ? {
-                onScroll: (container) => scrollMenu(container),
+                onScroll: container => scrollMenu(container),
                 sx: { height: '100%', overflowY: 'auto', overflowX: 'hidden' }
               }
             : {
                 options: { wheelPropagation: false },
-                onScrollY: (container) => scrollMenu(container)
+                onScrollY: container => scrollMenu(container)
               })}
         >
-          {beforeVerticalNavMenuContent && beforeVerticalNavMenuContentPosition === 'static'
+          {beforeVerticalNavMenuContent &&
+          beforeVerticalNavMenuContentPosition === 'static'
             ? beforeVerticalNavMenuContent(props)
             : null}
           {userVerticalNavMenuContent ? (
@@ -162,12 +186,14 @@ const Navigation = (props) => {
               />
             </List>
           )}
-          {afterVerticalNavMenuContent && afterVerticalNavMenuContentPosition === 'static'
+          {afterVerticalNavMenuContent &&
+          afterVerticalNavMenuContentPosition === 'static'
             ? afterVerticalNavMenuContent(props)
             : null}
         </ScrollWrapper>
       </Box>
-      {afterVerticalNavMenuContent && afterVerticalNavMenuContentPosition === 'fixed'
+      {afterVerticalNavMenuContent &&
+      afterVerticalNavMenuContentPosition === 'fixed'
         ? afterVerticalNavMenuContent(props)
         : null}
     </Drawer>

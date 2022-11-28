@@ -22,7 +22,7 @@ import BellOutline from 'mdi-material-ui/BellOutline'
 import PerfectScrollbarComponent from 'react-perfect-scrollbar'
 
 // ** Custom Components Imports
-import CustomChip from 'src/shared/materio/@core/components/mui/chip'
+import CustomChip from 'core/components/mui/chip'
 
 import { NotificationBox } from '@components/organisms'
 import { useNotifications } from '@shared/context/notifications/application/hooks'

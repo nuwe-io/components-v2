@@ -13,7 +13,7 @@ import Close from 'mdi-material-ui/Close'
 import RecordCircleOutline from 'mdi-material-ui/RecordCircleOutline'
 
 // ** Configs
-import themeConfig from 'src/shared/materio/configs/themeConfig'
+import themeConfig from 'configs/themeConfig'
 
 // ** Styled Components
 const MenuHeaderWrapper = styled(Box)(({ theme }) => ({
@@ -39,7 +39,7 @@ const StyledLink = styled('a')({
   textDecoration: 'none'
 })
 
-const VerticalNavHeader = (props) => {
+const VerticalNavHeader = props => {
   // ** Props
   const {
     hidden,
@@ -57,7 +57,8 @@ const VerticalNavHeader = (props) => {
   // ** Hooks & Vars
   const theme = useTheme()
   const { navCollapsed } = settings
-  const menuCollapsedStyles = navCollapsed && !navHover ? { opacity: 0 } : { opacity: 1 }
+  const menuCollapsedStyles =
+    navCollapsed && !navHover ? { opacity: 0 } : { opacity: 1 }
 
   const menuHeaderPaddingLeft = () => {
     if (navCollapsed && !navHover) {
@@ -96,7 +97,10 @@ const VerticalNavHeader = (props) => {
     )
 
   return (
-    <MenuHeaderWrapper className='nav-header' sx={{ pl: menuHeaderPaddingLeft() }}>
+    <MenuHeaderWrapper
+      className='nav-header'
+      sx={{ pl: menuHeaderPaddingLeft() }}
+    >
       {userVerticalNavMenuBranding ? (
         userVerticalNavMenuBranding(props)
       ) : (
@@ -119,7 +123,10 @@ const VerticalNavHeader = (props) => {
             </svg>
             <HeaderTitle
               variant='h6'
-              sx={{ ...menuCollapsedStyles, ...(navCollapsed && !navHover ? {} : { ml: 3 }) }}
+              sx={{
+                ...menuCollapsedStyles,
+                ...(navCollapsed && !navHover ? {} : { ml: 3 })
+              }}
             >
               {themeConfig.templateName}
             </HeaderTitle>
@@ -140,8 +147,14 @@ const VerticalNavHeader = (props) => {
         <IconButton
           disableRipple
           disableFocusRipple
-          onClick={() => saveSettings({ ...settings, navCollapsed: !navCollapsed })}
-          sx={{ p: 0, color: 'text.primary', backgroundColor: 'transparent !important' }}
+          onClick={() =>
+            saveSettings({ ...settings, navCollapsed: !navCollapsed })
+          }
+          sx={{
+            p: 0,
+            color: 'text.primary',
+            backgroundColor: 'transparent !important'
+          }}
         >
           {navCollapsed ? MenuUnlockedIcon() : MenuLockedIcon()}
         </IconButton>

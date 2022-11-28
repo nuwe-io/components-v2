@@ -1,6 +1,7 @@
 // ** React Import
 import { useEffect, useRef } from 'react'
 
+// ** External imports
 import { Toaster } from 'react-hot-toast'
 
 import HorizontalLayout from './HorizontalLayout'
@@ -23,7 +24,11 @@ const Layout = props => {
       }
     } else {
       if (isCollapsed.current) {
-        saveSettings({ ...settings, navCollapsed: true, layout: settings.lastLayout })
+        saveSettings({
+          ...settings,
+          navCollapsed: true,
+          layout: settings.lastLayout
+        })
         isCollapsed.current = false
       } else {
         saveSettings({ ...settings, layout: settings.lastLayout })

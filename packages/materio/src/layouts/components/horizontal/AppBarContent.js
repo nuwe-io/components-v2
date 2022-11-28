@@ -1,11 +1,14 @@
-// ** MUI Imports
-import Box from '@mui/material/Box'
 import { Fragment } from 'react'
 
+// ** External imports
+import Box from '@mui/material/Box'
+import PropTypes from 'prop-types'
+
 // ** Components
-import LanguageDropdown from 'core/layouts/components/shared-components/LanguageDropdown'
-import ModeToggler from 'core/layouts/components/shared-components/ModeToggler'
-import UserDropdown from 'layouts/UserDropdown.js/UserDropdown'
+import LanguageDropdown from 'core/layouts/components/LanguageDropdown'
+import ModeToggler from 'core/layouts/components/ModeToggler'
+
+import UserDropdown from 'layouts/components/UserDropdown/UserDropdown'
 
 const AppBarContent = props => {
   const { settings, saveSettings, user, status, logout } = props
@@ -24,6 +27,18 @@ const AppBarContent = props => {
   return (
     <Box sx={{ display: 'flex', alignItems: 'center' }}>{render[status]}</Box>
   )
+}
+
+AppBarContent.propTypes = {
+  user: PropTypes.shape({
+    name: PropTypes.string,
+    email: PropTypes.string,
+    avatar: PropTypes.string
+  }),
+  status: PropTypes.oneOf(['loading', 'authorized']),
+  logout: PropTypes.func,
+  settings: PropTypes.object,
+  saveSettings: PropTypes.func
 }
 
 export default AppBarContent

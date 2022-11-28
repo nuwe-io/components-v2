@@ -2,10 +2,11 @@
 import Box from '@mui/material/Box'
 
 // ** Config Import
-import themeConfig from 'src/shared/materio/configs/themeConfig'
+import themeConfig from configs / themeConfig
+'
 
 // ** Utils
-// import { hexToRGBA } from 'src/shared/materio/@core/utils/hex-to-rgba'
+// import { hexToRGBA } from @core/utils/hex-to-rgba'
 // ** Menu Components
 import HorizontalNavItems from './HorizontalNavItems'
 

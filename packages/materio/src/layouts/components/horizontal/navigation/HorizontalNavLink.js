@@ -18,16 +18,15 @@ import Typography from '@mui/material/Typography'
 import clsx from 'clsx'
 
 // ** Theme Config Import
-import themeConfig from 'src/shared/materio/configs/themeConfig'
+import themeConfig from 'configs/themeConfig'
 
 // ** Custom Components Imports
-import Translations from 'src/shared/materio/layouts/components/Translations'
-import UserIcon from 'src/shared/materio/layouts/components/UserIcon'
+import UserIcon from 'layouts/components/UserIcon'
 
-// import CanViewNavLink from 'src/shared/materio/layouts/components/acl/CanViewNavLink'
+// import CanViewNavLink from layouts/components/acl/CanViewNavLink'
 
 // ** Util Import
-import { hexToRGBA } from 'src/shared/materio/@core/utils/hex-to-rgba'
+import { hexToRGBA } from 'core/utils/hex-to-rgba'
 
 const ListItem = styled(MuiListItem)(({ theme }) => ({
   width: 'auto',
@@ -45,7 +44,7 @@ const ListItem = styled(MuiListItem)(({ theme }) => ({
   }
 }))
 
-const HorizontalNavLink = (props) => {
+const HorizontalNavLink = props => {
   // ** Props
   const { item, settings, hasParent, isCoulmn } = props
 
@@ -59,11 +58,15 @@ const HorizontalNavLink = (props) => {
     if (Object.keys(router.query).length && item.path) {
       const arr = Object.keys(router.query)
 
-      return router.asPath.includes(item.path) && router.asPath.includes(router.query[arr[0]])
+      return (
+        router.asPath.includes(item.path) &&
+        router.asPath.includes(router.query[arr[0]])
+      )
     }
   }
 
-  const isNavLinkActive = () => router.pathname === item.path || handleURLQueries()
+  const isNavLinkActive = () =>
+    router.pathname === item.path || handleURLQueries()
 
   const theme = useTheme()
 
@@ -72,7 +75,10 @@ const HorizontalNavLink = (props) => {
   return (
     <Wrapper
       {...(!hasParent
-        ? { component: 'div', sx: { py: settings.skin === 'bordered' ? 2.625 : 2.75 } }
+        ? {
+            component: 'div',
+            sx: { py: settings.skin === 'bordered' ? 2.625 : 2.75 }
+          }
         : {})}
     >
       <Link href={`${item.path}`} passHref>
@@ -81,14 +87,16 @@ const HorizontalNavLink = (props) => {
           disabled={item.disabled}
           className={clsx({ active: isNavLinkActive() })}
           target={item.openInNewTab ? '_blank' : undefined}
-          onClick={(e) => {
+          onClick={e => {
             if (item.path === undefined) {
               e.preventDefault()
               e.stopPropagation()
             }
           }}
           sx={{
-            ...(item.disabled ? { pointerEvents: 'none' } : { cursor: 'pointer' }),
+            ...(item.disabled
+              ? { pointerEvents: 'none' }
+              : { cursor: 'pointer' }),
             ...(!hasParent
               ? {
                   px: 5.5,
@@ -118,7 +126,9 @@ const HorizontalNavLink = (props) => {
                 ...(menuTextTruncate && { overflow: 'hidden' })
               }}
             >
-              <ListItemIcon sx={{ color: 'text.primary', mr: !hasParent ? 2 : 3 }}>
+              <ListItemIcon
+                sx={{ color: 'text.primary', mr: !hasParent ? 2 : 3 }}
+              >
                 <UserIcon
                   icon={IconTag}
                   componentType='horizontal-menu'
@@ -131,7 +141,7 @@ const HorizontalNavLink = (props) => {
                 />
               </ListItemIcon>
               <Typography {...(menuTextTruncate && { noWrap: true })}>
-                <Translations text={item.title} />
+                {item.title}
               </Typography>
             </Box>
             {item.badgeContent ? (

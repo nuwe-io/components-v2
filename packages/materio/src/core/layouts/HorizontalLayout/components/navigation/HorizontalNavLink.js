@@ -17,7 +17,7 @@ import Typography from '@mui/material/Typography'
 import clsx from 'clsx'
 
 // ** Theme Config Import
-import themeConfig from 'src/shared/materio/configs/themeConfig'
+import themeConfig from 'configs/themeConfig'
 
 // ** Custom Components Imports
 import UserIcon from 'layouts/components/UserIcon'

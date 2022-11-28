@@ -10,7 +10,7 @@ import { deepmerge } from '@mui/utils'
 
 // ** Module imports
 import themeConfig from 'configs/themeConfig'
-import UserThemeOptions from '../../layouts/UserThemeOptions'
+import UserThemeOptions from 'layouts/UserLayout/UserThemeOptions'
 
 // ** Theme Override Imports
 import GlobalStyling from './globalStyles'

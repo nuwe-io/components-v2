@@ -3,55 +3,34 @@ import { useState } from 'react'
 
 // ** MUI Imports
 import Box from '@mui/material/Box'
-import Fab from '@mui/material/Fab'
-import { styled } from '@mui/material/styles'
 
 // ** Icons Imports
-import ArrowUp from 'mdi-material-ui/ArrowUp'
 
 // ** Theme Config Import
-import themeConfig from 'src/shared/materio/configs/themeConfig'
+import themeConfig from 'configs/themeConfig'
 
 // ** Components
-import Customizer from 'src/shared/materio/@core/components/customizer'
-import ScrollToTop from 'src/shared/materio/@core/components/scroll-to-top'
-import AppBar from './components/vertical/appBar'
-import Navigation from './components/vertical/navigation'
+import DatePickerWrapper from 'core/styles/libs/react-datepicker'
 
 // ** Styled Component
-import DatePickerWrapper from 'src/shared/materio/@core/styles/libs/react-datepicker'
+import AppBar from './components/appBar'
+import Navigation from './components/navigation'
 
-const VerticalLayoutWrapper = styled('div')({
-  height: '100%',
-  display: 'flex'
-})
+import { ScrollToTopSection } from '../components/ScrollToTopSection'
+import {
+  ContentWrapper,
+  MainContentWrapper,
+  VerticalLayoutWrapper
+} from './styles'
 
-const MainContentWrapper = styled(Box)({
-  flexGrow: 1,
-  minWidth: 0,
-  display: 'flex',
-  minHeight: '100vh',
-  flexDirection: 'column'
-})
-
-const ContentWrapper = styled('main')(({ theme }) => ({
-  flexGrow: 1,
-  width: '100%',
-  padding: theme.spacing(6),
-  transition: 'padding .25s ease-in-out',
-  [theme.breakpoints.down('sm')]: {
-    paddingLeft: theme.spacing(4),
-    paddingRight: theme.spacing(4)
-  }
-}))
-
-const VerticalLayout = (props) => {
+const VerticalLayout = props => {
   // ** Props
   const { hidden, settings, children, scrollToTop } = props
 
   // ** Vars
   const { skin, navHidden, contentWidth } = settings
-  const { navigationSize, disableCustomizer, collapsedNavigationSize } = themeConfig
+  const { navigationSize, disableCustomizer, collapsedNavigationSize } =
+    themeConfig
   const navWidth = navigationSize
   const navigationBorderWidth = skin === 'bordered' ? 1 : 0
   const collapsedNavWidth = collapsedNavigationSize
@@ -103,17 +82,7 @@ const VerticalLayout = (props) => {
         </MainContentWrapper>
       </VerticalLayoutWrapper>
 
-      {disableCustomizer || hidden ? null : <Customizer />}
-
-      {scrollToTop ? (
-        scrollToTop(props)
-      ) : (
-        <ScrollToTop className='mui-fixed'>
-          <Fab color='primary' size='small' aria-label='scroll back to top'>
-            <ArrowUp />
-          </Fab>
-        </ScrollToTop>
-      )}
+      <ScrollToTopSection scrollToTop={scrollToTop} props={props} />
     </>
   )
 }

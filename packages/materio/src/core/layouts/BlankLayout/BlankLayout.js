@@ -3,8 +3,8 @@ import Box from '@mui/material/Box'
 import PropTypes from 'prop-types'
 
 import { useSettings } from '../../hooks/useSettings'
-import LanguageDropdown from '../components/shared-components/LanguageDropdown'
-import ModeToggler from '../components/shared-components/ModeToggler'
+import LanguageDropdown from '../components/LanguageDropdown'
+import ModeToggler from '../components/ModeToggler'
 
 import { BlankLayoutWrapper } from './BlankLayoutWrapper'
 

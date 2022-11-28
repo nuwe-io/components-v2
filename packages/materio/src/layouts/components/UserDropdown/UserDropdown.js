@@ -20,7 +20,7 @@ import CogOutline from 'mdi-material-ui/CogOutline'
 import EmailOutline from 'mdi-material-ui/EmailOutline'
 import LogoutVariant from 'mdi-material-ui/LogoutVariant'
 
-import { DialogContact } from '../components/ContactDialog'
+import { DialogContact } from '../ContactDialog'
 import { styles } from './styles'
 
 const UserDropdown = props => {
