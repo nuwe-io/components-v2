@@ -8,6 +8,7 @@ import { hexToRGBA } from 'core/utils/hex-to-rgba'
 
 import { ScrollToTopSection } from '../components/ScrollToTopSection'
 import AppBarContent from './components/app-bar-content'
+
 import { ContentWrapper, HorizontalLayoutWrapper, Toolbar } from './styles'
 
 const HorizontalLayout = props => {
