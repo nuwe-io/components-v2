@@ -1,0 +1,25 @@
+{
+  "base": "dark",
+  "brandTitle": "Nuwe",
+  "brandUrl": "https://nuwe.io",
+  "brandImage": "https://i.postimg.cc/QdmZLj5J/LOGO-LETTERS-MONO-3.png",
+  "colorPrimary": "#5EBF0D",
+  "colorSecondary": "#6772E5",
+
+  "appBg": "#14151F",
+  "appContentBg": "#0D0E15",
+  "appBorderColor": "white",
+  "appBorderRadius": 4,
+
+  "fontBase": "\"Open Sans\", sans-serif",
+  "fontCode": "monospace",
+  "textColor": "white",
+  "textInverseColor": "rgba(255,255,255,0.9)",
+  "barTextColor": "#B5B5B5",
+  "barSelectedColor": "white",
+  "barBg": "#1C1E2C",
+  "inputBg": "#1B1D29",
+  "inputBorder": "#5EBF0D",
+  "inputTextColor": "white",
+  "inputBorderRadius": 4
+}
