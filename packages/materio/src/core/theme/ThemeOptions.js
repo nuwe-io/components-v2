@@ -8,7 +8,7 @@ import shadows from './shadows'
 import spacing from './spacing'
 
 // ** User Theme Options
-import UserThemeOptions from '../../layout/UserThemeOptions'
+import UserThemeOptions from '../../layouts/UserThemeOptions'
 
 const themeOptions = settings => {
   // ** Vars
