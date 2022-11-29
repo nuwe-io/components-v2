@@ -5,7 +5,7 @@ import MuiToolbar from '@mui/material/Toolbar'
 import useScrollTrigger from '@mui/material/useScrollTrigger'
 
 // ** Util Import
-import { hexToRGBA } from 'core/utils/hex-to-rgba'
+import { hexToRGBA } from '@core/utils/hex-to-rgba'
 
 const AppBar = styled(MuiAppBar)(({ theme }) => ({
   transition: 'none',
@@ -50,10 +50,7 @@ const LayoutAppBar = props => {
       px: `${theme.spacing(5)} !important`,
       ...(appBarBlur && { backdropFilter: 'blur(8px)' }),
       boxShadow: theme.shadows[skin === 'bordered' ? 0 : 3],
-      backgroundColor: hexToRGBA(
-        theme.palette.background.paper,
-        appBarBlur ? 0.85 : 1
-      ),
+      backgroundColor: hexToRGBA(theme.palette.background.paper, appBarBlur ? 0.85 : 1),
       ...(skin === 'bordered' && {
         border: `1px solid ${theme.palette.divider}`,
         borderTopWidth: 0
@@ -74,8 +71,7 @@ const LayoutAppBar = props => {
       <Toolbar
         className='navbar-content-container'
         sx={{
-          ...(appBar === 'fixed' &&
-            scrollTrigger && { ...appBarFixedStyles() }),
+          ...(appBar === 'fixed' && scrollTrigger && { ...appBarFixedStyles() }),
           ...(contentWidth === 'boxed' && {
             '@media (min-width:1440px)': {
               maxWidth: `calc(1440px - ${theme.spacing(6)} * 2)`
@@ -83,8 +79,7 @@ const LayoutAppBar = props => {
           })
         }}
       >
-        {(userVerticalAppBarContent && userVerticalAppBarContent(props)) ||
-          null}
+        {(userVerticalAppBarContent && userVerticalAppBarContent(props)) || null}
       </Toolbar>
     </AppBar>
   )

@@ -22,13 +22,13 @@ import ChevronLeft from 'mdi-material-ui/ChevronLeft'
 import ChevronRight from 'mdi-material-ui/ChevronRight'
 
 // ** Configs Import
-import themeConfig from 'configs/themeConfig'
+import themeConfig from '@configs/themeConfig'
 
 // ** Utils
-import { hasActiveChild, removeChildren } from 'core/layouts/utils'
+import { hasActiveChild, removeChildren } from '@core/layouts/utils'
 
 // ** Custom Components Imports
-import UserIcon from 'layouts/components/UserIcon'
+import UserIcon from '@layouts/components/UserIcon'
 import VerticalNavItems from './VerticalNavItems'
 
 const MenuItemTextWrapper = styled(Box)(() => ({
@@ -146,10 +146,7 @@ const VerticalNavGroup = props => {
     if (navCollapsed && !navHover) {
       setGroupActive([])
     }
-    if (
-      (navCollapsed && navHover) ||
-      (groupActive.length === 0 && !navCollapsed)
-    ) {
+    if ((navCollapsed && navHover) || (groupActive.length === 0 && !navCollapsed)) {
       setGroupActive([...currentActiveGroup])
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -161,8 +158,7 @@ const VerticalNavGroup = props => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [navHover])
   const IconTag = parent && !item.icon ? themeConfig.navSubItemIcon : item.icon
-  const menuGroupCollapsedStyles =
-    navCollapsed && !navHover ? { opacity: 0 } : { opacity: 1 }
+  const menuGroupCollapsedStyles = navCollapsed && !navHover ? { opacity: 0 } : { opacity: 1 }
 
   const conditionalColor = () => {
     if (skin === 'semi-dark' && theme.palette.mode === 'light') {
@@ -230,8 +226,7 @@ const VerticalNavGroup = props => {
         <ListItemButton
           className={clsx({
             'Mui-selected':
-              groupActive.includes(item.title) ||
-              currentActiveGroup.includes(item.title)
+              groupActive.includes(item.title) || currentActiveGroup.includes(item.title)
           })}
           sx={{
             py: 2.25,
@@ -277,18 +272,13 @@ const VerticalNavGroup = props => {
           >
             <Typography
               {...((themeConfig.menuTextTruncate ||
-                (!themeConfig.menuTextTruncate &&
-                  navCollapsed &&
-                  !navHover)) && {
+                (!themeConfig.menuTextTruncate && navCollapsed && !navHover)) && {
                 noWrap: true
               })}
             >
               {item.title}
             </Typography>
-            <Box
-              className='menu-item-meta'
-              sx={{ ml: 0.8, display: 'flex', alignItems: 'center' }}
-            >
+            <Box className='menu-item-meta' sx={{ ml: 0.8, display: 'flex', alignItems: 'center' }}>
               {item.badgeContent ? (
                 <Chip
                   label={item.badgeContent}
@@ -305,18 +295,14 @@ const VerticalNavGroup = props => {
                 <MenuGroupToggleRightIcon
                   sx={{
                     ...conditionalColor(),
-                    ...(groupActive.includes(item.title)
-                      ? { transform: 'rotate(90deg)' }
-                      : {})
+                    ...(groupActive.includes(item.title) ? { transform: 'rotate(90deg)' } : {})
                   }}
                 />
               ) : (
                 <MenuGroupToggleLeftIcon
                   sx={{
                     ...conditionalColor(),
-                    ...(groupActive.includes(item.title)
-                      ? { transform: 'rotate(-90deg)' }
-                      : {})
+                    ...(groupActive.includes(item.title) ? { transform: 'rotate(-90deg)' } : {})
                   }}
                 />
               )}

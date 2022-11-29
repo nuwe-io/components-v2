@@ -1,5 +1,5 @@
 // ** Util Import
-import { hexToRGBA } from 'core/utils/hex-to-rgba'
+import { hexToRGBA } from '@core/utils/hex-to-rgba'
 
 const Timeline = theme => {
   return {
@@ -34,10 +34,7 @@ const Timeline = theme => {
           boxShadow: `0 0 0 3px ${hexToRGBA(theme.palette.primary.main, 0.12)}`
         },
         filledSecondary: {
-          boxShadow: `0 0 0 3px ${hexToRGBA(
-            theme.palette.secondary.main,
-            0.12
-          )}`
+          boxShadow: `0 0 0 3px ${hexToRGBA(theme.palette.secondary.main, 0.12)}`
         },
         filledSuccess: {
           boxShadow: `0 0 0 3px ${hexToRGBA(theme.palette.success.main, 0.12)}`

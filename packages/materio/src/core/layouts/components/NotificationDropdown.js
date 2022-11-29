@@ -22,7 +22,7 @@ import BellOutline from 'mdi-material-ui/BellOutline'
 import PerfectScrollbarComponent from 'react-perfect-scrollbar'
 
 // ** Custom Components Imports
-import CustomChip from 'core/components/mui/chip'
+import CustomChip from '@core/components/mui/chip'
 
 import { NotificationBox } from '@components/organisms'
 import { useNotifications } from '@shared/context/notifications/application/hooks'
@@ -33,13 +33,8 @@ const NotificationDropdown = props => {
   const {} = useNotifications()
 
   // ** Props
-  const {
-    settings,
-    notifications,
-    updateNotification,
-    getNotifications,
-    clearNotifications
-  } = props
+  const { settings, notifications, updateNotification, getNotifications, clearNotifications } =
+    props
 
   // ** States
   const [anchorEl, setAnchorEl] = useState(null)
@@ -75,10 +70,7 @@ const NotificationDropdown = props => {
     if (notification && notification.hasOwnProperty('id')) {
       await updateNotification({ ...notification, clicked: true })
 
-      if (
-        notification.type === 'lead2user' ||
-        notification.type === 'user2lead'
-      ) {
+      if (notification.type === 'lead2user' || notification.type === 'user2lead') {
         router.push(`/event/teams/${notification.url}/requests`)
       }
       if (
@@ -102,16 +94,10 @@ const NotificationDropdown = props => {
 
   const ScrollWrapper = ({ children }) => {
     if (hidden) {
-      return (
-        <Box sx={{ ...styles, overflowY: 'auto', overflowX: 'hidden' }}>
-          {children}
-        </Box>
-      )
+      return <Box sx={{ ...styles, overflowY: 'auto', overflowX: 'hidden' }}>{children}</Box>
     } else {
       return (
-        <PerfectScrollbar
-          options={{ wheelPropagation: false, suppressScrollX: true }}
-        >
+        <PerfectScrollbar options={{ wheelPropagation: false, suppressScrollX: true }}>
           {children}
         </PerfectScrollbar>
       )
@@ -129,9 +115,7 @@ const NotificationDropdown = props => {
         disabled={notifications.length === 0}
       >
         <Badge
-          badgeContent={
-            notifications.filter(current => !current.clicked).length
-          }
+          badgeContent={notifications.filter(current => !current.clicked).length}
           color='secondary'
         >
           <BellOutline />
@@ -160,25 +144,20 @@ const NotificationDropdown = props => {
             }}
           >
             <Typography sx={{ fontWeight: 600 }}>{NOTIFICATIONS}</Typography>
-            {notifications.length > 0 &&
-              notifications.some(current => !current.clicked) && (
-                <CustomChip
-                  skin='light'
-                  size='small'
-                  label={
-                    `${
-                      notifications.filter(current => !current.clicked).length
-                    } ` + NEW
-                  }
-                  color='primary'
-                  sx={{
-                    height: 20,
-                    fontSize: '0.75rem',
-                    fontWeight: 500,
-                    borderRadius: '10px'
-                  }}
-                />
-              )}
+            {notifications.length > 0 && notifications.some(current => !current.clicked) && (
+              <CustomChip
+                skin='light'
+                size='small'
+                label={`${notifications.filter(current => !current.clicked).length} ` + NEW}
+                color='primary'
+                sx={{
+                  height: 20,
+                  fontSize: '0.75rem',
+                  fontWeight: 500,
+                  borderRadius: '10px'
+                }}
+              />
+            )}
           </Box>
         </MenuItem>
         <ScrollWrapper>
@@ -189,11 +168,9 @@ const NotificationDropdown = props => {
                   key={`dropdown-notification-${notification.id}`}
                   onClick={() => handleDropdownClick(notification)}
                   sx={{
-                    backgroundColor:
-                      !notification.clicked && 'rgba(170, 170, 170, 0.1)',
+                    backgroundColor: !notification.clicked && 'rgba(170, 170, 170, 0.1)',
                     '&:hover': {
-                      backgroundColor:
-                        !notification.clicked && 'rgba(140, 140, 140, 0.2)'
+                      backgroundColor: !notification.clicked && 'rgba(140, 140, 140, 0.2)'
                     }
                   }}
                 >
@@ -211,11 +188,7 @@ const NotificationDropdown = props => {
               borderTop: theme => `1px solid ${theme.palette.divider}`
             }}
           >
-            <Button
-              fullWidth
-              variant='contained'
-              onClick={handleReadAllNotifications}
-            >
+            <Button fullWidth variant='contained' onClick={handleReadAllNotifications}>
               {`${VIEW_ALL} (${notifications.length})`}
             </Button>
           </MenuItem>
@@ -233,30 +206,22 @@ const NotificationDropdown = props => {
               }}
             >
               <div style={{ display: 'flex' }}>
-                <Typography sx={{ fontWeight: 600 }}>
-                  {NOTIFICATIONS}
-                </Typography>
-                {notifications.length > 0 &&
-                  notifications.some(current => current.clicked) && (
-                    <CustomChip
-                      skin='light'
-                      size='small'
-                      label={
-                        `${
-                          notifications.filter(current => !current.clicked)
-                            .length
-                        }` + NEW
-                      }
-                      color='primary'
-                      sx={{
-                        height: 20,
-                        fontSize: '0.75rem',
-                        fontWeight: 500,
-                        borderRadius: '10px',
-                        marginLeft: 2
-                      }}
-                    />
-                  )}
+                <Typography sx={{ fontWeight: 600 }}>{NOTIFICATIONS}</Typography>
+                {notifications.length > 0 && notifications.some(current => current.clicked) && (
+                  <CustomChip
+                    skin='light'
+                    size='small'
+                    label={`${notifications.filter(current => !current.clicked).length}` + NEW}
+                    color='primary'
+                    sx={{
+                      height: 20,
+                      fontSize: '0.75rem',
+                      fontWeight: 500,
+                      borderRadius: '10px',
+                      marginLeft: 2
+                    }}
+                  />
+                )}
               </div>
               <Button
                 color='secondary'
@@ -276,11 +241,9 @@ const NotificationDropdown = props => {
                     key={`dialog-notification-${notification.id}`}
                     onClick={() => handleDropdownClick(notification)}
                     sx={{
-                      backgroundColor:
-                        !notification.clicked && 'rgba(170, 170, 170, 0.1)',
+                      backgroundColor: !notification.clicked && 'rgba(170, 170, 170, 0.1)',
                       '&:hover': {
-                        backgroundColor:
-                          !notification.clicked && 'rgba(140, 140, 140, 0.2)'
+                        backgroundColor: !notification.clicked && 'rgba(140, 140, 140, 0.2)'
                       }
                     }}
                   >

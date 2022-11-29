@@ -1,7 +1,7 @@
 import { darken, lighten } from '@mui/material/styles'
 
 // ** Util Import
-import { hexToRGBA } from 'core/utils/hex-to-rgba'
+import { hexToRGBA } from '@core/utils/hex-to-rgba'
 
 const Alert = theme => {
   const getColor = theme.palette.mode === 'light' ? darken : lighten

@@ -8,46 +8,28 @@ import IconButton from '@mui/material/IconButton'
 import MenuIcon from 'mdi-material-ui/Menu'
 
 // ** Components
-import LanguageDropdown from 'core/layouts/components/LanguageDropdown'
-import ModeToggler from 'core/layouts/components/ModeToggler'
+import LanguageDropdown from '@core/layouts/components/LanguageDropdown'
+import ModeToggler from '@core/layouts/components/ModeToggler'
 
-import UserDropdown from 'layouts/components/UserDropdown/UserDropdown'
+import UserDropdown from '@layouts/components/UserDropdown/UserDropdown'
 
 const AppBarContent = props => {
-  const {
-    hidden,
-    settings,
-    saveSettings,
-    toggleNavVisibility,
-    user,
-    status,
-    logout
-  } = props
+  const { hidden, settings, saveSettings, toggleNavVisibility, user, status, logout } = props
 
   const render = {
     loading: null,
     authorized: (
       <Fragment>
-        <Box
-          className='actions-left'
-          sx={{ mr: 2, display: 'flex', alignItems: 'center' }}
-        >
+        <Box className='actions-left' sx={{ mr: 2, display: 'flex', alignItems: 'center' }}>
           {hidden ? (
-            <IconButton
-              color='inherit'
-              sx={{ ml: -2.75 }}
-              onClick={toggleNavVisibility}
-            >
+            <IconButton color='inherit' sx={{ ml: -2.75 }} onClick={toggleNavVisibility}>
               <MenuIcon />
             </IconButton>
           ) : null}
           <ModeToggler settings={settings} saveSettings={saveSettings} />
           <LanguageDropdown settings={settings} saveSettings={saveSettings} />
         </Box>
-        <Box
-          className='actions-right'
-          sx={{ display: 'flex', alignItems: 'center' }}
-        >
+        <Box className='actions-right' sx={{ display: 'flex', alignItems: 'center' }}>
           <UserDropdown user={user} settings={settings} logout={logout} />
         </Box>
       </Fragment>

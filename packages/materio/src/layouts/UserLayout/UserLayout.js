@@ -1,14 +1,14 @@
 import useMediaQuery from '@mui/material/useMediaQuery'
 
 // ** Layout Imports
-import Layout from 'core/layouts/Layout'
+import Layout from '@core/layouts/Layout'
 
 // ** Component Import
 import HorizontalAppBarContent from '../components/horizontal/AppBarContent'
 import VerticalAppBarContent from '../components/vertical/AppBarContent'
 
 // ** Hook Import
-import { useSettings } from 'core/hooks/useSettings'
+import { useSettings } from '@core/hooks/useSettings'
 
 const UserLayout = ({
   horizontalNavItems,
@@ -60,18 +60,10 @@ const UserLayout = ({
     )
   }
 
-  const layoutProps =
-    settings.layout === 'horizontal'
-      ? horizontalLayoutProps
-      : verticalLayoutProps
+  const layoutProps = settings.layout === 'horizontal' ? horizontalLayoutProps : verticalLayoutProps
 
   return (
-    <Layout
-      hidden={hidden}
-      settings={settings}
-      saveSettings={saveSettings}
-      {...layoutProps}
-    >
+    <Layout hidden={hidden} settings={settings} saveSettings={saveSettings} {...layoutProps}>
       {children}
     </Layout>
   )

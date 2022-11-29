@@ -1,5 +1,5 @@
 // ** Util Import
-import { hexToRGBA } from 'core/utils/hex-to-rgba'
+import { hexToRGBA } from '@core/utils/hex-to-rgba'
 
 export const GlobalStyles = (theme, settings) => {
   // ** Vars

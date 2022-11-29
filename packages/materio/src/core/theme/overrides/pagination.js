@@ -1,5 +1,5 @@
 // ** Util Import
-import { hexToRGBA } from 'core/utils/hex-to-rgba'
+import { hexToRGBA } from '@core/utils/hex-to-rgba'
 
 const Pagination = theme => {
   return {
@@ -18,10 +18,7 @@ const Pagination = theme => {
           '&.Mui-selected': {
             backgroundColor: hexToRGBA(theme.palette.primary.main, 0.12),
             '&:hover': {
-              backgroundColor: `${hexToRGBA(
-                theme.palette.primary.main,
-                0.2
-              )} !important`
+              backgroundColor: `${hexToRGBA(theme.palette.primary.main, 0.2)} !important`
             }
           }
         },
@@ -29,10 +26,7 @@ const Pagination = theme => {
           '&.Mui-selected': {
             backgroundColor: hexToRGBA(theme.palette.secondary.main, 0.12),
             '&:hover': {
-              backgroundColor: `${hexToRGBA(
-                theme.palette.secondary.main,
-                0.2
-              )} !important`
+              backgroundColor: `${hexToRGBA(theme.palette.secondary.main, 0.2)} !important`
             }
           }
         }

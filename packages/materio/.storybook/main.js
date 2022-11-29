@@ -10,10 +10,10 @@ module.exports = {
   webpackFinal: async (config, { configType }) => {
     config.resolve.alias = {
       ...config.resolve.alias,
-      core: path.resolve(__dirname, '../src/core'),
-      layouts: path.resolve(__dirname, '../src/layouts'),
-      configs: path.resolve(__dirname, '../src/configs'),
-      context: path.resolve(__dirname, '../src/context')
+      '@core': path.resolve(__dirname, '../src/core'),
+      '@layouts': path.resolve(__dirname, '../src/layouts'),
+      '@configs': path.resolve(__dirname, '../src/configs'),
+      '@context': path.resolve(__dirname, '../src/context')
     }
 
     return config

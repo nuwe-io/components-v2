@@ -2,7 +2,7 @@
 import { createContext, useEffect, useState } from 'react'
 
 // ** ThemeConfig Import
-import themeConfig from 'configs/themeConfig'
+import themeConfig from '@configs/themeConfig'
 
 const initialSettings = {
   themeColor: 'primary',

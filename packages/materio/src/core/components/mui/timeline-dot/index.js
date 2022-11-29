@@ -3,7 +3,7 @@ import MuiTimelineDot from '@mui/lab/TimelineDot'
 import { useTheme } from '@mui/material/styles'
 
 // ** Util Import
-import { hexToRGBA } from 'core/utils/hex-to-rgba'
+import { hexToRGBA } from '@core/utils/hex-to-rgba'
 
 const TimelineDot = props => {
   // ** Props

@@ -1,4 +1,5 @@
 /* eslint-disable import/no-anonymous-default-export */
+import alias from '@rollup/plugin-alias'
 import babel from 'rollup-plugin-babel'
 import commonjs from 'rollup-plugin-commonjs'
 import resolve from 'rollup-plugin-node-resolve'
@@ -28,7 +29,17 @@ export default {
   plugins: [
     resolve({
       extensions,
+      browser: true,
+      preferBuiltins: false,
       modulesOnly: true
+    }),
+    alias({
+      entries: [
+        { find: '@configs', replacement: 'src/configs' },
+        { find: '@core', replacement: 'src/core' },
+        { find: '@layouts', replacement: 'src/layouts' },
+        { find: '@context', replacement: 'src/context' }
+      ]
     }),
     commonjs({
       include: 'node_modules/**',

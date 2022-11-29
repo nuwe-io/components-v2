@@ -18,15 +18,15 @@ import Typography from '@mui/material/Typography'
 import clsx from 'clsx'
 
 // ** Theme Config Import
-import themeConfig from 'configs/themeConfig'
+import themeConfig from '@configs/themeConfig'
 
 // ** Custom Components Imports
-import UserIcon from 'layouts/components/UserIcon'
+import UserIcon from '@layouts/components/UserIcon'
 
 // import CanViewNavLink from layouts/components/acl/CanViewNavLink'
 
 // ** Util Import
-import { hexToRGBA } from 'core/utils/hex-to-rgba'
+import { hexToRGBA } from '@core/utils/hex-to-rgba'
 
 const ListItem = styled(MuiListItem)(({ theme }) => ({
   width: 'auto',
@@ -58,15 +58,11 @@ const HorizontalNavLink = props => {
     if (Object.keys(router.query).length && item.path) {
       const arr = Object.keys(router.query)
 
-      return (
-        router.asPath.includes(item.path) &&
-        router.asPath.includes(router.query[arr[0]])
-      )
+      return router.asPath.includes(item.path) && router.asPath.includes(router.query[arr[0]])
     }
   }
 
-  const isNavLinkActive = () =>
-    router.pathname === item.path || handleURLQueries()
+  const isNavLinkActive = () => router.pathname === item.path || handleURLQueries()
 
   const theme = useTheme()
 
@@ -94,9 +90,7 @@ const HorizontalNavLink = props => {
             }
           }}
           sx={{
-            ...(item.disabled
-              ? { pointerEvents: 'none' }
-              : { cursor: 'pointer' }),
+            ...(item.disabled ? { pointerEvents: 'none' } : { cursor: 'pointer' }),
             ...(!hasParent
               ? {
                   px: 5.5,
@@ -126,9 +120,7 @@ const HorizontalNavLink = props => {
                 ...(menuTextTruncate && { overflow: 'hidden' })
               }}
             >
-              <ListItemIcon
-                sx={{ color: 'text.primary', mr: !hasParent ? 2 : 3 }}
-              >
+              <ListItemIcon sx={{ color: 'text.primary', mr: !hasParent ? 2 : 3 }}>
                 <UserIcon
                   icon={IconTag}
                   componentType='horizontal-menu'
@@ -140,9 +132,7 @@ const HorizontalNavLink = props => {
                   }}
                 />
               </ListItemIcon>
-              <Typography {...(menuTextTruncate && { noWrap: true })}>
-                {item.title}
-              </Typography>
+              <Typography {...(menuTextTruncate && { noWrap: true })}>{item.title}</Typography>
             </Box>
             {item.badgeContent ? (
               <Chip

@@ -7,21 +7,17 @@ import Box from '@mui/material/Box'
 // ** Icons Imports
 
 // ** Theme Config Import
-import themeConfig from 'configs/themeConfig'
+import themeConfig from '@configs/themeConfig'
 
 // ** Components
-import DatePickerWrapper from 'core/styles/libs/react-datepicker'
+import DatePickerWrapper from '@core/styles/libs/react-datepicker'
 
 // ** Styled Component
 import AppBar from './components/appBar'
 import Navigation from './components/navigation'
 
 import { ScrollToTopSection } from '../components/ScrollToTopSection'
-import {
-  ContentWrapper,
-  MainContentWrapper,
-  VerticalLayoutWrapper
-} from './styles'
+import { ContentWrapper, MainContentWrapper, VerticalLayoutWrapper } from './styles'
 
 const VerticalLayout = props => {
   // ** Props
@@ -29,8 +25,7 @@ const VerticalLayout = props => {
 
   // ** Vars
   const { skin, navHidden, contentWidth } = settings
-  const { navigationSize, disableCustomizer, collapsedNavigationSize } =
-    themeConfig
+  const { navigationSize, disableCustomizer, collapsedNavigationSize } = themeConfig
   const navWidth = navigationSize
   const navigationBorderWidth = skin === 'bordered' ? 1 : 0
   const collapsedNavWidth = collapsedNavigationSize

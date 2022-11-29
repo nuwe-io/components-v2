@@ -12,13 +12,13 @@ import { styled, useTheme } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 
 // ** Configs Import
-import themeConfig from 'configs/themeConfig'
+import themeConfig from '@configs/themeConfig'
 
 // ** Custom Components Imports
-import UserIcon from 'layouts/components/UserIcon'
+import UserIcon from '@layouts/components/UserIcon'
 
 // ** Utils
-import { handleURLQueries } from 'core/layouts/utils'
+import { handleURLQueries } from '@core/layouts/utils'
 
 // ** Styled Components
 const MenuNavLink = styled(ListItemButton)(({ theme }) => ({
@@ -121,9 +121,7 @@ const VerticalNavLink = ({
           sx={{
             py: 2.25,
             ...conditionalBgColor(),
-            ...(item.disabled
-              ? { pointerEvents: 'none' }
-              : { cursor: 'pointer' }),
+            ...(item.disabled ? { pointerEvents: 'none' } : { cursor: 'pointer' }),
             pl:
               navCollapsed && !navHover
                 ? (collapsedNavWidth - navigationBorderWidth - 24) / 8
@@ -165,9 +163,7 @@ const VerticalNavLink = ({
           >
             <Typography
               {...((themeConfig.menuTextTruncate ||
-                (!themeConfig.menuTextTruncate &&
-                  navCollapsed &&
-                  !navHover)) && {
+                (!themeConfig.menuTextTruncate && navCollapsed && !navHover)) && {
                 noWrap: true
               })}
             >

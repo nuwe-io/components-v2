@@ -1,5 +1,5 @@
 /* eslint-disable import/no-anonymous-default-export */
-import themeConfig from 'configs/themeConfig'
+import themeConfig from '@configs/themeConfig'
 
 import UserDropdownComponent from './UserDropdown'
 

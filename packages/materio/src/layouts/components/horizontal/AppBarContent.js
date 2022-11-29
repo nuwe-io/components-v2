@@ -5,10 +5,10 @@ import Box from '@mui/material/Box'
 import PropTypes from 'prop-types'
 
 // ** Components
-import LanguageDropdown from 'core/layouts/components/LanguageDropdown'
-import ModeToggler from 'core/layouts/components/ModeToggler'
+import LanguageDropdown from '@core/layouts/components/LanguageDropdown'
+import ModeToggler from '@core/layouts/components/ModeToggler'
 
-import UserDropdown from 'layouts/components/UserDropdown/UserDropdown'
+import UserDropdown from '@layouts/components/UserDropdown/UserDropdown'
 
 const AppBarContent = props => {
   const { settings, saveSettings, user, status, logout } = props
@@ -24,9 +24,7 @@ const AppBarContent = props => {
     )
   }
 
-  return (
-    <Box sx={{ display: 'flex', alignItems: 'center' }}>{render[status]}</Box>
-  )
+  return <Box sx={{ display: 'flex', alignItems: 'center' }}>{render[status]}</Box>
 }
 
 AppBarContent.propTypes = {

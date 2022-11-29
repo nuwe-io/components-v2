@@ -1,7 +1,7 @@
 import { styled } from '@mui/material/styles'
 import MuiToolbar from '@mui/material/Toolbar'
 
-import themeConfig from 'configs/themeConfig'
+import themeConfig from '@configs/themeConfig'
 
 const HorizontalLayoutWrapper = styled('div')({
   display: 'flex',

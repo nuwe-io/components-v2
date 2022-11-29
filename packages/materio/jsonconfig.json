@@ -4,7 +4,13 @@
     "baseUrl": "./src",
     "noImplicitAny": false,
     "noUnusedLocals": true,
-    "noUnusedParameters": true
+    "noUnusedParameters": true,
+    "paths": {
+      "@core": ["./core/*"],
+      "@layouts": ["./layouts/*"],
+      "@configs": ["./configs/*"],
+      "@context": ["./context/*"]
+    }
   },
   "include": ["src"],
   "exclude": [".storybook", "node_modules", "build"]

@@ -3,8 +3,8 @@ import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 
 // ** Core imports
-import DatePickerWrapper from 'core/styles/libs/react-datepicker'
-import { hexToRGBA } from 'core/utils/hex-to-rgba'
+import DatePickerWrapper from '@core/styles/libs/react-datepicker'
+import { hexToRGBA } from '@core/utils/hex-to-rgba'
 
 import { ScrollToTopSection } from '../components/ScrollToTopSection'
 import AppBarContent from './components/app-bar-content'
@@ -39,8 +39,7 @@ const HorizontalLayout = props => {
           ...(appBar === 'fixed'
             ? appBarBlur && {
                 backdropFilter: 'blur(8px)',
-                backgroundColor: theme =>
-                  hexToRGBA(theme.palette.background.paper, 0.85)
+                backgroundColor: theme => hexToRGBA(theme.palette.background.paper, 0.85)
               }
             : {})
         }}
@@ -49,9 +48,7 @@ const HorizontalLayout = props => {
           className='layout-navbar'
           sx={{
             width: '100%',
-            ...(navHidden
-              ? {}
-              : { borderBottom: theme => `1px solid ${theme.palette.divider}` })
+            ...(navHidden ? {} : { borderBottom: theme => `1px solid ${theme.palette.divider}` })
           }}
         >
           <Toolbar
@@ -61,8 +58,7 @@ const HorizontalLayout = props => {
               ...(contentWidth === 'boxed' && {
                 '@media (min-width:1440px)': { maxWidth: 1440 }
               }),
-              minHeight: theme =>
-                `${theme.mixins.toolbar.minHeight - 1}px !important`
+              minHeight: theme => `${theme.mixins.toolbar.minHeight - 1}px !important`
             }}
           >
             <AppBarContent

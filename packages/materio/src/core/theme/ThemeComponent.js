@@ -5,8 +5,8 @@ import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material/s
 import { deepmerge } from '@mui/utils'
 
 // ** Module imports
-import themeConfig from 'configs/themeConfig'
-import UserThemeOptions from 'layouts/UserLayout/UserThemeOptions'
+import themeConfig from '@configs/themeConfig'
+import UserThemeOptions from '@layouts/UserLayout/UserThemeOptions'
 
 // ** Theme Override Imports
 import GlobalStyling from './globalStyles'

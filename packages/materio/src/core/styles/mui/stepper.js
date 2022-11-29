@@ -3,7 +3,7 @@ import Box from '@mui/material/Box'
 import { styled } from '@mui/material/styles'
 
 // ** Util Imports
-import { hexToRGBA } from 'core/utils/hex-to-rgba'
+import { hexToRGBA } from '@core/utils/hex-to-rgba'
 
 export const StepperWrapper = styled(Box)(({ theme }) => ({
   [theme.breakpoints.down('md')]: {
