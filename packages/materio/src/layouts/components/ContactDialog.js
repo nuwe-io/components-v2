@@ -2,6 +2,8 @@
 import { forwardRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
+import PropTypes from 'prop-types'
+
 // ** MUI Imports
 import LoadingButton from '@mui/lab/LoadingButton'
 import Box from '@mui/material/Box'
@@ -185,4 +187,29 @@ export const DialogContact = ({
       </DialogContent>
     </Dialog>
   )
+}
+
+DialogContact.propTypes = {
+  show: PropTypes.bool,
+  setShow: PropTypes.func,
+  onSubmitAction: PropTypes.func,
+  texts: PropTypes.object
+}
+
+DialogContact.defaultProps = {
+  show: false,
+  setShow: () => console.lg("You're not passing setShow function"),
+  onSubmitAction: () =>
+    console.lg("You're not passing onSubmitAction function"),
+  texts: {
+    title: 'Contact',
+    label: 'Send a message',
+    contact_send: 'Send',
+    contact_cancel: 'Cancel',
+    errors: {
+      email: 'Email is required',
+      name: 'Name is required',
+      message: 'Message is required'
+    }
+  }
 }

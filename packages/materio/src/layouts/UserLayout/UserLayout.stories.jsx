@@ -1,16 +1,13 @@
 /* eslint-disable import/no-anonymous-default-export */
-// ** Icon imports
-import { DiamondStone } from 'mdi-material-ui'
-import HomeOutline from 'mdi-material-ui/HomeOutline'
-import ShieldOutline from 'mdi-material-ui/ShieldOutline'
 
 import UserLayout from './UserLayout'
 
 const args = {
-  status: 'authenticated',
+  status: 'authorized',
   user: {
     name: 'John Doe',
-    email: 'john@nuwe.io',
+    username: 'John Doe',
+    role: 'admin',
     avatar: 'https://randomuser.me/api/?gender=female&results=1'
   },
   logout: () => {},

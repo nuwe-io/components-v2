@@ -1,8 +1,8 @@
 // ** React Imports
+import { useRouter } from 'next/router'
 import { Fragment, useState } from 'react'
 
-// ** Next Import
-import { useRouter } from 'next/router'
+import PropTypes from 'prop-types'
 
 // ** MUI Imports
 import Avatar from '@mui/material/Avatar'
@@ -171,6 +171,49 @@ const UserDropdown = props => {
       <DialogContact feedBack={feedBack} show={show} setShow={setShow} />
     </Fragment>
   )
+}
+
+UserDropdown.propTypes = {
+  settings: PropTypes.object,
+  user: PropTypes.shape({
+    name: PropTypes.string,
+    username: PropTypes.string,
+    role: PropTypes.string,
+    image: PropTypes.string
+  }),
+  logout: PropTypes.func,
+  goToSettings: PropTypes.func,
+  goToProfile: PropTypes.func,
+  feedBack: PropTypes.func,
+  texts: PropTypes.shape({
+    profile: PropTypes.string,
+    settings: PropTypes.string,
+    contact: PropTypes.string,
+    feedback: PropTypes.string,
+    logout: PropTypes.string
+  })
+}
+
+UserDropdown.defaultProps = {
+  settings: {},
+  user: {
+    name: 'John Doe',
+    username: 'johndoe',
+    role: 'admin',
+    image:
+      'https://avatars.githubusercontent.com/u/6614183?s=400&u=2a0c8728f854686597b91c9f9e8d501458b07d75&v=4'
+  },
+  logout: () => {},
+  goToSettings: () => {},
+  goToProfile: () => {},
+  feedBack: () => {},
+  texts: {
+    profile: 'Profile',
+    settings: 'Settings',
+    contact: 'Contact',
+    feedback: 'Feedback',
+    logout: 'Logout'
+  }
 }
 
 const CustomMenuIcon = ({ title, onClick, children }) => (

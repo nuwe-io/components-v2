@@ -4,8 +4,8 @@ import { useEffect, useRef } from 'react'
 // ** External imports
 import { Toaster } from 'react-hot-toast'
 
-import HorizontalLayout from './HorizontalLayout'
-import VerticalLayout from './VerticalLayout'
+import HorizontalLayout from './HorizontalLayout/HorizontalLayout'
+import VerticalLayout from './VerticalLayout/VerticalLayout'
 
 const Layout = props => {
   // ** Props

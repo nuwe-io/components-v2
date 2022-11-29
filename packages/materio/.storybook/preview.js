@@ -53,7 +53,7 @@ export const withMuiTheme = (Story, context) => {
     <SettingsProvider>
       <SettingsConsumer>
         {({ settings }) => (
-          <ThemeComponent settings={settings || theme}>
+          <ThemeComponent settings={theme}>
             <Story />
           </ThemeComponent>
         )}
