@@ -1,15 +1,18 @@
 import CircleOutline from '@mui/icons-material/Circle';
 import { useTheme as useTheme$4, Box as Box$2, Typography as Typography$4 } from '@mui/material';
 import PropTypes from 'prop-types';
-import { jsxs, jsx, Fragment as Fragment$1 } from 'react/jsx-runtime';
+import { jsxs, jsx, Fragment } from 'react/jsx-runtime';
 import emStyled from '@emotion/styled';
-import { Global, ThemeContext as ThemeContext$2, keyframes, css } from '@emotion/react';
+import { Global, ThemeContext as ThemeContext$2, keyframes, css, useTheme as useTheme$5 } from '@emotion/react';
 import { Memo, ForwardRef, isFragment } from 'react-is';
 import * as React from 'react';
-import React__default, { Children, isValidElement, cloneElement, createContext, useState, useEffect, useRef, useCallback, useContext, Fragment, createElement, forwardRef } from 'react';
+import React__default, { Children, isValidElement, cloneElement, useState, createContext, useEffect, useRef, useCallback, useContext, Fragment as Fragment$1, createElement, forwardRef } from 'react';
 import * as ReactDOM from 'react-dom';
 import ReactDOM__default, { flushSync } from 'react-dom';
 import clsx from 'clsx';
+import ChevronLeft from 'mdi-material-ui/ChevronLeft';
+import ChevronRight from 'mdi-material-ui/ChevronRight';
+import { useKeenSlider } from 'keen-slider/react';
 import copy from 'clipboard-copy';
 import createCache from '@emotion/cache';
 import { differenceInDays, format, addDays } from 'date-fns';
@@ -23,8 +26,6 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { usePopper } from 'react-popper';
 import ChevronDown from 'mdi-material-ui/ChevronDown';
-import ChevronLeft from 'mdi-material-ui/ChevronLeft';
-import ChevronRight from 'mdi-material-ui/ChevronRight';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import CircleOutline$1 from 'mdi-material-ui/CircleOutline';
 import Close from 'mdi-material-ui/Close';
@@ -159,7 +160,7 @@ process.env.NODE_ENV !== "production" ? GlobalStyles$2.propTypes = {
   styles: PropTypes.oneOfType([PropTypes.string, PropTypes.object, PropTypes.func])
 } : void 0;
 
-/** @license MUI v5.10.14
+/** @license MUI v5.10.16
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
@@ -1759,7 +1760,7 @@ const styleFunctionSx = unstable_createStyleFunctionSx();
 styleFunctionSx.filterProps = ['sx'];
 var defaultStyleFunctionSx = styleFunctionSx;
 
-const _excluded$12 = ["sx"];
+const _excluded$14 = ["sx"];
 const splitProps = props => {
   const result = {
     systemProps: {},
@@ -1778,7 +1779,7 @@ function extendSxProp(props) {
   const {
       sx: inSx
     } = props,
-    other = _objectWithoutPropertiesLoose(props, _excluded$12);
+    other = _objectWithoutPropertiesLoose(props, _excluded$14);
   const {
     systemProps,
     otherProps
@@ -1802,7 +1803,7 @@ function extendSxProp(props) {
   });
 }
 
-const _excluded$11 = ["values", "unit", "step"];
+const _excluded$13 = ["values", "unit", "step"];
 const sortBreakpointsValues = values => {
   const breakpointsAsArray = Object.keys(values).map(key => ({
     key,
@@ -1837,7 +1838,7 @@ function createBreakpoints(breakpoints) {
       unit = 'px',
       step = 5
     } = breakpoints,
-    other = _objectWithoutPropertiesLoose(breakpoints, _excluded$11);
+    other = _objectWithoutPropertiesLoose(breakpoints, _excluded$13);
   const sortedValues = sortBreakpointsValues(values);
   const keys = Object.keys(sortedValues);
   function up(key) {
@@ -1916,7 +1917,7 @@ function createSpacing(spacingInput = 8) {
   return spacing;
 }
 
-const _excluded$10 = ["breakpoints", "palette", "spacing", "shape"];
+const _excluded$12 = ["breakpoints", "palette", "spacing", "shape"];
 function createTheme$1(options = {}, ...args) {
   const {
       breakpoints: breakpointsInput = {},
@@ -1924,7 +1925,7 @@ function createTheme$1(options = {}, ...args) {
       spacing: spacingInput,
       shape: shapeInput = {}
     } = options,
-    other = _objectWithoutPropertiesLoose(options, _excluded$10);
+    other = _objectWithoutPropertiesLoose(options, _excluded$12);
   const breakpoints = createBreakpoints(breakpointsInput);
   const spacing = createSpacing(spacingInput);
   let muiTheme = deepmerge({
@@ -2028,7 +2029,7 @@ function useTheme$1(defaultTheme = systemDefaultTheme$1) {
   return useTheme$2(defaultTheme);
 }
 
-const _excluded$$ = ["className", "component"];
+const _excluded$11 = ["className", "component"];
 function createBox(options = {}) {
   const {
     defaultTheme,
@@ -2046,7 +2047,7 @@ function createBox(options = {}) {
         className,
         component = 'div'
       } = _extendSxProp,
-      other = _objectWithoutPropertiesLoose(_extendSxProp, _excluded$$);
+      other = _objectWithoutPropertiesLoose(_extendSxProp, _excluded$11);
     return /*#__PURE__*/jsx(BoxRoot, _extends({
       as: component,
       ref: ref,
@@ -2057,7 +2058,7 @@ function createBox(options = {}) {
   return Box;
 }
 
-const _excluded$_ = ["variant"];
+const _excluded$10 = ["variant"];
 function isEmpty$3(string) {
   return string.length === 0;
 }
@@ -2071,7 +2072,7 @@ function propsToClassKey(props) {
   const {
       variant
     } = props,
-    other = _objectWithoutPropertiesLoose(props, _excluded$_);
+    other = _objectWithoutPropertiesLoose(props, _excluded$10);
   let classKey = variant || '';
   Object.keys(other).sort().forEach(key => {
     if (key === 'color') {
@@ -2083,7 +2084,7 @@ function propsToClassKey(props) {
   return classKey;
 }
 
-const _excluded$Z = ["name", "slot", "skipVariantsResolver", "skipSx", "overridesResolver"],
+const _excluded$$ = ["name", "slot", "skipVariantsResolver", "skipSx", "overridesResolver"],
   _excluded2$5 = ["theme"],
   _excluded3 = ["theme"];
 function isEmpty$2(obj) {
@@ -2171,7 +2172,7 @@ function createStyled(input = {}) {
         skipSx: inputSkipSx,
         overridesResolver
       } = inputOptions,
-      options = _objectWithoutPropertiesLoose(inputOptions, _excluded$Z);
+      options = _objectWithoutPropertiesLoose(inputOptions, _excluded$$);
 
     // if skipVariantsResolver option is defined, take the value, otherwise, true for root and false for other slots.
     const skipVariantsResolver = inputSkipVariantsResolver !== undefined ? inputSkipVariantsResolver : componentSlot && componentSlot !== 'Root' || false;
@@ -2735,7 +2736,7 @@ const green = {
 };
 var green$1 = green;
 
-const _excluded$Y = ["mode", "contrastThreshold", "tonalOffset"];
+const _excluded$_ = ["mode", "contrastThreshold", "tonalOffset"];
 const light = {
   // The colors used to style the text.
   text: {
@@ -2904,7 +2905,7 @@ function createPalette(palette) {
       contrastThreshold = 3,
       tonalOffset = 0.2
     } = palette,
-    other = _objectWithoutPropertiesLoose(palette, _excluded$Y);
+    other = _objectWithoutPropertiesLoose(palette, _excluded$_);
   const primary = palette.primary || getDefaultPrimary(mode);
   const secondary = palette.secondary || getDefaultSecondary(mode);
   const error = palette.error || getDefaultError(mode);
@@ -3028,7 +3029,7 @@ const theme2 = createTheme({ palette: {
   return paletteOutput;
 }
 
-const _excluded$X = ["fontFamily", "fontSize", "fontWeightLight", "fontWeightRegular", "fontWeightMedium", "fontWeightBold", "htmlFontSize", "allVariants", "pxToRem"];
+const _excluded$Z = ["fontFamily", "fontSize", "fontWeightLight", "fontWeightRegular", "fontWeightMedium", "fontWeightBold", "htmlFontSize", "allVariants", "pxToRem"];
 function round(value) {
   return Math.round(value * 1e5) / 1e5;
 }
@@ -3059,7 +3060,7 @@ function createTypography(palette, typography) {
       allVariants,
       pxToRem: pxToRem2
     } = _ref,
-    other = _objectWithoutPropertiesLoose(_ref, _excluded$X);
+    other = _objectWithoutPropertiesLoose(_ref, _excluded$Z);
   if (process.env.NODE_ENV !== 'production') {
     if (typeof fontSize !== 'number') {
       console.error('MUI: `fontSize` is required to be a number.');
@@ -3119,7 +3120,7 @@ function createShadow(...px) {
 const shadows = ['none', createShadow(0, 2, 1, -1, 0, 1, 1, 0, 0, 1, 3, 0), createShadow(0, 3, 1, -2, 0, 2, 2, 0, 0, 1, 5, 0), createShadow(0, 3, 3, -2, 0, 3, 4, 0, 0, 1, 8, 0), createShadow(0, 2, 4, -1, 0, 4, 5, 0, 0, 1, 10, 0), createShadow(0, 3, 5, -1, 0, 5, 8, 0, 0, 1, 14, 0), createShadow(0, 3, 5, -1, 0, 6, 10, 0, 0, 1, 18, 0), createShadow(0, 4, 5, -2, 0, 7, 10, 1, 0, 2, 16, 1), createShadow(0, 5, 5, -3, 0, 8, 10, 1, 0, 3, 14, 2), createShadow(0, 5, 6, -3, 0, 9, 12, 1, 0, 3, 16, 2), createShadow(0, 6, 6, -3, 0, 10, 14, 1, 0, 4, 18, 3), createShadow(0, 6, 7, -4, 0, 11, 15, 1, 0, 4, 20, 3), createShadow(0, 7, 8, -4, 0, 12, 17, 2, 0, 5, 22, 4), createShadow(0, 7, 8, -4, 0, 13, 19, 2, 0, 5, 24, 4), createShadow(0, 7, 9, -4, 0, 14, 21, 2, 0, 5, 26, 4), createShadow(0, 8, 9, -5, 0, 15, 22, 2, 0, 6, 28, 5), createShadow(0, 8, 10, -5, 0, 16, 24, 2, 0, 6, 30, 5), createShadow(0, 8, 11, -5, 0, 17, 26, 2, 0, 6, 32, 5), createShadow(0, 9, 11, -5, 0, 18, 28, 2, 0, 7, 34, 6), createShadow(0, 9, 12, -6, 0, 19, 29, 2, 0, 7, 36, 6), createShadow(0, 10, 13, -6, 0, 20, 31, 3, 0, 8, 38, 7), createShadow(0, 10, 13, -6, 0, 21, 33, 3, 0, 8, 40, 7), createShadow(0, 10, 14, -6, 0, 22, 35, 3, 0, 8, 42, 7), createShadow(0, 11, 14, -7, 0, 23, 36, 3, 0, 9, 44, 8), createShadow(0, 11, 15, -7, 0, 24, 38, 3, 0, 9, 46, 8)];
 var shadows$1 = shadows;
 
-const _excluded$W = ["duration", "easing", "delay"];
+const _excluded$Y = ["duration", "easing", "delay"];
 // Follow https://material.google.com/motion/duration-easing.html#duration-easing-natural-easing-curves
 // to learn the context in which each easing should be used.
 const easing = {
@@ -3170,7 +3171,7 @@ function createTransitions(inputTransitions) {
         easing: easingOption = mergedEasing.easeInOut,
         delay = 0
       } = options,
-      other = _objectWithoutPropertiesLoose(options, _excluded$W);
+      other = _objectWithoutPropertiesLoose(options, _excluded$Y);
     if (process.env.NODE_ENV !== 'production') {
       const isString = value => typeof value === 'string';
       // IE11 support, replace with Number.isNaN
@@ -3217,7 +3218,7 @@ const zIndex = {
 };
 var zIndex$1 = zIndex;
 
-const _excluded$V = ["breakpoints", "mixins", "spacing", "palette", "transitions", "typography", "shape"];
+const _excluded$X = ["breakpoints", "mixins", "spacing", "palette", "transitions", "typography", "shape"];
 function createTheme(options = {}, ...args) {
   const {
       mixins: mixinsInput = {},
@@ -3225,7 +3226,7 @@ function createTheme(options = {}, ...args) {
       transitions: transitionsInput = {},
       typography: typographyInput = {}
     } = options,
-    other = _objectWithoutPropertiesLoose(options, _excluded$V);
+    other = _objectWithoutPropertiesLoose(options, _excluded$X);
   if (options.vars) {
     throw new Error(process.env.NODE_ENV !== "production" ? `MUI: \`vars\` is a private field used for CSS variables support.
 Please use another name.` : formatMuiErrorMessage(18));
@@ -3501,7 +3502,7 @@ const getOverlayAlpha = elevation => {
 };
 var getOverlayAlpha$1 = getOverlayAlpha;
 
-const _excluded$U = ["getTrigger", "target"];
+const _excluded$W = ["getTrigger", "target"];
 function defaultTrigger(store, options) {
   const {
     disableHysteresis = false,
@@ -3526,7 +3527,7 @@ function useScrollTrigger(options = {}) {
       getTrigger = defaultTrigger,
       target = defaultTarget
     } = options,
-    other = _objectWithoutPropertiesLoose(options, _excluded$U);
+    other = _objectWithoutPropertiesLoose(options, _excluded$W);
   const store = React.useRef();
   const [trigger, setTrigger] = React.useState(() => getTrigger(store, other));
   React.useEffect(() => {
@@ -4451,7 +4452,7 @@ function getTransitionProps(props, options) {
   };
 }
 
-const _excluded$T = ["addEndListener", "appear", "children", "easing", "in", "onEnter", "onEntered", "onEntering", "onExit", "onExited", "onExiting", "style", "timeout", "TransitionComponent"];
+const _excluded$V = ["addEndListener", "appear", "children", "easing", "in", "onEnter", "onEntered", "onEntering", "onExit", "onExited", "onExiting", "style", "timeout", "TransitionComponent"];
 const styles$5 = {
   entering: {
     transform: 'none'
@@ -4489,7 +4490,7 @@ const Zoom = /*#__PURE__*/React.forwardRef(function Zoom(props, ref) {
       // eslint-disable-next-line react/prop-types
       TransitionComponent = Transition$2
     } = props,
-    other = _objectWithoutPropertiesLoose(props, _excluded$T);
+    other = _objectWithoutPropertiesLoose(props, _excluded$V);
   const nodeRef = React.useRef(null);
   const handleRef = useForkRef(nodeRef, children.ref, ref);
   const normalizedTransitionCallback = callback => maybeIsAppearing => {
@@ -4701,12 +4702,12 @@ function isHostComponent(element) {
 /**
  * Appends the ownerState object to the props, merging with the existing one if necessary.
  *
- * @param elementType Type of the element that owns the `existingProps`. If the element is a DOM node, `ownerState` is not applied.
+ * @param elementType Type of the element that owns the `existingProps`. If the element is a DOM node or undefined, `ownerState` is not applied.
  * @param otherProps Props of the element.
  * @param ownerState
  */
 function appendOwnerState(elementType, otherProps, ownerState) {
-  if (isHostComponent(elementType)) {
+  if (elementType === undefined || isHostComponent(elementType)) {
     return otherProps;
   }
   return _extends({}, otherProps, {
@@ -4827,7 +4828,7 @@ function mergeSlotProps(parameters) {
   };
 }
 
-const _excluded$S = ["elementType", "externalSlotProps", "ownerState"];
+const _excluded$U = ["elementType", "externalSlotProps", "ownerState"];
 /**
  * Builds the props to be passed into the slot of an unstyled component.
  * It merges the internal props of the component with the ones supplied by the user, allowing to customize the behavior.
@@ -4842,7 +4843,7 @@ function useSlotProps(parameters) {
       externalSlotProps,
       ownerState
     } = parameters,
-    rest = _objectWithoutPropertiesLoose(parameters, _excluded$S);
+    rest = _objectWithoutPropertiesLoose(parameters, _excluded$U);
   const resolvedComponentsProps = resolveComponentProps(externalSlotProps, ownerState);
   const {
     props: mergedProps,
@@ -4890,8 +4891,8 @@ function getBadgeUnstyledUtilityClass(slot) {
 }
 generateUtilityClasses('MuiBadge', ['root', 'badge', 'invisible']);
 
-const _excluded$R = ["badgeContent", "component", "children", "invisible", "max", "slotProps", "slots", "showZero"];
-const useUtilityClasses$H = ownerState => {
+const _excluded$T = ["badgeContent", "component", "children", "invisible", "max", "slotProps", "slots", "showZero"];
+const useUtilityClasses$J = ownerState => {
   const {
     invisible
   } = ownerState;
@@ -4920,7 +4921,7 @@ const BadgeUnstyled = /*#__PURE__*/React.forwardRef(function BadgeUnstyled(props
       slots = {},
       showZero = false
     } = props,
-    other = _objectWithoutPropertiesLoose(props, _excluded$R);
+    other = _objectWithoutPropertiesLoose(props, _excluded$T);
   const {
     badgeContent,
     max,
@@ -4935,7 +4936,7 @@ const BadgeUnstyled = /*#__PURE__*/React.forwardRef(function BadgeUnstyled(props
     max,
     showZero
   });
-  const classes = useUtilityClasses$H(ownerState);
+  const classes = useUtilityClasses$J(ownerState);
   const Root = component || slots.root || 'span';
   const rootProps = useSlotProps({
     elementType: Root,
@@ -5778,8 +5779,8 @@ function getModalUtilityClass(slot) {
 }
 generateUtilityClasses('MuiModal', ['root', 'hidden']);
 
-const _excluded$Q = ["children", "classes", "closeAfterTransition", "component", "container", "disableAutoFocus", "disableEnforceFocus", "disableEscapeKeyDown", "disablePortal", "disableRestoreFocus", "disableScrollLock", "hideBackdrop", "keepMounted", "manager", "onBackdropClick", "onClose", "onKeyDown", "open", "onTransitionEnter", "onTransitionExited", "slotProps", "slots"];
-const useUtilityClasses$G = ownerState => {
+const _excluded$S = ["children", "classes", "closeAfterTransition", "component", "container", "disableAutoFocus", "disableEnforceFocus", "disableEscapeKeyDown", "disablePortal", "disableRestoreFocus", "disableScrollLock", "hideBackdrop", "keepMounted", "manager", "onBackdropClick", "onClose", "onKeyDown", "open", "onTransitionEnter", "onTransitionExited", "slotProps", "slots"];
+const useUtilityClasses$I = ownerState => {
   const {
     open,
     exited,
@@ -5843,7 +5844,7 @@ const ModalUnstyled = /*#__PURE__*/React.forwardRef(function ModalUnstyled(props
       slotProps = {},
       slots = {}
     } = props,
-    other = _objectWithoutPropertiesLoose(props, _excluded$Q);
+    other = _objectWithoutPropertiesLoose(props, _excluded$S);
   const [exited, setExited] = React.useState(true);
   const modal = React.useRef({});
   const mountNodeRef = React.useRef(null);
@@ -5914,7 +5915,7 @@ const ModalUnstyled = /*#__PURE__*/React.forwardRef(function ModalUnstyled(props
     hideBackdrop,
     keepMounted
   });
-  const classes = useUtilityClasses$G(ownerState);
+  const classes = useUtilityClasses$I(ownerState);
   const handleEnter = () => {
     setExited(false);
     if (onTransitionEnter) {
@@ -6207,7 +6208,7 @@ if (process.env.NODE_ENV !== 'production') {
   NoSsr['propTypes' + ''] = exactProp(NoSsr.propTypes);
 }
 
-const _excluded$P = ["onChange", "maxRows", "minRows", "style", "value"];
+const _excluded$R = ["onChange", "maxRows", "minRows", "style", "value"];
 function getStyleValue(computedStyle, property) {
   return parseInt(computedStyle[property], 10) || 0;
 }
@@ -6237,7 +6238,7 @@ const TextareaAutosize = /*#__PURE__*/React.forwardRef(function TextareaAutosize
       style,
       value
     } = props,
-    other = _objectWithoutPropertiesLoose(props, _excluded$P);
+    other = _objectWithoutPropertiesLoose(props, _excluded$R);
   const {
     current: isControlled
   } = React.useRef(value != null);
@@ -6449,7 +6450,7 @@ function getCircularProgressUtilityClass(slot) {
 }
 generateUtilityClasses('MuiCircularProgress', ['root', 'determinate', 'indeterminate', 'colorPrimary', 'colorSecondary', 'svg', 'circle', 'circleDeterminate', 'circleIndeterminate', 'circleDisableShrink']);
 
-const _excluded$O = ["className", "color", "disableShrink", "size", "style", "thickness", "value", "variant"];
+const _excluded$Q = ["className", "color", "disableShrink", "size", "style", "thickness", "value", "variant"];
 let _$1 = t => t,
   _t$1,
   _t2$1,
@@ -6481,7 +6482,7 @@ const circularDashKeyframe = keyframes(_t2$1 || (_t2$1 = _$1`
     stroke-dashoffset: -125px;
   }
 `));
-const useUtilityClasses$F = ownerState => {
+const useUtilityClasses$H = ownerState => {
   const {
     classes,
     variant,
@@ -6574,7 +6575,7 @@ const CircularProgress = /*#__PURE__*/React.forwardRef(function CircularProgress
       value = 0,
       variant = 'indeterminate'
     } = props,
-    other = _objectWithoutPropertiesLoose(props, _excluded$O);
+    other = _objectWithoutPropertiesLoose(props, _excluded$Q);
   const ownerState = _extends({}, props, {
     color,
     disableShrink,
@@ -6583,7 +6584,7 @@ const CircularProgress = /*#__PURE__*/React.forwardRef(function CircularProgress
     value,
     variant
   });
-  const classes = useUtilityClasses$F(ownerState);
+  const classes = useUtilityClasses$H(ownerState);
   const circleStyle = {};
   const rootStyle = {};
   const rootProps = {};
@@ -6733,6 +6734,871 @@ const FallbackSpinner = () => {
         component: "div",
         color: "textSecondary",
         children: svg
+      })
+    })]
+  });
+};
+
+const shouldSpreadAdditionalProps = Slot => {
+  return !Slot || !isHostComponent(Slot);
+};
+var shouldSpreadAdditionalProps$1 = shouldSpreadAdditionalProps;
+
+function getBadgeUtilityClass(slot) {
+  return generateUtilityClass('MuiBadge', slot);
+}
+const badgeClasses = generateUtilityClasses('MuiBadge', ['root', 'badge', 'dot', 'standard', 'anchorOriginTopRight', 'anchorOriginBottomRight', 'anchorOriginTopLeft', 'anchorOriginBottomLeft', 'invisible', 'colorError', 'colorInfo', 'colorPrimary', 'colorSecondary', 'colorSuccess', 'colorWarning', 'overlapRectangular', 'overlapCircular',
+// TODO: v6 remove the overlap value from these class keys
+'anchorOriginTopLeftCircular', 'anchorOriginTopLeftRectangular', 'anchorOriginTopRightCircular', 'anchorOriginTopRightRectangular', 'anchorOriginBottomLeftCircular', 'anchorOriginBottomLeftRectangular', 'anchorOriginBottomRightCircular', 'anchorOriginBottomRightRectangular']);
+var badgeClasses$1 = badgeClasses;
+
+const _excluded$P = ["anchorOrigin", "className", "component", "components", "componentsProps", "overlap", "color", "invisible", "max", "badgeContent", "slots", "slotProps", "showZero", "variant"];
+const RADIUS_STANDARD = 10;
+const RADIUS_DOT = 4;
+const useUtilityClasses$G = ownerState => {
+  const {
+    color,
+    anchorOrigin,
+    invisible,
+    overlap,
+    variant,
+    classes = {}
+  } = ownerState;
+  const slots = {
+    root: ['root'],
+    badge: ['badge', variant, invisible && 'invisible', `anchorOrigin${capitalize(anchorOrigin.vertical)}${capitalize(anchorOrigin.horizontal)}`, `anchorOrigin${capitalize(anchorOrigin.vertical)}${capitalize(anchorOrigin.horizontal)}${capitalize(overlap)}`, `overlap${capitalize(overlap)}`, color !== 'default' && `color${capitalize(color)}`]
+  };
+  return composeClasses(slots, getBadgeUtilityClass, classes);
+};
+const BadgeRoot = styled$1('span', {
+  name: 'MuiBadge',
+  slot: 'Root',
+  overridesResolver: (props, styles) => styles.root
+})({
+  position: 'relative',
+  display: 'inline-flex',
+  // For correct alignment with the text.
+  verticalAlign: 'middle',
+  flexShrink: 0
+});
+const BadgeBadge = styled$1('span', {
+  name: 'MuiBadge',
+  slot: 'Badge',
+  overridesResolver: (props, styles) => {
+    const {
+      ownerState
+    } = props;
+    return [styles.badge, styles[ownerState.variant], styles[`anchorOrigin${capitalize(ownerState.anchorOrigin.vertical)}${capitalize(ownerState.anchorOrigin.horizontal)}${capitalize(ownerState.overlap)}`], ownerState.color !== 'default' && styles[`color${capitalize(ownerState.color)}`], ownerState.invisible && styles.invisible];
+  }
+})(({
+  theme,
+  ownerState
+}) => _extends({
+  display: 'flex',
+  flexDirection: 'row',
+  flexWrap: 'wrap',
+  justifyContent: 'center',
+  alignContent: 'center',
+  alignItems: 'center',
+  position: 'absolute',
+  boxSizing: 'border-box',
+  fontFamily: theme.typography.fontFamily,
+  fontWeight: theme.typography.fontWeightMedium,
+  fontSize: theme.typography.pxToRem(12),
+  minWidth: RADIUS_STANDARD * 2,
+  lineHeight: 1,
+  padding: '0 6px',
+  height: RADIUS_STANDARD * 2,
+  borderRadius: RADIUS_STANDARD,
+  zIndex: 1,
+  // Render the badge on top of potential ripples.
+  transition: theme.transitions.create('transform', {
+    easing: theme.transitions.easing.easeInOut,
+    duration: theme.transitions.duration.enteringScreen
+  })
+}, ownerState.color !== 'default' && {
+  backgroundColor: (theme.vars || theme).palette[ownerState.color].main,
+  color: (theme.vars || theme).palette[ownerState.color].contrastText
+}, ownerState.variant === 'dot' && {
+  borderRadius: RADIUS_DOT,
+  height: RADIUS_DOT * 2,
+  minWidth: RADIUS_DOT * 2,
+  padding: 0
+}, ownerState.anchorOrigin.vertical === 'top' && ownerState.anchorOrigin.horizontal === 'right' && ownerState.overlap === 'rectangular' && {
+  top: 0,
+  right: 0,
+  transform: 'scale(1) translate(50%, -50%)',
+  transformOrigin: '100% 0%',
+  [`&.${badgeClasses$1.invisible}`]: {
+    transform: 'scale(0) translate(50%, -50%)'
+  }
+}, ownerState.anchorOrigin.vertical === 'bottom' && ownerState.anchorOrigin.horizontal === 'right' && ownerState.overlap === 'rectangular' && {
+  bottom: 0,
+  right: 0,
+  transform: 'scale(1) translate(50%, 50%)',
+  transformOrigin: '100% 100%',
+  [`&.${badgeClasses$1.invisible}`]: {
+    transform: 'scale(0) translate(50%, 50%)'
+  }
+}, ownerState.anchorOrigin.vertical === 'top' && ownerState.anchorOrigin.horizontal === 'left' && ownerState.overlap === 'rectangular' && {
+  top: 0,
+  left: 0,
+  transform: 'scale(1) translate(-50%, -50%)',
+  transformOrigin: '0% 0%',
+  [`&.${badgeClasses$1.invisible}`]: {
+    transform: 'scale(0) translate(-50%, -50%)'
+  }
+}, ownerState.anchorOrigin.vertical === 'bottom' && ownerState.anchorOrigin.horizontal === 'left' && ownerState.overlap === 'rectangular' && {
+  bottom: 0,
+  left: 0,
+  transform: 'scale(1) translate(-50%, 50%)',
+  transformOrigin: '0% 100%',
+  [`&.${badgeClasses$1.invisible}`]: {
+    transform: 'scale(0) translate(-50%, 50%)'
+  }
+}, ownerState.anchorOrigin.vertical === 'top' && ownerState.anchorOrigin.horizontal === 'right' && ownerState.overlap === 'circular' && {
+  top: '14%',
+  right: '14%',
+  transform: 'scale(1) translate(50%, -50%)',
+  transformOrigin: '100% 0%',
+  [`&.${badgeClasses$1.invisible}`]: {
+    transform: 'scale(0) translate(50%, -50%)'
+  }
+}, ownerState.anchorOrigin.vertical === 'bottom' && ownerState.anchorOrigin.horizontal === 'right' && ownerState.overlap === 'circular' && {
+  bottom: '14%',
+  right: '14%',
+  transform: 'scale(1) translate(50%, 50%)',
+  transformOrigin: '100% 100%',
+  [`&.${badgeClasses$1.invisible}`]: {
+    transform: 'scale(0) translate(50%, 50%)'
+  }
+}, ownerState.anchorOrigin.vertical === 'top' && ownerState.anchorOrigin.horizontal === 'left' && ownerState.overlap === 'circular' && {
+  top: '14%',
+  left: '14%',
+  transform: 'scale(1) translate(-50%, -50%)',
+  transformOrigin: '0% 0%',
+  [`&.${badgeClasses$1.invisible}`]: {
+    transform: 'scale(0) translate(-50%, -50%)'
+  }
+}, ownerState.anchorOrigin.vertical === 'bottom' && ownerState.anchorOrigin.horizontal === 'left' && ownerState.overlap === 'circular' && {
+  bottom: '14%',
+  left: '14%',
+  transform: 'scale(1) translate(-50%, 50%)',
+  transformOrigin: '0% 100%',
+  [`&.${badgeClasses$1.invisible}`]: {
+    transform: 'scale(0) translate(-50%, 50%)'
+  }
+}, ownerState.invisible && {
+  transition: theme.transitions.create('transform', {
+    easing: theme.transitions.easing.easeInOut,
+    duration: theme.transitions.duration.leavingScreen
+  })
+}));
+const Badge = /*#__PURE__*/React.forwardRef(function Badge(inProps, ref) {
+  var _ref, _slots$root, _ref2, _slots$badge, _slotProps$root, _slotProps$badge;
+  const props = useThemeProps({
+    props: inProps,
+    name: 'MuiBadge'
+  });
+  const {
+      anchorOrigin: anchorOriginProp = {
+        vertical: 'top',
+        horizontal: 'right'
+      },
+      className,
+      component = 'span',
+      components = {},
+      componentsProps = {},
+      overlap: overlapProp = 'rectangular',
+      color: colorProp = 'default',
+      invisible: invisibleProp = false,
+      max,
+      badgeContent: badgeContentProp,
+      slots,
+      slotProps,
+      showZero = false,
+      variant: variantProp = 'standard'
+    } = props,
+    other = _objectWithoutPropertiesLoose(props, _excluded$P);
+  const prevProps = usePreviousProps$1({
+    anchorOrigin: anchorOriginProp,
+    color: colorProp,
+    overlap: overlapProp,
+    variant: variantProp
+  });
+  let invisible = invisibleProp;
+  if (invisibleProp === false && (badgeContentProp === 0 && !showZero || badgeContentProp == null && variantProp !== 'dot')) {
+    invisible = true;
+  }
+  const {
+    color = colorProp,
+    overlap = overlapProp,
+    anchorOrigin = anchorOriginProp,
+    variant = variantProp
+  } = invisible ? prevProps : props;
+  const ownerState = _extends({}, props, {
+    anchorOrigin,
+    invisible,
+    color,
+    overlap,
+    variant
+  });
+  const classes = useUtilityClasses$G(ownerState);
+  let displayValue;
+  if (variant !== 'dot') {
+    displayValue = badgeContentProp && Number(badgeContentProp) > max ? `${max}+` : badgeContentProp;
+  }
+
+  // support both `slots` and `components` for backward compatibility
+  const RootSlot = (_ref = (_slots$root = slots == null ? void 0 : slots.root) != null ? _slots$root : components.Root) != null ? _ref : BadgeRoot;
+  const BadgeSlot = (_ref2 = (_slots$badge = slots == null ? void 0 : slots.badge) != null ? _slots$badge : components.Badge) != null ? _ref2 : BadgeBadge;
+  const rootSlotProps = (_slotProps$root = slotProps == null ? void 0 : slotProps.root) != null ? _slotProps$root : componentsProps.root;
+  const badgeSlotProps = (_slotProps$badge = slotProps == null ? void 0 : slotProps.badge) != null ? _slotProps$badge : componentsProps.badge;
+  return /*#__PURE__*/jsx(BadgeUnstyled$1, _extends({
+    invisible: invisibleProp,
+    badgeContent: displayValue,
+    showZero: showZero,
+    max: max
+  }, other, {
+    slots: {
+      root: RootSlot,
+      badge: BadgeSlot
+    },
+    className: clsx(rootSlotProps == null ? void 0 : rootSlotProps.className, classes.root, className),
+    slotProps: {
+      root: _extends({}, rootSlotProps, shouldSpreadAdditionalProps$1(RootSlot) && {
+        as: component,
+        ownerState: _extends({}, rootSlotProps == null ? void 0 : rootSlotProps.ownerState, {
+          anchorOrigin,
+          color,
+          overlap,
+          variant
+        })
+      }),
+      badge: _extends({}, badgeSlotProps, {
+        className: clsx(classes.badge, badgeSlotProps == null ? void 0 : badgeSlotProps.className)
+      }, shouldSpreadAdditionalProps$1(BadgeSlot) && {
+        ownerState: _extends({}, badgeSlotProps == null ? void 0 : badgeSlotProps.ownerState, {
+          anchorOrigin,
+          color,
+          overlap,
+          variant
+        })
+      })
+    },
+    ref: ref
+  }));
+});
+process.env.NODE_ENV !== "production" ? Badge.propTypes /* remove-proptypes */ = {
+  // ----------------------------- Warning --------------------------------
+  // | These PropTypes are generated from the TypeScript type definitions |
+  // |     To update them edit the d.ts file and run "yarn proptypes"     |
+  // ----------------------------------------------------------------------
+  /**
+   * The anchor of the badge.
+   * @default {
+   *   vertical: 'top',
+   *   horizontal: 'right',
+   * }
+   */
+  anchorOrigin: PropTypes.shape({
+    horizontal: PropTypes.oneOf(['left', 'right']).isRequired,
+    vertical: PropTypes.oneOf(['bottom', 'top']).isRequired
+  }),
+  /**
+   * The content rendered within the badge.
+   */
+  badgeContent: PropTypes.node,
+  /**
+   * The badge will be added relative to this node.
+   */
+  children: PropTypes.node,
+  /**
+   * Override or extend the styles applied to the component.
+   */
+  classes: PropTypes.object,
+  /**
+   * @ignore
+   */
+  className: PropTypes.string,
+  /**
+   * The color of the component.
+   * It supports both default and custom theme colors, which can be added as shown in the
+   * [palette customization guide](https://mui.com/material-ui/customization/palette/#adding-new-colors).
+   * @default 'default'
+   */
+  color: PropTypes /* @typescript-to-proptypes-ignore */.oneOfType([PropTypes.oneOf(['default', 'primary', 'secondary', 'error', 'info', 'success', 'warning']), PropTypes.string]),
+  /**
+   * The component used for the root node.
+   * Either a string to use a HTML element or a component.
+   */
+  component: PropTypes.elementType,
+  /**
+   * The components used for each slot inside.
+   *
+   * This prop is an alias for the `slots` prop.
+   * It's recommended to use the `slots` prop instead.
+   *
+   * @default {}
+   */
+  components: PropTypes.shape({
+    Badge: PropTypes.elementType,
+    Root: PropTypes.elementType
+  }),
+  /**
+   * The extra props for the slot components.
+   * You can override the existing props or add new ones.
+   *
+   * This prop is an alias for the `slotProps` prop.
+   * It's recommended to use the `slotProps` prop instead, as `componentsProps` will be deprecated in the future.
+   *
+   * @default {}
+   */
+  componentsProps: PropTypes.shape({
+    badge: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
+    root: PropTypes.oneOfType([PropTypes.func, PropTypes.object])
+  }),
+  /**
+   * If `true`, the badge is invisible.
+   * @default false
+   */
+  invisible: PropTypes.bool,
+  /**
+   * Max count to show.
+   * @default 99
+   */
+  max: PropTypes.number,
+  /**
+   * Wrapped shape the badge should overlap.
+   * @default 'rectangular'
+   */
+  overlap: PropTypes.oneOf(['circular', 'rectangular']),
+  /**
+   * Controls whether the badge is hidden when `badgeContent` is zero.
+   * @default false
+   */
+  showZero: PropTypes.bool,
+  /**
+   * The props used for each slot inside the Badge.
+   * @default {}
+   */
+  slotProps: PropTypes.shape({
+    badge: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
+    root: PropTypes.oneOfType([PropTypes.func, PropTypes.object])
+  }),
+  /**
+   * The components used for each slot inside the Badge.
+   * Either a string to use a HTML element or a component.
+   * @default {}
+   */
+  slots: PropTypes.shape({
+    badge: PropTypes.elementType,
+    root: PropTypes.elementType
+  }),
+  /**
+   * The system prop that allows defining system overrides as well as additional CSS styles.
+   */
+  sx: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.func, PropTypes.object, PropTypes.bool])), PropTypes.func, PropTypes.object]),
+  /**
+   * The variant to use.
+   * @default 'standard'
+   */
+  variant: PropTypes /* @typescript-to-proptypes-ignore */.oneOfType([PropTypes.oneOf(['dot', 'standard']), PropTypes.string])
+} : void 0;
+var Badge$1 = Badge;
+
+const defaultTheme = createTheme();
+const Box = createBox({
+  defaultTheme,
+  defaultClassName: 'MuiBox-root',
+  generateClassName: ClassNameGenerator$1.generate
+});
+process.env.NODE_ENV !== "production" ? Box.propTypes /* remove-proptypes */ = {
+  // ----------------------------- Warning --------------------------------
+  // | These PropTypes are generated from the TypeScript type definitions |
+  // |     To update them edit the d.ts file and run "yarn proptypes"     |
+  // ----------------------------------------------------------------------
+  /**
+   * @ignore
+   */
+  children: PropTypes.node,
+  /**
+   * The component used for the root node.
+   * Either a string to use a HTML element or a component.
+   */
+  component: PropTypes.elementType,
+  /**
+   * The system prop that allows defining system overrides as well as additional CSS styles.
+   */
+  sx: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.func, PropTypes.object, PropTypes.bool])), PropTypes.func, PropTypes.object])
+} : void 0;
+var Box$1 = Box;
+
+function getPaperUtilityClass(slot) {
+  return generateUtilityClass('MuiPaper', slot);
+}
+generateUtilityClasses('MuiPaper', ['root', 'rounded', 'outlined', 'elevation', 'elevation0', 'elevation1', 'elevation2', 'elevation3', 'elevation4', 'elevation5', 'elevation6', 'elevation7', 'elevation8', 'elevation9', 'elevation10', 'elevation11', 'elevation12', 'elevation13', 'elevation14', 'elevation15', 'elevation16', 'elevation17', 'elevation18', 'elevation19', 'elevation20', 'elevation21', 'elevation22', 'elevation23', 'elevation24']);
+
+const _excluded$O = ["className", "component", "elevation", "square", "variant"];
+const useUtilityClasses$F = ownerState => {
+  const {
+    square,
+    elevation,
+    variant,
+    classes
+  } = ownerState;
+  const slots = {
+    root: ['root', variant, !square && 'rounded', variant === 'elevation' && `elevation${elevation}`]
+  };
+  return composeClasses(slots, getPaperUtilityClass, classes);
+};
+const PaperRoot = styled$1('div', {
+  name: 'MuiPaper',
+  slot: 'Root',
+  overridesResolver: (props, styles) => {
+    const {
+      ownerState
+    } = props;
+    return [styles.root, styles[ownerState.variant], !ownerState.square && styles.rounded, ownerState.variant === 'elevation' && styles[`elevation${ownerState.elevation}`]];
+  }
+})(({
+  theme,
+  ownerState
+}) => {
+  var _theme$vars$overlays;
+  return _extends({
+    backgroundColor: (theme.vars || theme).palette.background.paper,
+    color: (theme.vars || theme).palette.text.primary,
+    transition: theme.transitions.create('box-shadow')
+  }, !ownerState.square && {
+    borderRadius: theme.shape.borderRadius
+  }, ownerState.variant === 'outlined' && {
+    border: `1px solid ${(theme.vars || theme).palette.divider}`
+  }, ownerState.variant === 'elevation' && _extends({
+    boxShadow: (theme.vars || theme).shadows[ownerState.elevation]
+  }, !theme.vars && theme.palette.mode === 'dark' && {
+    backgroundImage: `linear-gradient(${alpha('#fff', getOverlayAlpha$1(ownerState.elevation))}, ${alpha('#fff', getOverlayAlpha$1(ownerState.elevation))})`
+  }, theme.vars && {
+    backgroundImage: (_theme$vars$overlays = theme.vars.overlays) == null ? void 0 : _theme$vars$overlays[ownerState.elevation]
+  }));
+});
+const Paper = /*#__PURE__*/React.forwardRef(function Paper(inProps, ref) {
+  const props = useThemeProps({
+    props: inProps,
+    name: 'MuiPaper'
+  });
+  const {
+      className,
+      component = 'div',
+      elevation = 1,
+      square = false,
+      variant = 'elevation'
+    } = props,
+    other = _objectWithoutPropertiesLoose(props, _excluded$O);
+  const ownerState = _extends({}, props, {
+    component,
+    elevation,
+    square,
+    variant
+  });
+  const classes = useUtilityClasses$F(ownerState);
+  if (process.env.NODE_ENV !== 'production') {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const theme = useTheme();
+    if (theme.shadows[elevation] === undefined) {
+      console.error([`MUI: The elevation provided <Paper elevation={${elevation}}> is not available in the theme.`, `Please make sure that \`theme.shadows[${elevation}]\` is defined.`].join('\n'));
+    }
+  }
+  return /*#__PURE__*/jsx(PaperRoot, _extends({
+    as: component,
+    ownerState: ownerState,
+    className: clsx(classes.root, className),
+    ref: ref
+  }, other));
+});
+process.env.NODE_ENV !== "production" ? Paper.propTypes /* remove-proptypes */ = {
+  // ----------------------------- Warning --------------------------------
+  // | These PropTypes are generated from the TypeScript type definitions |
+  // |     To update them edit the d.ts file and run "yarn proptypes"     |
+  // ----------------------------------------------------------------------
+  /**
+   * The content of the component.
+   */
+  children: PropTypes.node,
+  /**
+   * Override or extend the styles applied to the component.
+   */
+  classes: PropTypes.object,
+  /**
+   * @ignore
+   */
+  className: PropTypes.string,
+  /**
+   * The component used for the root node.
+   * Either a string to use a HTML element or a component.
+   */
+  component: PropTypes.elementType,
+  /**
+   * Shadow depth, corresponds to `dp` in the spec.
+   * It accepts values between 0 and 24 inclusive.
+   * @default 1
+   */
+  elevation: chainPropTypes(integerPropType, props => {
+    const {
+      elevation,
+      variant
+    } = props;
+    if (elevation > 0 && variant === 'outlined') {
+      return new Error(`MUI: Combining \`elevation={${elevation}}\` with \`variant="${variant}"\` has no effect. Either use \`elevation={0}\` or use a different \`variant\`.`);
+    }
+    return null;
+  }),
+  /**
+   * If `true`, rounded corners are disabled.
+   * @default false
+   */
+  square: PropTypes.bool,
+  /**
+   * The system prop that allows defining system overrides as well as additional CSS styles.
+   */
+  sx: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.func, PropTypes.object, PropTypes.bool])), PropTypes.func, PropTypes.object]),
+  /**
+   * The variant to use.
+   * @default 'elevation'
+   */
+  variant: PropTypes /* @typescript-to-proptypes-ignore */.oneOfType([PropTypes.oneOf(['elevation', 'outlined']), PropTypes.string])
+} : void 0;
+var Paper$1 = Paper;
+
+function getCardUtilityClass(slot) {
+  return generateUtilityClass('MuiCard', slot);
+}
+generateUtilityClasses('MuiCard', ['root']);
+
+const _excluded$N = ["className", "raised"];
+const useUtilityClasses$E = ownerState => {
+  const {
+    classes
+  } = ownerState;
+  const slots = {
+    root: ['root']
+  };
+  return composeClasses(slots, getCardUtilityClass, classes);
+};
+const CardRoot = styled$1(Paper$1, {
+  name: 'MuiCard',
+  slot: 'Root',
+  overridesResolver: (props, styles) => styles.root
+})(() => {
+  return {
+    overflow: 'hidden'
+  };
+});
+const Card$1 = /*#__PURE__*/React.forwardRef(function Card(inProps, ref) {
+  const props = useThemeProps({
+    props: inProps,
+    name: 'MuiCard'
+  });
+  const {
+      className,
+      raised = false
+    } = props,
+    other = _objectWithoutPropertiesLoose(props, _excluded$N);
+  const ownerState = _extends({}, props, {
+    raised
+  });
+  const classes = useUtilityClasses$E(ownerState);
+  return /*#__PURE__*/jsx(CardRoot, _extends({
+    className: clsx(classes.root, className),
+    elevation: raised ? 8 : undefined,
+    ref: ref,
+    ownerState: ownerState
+  }, other));
+});
+process.env.NODE_ENV !== "production" ? Card$1.propTypes /* remove-proptypes */ = {
+  // ----------------------------- Warning --------------------------------
+  // | These PropTypes are generated from the TypeScript type definitions |
+  // |     To update them edit the d.ts file and run "yarn proptypes"     |
+  // ----------------------------------------------------------------------
+  /**
+   * The content of the component.
+   */
+  children: PropTypes.node,
+  /**
+   * Override or extend the styles applied to the component.
+   */
+  classes: PropTypes.object,
+  /**
+   * @ignore
+   */
+  className: PropTypes.string,
+  /**
+   * If `true`, the card will use raised styling.
+   * @default false
+   */
+  raised: chainPropTypes(PropTypes.bool, props => {
+    if (props.raised && props.variant === 'outlined') {
+      return new Error('MUI: Combining `raised={true}` with `variant="outlined"` has no effect.');
+    }
+    return null;
+  }),
+  /**
+   * The system prop that allows defining system overrides as well as additional CSS styles.
+   */
+  sx: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.func, PropTypes.object, PropTypes.bool])), PropTypes.func, PropTypes.object])
+} : void 0;
+var Card$2 = Card$1;
+
+function getCardMediaUtilityClass(slot) {
+  return generateUtilityClass('MuiCardMedia', slot);
+}
+generateUtilityClasses('MuiCardMedia', ['root', 'media', 'img']);
+
+const _excluded$M = ["children", "className", "component", "image", "src", "style"];
+const useUtilityClasses$D = ownerState => {
+  const {
+    classes,
+    isMediaComponent,
+    isImageComponent
+  } = ownerState;
+  const slots = {
+    root: ['root', isMediaComponent && 'media', isImageComponent && 'img']
+  };
+  return composeClasses(slots, getCardMediaUtilityClass, classes);
+};
+const CardMediaRoot = styled$1('div', {
+  name: 'MuiCardMedia',
+  slot: 'Root',
+  overridesResolver: (props, styles) => {
+    const {
+      ownerState
+    } = props;
+    const {
+      isMediaComponent,
+      isImageComponent
+    } = ownerState;
+    return [styles.root, isMediaComponent && styles.media, isImageComponent && styles.img];
+  }
+})(({
+  ownerState
+}) => _extends({
+  display: 'block',
+  backgroundSize: 'cover',
+  backgroundRepeat: 'no-repeat',
+  backgroundPosition: 'center'
+}, ownerState.isMediaComponent && {
+  width: '100%'
+}, ownerState.isImageComponent && {
+  // ⚠️ object-fit is not supported by IE11.
+  objectFit: 'cover'
+}));
+const MEDIA_COMPONENTS = ['video', 'audio', 'picture', 'iframe', 'img'];
+const IMAGE_COMPONENTS = ['picture', 'img'];
+const CardMedia = /*#__PURE__*/React.forwardRef(function CardMedia(inProps, ref) {
+  const props = useThemeProps({
+    props: inProps,
+    name: 'MuiCardMedia'
+  });
+  const {
+      children,
+      className,
+      component = 'div',
+      image,
+      src,
+      style
+    } = props,
+    other = _objectWithoutPropertiesLoose(props, _excluded$M);
+  const isMediaComponent = MEDIA_COMPONENTS.indexOf(component) !== -1;
+  const composedStyle = !isMediaComponent && image ? _extends({
+    backgroundImage: `url("${image}")`
+  }, style) : style;
+  const ownerState = _extends({}, props, {
+    component,
+    isMediaComponent,
+    isImageComponent: IMAGE_COMPONENTS.indexOf(component) !== -1
+  });
+  const classes = useUtilityClasses$D(ownerState);
+  return /*#__PURE__*/jsx(CardMediaRoot, _extends({
+    className: clsx(classes.root, className),
+    as: component,
+    role: !isMediaComponent && image ? 'img' : undefined,
+    ref: ref,
+    style: composedStyle,
+    ownerState: ownerState,
+    src: isMediaComponent ? image || src : undefined
+  }, other, {
+    children: children
+  }));
+});
+process.env.NODE_ENV !== "production" ? CardMedia.propTypes /* remove-proptypes */ = {
+  // ----------------------------- Warning --------------------------------
+  // | These PropTypes are generated from the TypeScript type definitions |
+  // |     To update them edit the d.ts file and run "yarn proptypes"     |
+  // ----------------------------------------------------------------------
+  /**
+   * The content of the component.
+   */
+  children: chainPropTypes(PropTypes.node, props => {
+    if (!props.children && !props.image && !props.src && !props.component) {
+      return new Error('MUI: Either `children`, `image`, `src` or `component` prop must be specified.');
+    }
+    return null;
+  }),
+  /**
+   * Override or extend the styles applied to the component.
+   */
+  classes: PropTypes.object,
+  /**
+   * @ignore
+   */
+  className: PropTypes.string,
+  /**
+   * The component used for the root node.
+   * Either a string to use a HTML element or a component.
+   */
+  component: PropTypes.elementType,
+  /**
+   * Image to be displayed as a background image.
+   * Either `image` or `src` prop must be specified.
+   * Note that caller must specify height otherwise the image will not be visible.
+   */
+  image: PropTypes.string,
+  /**
+   * An alias for `image` property.
+   * Available only with media components.
+   * Media components: `video`, `audio`, `picture`, `iframe`, `img`.
+   */
+  src: PropTypes.string,
+  /**
+   * @ignore
+   */
+  style: PropTypes.object,
+  /**
+   * The system prop that allows defining system overrides as well as additional CSS styles.
+   */
+  sx: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.func, PropTypes.object, PropTypes.bool])), PropTypes.func, PropTypes.object])
+} : void 0;
+var CardMedia$1 = CardMedia;
+
+// ** React Imports
+const SwiperControls = ({
+  direction,
+  elements = [],
+  mediaHeight = '210px'
+}) => {
+  // ** States
+  const [loaded, setLoaded] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  // ** Hook
+  const [sliderRef, instanceRef] = useKeenSlider({
+    rtl: direction === 'rtl',
+    slideChanged(slider) {
+      setCurrentSlide(slider.track.details.rel);
+    },
+    created() {
+      setLoaded(true);
+    }
+  });
+  return /*#__PURE__*/jsxs(Fragment, {
+    children: [/*#__PURE__*/jsxs(Box$1, {
+      className: "navigation-wrapper",
+      children: [/*#__PURE__*/jsx(Box$1, {
+        ref: sliderRef,
+        className: "keen-slider",
+        children: elements.map((element, i) => /*#__PURE__*/jsx(Card$2, {
+          className: "keen-slider__slide",
+          children: /*#__PURE__*/jsx(CardMedia$1, {
+            sx: {
+              height: mediaHeight
+            },
+            image: element
+          })
+        }, i))
+      }), loaded && instanceRef.current && /*#__PURE__*/jsxs(Fragment, {
+        children: [/*#__PURE__*/jsx(ChevronLeft, {
+          className: clsx('arrow arrow-left', {
+            'arrow-disabled': currentSlide === 0
+          }),
+          onClick: e => {
+            var _instanceRef$current;
+            return e.stopPropagation() || ((_instanceRef$current = instanceRef.current) === null || _instanceRef$current === void 0 ? void 0 : _instanceRef$current.prev());
+          }
+        }), /*#__PURE__*/jsx(ChevronRight, {
+          className: clsx('arrow arrow-right', {
+            'arrow-disabled': currentSlide === instanceRef.current.track.details.slides.length - 1
+          }),
+          onClick: e => {
+            var _instanceRef$current2;
+            return e.stopPropagation() || ((_instanceRef$current2 = instanceRef.current) === null || _instanceRef$current2 === void 0 ? void 0 : _instanceRef$current2.next());
+          }
+        })]
+      })]
+    }), loaded && instanceRef.current && /*#__PURE__*/jsx(Box$1, {
+      className: "swiper-dots",
+      children: [...Array(instanceRef.current.track.details.slides.length).keys()].map(idx => {
+        return /*#__PURE__*/jsx(Badge$1, {
+          variant: "dot",
+          component: "div",
+          className: clsx({
+            active: currentSlide === idx
+          }),
+          onClick: () => {
+            var _instanceRef$current3;
+            (_instanceRef$current3 = instanceRef.current) === null || _instanceRef$current3 === void 0 ? void 0 : _instanceRef$current3.moveToIdx(idx);
+          }
+        }, idx);
+      })
+    })]
+  });
+};
+
+// ** MUI Imports
+const SwiperFreeMode = ({
+  direction
+}) => {
+  // ** Hook
+  const [ref] = useKeenSlider({
+    loop: true,
+    mode: 'free',
+    rtl: direction === 'rtl',
+    slides: {
+      perView: 2,
+      spacing: 16
+    }
+  });
+  return /*#__PURE__*/jsxs(Box$1, {
+    ref: ref,
+    className: "keen-slider",
+    children: [/*#__PURE__*/jsx(Box$1, {
+      className: "keen-slider__slide",
+      children: /*#__PURE__*/jsx("img", {
+        src: "/images/banners/banner-21.jpg",
+        alt: "swiper 21"
+      })
+    }), /*#__PURE__*/jsx(Box$1, {
+      className: "keen-slider__slide",
+      children: /*#__PURE__*/jsx("img", {
+        src: "/images/banners/banner-22.jpg",
+        alt: "swiper 22"
+      })
+    }), /*#__PURE__*/jsx(Box$1, {
+      className: "keen-slider__slide",
+      children: /*#__PURE__*/jsx("img", {
+        src: "/images/banners/banner-23.jpg",
+        alt: "swiper 23"
+      })
+    }), /*#__PURE__*/jsx(Box$1, {
+      className: "keen-slider__slide",
+      children: /*#__PURE__*/jsx("img", {
+        src: "/images/banners/banner-24.jpg",
+        alt: "swiper 24"
+      })
+    }), /*#__PURE__*/jsx(Box$1, {
+      className: "keen-slider__slide",
+      children: /*#__PURE__*/jsx("img", {
+        src: "/images/banners/banner-25.jpg",
+        alt: "swiper 25"
       })
     })]
   });
@@ -6963,33 +7829,6 @@ const useClipboard = (options = {}) => {
 };
 
 const useSettings = () => useContext(SettingsContext);
-
-const defaultTheme = createTheme();
-const Box = createBox({
-  defaultTheme,
-  defaultClassName: 'MuiBox-root',
-  generateClassName: ClassNameGenerator$1.generate
-});
-process.env.NODE_ENV !== "production" ? Box.propTypes /* remove-proptypes */ = {
-  // ----------------------------- Warning --------------------------------
-  // | These PropTypes are generated from the TypeScript type definitions |
-  // |     To update them edit the d.ts file and run "yarn proptypes"     |
-  // ----------------------------------------------------------------------
-  /**
-   * @ignore
-   */
-  children: PropTypes.node,
-  /**
-   * The component used for the root node.
-   * Either a string to use a HTML element or a component.
-   */
-  component: PropTypes.elementType,
-  /**
-   * The system prop that allows defining system overrides as well as additional CSS styles.
-   */
-  sx: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.func, PropTypes.object, PropTypes.bool])), PropTypes.func, PropTypes.object])
-} : void 0;
-var Box$1 = Box;
 
 // ** MUI Imports
 
@@ -7229,6 +8068,16 @@ const StepperWrapper = styled$1(Box$1)(({
   }
 }));
 
+const breakpoints = () => ({
+  values: {
+    xs: 0,
+    sm: 600,
+    md: 900,
+    lg: 1200,
+    xl: 1536
+  }
+});
+
 // ** Util Import
 const GlobalStyles$1 = (theme, settings) => {
   // ** Vars
@@ -7307,291 +8156,6 @@ const GlobalStyles$1 = (theme, settings) => {
         backgroundColor: theme.palette.primary.main
       }
     }
-  };
-};
-
-function GlobalStyles(props) {
-  return /*#__PURE__*/jsx(GlobalStyles$2, _extends({}, props, {
-    defaultTheme: defaultTheme$2
-  }));
-}
-process.env.NODE_ENV !== "production" ? GlobalStyles.propTypes /* remove-proptypes */ = {
-  // ----------------------------- Warning --------------------------------
-  // | These PropTypes are generated from the TypeScript type definitions |
-  // |     To update them edit the d.ts file and run "yarn proptypes"     |
-  // ----------------------------------------------------------------------
-  /**
-   * The styles you want to apply globally.
-   */
-  styles: PropTypes.oneOfType([PropTypes.func, PropTypes.number, PropTypes.object, PropTypes.shape({
-    __emotion_styles: PropTypes.any.isRequired
-  }), PropTypes.string, PropTypes.bool])
-} : void 0;
-
-const html = (theme, enableColorScheme) => _extends({
-  WebkitFontSmoothing: 'antialiased',
-  // Antialiasing.
-  MozOsxFontSmoothing: 'grayscale',
-  // Antialiasing.
-  // Change from `box-sizing: content-box` so that `width`
-  // is not affected by `padding` or `border`.
-  boxSizing: 'border-box',
-  // Fix font resize problem in iOS
-  WebkitTextSizeAdjust: '100%'
-}, enableColorScheme && !theme.vars && {
-  colorScheme: theme.palette.mode
-});
-const body = theme => _extends({
-  color: (theme.vars || theme).palette.text.primary
-}, theme.typography.body1, {
-  backgroundColor: (theme.vars || theme).palette.background.default,
-  '@media print': {
-    // Save printer ink.
-    backgroundColor: (theme.vars || theme).palette.common.white
-  }
-});
-const styles$3 = (theme, enableColorScheme = false) => {
-  var _theme$components, _theme$components$Mui;
-  const colorSchemeStyles = {};
-  if (enableColorScheme && theme.colorSchemes) {
-    Object.entries(theme.colorSchemes).forEach(([key, scheme]) => {
-      var _scheme$palette;
-      colorSchemeStyles[theme.getColorSchemeSelector(key).replace(/\s*&/, '')] = {
-        colorScheme: (_scheme$palette = scheme.palette) == null ? void 0 : _scheme$palette.mode
-      };
-    });
-  }
-  let defaultStyles = _extends({
-    html: html(theme, enableColorScheme),
-    '*, *::before, *::after': {
-      boxSizing: 'inherit'
-    },
-    'strong, b': {
-      fontWeight: theme.typography.fontWeightBold
-    },
-    body: _extends({
-      margin: 0
-    }, body(theme), {
-      // Add support for document.body.requestFullScreen().
-      // Other elements, if background transparent, are not supported.
-      '&::backdrop': {
-        backgroundColor: (theme.vars || theme).palette.background.default
-      }
-    })
-  }, colorSchemeStyles);
-  const themeOverrides = (_theme$components = theme.components) == null ? void 0 : (_theme$components$Mui = _theme$components.MuiCssBaseline) == null ? void 0 : _theme$components$Mui.styleOverrides;
-  if (themeOverrides) {
-    defaultStyles = [defaultStyles, themeOverrides];
-  }
-  return defaultStyles;
-};
-
-/**
- * Kickstart an elegant, consistent, and simple baseline to build upon.
- */
-function CssBaseline(inProps) {
-  const props = useThemeProps({
-    props: inProps,
-    name: 'MuiCssBaseline'
-  });
-  const {
-    children,
-    enableColorScheme = false
-  } = props;
-  return /*#__PURE__*/jsxs(React.Fragment, {
-    children: [/*#__PURE__*/jsx(GlobalStyles, {
-      styles: theme => styles$3(theme, enableColorScheme)
-    }), children]
-  });
-}
-process.env.NODE_ENV !== "production" ? CssBaseline.propTypes /* remove-proptypes */ = {
-  // ----------------------------- Warning --------------------------------
-  // | These PropTypes are generated from the TypeScript type definitions |
-  // |     To update them edit the d.ts file and run "yarn proptypes"     |
-  // ----------------------------------------------------------------------
-  /**
-   * You can wrap a node.
-   */
-  children: PropTypes.node,
-  /**
-   * Enable `color-scheme` CSS property to use `theme.palette.mode`.
-   * For more details, check out https://developer.mozilla.org/en-US/docs/Web/CSS/color-scheme
-   * For browser support, check out https://caniuse.com/?search=color-scheme
-   * @default false
-   */
-  enableColorScheme: PropTypes.bool
-} : void 0;
-
-// ** To use core palette, uncomment the below import
-// import corePalette from 'src/@core/theme/palette'
-// ** To use mode (light/dark), skin(default/bordered/semi-dark), direction(ltr/rtl), etc. for conditional styles, uncomment below line
-// import { useSettings } from 'src/@core/hooks/useSettings'
-const UserThemeOptions = () => {
-  // ** To use mode (light/dark), skin(default/bordered/semi-dark), direction(ltr/rtl), etc. for conditional styles, uncomment below line
-  // const { settings } = useSettings()
-  // ** To use mode (light/dark), skin(default/bordered/semi-dark), direction(ltr/rtl), etc. for conditional styles, uncomment below line
-  // const { mode, skin, themeColor } = settings
-  // ** To use core palette, uncomment the below line
-  // const palette = corePalette(mode, skin, themeColor)
-  return {
-    /*
-    palette:{
-      primary: {
-        light: '#9E69FD',
-        main: '#9155FD',
-        dark: '#804BDF',
-        contrastText: '#FFF'
-      }
-    },
-    breakpoints: {
-      values: {
-        xs: 0,
-        sm: 768,
-        md: 992,
-        lg: 1200,
-        xl: 1920
-      }
-    },
-    components: {
-      MuiButton: {
-        defaultProps: {
-          disableElevation: true
-        },
-        styleOverrides: {
-          root: {
-            textTransform: 'none'
-          },
-          sizeSmall: {
-            padding: '6px 16px'
-          },
-          sizeMedium: {
-            padding: '8px 20px'
-          },
-          sizeLarge: {
-            padding: '11px 24px'
-          },
-          textSizeSmall: {
-            padding: '7px 12px'
-          },
-          textSizeMedium: {
-            padding: '9px 16px'
-          },
-          textSizeLarge: {
-            padding: '12px 16px'
-          }
-        }
-      },
-      MuiCardActions: {
-        styleOverrides: {
-          root: {
-            padding: '16px 24px'
-          }
-        }
-      },
-      MuiCardContent: {
-        styleOverrides: {
-          root: {
-            padding: '32px 24px',
-            '&:last-child': {
-              paddingBottom: '32px'
-            }
-          }
-        }
-      },
-      MuiCssBaseline: {
-        styleOverrides: {
-          '*': {
-            boxSizing: 'border-box'
-          },
-          html: {
-            MozOsxFontSmoothing: 'grayscale',
-            WebkitFontSmoothing: 'antialiased',
-            display: 'flex',
-            flexDirection: 'column',
-            minHeight: '100%',
-            width: '100%'
-          },
-          body: {
-            display: 'flex',
-            flex: '1 1 auto',
-            flexDirection: 'column',
-            minHeight: '100%',
-            width: '100%'
-          },
-          '#__next': {
-            display: 'flex',
-            flex: '1 1 auto',
-            flexDirection: 'column',
-            height: '100%',
-            width: '100%'
-          }
-        }
-      }
-    },
-    shape: {
-      borderRadius: 8
-    },
-    typography: {
-      fontFamily:
-        '"Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji"',
-    },
-    shadows: mode === 'light' ? [
-      'none',
-      '0px 2px 1px -1px rgba(58, 53, 65, 0.2), 0px 1px 1px 0px rgba(58, 53, 65, 0.14), 0px 1px 3px 0px rgba(58, 53, 65, 0.12)',
-      '0px 3px 1px -2px rgba(58, 53, 65, 0.2), 0px 2px 2px 0px rgba(58, 53, 65, 0.14), 0px 1px 5px 0px rgba(58, 53, 65, 0.12)',
-      '0px 4px 8px -4px rgba(58, 53, 65, 0.42)',
-      '0px 6px 18px -8px rgba(58, 53, 65, 0.56)',
-      '0px 3px 5px -1px rgba(58, 53, 65, 0.2), 0px 5px 8px 0px rgba(58, 53, 65, 0.14), 0px 1px 14px 0px rgba(58, 53, 65, 0.12)',
-      '0px 2px 10px 0px rgba(58, 53, 65, 0.1)',
-      '0px 4px 5px -2px rgba(58, 53, 65, 0.2), 0px 7px 10px 1px rgba(58, 53, 65, 0.14), 0px 2px 16px 1px rgba(58, 53, 65, 0.12)',
-      '0px 5px 5px -3px rgba(58, 53, 65, 0.2), 0px 8px 10px 1px rgba(58, 53, 65, 0.14), 0px 3px 14px 2px rgba(58, 53, 65, 0.12)',
-      '0px 5px 6px -3px rgba(58, 53, 65, 0.2), 0px 9px 12px 1px rgba(58, 53, 65, 0.14), 0px 3px 16px 2px rgba(58, 53, 65, 0.12)',
-      '0px 6px 6px -3px rgba(58, 53, 65, 0.2), 0px 10px 14px 1px rgba(58, 53, 65, 0.14), 0px 4px 18px 3px rgba(58, 53, 65, 0.12)',
-      '0px 6px 7px -4px rgba(58, 53, 65, 0.2), 0px 11px 15px 1px rgba(58, 53, 65, 0.14), 0px 4px 20px 3px rgba(58, 53, 65, 0.12)',
-      '0px 7px 8px -4px rgba(58, 53, 65, 0.2), 0px 12px 17px 2px rgba(58, 53, 65, 0.14), 0px 5px 22px 4px rgba(58, 53, 65, 0.12)',
-      '0px 7px 8px -4px rgba(58, 53, 65, 0.2), 0px 13px 19px 2px rgba(58, 53, 65, 0.14), 0px 5px 24px 4px rgba(58, 53, 65, 0.12)',
-      '0px 7px 9px -4px rgba(58, 53, 65, 0.2), 0px 14px 21px 2px rgba(58, 53, 65, 0.14), 0px 5px 26px 4px rgba(58, 53, 65, 0.12)',
-      '0px 8px 9px -5px rgba(58, 53, 65, 0.2), 0px 15px 22px 2px rgba(58, 53, 65, 0.14), 0px 6px 28px 5px rgba(58, 53, 65, 0.12)',
-      '0px 8px 10px -5px rgba(58, 53, 65, 0.2), 0px 16px 24px 2px rgba(58, 53, 65, 0.14), 0px 6px 30px 5px rgba(58, 53, 65, 0.12)',
-      '0px 8px 11px -5px rgba(58, 53, 65, 0.2), 0px 17px 26px 2px rgba(58, 53, 65, 0.14), 0px 6px 32px 5px rgba(58, 53, 65, 0.12)',
-      '0px 9px 11px -5px rgba(58, 53, 65, 0.2), 0px 18px 28px 2px rgba(58, 53, 65, 0.14), 0px 7px 34px 6px rgba(58, 53, 65, 0.12)',
-      '0px 9px 12px -6px rgba(58, 53, 65, 0.2), 0px 19px 29px 2px rgba(58, 53, 65, 0.14), 0px 7px 36px 6px rgba(58, 53, 65, 0.12)',
-      '0px 10px 13px -6px rgba(58, 53, 65, 0.2), 0px 20px 31px 3px rgba(58, 53, 65, 0.14), 0px 8px 38px 7px rgba(58, 53, 65, 0.12)',
-      '0px 10px 13px -6px rgba(58, 53, 65, 0.2), 0px 21px 33px 3px rgba(58, 53, 65, 0.14), 0px 8px 40px 7px rgba(58, 53, 65, 0.12)',
-      '0px 10px 14px -6px rgba(58, 53, 65, 0.2), 0px 22px 35px 3px rgba(58, 53, 65, 0.14), 0px 8px 42px 7px rgba(58, 53, 65, 0.12)',
-      '0px 11px 14px -7px rgba(58, 53, 65, 0.2), 0px 23px 36px 3px rgba(58, 53, 65, 0.14), 0px 9px 44px 8px rgba(58, 53, 65, 0.12)',
-      '0px 11px 15px -7px rgba(58, 53, 65, 0.2), 0px 24px 38px 3px rgba(58, 53, 65, 0.14), 0px 9px 46px 8px rgba(58, 53, 65, 0.12)'
-    ] : [
-      'none',
-      '0px 2px 1px -1px rgba(19, 17, 32, 0.2), 0px 1px 1px 0px rgba(19, 17, 32, 0.14), 0px 1px 3px 0px rgba(19, 17, 32, 0.12)',
-      '0px 3px 1px -2px rgba(19, 17, 32, 0.2), 0px 2px 2px 0px rgba(19, 17, 32, 0.14), 0px 1px 5px 0px rgba(19, 17, 32, 0.12)',
-      '0px 4px 8px -4px rgba(19, 17, 32, 0.42)',
-      '0px 6px 18px -8px rgba(19, 17, 32, 0.56)',
-      '0px 3px 5px -1px rgba(19, 17, 32, 0.2), 0px 5px 8px rgba(19, 17, 32, 0.14), 0px 1px 14px rgba(19, 17, 32, 0.12)',
-      '0px 2px 10px 0px rgba(19, 17, 32, 0.1)',
-      '0px 4px 5px -2px rgba(19, 17, 32, 0.2), 0px 7px 10px 1px rgba(19, 17, 32, 0.14), 0px 2px 16px 1px rgba(19, 17, 32, 0.12)',
-      '0px 5px 5px -3px rgba(19, 17, 32, 0.2), 0px 8px 10px 1px rgba(19, 17, 32, 0.14), 0px 3px 14px 2px rgba(19, 17, 32, 0.12)',
-      '0px 5px 6px -3px rgba(19, 17, 32, 0.2), 0px 9px 12px 1px rgba(19, 17, 32, 0.14), 0px 3px 16px 2px rgba(19, 17, 32, 0.12)',
-      '0px 6px 6px -3px rgba(19, 17, 32, 0.2), 0px 10px 14px 1px rgba(19, 17, 32, 0.14), 0px 4px 18px 3px rgba(19, 17, 32, 0.12)',
-      '0px 6px 7px -4px rgba(19, 17, 32, 0.2), 0px 11px 15px 1px rgba(19, 17, 32, 0.14), 0px 4px 20px 3px rgba(19, 17, 32, 0.12)',
-      '0px 7px 8px -4px rgba(19, 17, 32, 0.2), 0px 12px 17px 2px rgba(19, 17, 32, 0.14), 0px 5px 22px 4px rgba(19, 17, 32, 0.12)',
-      '0px 7px 8px -4px rgba(19, 17, 32, 0.2), 0px 13px 19px 2px rgba(19, 17, 32, 0.14), 0px 5px 24px 4px rgba(19, 17, 32, 0.12)',
-      '0px 7px 9px -4px rgba(19, 17, 32, 0.2), 0px 14px 21px 2px rgba(19, 17, 32, 0.14), 0px 5px 26px 4px rgba(19, 17, 32, 0.12)',
-      '0px 8px 9px -5px rgba(19, 17, 32, 0.2), 0px 15px 22px 2px rgba(19, 17, 32, 0.14), 0px 6px 28px 5px rgba(19, 17, 32, 0.12)',
-      '0px 8px 10px -5px rgba(19, 17, 32, 0.2), 0px 16px 24px 2px rgba(19, 17, 32, 0.14), 0px 6px 30px 5px rgba(19, 17, 32, 0.12)',
-      '0px 8px 11px -5px rgba(19, 17, 32, 0.2), 0px 17px 26px 2px rgba(19, 17, 32, 0.14), 0px 6px 32px 5px rgba(19, 17, 32, 0.12)',
-      '0px 9px 11px -5px rgba(19, 17, 32, 0.2), 0px 18px 28px 2px rgba(19, 17, 32, 0.14), 0px 7px 34px 6px rgba(19, 17, 32, 0.12)',
-      '0px 9px 12px -6px rgba(19, 17, 32, 0.2), 0px 19px 29px 2px rgba(19, 17, 32, 0.14), 0px 7px 36px 6px rgba(19, 17, 32, 0.12)',
-      '0px 10px 13px -6px rgba(19, 17, 32, 0.2), 0px 20px 31px 3px rgba(19, 17, 32, 0.14), 0px 8px 38px 7px rgba(19, 17, 32, 0.12)',
-      '0px 10px 13px -6px rgba(19, 17, 32, 0.2), 0px 21px 33px 3px rgba(19, 17, 32, 0.14), 0px 8px 40px 7px rgba(19, 17, 32, 0.12)',
-      '0px 10px 14px -6px rgba(19, 17, 32, 0.2), 0px 22px 35px 3px rgba(19, 17, 32, 0.14), 0px 8px 42px 7px rgba(19, 17, 32, 0.12)',
-      '0px 11px 14px -7px rgba(19, 17, 32, 0.2), 0px 23px 36px 3px rgba(19, 17, 32, 0.14), 0px 9px 44px 8px rgba(19, 17, 32, 0.12)',
-      '0px 11px 15px -7px rgba(19, 17, 32, 0.2), 0px 24px 38px 3px rgba(19, 17, 32, 0.14), 0px 9px 46px 8px rgba(19, 17, 32, 0.12)'
-    ],
-    zIndex: {
-      appBar: 1200,
-      drawer: 1100
-    } */
   };
 };
 
@@ -8785,15 +9349,290 @@ const Overrides = (theme, settings) => {
   return Object.assign(chip, list, menu, tabs, cards, input$1, alerts, button, dialog, rating, tables, avatars, divider, MuiLink, popover, tooltip, backdrop, dataGrid, MuiPaper, snackbar, switches, timeline, accordion, MuiSelect, pagination, autocomplete, Typography$3, dateTimePicker, MuiToggleButton);
 };
 
-const breakpoints = () => ({
-  values: {
-    xs: 0,
-    sm: 600,
-    md: 900,
-    lg: 1200,
-    xl: 1536
+function GlobalStyles(props) {
+  return /*#__PURE__*/jsx(GlobalStyles$2, _extends({}, props, {
+    defaultTheme: defaultTheme$2
+  }));
+}
+process.env.NODE_ENV !== "production" ? GlobalStyles.propTypes /* remove-proptypes */ = {
+  // ----------------------------- Warning --------------------------------
+  // | These PropTypes are generated from the TypeScript type definitions |
+  // |     To update them edit the d.ts file and run "yarn proptypes"     |
+  // ----------------------------------------------------------------------
+  /**
+   * The styles you want to apply globally.
+   */
+  styles: PropTypes.oneOfType([PropTypes.func, PropTypes.number, PropTypes.object, PropTypes.shape({
+    __emotion_styles: PropTypes.any.isRequired
+  }), PropTypes.string, PropTypes.bool])
+} : void 0;
+
+const html = (theme, enableColorScheme) => _extends({
+  WebkitFontSmoothing: 'antialiased',
+  // Antialiasing.
+  MozOsxFontSmoothing: 'grayscale',
+  // Antialiasing.
+  // Change from `box-sizing: content-box` so that `width`
+  // is not affected by `padding` or `border`.
+  boxSizing: 'border-box',
+  // Fix font resize problem in iOS
+  WebkitTextSizeAdjust: '100%'
+}, enableColorScheme && !theme.vars && {
+  colorScheme: theme.palette.mode
+});
+const body = theme => _extends({
+  color: (theme.vars || theme).palette.text.primary
+}, theme.typography.body1, {
+  backgroundColor: (theme.vars || theme).palette.background.default,
+  '@media print': {
+    // Save printer ink.
+    backgroundColor: (theme.vars || theme).palette.common.white
   }
 });
+const styles$3 = (theme, enableColorScheme = false) => {
+  var _theme$components, _theme$components$Mui;
+  const colorSchemeStyles = {};
+  if (enableColorScheme && theme.colorSchemes) {
+    Object.entries(theme.colorSchemes).forEach(([key, scheme]) => {
+      var _scheme$palette;
+      colorSchemeStyles[theme.getColorSchemeSelector(key).replace(/\s*&/, '')] = {
+        colorScheme: (_scheme$palette = scheme.palette) == null ? void 0 : _scheme$palette.mode
+      };
+    });
+  }
+  let defaultStyles = _extends({
+    html: html(theme, enableColorScheme),
+    '*, *::before, *::after': {
+      boxSizing: 'inherit'
+    },
+    'strong, b': {
+      fontWeight: theme.typography.fontWeightBold
+    },
+    body: _extends({
+      margin: 0
+    }, body(theme), {
+      // Add support for document.body.requestFullScreen().
+      // Other elements, if background transparent, are not supported.
+      '&::backdrop': {
+        backgroundColor: (theme.vars || theme).palette.background.default
+      }
+    })
+  }, colorSchemeStyles);
+  const themeOverrides = (_theme$components = theme.components) == null ? void 0 : (_theme$components$Mui = _theme$components.MuiCssBaseline) == null ? void 0 : _theme$components$Mui.styleOverrides;
+  if (themeOverrides) {
+    defaultStyles = [defaultStyles, themeOverrides];
+  }
+  return defaultStyles;
+};
+
+/**
+ * Kickstart an elegant, consistent, and simple baseline to build upon.
+ */
+function CssBaseline(inProps) {
+  const props = useThemeProps({
+    props: inProps,
+    name: 'MuiCssBaseline'
+  });
+  const {
+    children,
+    enableColorScheme = false
+  } = props;
+  return /*#__PURE__*/jsxs(React.Fragment, {
+    children: [/*#__PURE__*/jsx(GlobalStyles, {
+      styles: theme => styles$3(theme, enableColorScheme)
+    }), children]
+  });
+}
+process.env.NODE_ENV !== "production" ? CssBaseline.propTypes /* remove-proptypes */ = {
+  // ----------------------------- Warning --------------------------------
+  // | These PropTypes are generated from the TypeScript type definitions |
+  // |     To update them edit the d.ts file and run "yarn proptypes"     |
+  // ----------------------------------------------------------------------
+  /**
+   * You can wrap a node.
+   */
+  children: PropTypes.node,
+  /**
+   * Enable `color-scheme` CSS property to use `theme.palette.mode`.
+   * For more details, check out https://developer.mozilla.org/en-US/docs/Web/CSS/color-scheme
+   * For browser support, check out https://caniuse.com/?search=color-scheme
+   * @default false
+   */
+  enableColorScheme: PropTypes.bool
+} : void 0;
+
+// ** To use core palette, uncomment the below import
+// import corePalette from 'src/@core/theme/palette'
+// ** To use mode (light/dark), skin(default/bordered/semi-dark), direction(ltr/rtl), etc. for conditional styles, uncomment below line
+// import { useSettings } from 'src/@core/hooks/useSettings'
+const UserThemeOptions = () => {
+  // ** To use mode (light/dark), skin(default/bordered/semi-dark), direction(ltr/rtl), etc. for conditional styles, uncomment below line
+  // const { settings } = useSettings()
+  // ** To use mode (light/dark), skin(default/bordered/semi-dark), direction(ltr/rtl), etc. for conditional styles, uncomment below line
+  // const { mode, skin, themeColor } = settings
+  // ** To use core palette, uncomment the below line
+  // const palette = corePalette(mode, skin, themeColor)
+  return {
+    /*
+    palette:{
+      primary: {
+        light: '#9E69FD',
+        main: '#9155FD',
+        dark: '#804BDF',
+        contrastText: '#FFF'
+      }
+    },
+    breakpoints: {
+      values: {
+        xs: 0,
+        sm: 768,
+        md: 992,
+        lg: 1200,
+        xl: 1920
+      }
+    },
+    components: {
+      MuiButton: {
+        defaultProps: {
+          disableElevation: true
+        },
+        styleOverrides: {
+          root: {
+            textTransform: 'none'
+          },
+          sizeSmall: {
+            padding: '6px 16px'
+          },
+          sizeMedium: {
+            padding: '8px 20px'
+          },
+          sizeLarge: {
+            padding: '11px 24px'
+          },
+          textSizeSmall: {
+            padding: '7px 12px'
+          },
+          textSizeMedium: {
+            padding: '9px 16px'
+          },
+          textSizeLarge: {
+            padding: '12px 16px'
+          }
+        }
+      },
+      MuiCardActions: {
+        styleOverrides: {
+          root: {
+            padding: '16px 24px'
+          }
+        }
+      },
+      MuiCardContent: {
+        styleOverrides: {
+          root: {
+            padding: '32px 24px',
+            '&:last-child': {
+              paddingBottom: '32px'
+            }
+          }
+        }
+      },
+      MuiCssBaseline: {
+        styleOverrides: {
+          '*': {
+            boxSizing: 'border-box'
+          },
+          html: {
+            MozOsxFontSmoothing: 'grayscale',
+            WebkitFontSmoothing: 'antialiased',
+            display: 'flex',
+            flexDirection: 'column',
+            minHeight: '100%',
+            width: '100%'
+          },
+          body: {
+            display: 'flex',
+            flex: '1 1 auto',
+            flexDirection: 'column',
+            minHeight: '100%',
+            width: '100%'
+          },
+          '#__next': {
+            display: 'flex',
+            flex: '1 1 auto',
+            flexDirection: 'column',
+            height: '100%',
+            width: '100%'
+          }
+        }
+      }
+    },
+    shape: {
+      borderRadius: 8
+    },
+    typography: {
+      fontFamily:
+        '"Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji"',
+    },
+    shadows: mode === 'light' ? [
+      'none',
+      '0px 2px 1px -1px rgba(58, 53, 65, 0.2), 0px 1px 1px 0px rgba(58, 53, 65, 0.14), 0px 1px 3px 0px rgba(58, 53, 65, 0.12)',
+      '0px 3px 1px -2px rgba(58, 53, 65, 0.2), 0px 2px 2px 0px rgba(58, 53, 65, 0.14), 0px 1px 5px 0px rgba(58, 53, 65, 0.12)',
+      '0px 4px 8px -4px rgba(58, 53, 65, 0.42)',
+      '0px 6px 18px -8px rgba(58, 53, 65, 0.56)',
+      '0px 3px 5px -1px rgba(58, 53, 65, 0.2), 0px 5px 8px 0px rgba(58, 53, 65, 0.14), 0px 1px 14px 0px rgba(58, 53, 65, 0.12)',
+      '0px 2px 10px 0px rgba(58, 53, 65, 0.1)',
+      '0px 4px 5px -2px rgba(58, 53, 65, 0.2), 0px 7px 10px 1px rgba(58, 53, 65, 0.14), 0px 2px 16px 1px rgba(58, 53, 65, 0.12)',
+      '0px 5px 5px -3px rgba(58, 53, 65, 0.2), 0px 8px 10px 1px rgba(58, 53, 65, 0.14), 0px 3px 14px 2px rgba(58, 53, 65, 0.12)',
+      '0px 5px 6px -3px rgba(58, 53, 65, 0.2), 0px 9px 12px 1px rgba(58, 53, 65, 0.14), 0px 3px 16px 2px rgba(58, 53, 65, 0.12)',
+      '0px 6px 6px -3px rgba(58, 53, 65, 0.2), 0px 10px 14px 1px rgba(58, 53, 65, 0.14), 0px 4px 18px 3px rgba(58, 53, 65, 0.12)',
+      '0px 6px 7px -4px rgba(58, 53, 65, 0.2), 0px 11px 15px 1px rgba(58, 53, 65, 0.14), 0px 4px 20px 3px rgba(58, 53, 65, 0.12)',
+      '0px 7px 8px -4px rgba(58, 53, 65, 0.2), 0px 12px 17px 2px rgba(58, 53, 65, 0.14), 0px 5px 22px 4px rgba(58, 53, 65, 0.12)',
+      '0px 7px 8px -4px rgba(58, 53, 65, 0.2), 0px 13px 19px 2px rgba(58, 53, 65, 0.14), 0px 5px 24px 4px rgba(58, 53, 65, 0.12)',
+      '0px 7px 9px -4px rgba(58, 53, 65, 0.2), 0px 14px 21px 2px rgba(58, 53, 65, 0.14), 0px 5px 26px 4px rgba(58, 53, 65, 0.12)',
+      '0px 8px 9px -5px rgba(58, 53, 65, 0.2), 0px 15px 22px 2px rgba(58, 53, 65, 0.14), 0px 6px 28px 5px rgba(58, 53, 65, 0.12)',
+      '0px 8px 10px -5px rgba(58, 53, 65, 0.2), 0px 16px 24px 2px rgba(58, 53, 65, 0.14), 0px 6px 30px 5px rgba(58, 53, 65, 0.12)',
+      '0px 8px 11px -5px rgba(58, 53, 65, 0.2), 0px 17px 26px 2px rgba(58, 53, 65, 0.14), 0px 6px 32px 5px rgba(58, 53, 65, 0.12)',
+      '0px 9px 11px -5px rgba(58, 53, 65, 0.2), 0px 18px 28px 2px rgba(58, 53, 65, 0.14), 0px 7px 34px 6px rgba(58, 53, 65, 0.12)',
+      '0px 9px 12px -6px rgba(58, 53, 65, 0.2), 0px 19px 29px 2px rgba(58, 53, 65, 0.14), 0px 7px 36px 6px rgba(58, 53, 65, 0.12)',
+      '0px 10px 13px -6px rgba(58, 53, 65, 0.2), 0px 20px 31px 3px rgba(58, 53, 65, 0.14), 0px 8px 38px 7px rgba(58, 53, 65, 0.12)',
+      '0px 10px 13px -6px rgba(58, 53, 65, 0.2), 0px 21px 33px 3px rgba(58, 53, 65, 0.14), 0px 8px 40px 7px rgba(58, 53, 65, 0.12)',
+      '0px 10px 14px -6px rgba(58, 53, 65, 0.2), 0px 22px 35px 3px rgba(58, 53, 65, 0.14), 0px 8px 42px 7px rgba(58, 53, 65, 0.12)',
+      '0px 11px 14px -7px rgba(58, 53, 65, 0.2), 0px 23px 36px 3px rgba(58, 53, 65, 0.14), 0px 9px 44px 8px rgba(58, 53, 65, 0.12)',
+      '0px 11px 15px -7px rgba(58, 53, 65, 0.2), 0px 24px 38px 3px rgba(58, 53, 65, 0.14), 0px 9px 46px 8px rgba(58, 53, 65, 0.12)'
+    ] : [
+      'none',
+      '0px 2px 1px -1px rgba(19, 17, 32, 0.2), 0px 1px 1px 0px rgba(19, 17, 32, 0.14), 0px 1px 3px 0px rgba(19, 17, 32, 0.12)',
+      '0px 3px 1px -2px rgba(19, 17, 32, 0.2), 0px 2px 2px 0px rgba(19, 17, 32, 0.14), 0px 1px 5px 0px rgba(19, 17, 32, 0.12)',
+      '0px 4px 8px -4px rgba(19, 17, 32, 0.42)',
+      '0px 6px 18px -8px rgba(19, 17, 32, 0.56)',
+      '0px 3px 5px -1px rgba(19, 17, 32, 0.2), 0px 5px 8px rgba(19, 17, 32, 0.14), 0px 1px 14px rgba(19, 17, 32, 0.12)',
+      '0px 2px 10px 0px rgba(19, 17, 32, 0.1)',
+      '0px 4px 5px -2px rgba(19, 17, 32, 0.2), 0px 7px 10px 1px rgba(19, 17, 32, 0.14), 0px 2px 16px 1px rgba(19, 17, 32, 0.12)',
+      '0px 5px 5px -3px rgba(19, 17, 32, 0.2), 0px 8px 10px 1px rgba(19, 17, 32, 0.14), 0px 3px 14px 2px rgba(19, 17, 32, 0.12)',
+      '0px 5px 6px -3px rgba(19, 17, 32, 0.2), 0px 9px 12px 1px rgba(19, 17, 32, 0.14), 0px 3px 16px 2px rgba(19, 17, 32, 0.12)',
+      '0px 6px 6px -3px rgba(19, 17, 32, 0.2), 0px 10px 14px 1px rgba(19, 17, 32, 0.14), 0px 4px 18px 3px rgba(19, 17, 32, 0.12)',
+      '0px 6px 7px -4px rgba(19, 17, 32, 0.2), 0px 11px 15px 1px rgba(19, 17, 32, 0.14), 0px 4px 20px 3px rgba(19, 17, 32, 0.12)',
+      '0px 7px 8px -4px rgba(19, 17, 32, 0.2), 0px 12px 17px 2px rgba(19, 17, 32, 0.14), 0px 5px 22px 4px rgba(19, 17, 32, 0.12)',
+      '0px 7px 8px -4px rgba(19, 17, 32, 0.2), 0px 13px 19px 2px rgba(19, 17, 32, 0.14), 0px 5px 24px 4px rgba(19, 17, 32, 0.12)',
+      '0px 7px 9px -4px rgba(19, 17, 32, 0.2), 0px 14px 21px 2px rgba(19, 17, 32, 0.14), 0px 5px 26px 4px rgba(19, 17, 32, 0.12)',
+      '0px 8px 9px -5px rgba(19, 17, 32, 0.2), 0px 15px 22px 2px rgba(19, 17, 32, 0.14), 0px 6px 28px 5px rgba(19, 17, 32, 0.12)',
+      '0px 8px 10px -5px rgba(19, 17, 32, 0.2), 0px 16px 24px 2px rgba(19, 17, 32, 0.14), 0px 6px 30px 5px rgba(19, 17, 32, 0.12)',
+      '0px 8px 11px -5px rgba(19, 17, 32, 0.2), 0px 17px 26px 2px rgba(19, 17, 32, 0.14), 0px 6px 32px 5px rgba(19, 17, 32, 0.12)',
+      '0px 9px 11px -5px rgba(19, 17, 32, 0.2), 0px 18px 28px 2px rgba(19, 17, 32, 0.14), 0px 7px 34px 6px rgba(19, 17, 32, 0.12)',
+      '0px 9px 12px -6px rgba(19, 17, 32, 0.2), 0px 19px 29px 2px rgba(19, 17, 32, 0.14), 0px 7px 36px 6px rgba(19, 17, 32, 0.12)',
+      '0px 10px 13px -6px rgba(19, 17, 32, 0.2), 0px 20px 31px 3px rgba(19, 17, 32, 0.14), 0px 8px 38px 7px rgba(19, 17, 32, 0.12)',
+      '0px 10px 13px -6px rgba(19, 17, 32, 0.2), 0px 21px 33px 3px rgba(19, 17, 32, 0.14), 0px 8px 40px 7px rgba(19, 17, 32, 0.12)',
+      '0px 10px 14px -6px rgba(19, 17, 32, 0.2), 0px 22px 35px 3px rgba(19, 17, 32, 0.14), 0px 8px 42px 7px rgba(19, 17, 32, 0.12)',
+      '0px 11px 14px -7px rgba(19, 17, 32, 0.2), 0px 23px 36px 3px rgba(19, 17, 32, 0.14), 0px 9px 44px 8px rgba(19, 17, 32, 0.12)',
+      '0px 11px 15px -7px rgba(19, 17, 32, 0.2), 0px 24px 38px 3px rgba(19, 17, 32, 0.14), 0px 9px 46px 8px rgba(19, 17, 32, 0.12)'
+    ],
+    zIndex: {
+      appBar: 1200,
+      drawer: 1100
+    } */
+  };
+};
 
 const DefaultPalette = (mode, skin, themeColor) => {
   // ** Vars
@@ -9083,6 +9922,64 @@ const ThemeComponent = props => {
   });
 };
 
+// ** Theme Override Imports
+const ThemeComponentService = themeProps => props => {
+  // ** Props
+  const {
+    settings,
+    children
+  } = props;
+  const {
+    CssBaseline,
+    GlobalStyles,
+    createTheme,
+    responsiveFontSizes,
+    ThemeProvider,
+    deepmerge
+  } = themeProps;
+
+  // ** Merged ThemeOptions of Core and User
+  const coreThemeConfig = themeOptions(settings);
+
+  // ** Pass ThemeOptions to CreateTheme Function to create partial theme without component overrides
+  let theme = createTheme(coreThemeConfig);
+
+  // ** Deep Merge Component overrides of core and user
+  const mergeComponentOverrides = (theme, settings) => {
+    var _UserThemeOptions;
+    return deepmerge({
+      ...Overrides(theme, settings)
+    }, (_UserThemeOptions = UserThemeOptions()) === null || _UserThemeOptions === void 0 ? void 0 : _UserThemeOptions.components);
+  };
+
+  // ** Deep Merge Typography of core and user
+  const mergeTypography = theme => {
+    var _UserThemeOptions2;
+    return deepmerge(Typography$2(theme), (_UserThemeOptions2 = UserThemeOptions()) === null || _UserThemeOptions2 === void 0 ? void 0 : _UserThemeOptions2.typography);
+  };
+
+  // ** Continue theme creation and pass merged component overrides to CreateTheme function
+  theme = createTheme(theme, {
+    components: {
+      ...mergeComponentOverrides(theme, settings)
+    },
+    typography: {
+      ...mergeTypography(theme)
+    }
+  });
+
+  // ** Set responsive font sizes to true
+  if (themeConfig.responsiveFontSizes) {
+    theme = responsiveFontSizes(theme);
+  }
+  return /*#__PURE__*/jsxs(ThemeProvider, {
+    theme: theme,
+    children: [/*#__PURE__*/jsx(CssBaseline, {}), /*#__PURE__*/jsx(GlobalStyles, {
+      styles: () => GlobalStyles$1(theme, settings)
+    }), children]
+  });
+};
+
 function Ripple(props) {
   const {
     className,
@@ -9165,7 +10062,7 @@ process.env.NODE_ENV !== "production" ? Ripple.propTypes = {
 const touchRippleClasses = generateUtilityClasses('MuiTouchRipple', ['root', 'ripple', 'rippleVisible', 'ripplePulsate', 'child', 'childLeaving', 'childPulsate']);
 var touchRippleClasses$1 = touchRippleClasses;
 
-const _excluded$N = ["center", "classes", "className"];
+const _excluded$L = ["center", "classes", "className"];
 let _ = t => t,
   _t,
   _t2,
@@ -9294,7 +10191,7 @@ const TouchRipple = /*#__PURE__*/React.forwardRef(function TouchRipple(inProps, 
       classes = {},
       className
     } = props,
-    other = _objectWithoutPropertiesLoose(props, _excluded$N);
+    other = _objectWithoutPropertiesLoose(props, _excluded$L);
   const [ripples, setRipples] = React.useState([]);
   const nextKey = React.useRef(0);
   const rippleCallback = React.useRef(null);
@@ -9495,8 +10392,8 @@ function getButtonBaseUtilityClass(slot) {
 const buttonBaseClasses = generateUtilityClasses('MuiButtonBase', ['root', 'disabled', 'focusVisible']);
 var buttonBaseClasses$1 = buttonBaseClasses;
 
-const _excluded$M = ["action", "centerRipple", "children", "className", "component", "disabled", "disableRipple", "disableTouchRipple", "focusRipple", "focusVisibleClassName", "LinkComponent", "onBlur", "onClick", "onContextMenu", "onDragLeave", "onFocus", "onFocusVisible", "onKeyDown", "onKeyUp", "onMouseDown", "onMouseLeave", "onMouseUp", "onTouchEnd", "onTouchMove", "onTouchStart", "tabIndex", "TouchRippleProps", "touchRippleRef", "type"];
-const useUtilityClasses$E = ownerState => {
+const _excluded$K = ["action", "centerRipple", "children", "className", "component", "disabled", "disableRipple", "disableTouchRipple", "focusRipple", "focusVisibleClassName", "LinkComponent", "onBlur", "onClick", "onContextMenu", "onDragLeave", "onFocus", "onFocusVisible", "onKeyDown", "onKeyUp", "onMouseDown", "onMouseLeave", "onMouseUp", "onTouchEnd", "onTouchMove", "onTouchStart", "tabIndex", "TouchRippleProps", "touchRippleRef", "type"];
+const useUtilityClasses$C = ownerState => {
   const {
     disabled,
     focusVisible,
@@ -9597,7 +10494,7 @@ const ButtonBase = /*#__PURE__*/React.forwardRef(function ButtonBase(inProps, re
       touchRippleRef,
       type
     } = props,
-    other = _objectWithoutPropertiesLoose(props, _excluded$M);
+    other = _objectWithoutPropertiesLoose(props, _excluded$K);
   const buttonRef = React.useRef(null);
   const rippleRef = React.useRef(null);
   const handleRippleRef = useForkRef(rippleRef, touchRippleRef);
@@ -9764,7 +10661,7 @@ const ButtonBase = /*#__PURE__*/React.forwardRef(function ButtonBase(inProps, re
     tabIndex,
     focusVisible
   });
-  const classes = useUtilityClasses$E(ownerState);
+  const classes = useUtilityClasses$C(ownerState);
   return /*#__PURE__*/jsxs(ButtonBaseRoot, _extends({
     as: ComponentProp,
     className: clsx(classes.root, className),
@@ -9957,11 +10854,11 @@ var ButtonBase$1 = ButtonBase;
 function getIconButtonUtilityClass(slot) {
   return generateUtilityClass('MuiIconButton', slot);
 }
-const iconButtonClasses = generateUtilityClasses('MuiIconButton', ['root', 'disabled', 'colorInherit', 'colorPrimary', 'colorSecondary', 'edgeStart', 'edgeEnd', 'sizeSmall', 'sizeMedium', 'sizeLarge']);
+const iconButtonClasses = generateUtilityClasses('MuiIconButton', ['root', 'disabled', 'colorInherit', 'colorPrimary', 'colorSecondary', 'colorError', 'colorInfo', 'colorSuccess', 'colorWarning', 'edgeStart', 'edgeEnd', 'sizeSmall', 'sizeMedium', 'sizeLarge']);
 var iconButtonClasses$1 = iconButtonClasses;
 
-const _excluded$L = ["edge", "children", "className", "color", "disabled", "disableFocusRipple", "size"];
-const useUtilityClasses$D = ownerState => {
+const _excluded$J = ["edge", "children", "className", "color", "disabled", "disableFocusRipple", "size"];
+const useUtilityClasses$B = ownerState => {
   const {
     classes,
     disabled,
@@ -10061,7 +10958,7 @@ const IconButton = /*#__PURE__*/React.forwardRef(function IconButton(inProps, re
       disableFocusRipple = false,
       size = 'medium'
     } = props,
-    other = _objectWithoutPropertiesLoose(props, _excluded$L);
+    other = _objectWithoutPropertiesLoose(props, _excluded$J);
   const ownerState = _extends({}, props, {
     edge,
     color,
@@ -10069,7 +10966,7 @@ const IconButton = /*#__PURE__*/React.forwardRef(function IconButton(inProps, re
     disableFocusRipple,
     size
   });
-  const classes = useUtilityClasses$D(ownerState);
+  const classes = useUtilityClasses$B(ownerState);
   return /*#__PURE__*/jsx(IconButtonRoot, _extends({
     className: clsx(classes.root, className),
     centerRipple: true,
@@ -10164,8 +11061,8 @@ function getListUtilityClass(slot) {
 }
 generateUtilityClasses('MuiList', ['root', 'padding', 'dense', 'subheader']);
 
-const _excluded$K = ["children", "className", "component", "dense", "disablePadding", "subheader"];
-const useUtilityClasses$C = ownerState => {
+const _excluded$I = ["children", "className", "component", "dense", "disablePadding", "subheader"];
+const useUtilityClasses$A = ownerState => {
   const {
     classes,
     disablePadding,
@@ -10212,7 +11109,7 @@ const List = /*#__PURE__*/React.forwardRef(function List(inProps, ref) {
       disablePadding = false,
       subheader
     } = props,
-    other = _objectWithoutPropertiesLoose(props, _excluded$K);
+    other = _objectWithoutPropertiesLoose(props, _excluded$I);
   const context = React.useMemo(() => ({
     dense
   }), [dense]);
@@ -10221,7 +11118,7 @@ const List = /*#__PURE__*/React.forwardRef(function List(inProps, ref) {
     dense,
     disablePadding
   });
-  const classes = useUtilityClasses$C(ownerState);
+  const classes = useUtilityClasses$A(ownerState);
   return /*#__PURE__*/jsx(ListContext$1.Provider, {
     value: context,
     children: /*#__PURE__*/jsxs(ListRoot, _extends({
@@ -10279,7 +11176,7 @@ process.env.NODE_ENV !== "production" ? List.propTypes /* remove-proptypes */ = 
 } : void 0;
 var List$1 = List;
 
-const _excluded$J = ["actions", "autoFocus", "autoFocusItem", "children", "className", "disabledItemsFocusable", "disableListWrap", "onKeyDown", "variant"];
+const _excluded$H = ["actions", "autoFocus", "autoFocusItem", "children", "className", "disabledItemsFocusable", "disableListWrap", "onKeyDown", "variant"];
 function nextItem(list, item, disableListWrap) {
   if (list === item) {
     return list.firstChild;
@@ -10361,7 +11258,7 @@ const MenuList = /*#__PURE__*/React.forwardRef(function MenuList(props, ref) {
       onKeyDown,
       variant = 'selectedMenu'
     } = props,
-    other = _objectWithoutPropertiesLoose(props, _excluded$J);
+    other = _objectWithoutPropertiesLoose(props, _excluded$H);
   const listRef = React.useRef(null);
   const textCriteriaRef = React.useRef({
     keys: [],
@@ -10535,143 +11432,7 @@ process.env.NODE_ENV !== "production" ? MenuList.propTypes /* remove-proptypes *
 } : void 0;
 var MenuList$1 = MenuList;
 
-function getPaperUtilityClass(slot) {
-  return generateUtilityClass('MuiPaper', slot);
-}
-generateUtilityClasses('MuiPaper', ['root', 'rounded', 'outlined', 'elevation', 'elevation0', 'elevation1', 'elevation2', 'elevation3', 'elevation4', 'elevation5', 'elevation6', 'elevation7', 'elevation8', 'elevation9', 'elevation10', 'elevation11', 'elevation12', 'elevation13', 'elevation14', 'elevation15', 'elevation16', 'elevation17', 'elevation18', 'elevation19', 'elevation20', 'elevation21', 'elevation22', 'elevation23', 'elevation24']);
-
-const _excluded$I = ["className", "component", "elevation", "square", "variant"];
-const useUtilityClasses$B = ownerState => {
-  const {
-    square,
-    elevation,
-    variant,
-    classes
-  } = ownerState;
-  const slots = {
-    root: ['root', variant, !square && 'rounded', variant === 'elevation' && `elevation${elevation}`]
-  };
-  return composeClasses(slots, getPaperUtilityClass, classes);
-};
-const PaperRoot = styled$1('div', {
-  name: 'MuiPaper',
-  slot: 'Root',
-  overridesResolver: (props, styles) => {
-    const {
-      ownerState
-    } = props;
-    return [styles.root, styles[ownerState.variant], !ownerState.square && styles.rounded, ownerState.variant === 'elevation' && styles[`elevation${ownerState.elevation}`]];
-  }
-})(({
-  theme,
-  ownerState
-}) => {
-  var _theme$vars$overlays;
-  return _extends({
-    backgroundColor: (theme.vars || theme).palette.background.paper,
-    color: (theme.vars || theme).palette.text.primary,
-    transition: theme.transitions.create('box-shadow')
-  }, !ownerState.square && {
-    borderRadius: theme.shape.borderRadius
-  }, ownerState.variant === 'outlined' && {
-    border: `1px solid ${(theme.vars || theme).palette.divider}`
-  }, ownerState.variant === 'elevation' && _extends({
-    boxShadow: (theme.vars || theme).shadows[ownerState.elevation]
-  }, !theme.vars && theme.palette.mode === 'dark' && {
-    backgroundImage: `linear-gradient(${alpha('#fff', getOverlayAlpha$1(ownerState.elevation))}, ${alpha('#fff', getOverlayAlpha$1(ownerState.elevation))})`
-  }, theme.vars && {
-    backgroundImage: (_theme$vars$overlays = theme.vars.overlays) == null ? void 0 : _theme$vars$overlays[ownerState.elevation]
-  }));
-});
-const Paper = /*#__PURE__*/React.forwardRef(function Paper(inProps, ref) {
-  const props = useThemeProps({
-    props: inProps,
-    name: 'MuiPaper'
-  });
-  const {
-      className,
-      component = 'div',
-      elevation = 1,
-      square = false,
-      variant = 'elevation'
-    } = props,
-    other = _objectWithoutPropertiesLoose(props, _excluded$I);
-  const ownerState = _extends({}, props, {
-    component,
-    elevation,
-    square,
-    variant
-  });
-  const classes = useUtilityClasses$B(ownerState);
-  if (process.env.NODE_ENV !== 'production') {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const theme = useTheme();
-    if (theme.shadows[elevation] === undefined) {
-      console.error([`MUI: The elevation provided <Paper elevation={${elevation}}> is not available in the theme.`, `Please make sure that \`theme.shadows[${elevation}]\` is defined.`].join('\n'));
-    }
-  }
-  return /*#__PURE__*/jsx(PaperRoot, _extends({
-    as: component,
-    ownerState: ownerState,
-    className: clsx(classes.root, className),
-    ref: ref
-  }, other));
-});
-process.env.NODE_ENV !== "production" ? Paper.propTypes /* remove-proptypes */ = {
-  // ----------------------------- Warning --------------------------------
-  // | These PropTypes are generated from the TypeScript type definitions |
-  // |     To update them edit the d.ts file and run "yarn proptypes"     |
-  // ----------------------------------------------------------------------
-  /**
-   * The content of the component.
-   */
-  children: PropTypes.node,
-  /**
-   * Override or extend the styles applied to the component.
-   */
-  classes: PropTypes.object,
-  /**
-   * @ignore
-   */
-  className: PropTypes.string,
-  /**
-   * The component used for the root node.
-   * Either a string to use a HTML element or a component.
-   */
-  component: PropTypes.elementType,
-  /**
-   * Shadow depth, corresponds to `dp` in the spec.
-   * It accepts values between 0 and 24 inclusive.
-   * @default 1
-   */
-  elevation: chainPropTypes(integerPropType, props => {
-    const {
-      elevation,
-      variant
-    } = props;
-    if (elevation > 0 && variant === 'outlined') {
-      return new Error(`MUI: Combining \`elevation={${elevation}}\` with \`variant="${variant}"\` has no effect. Either use \`elevation={0}\` or use a different \`variant\`.`);
-    }
-    return null;
-  }),
-  /**
-   * If `true`, rounded corners are disabled.
-   * @default false
-   */
-  square: PropTypes.bool,
-  /**
-   * The system prop that allows defining system overrides as well as additional CSS styles.
-   */
-  sx: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.func, PropTypes.object, PropTypes.bool])), PropTypes.func, PropTypes.object]),
-  /**
-   * The variant to use.
-   * @default 'elevation'
-   */
-  variant: PropTypes /* @typescript-to-proptypes-ignore */.oneOfType([PropTypes.oneOf(['elevation', 'outlined']), PropTypes.string])
-} : void 0;
-var Paper$1 = Paper;
-
-const _excluded$H = ["addEndListener", "appear", "children", "easing", "in", "onEnter", "onEntered", "onEntering", "onExit", "onExited", "onExiting", "style", "timeout", "TransitionComponent"];
+const _excluded$G = ["addEndListener", "appear", "children", "easing", "in", "onEnter", "onEntered", "onEntering", "onExit", "onExited", "onExiting", "style", "timeout", "TransitionComponent"];
 function getScale(value) {
   return `scale(${value}, ${value ** 2})`;
 }
@@ -10715,7 +11476,7 @@ const Grow = /*#__PURE__*/React.forwardRef(function Grow(props, ref) {
       // eslint-disable-next-line react/prop-types
       TransitionComponent = Transition$2
     } = props,
-    other = _objectWithoutPropertiesLoose(props, _excluded$H);
+    other = _objectWithoutPropertiesLoose(props, _excluded$G);
   const timer = React.useRef();
   const autoTimeout = React.useRef();
   const theme = useTheme();
@@ -10919,7 +11680,7 @@ process.env.NODE_ENV !== "production" ? Grow.propTypes /* remove-proptypes */ = 
 Grow.muiSupportAuto = true;
 var Grow$1 = Grow;
 
-const _excluded$G = ["addEndListener", "appear", "children", "easing", "in", "onEnter", "onEntered", "onEntering", "onExit", "onExited", "onExiting", "style", "timeout", "TransitionComponent"];
+const _excluded$F = ["addEndListener", "appear", "children", "easing", "in", "onEnter", "onEntered", "onEntering", "onExit", "onExited", "onExiting", "style", "timeout", "TransitionComponent"];
 const styles$1 = {
   entering: {
     opacity: 1
@@ -10956,7 +11717,7 @@ const Fade = /*#__PURE__*/React.forwardRef(function Fade(props, ref) {
       // eslint-disable-next-line react/prop-types
       TransitionComponent = Transition$2
     } = props,
-    other = _objectWithoutPropertiesLoose(props, _excluded$G);
+    other = _objectWithoutPropertiesLoose(props, _excluded$F);
   const nodeRef = React.useRef(null);
   const handleRef = useForkRef(nodeRef, children.ref, ref);
   const normalizedTransitionCallback = callback => maybeIsAppearing => {
@@ -11117,8 +11878,8 @@ function getBackdropUtilityClass(slot) {
 }
 generateUtilityClasses('MuiBackdrop', ['root', 'invisible']);
 
-const _excluded$F = ["children", "component", "components", "componentsProps", "className", "invisible", "open", "slotProps", "slots", "transitionDuration", "TransitionComponent"];
-const useUtilityClasses$A = ownerState => {
+const _excluded$E = ["children", "component", "components", "componentsProps", "className", "invisible", "open", "slotProps", "slots", "transitionDuration", "TransitionComponent"];
+const useUtilityClasses$z = ownerState => {
   const {
     classes,
     invisible
@@ -11173,12 +11934,12 @@ const Backdrop = /*#__PURE__*/React.forwardRef(function Backdrop(inProps, ref) {
       // eslint-disable-next-line react/prop-types
       TransitionComponent = Fade$1
     } = props,
-    other = _objectWithoutPropertiesLoose(props, _excluded$F);
+    other = _objectWithoutPropertiesLoose(props, _excluded$E);
   const ownerState = _extends({}, props, {
     component,
     invisible
   });
-  const classes = useUtilityClasses$A(ownerState);
+  const classes = useUtilityClasses$z(ownerState);
   const rootSlotProps = (_slotProps$root = slotProps.root) != null ? _slotProps$root : componentsProps.root;
   return /*#__PURE__*/jsx(TransitionComponent, _extends({
     in: open,
@@ -11288,7 +12049,7 @@ process.env.NODE_ENV !== "production" ? Backdrop.propTypes /* remove-proptypes *
 } : void 0;
 var Backdrop$1 = Backdrop;
 
-const _excluded$E = ["BackdropComponent", "BackdropProps", "closeAfterTransition", "children", "component", "components", "componentsProps", "disableAutoFocus", "disableEnforceFocus", "disableEscapeKeyDown", "disablePortal", "disableRestoreFocus", "disableScrollLock", "hideBackdrop", "keepMounted", "slotProps", "slots", "theme"];
+const _excluded$D = ["BackdropComponent", "BackdropProps", "closeAfterTransition", "children", "component", "components", "componentsProps", "disableAutoFocus", "disableEnforceFocus", "disableEscapeKeyDown", "disablePortal", "disableRestoreFocus", "disableScrollLock", "hideBackdrop", "keepMounted", "slotProps", "slots", "theme"];
 const extendUtilityClasses = ownerState => {
   return ownerState.classes;
 };
@@ -11364,7 +12125,7 @@ const Modal = /*#__PURE__*/React.forwardRef(function Modal(inProps, ref) {
       // eslint-disable-next-line react/prop-types
       theme
     } = props,
-    other = _objectWithoutPropertiesLoose(props, _excluded$E);
+    other = _objectWithoutPropertiesLoose(props, _excluded$D);
   const [exited, setExited] = React.useState(true);
   const commonProps = {
     closeAfterTransition,
@@ -11579,7 +12340,7 @@ function getPopoverUtilityClass(slot) {
 }
 generateUtilityClasses('MuiPopover', ['root', 'paper']);
 
-const _excluded$D = ["onEntering"],
+const _excluded$C = ["onEntering"],
   _excluded2$4 = ["action", "anchorEl", "anchorOrigin", "anchorPosition", "anchorReference", "children", "className", "container", "elevation", "marginThreshold", "open", "PaperProps", "transformOrigin", "TransitionComponent", "transitionDuration", "TransitionProps"];
 function getOffsetTop(rect, vertical) {
   let offset = 0;
@@ -11609,7 +12370,7 @@ function getTransformOriginValue(transformOrigin) {
 function resolveAnchorEl(anchorEl) {
   return typeof anchorEl === 'function' ? anchorEl() : anchorEl;
 }
-const useUtilityClasses$z = ownerState => {
+const useUtilityClasses$y = ownerState => {
   const {
     classes
   } = ownerState;
@@ -11672,7 +12433,7 @@ const Popover = /*#__PURE__*/React.forwardRef(function Popover(inProps, ref) {
         onEntering
       } = {}
     } = props,
-    TransitionProps = _objectWithoutPropertiesLoose(props.TransitionProps, _excluded$D),
+    TransitionProps = _objectWithoutPropertiesLoose(props.TransitionProps, _excluded$C),
     other = _objectWithoutPropertiesLoose(props, _excluded2$4);
   const paperRef = React.useRef();
   const handlePaperRef = useForkRef(paperRef, PaperProps.ref);
@@ -11687,7 +12448,7 @@ const Popover = /*#__PURE__*/React.forwardRef(function Popover(inProps, ref) {
     transitionDuration: transitionDurationProp,
     TransitionProps
   });
-  const classes = useUtilityClasses$z(ownerState);
+  const classes = useUtilityClasses$y(ownerState);
 
   // Returns the top/left offset of the position
   // to attach to on the anchor element (or body if none is provided)
@@ -12033,7 +12794,7 @@ function getMenuUtilityClass(slot) {
 }
 generateUtilityClasses('MuiMenu', ['root', 'paper', 'list']);
 
-const _excluded$C = ["onEntering"],
+const _excluded$B = ["onEntering"],
   _excluded2$3 = ["autoFocus", "children", "disableAutoFocusItem", "MenuListProps", "onClose", "open", "PaperProps", "PopoverClasses", "transitionDuration", "TransitionProps", "variant"];
 const RTL_ORIGIN = {
   vertical: 'top',
@@ -12043,7 +12804,7 @@ const LTR_ORIGIN = {
   vertical: 'top',
   horizontal: 'left'
 };
-const useUtilityClasses$y = ownerState => {
+const useUtilityClasses$x = ownerState => {
   const {
     classes
   } = ownerState;
@@ -12100,7 +12861,7 @@ const Menu = /*#__PURE__*/React.forwardRef(function Menu(inProps, ref) {
       } = {},
       variant = 'selectedMenu'
     } = props,
-    TransitionProps = _objectWithoutPropertiesLoose(props.TransitionProps, _excluded$C),
+    TransitionProps = _objectWithoutPropertiesLoose(props.TransitionProps, _excluded$B),
     other = _objectWithoutPropertiesLoose(props, _excluded2$3);
   const theme = useTheme();
   const isRtl = theme.direction === 'rtl';
@@ -12114,7 +12875,7 @@ const Menu = /*#__PURE__*/React.forwardRef(function Menu(inProps, ref) {
     TransitionProps,
     variant
   });
-  const classes = useUtilityClasses$y(ownerState);
+  const classes = useUtilityClasses$x(ownerState);
   const autoFocusItem = autoFocus && !disableAutoFocusItem && open;
   const menuListActionsRef = React.useRef(null);
   const handleEntering = (element, isAppearing) => {
@@ -12287,8 +13048,8 @@ function getDividerUtilityClass(slot) {
 const dividerClasses = generateUtilityClasses('MuiDivider', ['root', 'absolute', 'fullWidth', 'inset', 'middle', 'flexItem', 'light', 'vertical', 'withChildren', 'withChildrenVertical', 'textAlignRight', 'textAlignLeft', 'wrapper', 'wrapperVertical']);
 var dividerClasses$1 = dividerClasses;
 
-const _excluded$B = ["absolute", "children", "className", "component", "flexItem", "light", "orientation", "role", "textAlign", "variant"];
-const useUtilityClasses$x = ownerState => {
+const _excluded$A = ["absolute", "children", "className", "component", "flexItem", "light", "orientation", "role", "textAlign", "variant"];
+const useUtilityClasses$w = ownerState => {
   const {
     absolute,
     children,
@@ -12430,7 +13191,7 @@ const Divider = /*#__PURE__*/React.forwardRef(function Divider(inProps, ref) {
       textAlign = 'center',
       variant = 'fullWidth'
     } = props,
-    other = _objectWithoutPropertiesLoose(props, _excluded$B);
+    other = _objectWithoutPropertiesLoose(props, _excluded$A);
   const ownerState = _extends({}, props, {
     absolute,
     component,
@@ -12441,7 +13202,7 @@ const Divider = /*#__PURE__*/React.forwardRef(function Divider(inProps, ref) {
     textAlign,
     variant
   });
-  const classes = useUtilityClasses$x(ownerState);
+  const classes = useUtilityClasses$w(ownerState);
   return /*#__PURE__*/jsx(DividerRoot, _extends({
     as: component,
     className: clsx(classes.root, className),
@@ -12526,8 +13287,8 @@ function getListItemIconUtilityClass(slot) {
 const listItemIconClasses = generateUtilityClasses('MuiListItemIcon', ['root', 'alignItemsFlexStart']);
 var listItemIconClasses$1 = listItemIconClasses;
 
-const _excluded$A = ["className"];
-const useUtilityClasses$w = ownerState => {
+const _excluded$z = ["className"];
+const useUtilityClasses$v = ownerState => {
   const {
     alignItems,
     classes
@@ -12569,12 +13330,12 @@ const ListItemIcon = /*#__PURE__*/React.forwardRef(function ListItemIcon(inProps
   const {
       className
     } = props,
-    other = _objectWithoutPropertiesLoose(props, _excluded$A);
+    other = _objectWithoutPropertiesLoose(props, _excluded$z);
   const context = React.useContext(ListContext$1);
   const ownerState = _extends({}, props, {
     alignItems: context.alignItems
   });
-  const classes = useUtilityClasses$w(ownerState);
+  const classes = useUtilityClasses$v(ownerState);
   return /*#__PURE__*/jsx(ListItemIconRoot, _extends({
     className: clsx(classes.root, className),
     ownerState: ownerState,
@@ -12611,8 +13372,8 @@ function getTypographyUtilityClass(slot) {
 }
 generateUtilityClasses('MuiTypography', ['root', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'subtitle1', 'subtitle2', 'body1', 'body2', 'inherit', 'button', 'caption', 'overline', 'alignLeft', 'alignRight', 'alignCenter', 'alignJustify', 'noWrap', 'gutterBottom', 'paragraph']);
 
-const _excluded$z = ["align", "className", "component", "gutterBottom", "noWrap", "paragraph", "variant", "variantMapping"];
-const useUtilityClasses$v = ownerState => {
+const _excluded$y = ["align", "className", "component", "gutterBottom", "noWrap", "paragraph", "variant", "variantMapping"];
+const useUtilityClasses$u = ownerState => {
   const {
     align,
     gutterBottom,
@@ -12695,7 +13456,7 @@ const Typography = /*#__PURE__*/React.forwardRef(function Typography(inProps, re
       variant = 'body1',
       variantMapping = defaultVariantMapping
     } = props,
-    other = _objectWithoutPropertiesLoose(props, _excluded$z);
+    other = _objectWithoutPropertiesLoose(props, _excluded$y);
   const ownerState = _extends({}, props, {
     align,
     color,
@@ -12708,7 +13469,7 @@ const Typography = /*#__PURE__*/React.forwardRef(function Typography(inProps, re
     variantMapping
   });
   const Component = component || (paragraph ? 'p' : variantMapping[variant] || defaultVariantMapping[variant]) || 'span';
-  const classes = useUtilityClasses$v(ownerState);
+  const classes = useUtilityClasses$u(ownerState);
   return /*#__PURE__*/jsx(TypographyRoot, _extends({
     as: Component,
     ref: ref,
@@ -12802,14 +13563,14 @@ function getMenuItemUtilityClass(slot) {
 const menuItemClasses = generateUtilityClasses('MuiMenuItem', ['root', 'focusVisible', 'dense', 'disabled', 'divider', 'gutters', 'selected']);
 var menuItemClasses$1 = menuItemClasses;
 
-const _excluded$y = ["autoFocus", "component", "dense", "divider", "disableGutters", "focusVisibleClassName", "role", "tabIndex", "className"];
+const _excluded$x = ["autoFocus", "component", "dense", "divider", "disableGutters", "focusVisibleClassName", "role", "tabIndex", "className"];
 const overridesResolver$3 = (props, styles) => {
   const {
     ownerState
   } = props;
   return [styles.root, ownerState.dense && styles.dense, ownerState.divider && styles.divider, !ownerState.disableGutters && styles.gutters];
 };
-const useUtilityClasses$u = ownerState => {
+const useUtilityClasses$t = ownerState => {
   const {
     disabled,
     dense,
@@ -12924,7 +13685,7 @@ const MenuItem = /*#__PURE__*/React.forwardRef(function MenuItem(inProps, ref) {
       tabIndex: tabIndexProp,
       className
     } = props,
-    other = _objectWithoutPropertiesLoose(props, _excluded$y);
+    other = _objectWithoutPropertiesLoose(props, _excluded$x);
   const context = React.useContext(ListContext$1);
   const childContext = React.useMemo(() => ({
     dense: dense || context.dense || false,
@@ -12945,7 +13706,7 @@ const MenuItem = /*#__PURE__*/React.forwardRef(function MenuItem(inProps, ref) {
     divider,
     disableGutters
   });
-  const classes = useUtilityClasses$u(props);
+  const classes = useUtilityClasses$t(props);
   const handleRef = useForkRef(menuItemRef, ref);
   let tabIndex;
   if (!props.disabled) {
@@ -13090,7 +13851,7 @@ const LanguageDropdown = ({
     i18n.changeLanguage(lang);
     handleLangDropdownClose();
   };
-  return /*#__PURE__*/jsxs(Fragment, {
+  return /*#__PURE__*/jsxs(Fragment$1, {
     children: [/*#__PURE__*/jsx(IconButton$1, {
       color: "inherit",
       "aria-haspopup": "true",
@@ -13381,8 +14142,8 @@ function getAppBarUtilityClass(slot) {
 }
 generateUtilityClasses('MuiAppBar', ['root', 'positionFixed', 'positionAbsolute', 'positionSticky', 'positionStatic', 'positionRelative', 'colorDefault', 'colorPrimary', 'colorSecondary', 'colorInherit', 'colorTransparent']);
 
-const _excluded$x = ["className", "color", "enableColorOnDark", "position"];
-const useUtilityClasses$t = ownerState => {
+const _excluded$w = ["className", "color", "enableColorOnDark", "position"];
+const useUtilityClasses$s = ownerState => {
   const {
     color,
     position,
@@ -13487,13 +14248,13 @@ const AppBar$1 = /*#__PURE__*/React.forwardRef(function AppBar(inProps, ref) {
       enableColorOnDark = false,
       position = 'fixed'
     } = props,
-    other = _objectWithoutPropertiesLoose(props, _excluded$x);
+    other = _objectWithoutPropertiesLoose(props, _excluded$w);
   const ownerState = _extends({}, props, {
     color,
     position,
     enableColorOnDark
   });
-  const classes = useUtilityClasses$t(ownerState);
+  const classes = useUtilityClasses$s(ownerState);
   return /*#__PURE__*/jsx(AppBarRoot, _extends({
     square: true,
     component: "header",
@@ -13903,8 +14664,8 @@ function getFabUtilityClass(slot) {
 const fabClasses = generateUtilityClasses('MuiFab', ['root', 'primary', 'secondary', 'extended', 'circular', 'focusVisible', 'disabled', 'colorInherit', 'sizeSmall', 'sizeMedium', 'sizeLarge', 'info', 'error', 'warning', 'success']);
 var fabClasses$1 = fabClasses;
 
-const _excluded$w = ["children", "className", "color", "component", "disabled", "disableFocusRipple", "focusVisibleClassName", "size", "variant"];
-const useUtilityClasses$s = ownerState => {
+const _excluded$v = ["children", "className", "color", "component", "disabled", "disableFocusRipple", "focusVisibleClassName", "size", "variant"];
+const useUtilityClasses$r = ownerState => {
   const {
     color,
     variant,
@@ -14023,7 +14784,7 @@ const Fab = /*#__PURE__*/React.forwardRef(function Fab(inProps, ref) {
       size = 'large',
       variant = 'circular'
     } = props,
-    other = _objectWithoutPropertiesLoose(props, _excluded$w);
+    other = _objectWithoutPropertiesLoose(props, _excluded$v);
   const ownerState = _extends({}, props, {
     color,
     component,
@@ -14032,7 +14793,7 @@ const Fab = /*#__PURE__*/React.forwardRef(function Fab(inProps, ref) {
     size,
     variant
   });
-  const classes = useUtilityClasses$s(ownerState);
+  const classes = useUtilityClasses$r(ownerState);
   return /*#__PURE__*/jsx(FabRoot, _extends({
     className: clsx(classes.root, className),
     component: component,
@@ -14137,8 +14898,8 @@ function getSvgIconUtilityClass(slot) {
 }
 generateUtilityClasses('MuiSvgIcon', ['root', 'colorPrimary', 'colorSecondary', 'colorAction', 'colorError', 'colorDisabled', 'fontSizeInherit', 'fontSizeSmall', 'fontSizeMedium', 'fontSizeLarge']);
 
-const _excluded$v = ["children", "className", "color", "component", "fontSize", "htmlColor", "inheritViewBox", "titleAccess", "viewBox"];
-const useUtilityClasses$r = ownerState => {
+const _excluded$u = ["children", "className", "color", "component", "fontSize", "htmlColor", "inheritViewBox", "titleAccess", "viewBox"];
+const useUtilityClasses$q = ownerState => {
   const {
     color,
     fontSize,
@@ -14203,7 +14964,7 @@ const SvgIcon = /*#__PURE__*/React.forwardRef(function SvgIcon(inProps, ref) {
       titleAccess,
       viewBox = '0 0 24 24'
     } = props,
-    other = _objectWithoutPropertiesLoose(props, _excluded$v);
+    other = _objectWithoutPropertiesLoose(props, _excluded$u);
   const ownerState = _extends({}, props, {
     color,
     component,
@@ -14216,7 +14977,7 @@ const SvgIcon = /*#__PURE__*/React.forwardRef(function SvgIcon(inProps, ref) {
   if (!inheritViewBox) {
     more.viewBox = viewBox;
   }
-  const classes = useUtilityClasses$r(ownerState);
+  const classes = useUtilityClasses$q(ownerState);
   return /*#__PURE__*/jsxs(SvgIconRoot, _extends({
     as: component,
     className: clsx(classes.root, className),
@@ -14335,8 +15096,8 @@ function getChipUtilityClass(slot) {
 const chipClasses = generateUtilityClasses('MuiChip', ['root', 'sizeSmall', 'sizeMedium', 'colorError', 'colorInfo', 'colorPrimary', 'colorSecondary', 'colorSuccess', 'colorWarning', 'disabled', 'clickable', 'clickableColorPrimary', 'clickableColorSecondary', 'deletable', 'deletableColorPrimary', 'deletableColorSecondary', 'outlined', 'filled', 'outlinedPrimary', 'outlinedSecondary', 'filledPrimary', 'filledSecondary', 'avatar', 'avatarSmall', 'avatarMedium', 'avatarColorPrimary', 'avatarColorSecondary', 'icon', 'iconSmall', 'iconMedium', 'iconColorPrimary', 'iconColorSecondary', 'label', 'labelSmall', 'labelMedium', 'deleteIcon', 'deleteIconSmall', 'deleteIconMedium', 'deleteIconColorPrimary', 'deleteIconColorSecondary', 'deleteIconOutlinedColorPrimary', 'deleteIconOutlinedColorSecondary', 'deleteIconFilledColorPrimary', 'deleteIconFilledColorSecondary', 'focusVisible']);
 var chipClasses$1 = chipClasses;
 
-const _excluded$u = ["avatar", "className", "clickable", "color", "component", "deleteIcon", "disabled", "icon", "label", "onClick", "onDelete", "onKeyDown", "onKeyUp", "size", "variant"];
-const useUtilityClasses$q = ownerState => {
+const _excluded$t = ["avatar", "className", "clickable", "color", "component", "deleteIcon", "disabled", "icon", "label", "onClick", "onDelete", "onKeyDown", "onKeyUp", "size", "variant", "tabIndex", "skipFocusWhenDisabled"];
+const useUtilityClasses$p = ownerState => {
   const {
     classes,
     disabled,
@@ -14612,9 +15373,11 @@ const Chip = /*#__PURE__*/React.forwardRef(function Chip(inProps, ref) {
       onKeyDown,
       onKeyUp,
       size = 'medium',
-      variant = 'filled'
+      variant = 'filled',
+      tabIndex,
+      skipFocusWhenDisabled = false
     } = props,
-    other = _objectWithoutPropertiesLoose(props, _excluded$u);
+    other = _objectWithoutPropertiesLoose(props, _excluded$t);
   const chipRef = React.useRef(null);
   const handleRef = useForkRef(chipRef, ref);
   const handleDeleteIconClick = event => {
@@ -14660,7 +15423,7 @@ const Chip = /*#__PURE__*/React.forwardRef(function Chip(inProps, ref) {
     clickable,
     variant
   });
-  const classes = useUtilityClasses$q(ownerState);
+  const classes = useUtilityClasses$p(ownerState);
   const moreProps = component === ButtonBase$1 ? _extends({
     component: ComponentProp || 'div',
     focusVisibleClassName: classes.focusVisible
@@ -14702,6 +15465,7 @@ const Chip = /*#__PURE__*/React.forwardRef(function Chip(inProps, ref) {
     onKeyDown: handleKeyDown,
     onKeyUp: handleKeyUp,
     ref: handleRef,
+    tabIndex: skipFocusWhenDisabled && disabled ? -1 : tabIndex,
     ownerState: ownerState
   }, moreProps, other, {
     children: [avatar || icon, /*#__PURE__*/jsx(ChipLabel, {
@@ -14794,9 +15558,19 @@ process.env.NODE_ENV !== "production" ? Chip.propTypes /* remove-proptypes */ = 
    */
   size: PropTypes /* @typescript-to-proptypes-ignore */.oneOfType([PropTypes.oneOf(['medium', 'small']), PropTypes.string]),
   /**
+   * If `true`, allows the disabled chip to escape focus.
+   * If `false`, allows the disabled chip to receive focus.
+   * @default false
+   */
+  skipFocusWhenDisabled: PropTypes.bool,
+  /**
    * The system prop that allows defining system overrides as well as additional CSS styles.
    */
   sx: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.func, PropTypes.object, PropTypes.bool])), PropTypes.func, PropTypes.object]),
+  /**
+   * @ignore
+   */
+  tabIndex: PropTypes.number,
   /**
    * The variant to use.
    * @default 'filled'
@@ -14817,14 +15591,14 @@ function getListItemButtonUtilityClass(slot) {
 const listItemButtonClasses = generateUtilityClasses('MuiListItemButton', ['root', 'focusVisible', 'dense', 'alignItemsFlexStart', 'disabled', 'divider', 'gutters', 'selected']);
 var listItemButtonClasses$1 = listItemButtonClasses;
 
-const _excluded$t = ["alignItems", "autoFocus", "component", "children", "dense", "disableGutters", "divider", "focusVisibleClassName", "selected", "className"];
+const _excluded$s = ["alignItems", "autoFocus", "component", "children", "dense", "disableGutters", "divider", "focusVisibleClassName", "selected", "className"];
 const overridesResolver$2 = (props, styles) => {
   const {
     ownerState
   } = props;
   return [styles.root, ownerState.dense && styles.dense, ownerState.alignItems === 'flex-start' && styles.alignItemsFlexStart, ownerState.divider && styles.divider, !ownerState.disableGutters && styles.gutters];
 };
-const useUtilityClasses$p = ownerState => {
+const useUtilityClasses$o = ownerState => {
   const {
     alignItems,
     classes,
@@ -14919,7 +15693,7 @@ const ListItemButton = /*#__PURE__*/React.forwardRef(function ListItemButton(inP
       selected = false,
       className
     } = props,
-    other = _objectWithoutPropertiesLoose(props, _excluded$t);
+    other = _objectWithoutPropertiesLoose(props, _excluded$s);
   const context = React.useContext(ListContext$1);
   const childContext = React.useMemo(() => ({
     dense: dense || context.dense || false,
@@ -14943,7 +15717,7 @@ const ListItemButton = /*#__PURE__*/React.forwardRef(function ListItemButton(inP
     divider,
     selected
   });
-  const classes = useUtilityClasses$p(ownerState);
+  const classes = useUtilityClasses$o(ownerState);
   const handleRef = useForkRef(listItemRef, ref);
   return /*#__PURE__*/jsx(ListContext$1.Provider, {
     value: childContext,
@@ -15045,8 +15819,8 @@ function getListItemSecondaryActionClassesUtilityClass(slot) {
 }
 generateUtilityClasses('MuiListItemSecondaryAction', ['root', 'disableGutters']);
 
-const _excluded$s = ["className"];
-const useUtilityClasses$o = ownerState => {
+const _excluded$r = ["className"];
+const useUtilityClasses$n = ownerState => {
   const {
     disableGutters,
     classes
@@ -15087,12 +15861,12 @@ const ListItemSecondaryAction = /*#__PURE__*/React.forwardRef(function ListItemS
   const {
       className
     } = props,
-    other = _objectWithoutPropertiesLoose(props, _excluded$s);
+    other = _objectWithoutPropertiesLoose(props, _excluded$r);
   const context = React.useContext(ListContext$1);
   const ownerState = _extends({}, props, {
     disableGutters: context.disableGutters
   });
-  const classes = useUtilityClasses$o(ownerState);
+  const classes = useUtilityClasses$n(ownerState);
   return /*#__PURE__*/jsx(ListItemSecondaryActionRoot, _extends({
     className: clsx(classes.root, className),
     ownerState: ownerState,
@@ -15124,7 +15898,7 @@ process.env.NODE_ENV !== "production" ? ListItemSecondaryAction.propTypes /* rem
 ListItemSecondaryAction.muiName = 'ListItemSecondaryAction';
 var ListItemSecondaryAction$1 = ListItemSecondaryAction;
 
-const _excluded$r = ["className"],
+const _excluded$q = ["className"],
   _excluded2$2 = ["alignItems", "autoFocus", "button", "children", "className", "component", "components", "componentsProps", "ContainerComponent", "ContainerProps", "dense", "disabled", "disableGutters", "disablePadding", "divider", "focusVisibleClassName", "secondaryAction", "selected", "slotProps", "slots"];
 const overridesResolver$1 = (props, styles) => {
   const {
@@ -15132,7 +15906,7 @@ const overridesResolver$1 = (props, styles) => {
   } = props;
   return [styles.root, ownerState.dense && styles.dense, ownerState.alignItems === 'flex-start' && styles.alignItemsFlexStart, ownerState.divider && styles.divider, !ownerState.disableGutters && styles.gutters, !ownerState.disablePadding && styles.padding, ownerState.button && styles.button, ownerState.hasSecondaryAction && styles.secondaryAction];
 };
-const useUtilityClasses$n = ownerState => {
+const useUtilityClasses$m = ownerState => {
   const {
     alignItems,
     button,
@@ -15266,7 +16040,7 @@ const ListItem$2 = /*#__PURE__*/React.forwardRef(function ListItem(inProps, ref)
       slotProps = {},
       slots = {}
     } = props,
-    ContainerProps = _objectWithoutPropertiesLoose(props.ContainerProps, _excluded$r),
+    ContainerProps = _objectWithoutPropertiesLoose(props.ContainerProps, _excluded$q),
     other = _objectWithoutPropertiesLoose(props, _excluded2$2);
   const context = React.useContext(ListContext$1);
   const childContext = React.useMemo(() => ({
@@ -15300,7 +16074,7 @@ const ListItem$2 = /*#__PURE__*/React.forwardRef(function ListItem(inProps, ref)
     hasSecondaryAction,
     selected
   });
-  const classes = useUtilityClasses$n(ownerState);
+  const classes = useUtilityClasses$m(ownerState);
   const handleRef = useForkRef(listItemRef, ref);
   const Root = slots.root || components.Root || ListItemRoot;
   const rootProps = slotProps.root || componentsProps.root || {};
@@ -15731,8 +16505,8 @@ const HorizontalNavGroup = props => {
   const ToggleIcon = direction === 'rtl' ? ChevronLeft : ChevronRight;
   const WrapperCondition = horizontalMenuToggle === 'click';
   const MainWrapper = WrapperCondition ? ClickAwayListener : 'div';
-  const ChildWrapper = WrapperCondition ? 'div' : Fragment;
-  const AnimationWrapper = horizontalMenuAnimation ? Fade$1 : Fragment;
+  const ChildWrapper = WrapperCondition ? 'div' : Fragment$1;
+  const AnimationWrapper = horizontalMenuAnimation ? Fade$1 : Fragment$1;
   const childMenuGroupStyles = () => {
     if (attributes && attributes.popper) {
       if (direction === 'ltr') {
@@ -15947,17 +16721,17 @@ const HorizontalNavLink = props => {
   const {
     item,
     settings,
-    hasParent
+    hasParent,
+    router
   } = props;
 
   // ** Hook & Vars
-  const router = useRouter();
   const {
     navSubItemIcon,
     menuTextTruncate
   } = themeConfig;
   const IconTag = item.icon ? item.icon : navSubItemIcon;
-  const Wrapper = !hasParent ? List$1 : Fragment;
+  const Wrapper = !hasParent ? List$1 : Fragment$1;
   const handleURLQueries = () => {
     if (Object.keys(router.query).length && item.path) {
       const arr = Object.keys(router.query);
@@ -16085,7 +16859,7 @@ const HorizontalNavItems = props => {
       item: item
     });
   });
-  return /*#__PURE__*/jsx(Fragment$1, {
+  return /*#__PURE__*/jsx(Fragment, {
     children: RenderMenuItems
   });
 };
@@ -16143,7 +16917,7 @@ const AppBarContent$2 = props => {
       alignItems: 'center',
       justifyContent: 'space-between'
     },
-    children: [userHorizontalAppBarBranding ? userHorizontalAppBarBranding(props) : /*#__PURE__*/jsxs(Fragment$1, {
+    children: [userHorizontalAppBarBranding ? userHorizontalAppBarBranding(props) : /*#__PURE__*/jsxs(Fragment, {
       children: [/*#__PURE__*/jsx(Link, {
         href: "/",
         passHref: true,
@@ -16162,8 +16936,8 @@ function getToolbarUtilityClass(slot) {
 }
 generateUtilityClasses('MuiToolbar', ['root', 'gutters', 'regular', 'dense']);
 
-const _excluded$q = ["className", "component", "disableGutters", "variant"];
-const useUtilityClasses$m = ownerState => {
+const _excluded$p = ["className", "component", "disableGutters", "variant"];
+const useUtilityClasses$l = ownerState => {
   const {
     classes,
     disableGutters,
@@ -16214,13 +16988,13 @@ const Toolbar$2 = /*#__PURE__*/React.forwardRef(function Toolbar(inProps, ref) {
       disableGutters = false,
       variant = 'regular'
     } = props,
-    other = _objectWithoutPropertiesLoose(props, _excluded$q);
+    other = _objectWithoutPropertiesLoose(props, _excluded$p);
   const ownerState = _extends({}, props, {
     component,
     disableGutters,
     variant
   });
-  const classes = useUtilityClasses$m(ownerState);
+  const classes = useUtilityClasses$l(ownerState);
   return /*#__PURE__*/jsx(ToolbarRoot, _extends({
     as: component,
     className: clsx(classes.root, className),
@@ -16488,7 +17262,7 @@ const LayoutAppBar = props => {
   });
 };
 
-const _excluded$p = ["addEndListener", "appear", "children", "container", "direction", "easing", "in", "onEnter", "onEntered", "onEntering", "onExit", "onExited", "onExiting", "style", "timeout", "TransitionComponent"];
+const _excluded$o = ["addEndListener", "appear", "children", "container", "direction", "easing", "in", "onEnter", "onEntered", "onEntering", "onExit", "onExited", "onExiting", "style", "timeout", "TransitionComponent"];
 function getTranslateValue(direction, node, resolvedContainer) {
   const rect = node.getBoundingClientRect();
   const containerRect = resolvedContainer && resolvedContainer.getBoundingClientRect();
@@ -16577,7 +17351,7 @@ const Slide = /*#__PURE__*/React.forwardRef(function Slide(props, ref) {
       // eslint-disable-next-line react/prop-types
       TransitionComponent = Transition$2
     } = props,
-    other = _objectWithoutPropertiesLoose(props, _excluded$p);
+    other = _objectWithoutPropertiesLoose(props, _excluded$o);
   const childrenRef = React.useRef(null);
   const handleRef = useForkRef(children.ref, childrenRef, ref);
   const normalizedTransitionCallback = callback => isAppearing => {
@@ -16805,7 +17579,7 @@ function getDrawerUtilityClass(slot) {
 }
 generateUtilityClasses('MuiDrawer', ['root', 'docked', 'paper', 'paperAnchorLeft', 'paperAnchorRight', 'paperAnchorTop', 'paperAnchorBottom', 'paperAnchorDockedLeft', 'paperAnchorDockedRight', 'paperAnchorDockedTop', 'paperAnchorDockedBottom', 'modal']);
 
-const _excluded$o = ["BackdropProps"],
+const _excluded$n = ["BackdropProps"],
   _excluded2$1 = ["anchor", "BackdropProps", "children", "className", "elevation", "hideBackdrop", "ModalProps", "onClose", "open", "PaperProps", "SlideProps", "TransitionComponent", "transitionDuration", "variant"];
 const overridesResolver = (props, styles) => {
   const {
@@ -16813,7 +17587,7 @@ const overridesResolver = (props, styles) => {
   } = props;
   return [styles.root, (ownerState.variant === 'permanent' || ownerState.variant === 'persistent') && styles.docked, styles.modal];
 };
-const useUtilityClasses$l = ownerState => {
+const useUtilityClasses$k = ownerState => {
   const {
     classes,
     anchor,
@@ -16945,7 +17719,7 @@ const Drawer$1 = /*#__PURE__*/React.forwardRef(function Drawer(inProps, ref) {
       transitionDuration = defaultTransitionDuration,
       variant = 'temporary'
     } = props,
-    ModalProps = _objectWithoutPropertiesLoose(props.ModalProps, _excluded$o),
+    ModalProps = _objectWithoutPropertiesLoose(props.ModalProps, _excluded$n),
     other = _objectWithoutPropertiesLoose(props, _excluded2$1);
 
   // Let's assume that the Drawer will always be rendered on user space.
@@ -16963,7 +17737,7 @@ const Drawer$1 = /*#__PURE__*/React.forwardRef(function Drawer(inProps, ref) {
     open,
     variant
   }, other);
-  const classes = useUtilityClasses$l(ownerState);
+  const classes = useUtilityClasses$k(ownerState);
   const drawer = /*#__PURE__*/jsx(DrawerPaper, _extends({
     elevation: variant === 'temporary' ? elevation : 0,
     square: true
@@ -17100,7 +17874,7 @@ process.env.NODE_ENV !== "production" ? Drawer$1.propTypes /* remove-proptypes *
 } : void 0;
 var Drawer$2 = Drawer$1;
 
-const _excluded$n = ["anchor", "classes", "className", "width", "style"];
+const _excluded$m = ["anchor", "classes", "className", "width", "style"];
 const SwipeAreaRoot = styled$1('div')(({
   theme,
   ownerState
@@ -17135,7 +17909,7 @@ const SwipeArea = /*#__PURE__*/React.forwardRef(function SwipeArea(props, ref) {
       width,
       style
     } = props,
-    other = _objectWithoutPropertiesLoose(props, _excluded$n);
+    other = _objectWithoutPropertiesLoose(props, _excluded$m);
   const ownerState = props;
   return /*#__PURE__*/jsx(SwipeAreaRoot, _extends({
     className: clsx('PrivateSwipeArea-root', classes.root, classes[`anchor${capitalize(anchor)}`], className),
@@ -17171,7 +17945,7 @@ process.env.NODE_ENV !== "production" ? SwipeArea.propTypes = {
 } : void 0;
 var SwipeArea$1 = SwipeArea;
 
-const _excluded$m = ["BackdropProps"],
+const _excluded$l = ["BackdropProps"],
   _excluded2 = ["anchor", "disableBackdropTransition", "disableDiscovery", "disableSwipeToOpen", "hideBackdrop", "hysteresis", "minFlingVelocity", "ModalProps", "onClose", "onOpen", "open", "PaperProps", "SwipeAreaProps", "swipeAreaWidth", "transitionDuration", "variant"];
 const UNCERTAINTY_THRESHOLD = 3; // px
 
@@ -17290,7 +18064,7 @@ const SwipeableDrawer$1 = /*#__PURE__*/React.forwardRef(function SwipeableDrawer
       transitionDuration = transitionDurationDefault,
       variant = 'temporary'
     } = props,
-    ModalPropsProp = _objectWithoutPropertiesLoose(props.ModalProps, _excluded$m),
+    ModalPropsProp = _objectWithoutPropertiesLoose(props.ModalProps, _excluded$l),
     other = _objectWithoutPropertiesLoose(props, _excluded2);
   const [maybeSwiping, setMaybeSwiping] = React.useState(false);
   const swipeInstance = React.useRef({
@@ -17299,6 +18073,7 @@ const SwipeableDrawer$1 = /*#__PURE__*/React.forwardRef(function SwipeableDrawer
   const swipeAreaRef = React.useRef();
   const backdropRef = React.useRef();
   const paperRef = React.useRef();
+  const handleRef = useForkRef(PaperProps.ref, paperRef);
   const touchDetected = React.useRef(false);
 
   // Ref for transition duration based on / to match swipe speed
@@ -17593,7 +18368,7 @@ const SwipeableDrawer$1 = /*#__PURE__*/React.forwardRef(function SwipeableDrawer
         style: _extends({
           pointerEvents: variant === 'temporary' && !open ? 'none' : ''
         }, PaperProps.style),
-        ref: paperRef
+        ref: handleRef
       }),
       anchor: anchor,
       transitionDuration: calculatedDurationRef.current || transitionDuration,
@@ -17982,8 +18757,8 @@ function getCollapseUtilityClass(slot) {
 }
 generateUtilityClasses('MuiCollapse', ['root', 'horizontal', 'vertical', 'entered', 'hidden', 'wrapper', 'wrapperInner']);
 
-const _excluded$l = ["addEndListener", "children", "className", "collapsedSize", "component", "easing", "in", "onEnter", "onEntered", "onEntering", "onExit", "onExited", "onExiting", "orientation", "style", "timeout", "TransitionComponent"];
-const useUtilityClasses$k = ownerState => {
+const _excluded$k = ["addEndListener", "children", "className", "collapsedSize", "component", "easing", "in", "onEnter", "onEntered", "onEntering", "onExit", "onExited", "onExiting", "orientation", "style", "timeout", "TransitionComponent"];
+const useUtilityClasses$j = ownerState => {
   const {
     orientation,
     classes
@@ -18082,12 +18857,12 @@ const Collapse = /*#__PURE__*/React.forwardRef(function Collapse(inProps, ref) {
       // eslint-disable-next-line react/prop-types
       TransitionComponent = Transition$2
     } = props,
-    other = _objectWithoutPropertiesLoose(props, _excluded$l);
+    other = _objectWithoutPropertiesLoose(props, _excluded$k);
   const ownerState = _extends({}, props, {
     orientation,
     collapsedSize: collapsedSizeProp
   });
-  const classes = useUtilityClasses$k(ownerState);
+  const classes = useUtilityClasses$j(ownerState);
   const theme = useTheme();
   const timer = React.useRef();
   const wrapperRef = React.useRef(null);
@@ -18538,7 +19313,7 @@ const VerticalNavGroup = props => {
       };
     }
   };
-  return /*#__PURE__*/jsx(Fragment, {
+  return /*#__PURE__*/jsx(Fragment$1, {
     children: /*#__PURE__*/jsxs(ListItem$3, {
       disablePadding: true,
       className: "nav-group",
@@ -18843,8 +19618,8 @@ function getListSubheaderUtilityClass(slot) {
 }
 generateUtilityClasses('MuiListSubheader', ['root', 'colorPrimary', 'colorInherit', 'gutters', 'inset', 'sticky']);
 
-const _excluded$k = ["className", "color", "component", "disableGutters", "disableSticky", "inset"];
-const useUtilityClasses$j = ownerState => {
+const _excluded$j = ["className", "color", "component", "disableGutters", "disableSticky", "inset"];
+const useUtilityClasses$i = ownerState => {
   const {
     classes,
     color,
@@ -18905,7 +19680,7 @@ const ListSubheader$1 = /*#__PURE__*/React.forwardRef(function ListSubheader(inP
       disableSticky = false,
       inset = false
     } = props,
-    other = _objectWithoutPropertiesLoose(props, _excluded$k);
+    other = _objectWithoutPropertiesLoose(props, _excluded$j);
   const ownerState = _extends({}, props, {
     color,
     component,
@@ -18913,7 +19688,7 @@ const ListSubheader$1 = /*#__PURE__*/React.forwardRef(function ListSubheader(inP
     disableSticky,
     inset
   });
-  const classes = useUtilityClasses$j(ownerState);
+  const classes = useUtilityClasses$i(ownerState);
   return /*#__PURE__*/jsx(ListSubheaderRoot, _extends({
     as: component,
     className: clsx(classes.root, className),
@@ -19097,7 +19872,7 @@ const VerticalNavItems = props => {
       item: item
     });
   });
-  return /*#__PURE__*/jsx(Fragment$1, {
+  return /*#__PURE__*/jsx(Fragment, {
     children: RenderMenuItems
   });
 };
@@ -19281,7 +20056,7 @@ const VerticalLayout = props => {
 
   // ** Toggle Functions
   const toggleNavVisibility = () => setNavVisible(!navVisible);
-  return /*#__PURE__*/jsxs(Fragment$1, {
+  return /*#__PURE__*/jsxs(Fragment, {
     children: [/*#__PURE__*/jsxs(VerticalLayoutWrapper, {
       className: "layout-wrapper",
       children: [navHidden && themeConfig.layout === 'vertical' && !(navHidden && settings.lastLayout === 'horizontal') ? null : /*#__PURE__*/jsx(Navigation, {
@@ -19411,8 +20186,8 @@ function getAvatarUtilityClass(slot) {
 }
 generateUtilityClasses('MuiAvatar', ['root', 'colorDefault', 'circular', 'rounded', 'square', 'img', 'fallback']);
 
-const _excluded$j = ["alt", "children", "className", "component", "imgProps", "sizes", "src", "srcSet", "variant"];
-const useUtilityClasses$i = ownerState => {
+const _excluded$i = ["alt", "children", "className", "component", "imgProps", "sizes", "src", "srcSet", "variant"];
+const useUtilityClasses$h = ownerState => {
   const {
     classes,
     variant,
@@ -19539,7 +20314,7 @@ const Avatar = /*#__PURE__*/React.forwardRef(function Avatar(inProps, ref) {
       srcSet,
       variant = 'circular'
     } = props,
-    other = _objectWithoutPropertiesLoose(props, _excluded$j);
+    other = _objectWithoutPropertiesLoose(props, _excluded$i);
   let children = null;
 
   // Use a hook instead of onError on the img element to support server-side rendering.
@@ -19554,7 +20329,7 @@ const Avatar = /*#__PURE__*/React.forwardRef(function Avatar(inProps, ref) {
     component,
     variant
   });
-  const classes = useUtilityClasses$i(ownerState);
+  const classes = useUtilityClasses$h(ownerState);
   if (hasImgNotFailing) {
     children = /*#__PURE__*/jsx(AvatarImg, _extends({
       alt: alt,
@@ -19639,374 +20414,6 @@ process.env.NODE_ENV !== "production" ? Avatar.propTypes /* remove-proptypes */ 
   variant: PropTypes /* @typescript-to-proptypes-ignore */.oneOfType([PropTypes.oneOf(['circular', 'rounded', 'square']), PropTypes.string])
 } : void 0;
 var Avatar$1 = Avatar;
-
-const shouldSpreadAdditionalProps = Slot => {
-  return !Slot || !isHostComponent(Slot);
-};
-var shouldSpreadAdditionalProps$1 = shouldSpreadAdditionalProps;
-
-function getBadgeUtilityClass(slot) {
-  return generateUtilityClass('MuiBadge', slot);
-}
-const badgeClasses = generateUtilityClasses('MuiBadge', ['root', 'badge', 'dot', 'standard', 'anchorOriginTopRight', 'anchorOriginBottomRight', 'anchorOriginTopLeft', 'anchorOriginBottomLeft', 'invisible', 'colorError', 'colorInfo', 'colorPrimary', 'colorSecondary', 'colorSuccess', 'colorWarning', 'overlapRectangular', 'overlapCircular',
-// TODO: v6 remove the overlap value from these class keys
-'anchorOriginTopLeftCircular', 'anchorOriginTopLeftRectangular', 'anchorOriginTopRightCircular', 'anchorOriginTopRightRectangular', 'anchorOriginBottomLeftCircular', 'anchorOriginBottomLeftRectangular', 'anchorOriginBottomRightCircular', 'anchorOriginBottomRightRectangular']);
-var badgeClasses$1 = badgeClasses;
-
-const _excluded$i = ["anchorOrigin", "className", "component", "components", "componentsProps", "overlap", "color", "invisible", "max", "badgeContent", "slots", "slotProps", "showZero", "variant"];
-const RADIUS_STANDARD = 10;
-const RADIUS_DOT = 4;
-const useUtilityClasses$h = ownerState => {
-  const {
-    color,
-    anchorOrigin,
-    invisible,
-    overlap,
-    variant,
-    classes = {}
-  } = ownerState;
-  const slots = {
-    root: ['root'],
-    badge: ['badge', variant, invisible && 'invisible', `anchorOrigin${capitalize(anchorOrigin.vertical)}${capitalize(anchorOrigin.horizontal)}`, `anchorOrigin${capitalize(anchorOrigin.vertical)}${capitalize(anchorOrigin.horizontal)}${capitalize(overlap)}`, `overlap${capitalize(overlap)}`, color !== 'default' && `color${capitalize(color)}`]
-  };
-  return composeClasses(slots, getBadgeUtilityClass, classes);
-};
-const BadgeRoot = styled$1('span', {
-  name: 'MuiBadge',
-  slot: 'Root',
-  overridesResolver: (props, styles) => styles.root
-})({
-  position: 'relative',
-  display: 'inline-flex',
-  // For correct alignment with the text.
-  verticalAlign: 'middle',
-  flexShrink: 0
-});
-const BadgeBadge = styled$1('span', {
-  name: 'MuiBadge',
-  slot: 'Badge',
-  overridesResolver: (props, styles) => {
-    const {
-      ownerState
-    } = props;
-    return [styles.badge, styles[ownerState.variant], styles[`anchorOrigin${capitalize(ownerState.anchorOrigin.vertical)}${capitalize(ownerState.anchorOrigin.horizontal)}${capitalize(ownerState.overlap)}`], ownerState.color !== 'default' && styles[`color${capitalize(ownerState.color)}`], ownerState.invisible && styles.invisible];
-  }
-})(({
-  theme,
-  ownerState
-}) => _extends({
-  display: 'flex',
-  flexDirection: 'row',
-  flexWrap: 'wrap',
-  justifyContent: 'center',
-  alignContent: 'center',
-  alignItems: 'center',
-  position: 'absolute',
-  boxSizing: 'border-box',
-  fontFamily: theme.typography.fontFamily,
-  fontWeight: theme.typography.fontWeightMedium,
-  fontSize: theme.typography.pxToRem(12),
-  minWidth: RADIUS_STANDARD * 2,
-  lineHeight: 1,
-  padding: '0 6px',
-  height: RADIUS_STANDARD * 2,
-  borderRadius: RADIUS_STANDARD,
-  zIndex: 1,
-  // Render the badge on top of potential ripples.
-  transition: theme.transitions.create('transform', {
-    easing: theme.transitions.easing.easeInOut,
-    duration: theme.transitions.duration.enteringScreen
-  })
-}, ownerState.color !== 'default' && {
-  backgroundColor: (theme.vars || theme).palette[ownerState.color].main,
-  color: (theme.vars || theme).palette[ownerState.color].contrastText
-}, ownerState.variant === 'dot' && {
-  borderRadius: RADIUS_DOT,
-  height: RADIUS_DOT * 2,
-  minWidth: RADIUS_DOT * 2,
-  padding: 0
-}, ownerState.anchorOrigin.vertical === 'top' && ownerState.anchorOrigin.horizontal === 'right' && ownerState.overlap === 'rectangular' && {
-  top: 0,
-  right: 0,
-  transform: 'scale(1) translate(50%, -50%)',
-  transformOrigin: '100% 0%',
-  [`&.${badgeClasses$1.invisible}`]: {
-    transform: 'scale(0) translate(50%, -50%)'
-  }
-}, ownerState.anchorOrigin.vertical === 'bottom' && ownerState.anchorOrigin.horizontal === 'right' && ownerState.overlap === 'rectangular' && {
-  bottom: 0,
-  right: 0,
-  transform: 'scale(1) translate(50%, 50%)',
-  transformOrigin: '100% 100%',
-  [`&.${badgeClasses$1.invisible}`]: {
-    transform: 'scale(0) translate(50%, 50%)'
-  }
-}, ownerState.anchorOrigin.vertical === 'top' && ownerState.anchorOrigin.horizontal === 'left' && ownerState.overlap === 'rectangular' && {
-  top: 0,
-  left: 0,
-  transform: 'scale(1) translate(-50%, -50%)',
-  transformOrigin: '0% 0%',
-  [`&.${badgeClasses$1.invisible}`]: {
-    transform: 'scale(0) translate(-50%, -50%)'
-  }
-}, ownerState.anchorOrigin.vertical === 'bottom' && ownerState.anchorOrigin.horizontal === 'left' && ownerState.overlap === 'rectangular' && {
-  bottom: 0,
-  left: 0,
-  transform: 'scale(1) translate(-50%, 50%)',
-  transformOrigin: '0% 100%',
-  [`&.${badgeClasses$1.invisible}`]: {
-    transform: 'scale(0) translate(-50%, 50%)'
-  }
-}, ownerState.anchorOrigin.vertical === 'top' && ownerState.anchorOrigin.horizontal === 'right' && ownerState.overlap === 'circular' && {
-  top: '14%',
-  right: '14%',
-  transform: 'scale(1) translate(50%, -50%)',
-  transformOrigin: '100% 0%',
-  [`&.${badgeClasses$1.invisible}`]: {
-    transform: 'scale(0) translate(50%, -50%)'
-  }
-}, ownerState.anchorOrigin.vertical === 'bottom' && ownerState.anchorOrigin.horizontal === 'right' && ownerState.overlap === 'circular' && {
-  bottom: '14%',
-  right: '14%',
-  transform: 'scale(1) translate(50%, 50%)',
-  transformOrigin: '100% 100%',
-  [`&.${badgeClasses$1.invisible}`]: {
-    transform: 'scale(0) translate(50%, 50%)'
-  }
-}, ownerState.anchorOrigin.vertical === 'top' && ownerState.anchorOrigin.horizontal === 'left' && ownerState.overlap === 'circular' && {
-  top: '14%',
-  left: '14%',
-  transform: 'scale(1) translate(-50%, -50%)',
-  transformOrigin: '0% 0%',
-  [`&.${badgeClasses$1.invisible}`]: {
-    transform: 'scale(0) translate(-50%, -50%)'
-  }
-}, ownerState.anchorOrigin.vertical === 'bottom' && ownerState.anchorOrigin.horizontal === 'left' && ownerState.overlap === 'circular' && {
-  bottom: '14%',
-  left: '14%',
-  transform: 'scale(1) translate(-50%, 50%)',
-  transformOrigin: '0% 100%',
-  [`&.${badgeClasses$1.invisible}`]: {
-    transform: 'scale(0) translate(-50%, 50%)'
-  }
-}, ownerState.invisible && {
-  transition: theme.transitions.create('transform', {
-    easing: theme.transitions.easing.easeInOut,
-    duration: theme.transitions.duration.leavingScreen
-  })
-}));
-const Badge = /*#__PURE__*/React.forwardRef(function Badge(inProps, ref) {
-  var _ref, _slots$root, _ref2, _slots$badge, _slotProps$root, _slotProps$badge;
-  const props = useThemeProps({
-    props: inProps,
-    name: 'MuiBadge'
-  });
-  const {
-      anchorOrigin: anchorOriginProp = {
-        vertical: 'top',
-        horizontal: 'right'
-      },
-      className,
-      component = 'span',
-      components = {},
-      componentsProps = {},
-      overlap: overlapProp = 'rectangular',
-      color: colorProp = 'default',
-      invisible: invisibleProp = false,
-      max,
-      badgeContent: badgeContentProp,
-      slots,
-      slotProps,
-      showZero = false,
-      variant: variantProp = 'standard'
-    } = props,
-    other = _objectWithoutPropertiesLoose(props, _excluded$i);
-  const prevProps = usePreviousProps$1({
-    anchorOrigin: anchorOriginProp,
-    color: colorProp,
-    overlap: overlapProp,
-    variant: variantProp
-  });
-  let invisible = invisibleProp;
-  if (invisibleProp === false && (badgeContentProp === 0 && !showZero || badgeContentProp == null && variantProp !== 'dot')) {
-    invisible = true;
-  }
-  const {
-    color = colorProp,
-    overlap = overlapProp,
-    anchorOrigin = anchorOriginProp,
-    variant = variantProp
-  } = invisible ? prevProps : props;
-  const ownerState = _extends({}, props, {
-    anchorOrigin,
-    invisible,
-    color,
-    overlap,
-    variant
-  });
-  const classes = useUtilityClasses$h(ownerState);
-  let displayValue;
-  if (variant !== 'dot') {
-    displayValue = badgeContentProp && Number(badgeContentProp) > max ? `${max}+` : badgeContentProp;
-  }
-
-  // support both `slots` and `components` for backward compatibility
-  const RootSlot = (_ref = (_slots$root = slots == null ? void 0 : slots.root) != null ? _slots$root : components.Root) != null ? _ref : BadgeRoot;
-  const BadgeSlot = (_ref2 = (_slots$badge = slots == null ? void 0 : slots.badge) != null ? _slots$badge : components.Badge) != null ? _ref2 : BadgeBadge;
-  const rootSlotProps = (_slotProps$root = slotProps == null ? void 0 : slotProps.root) != null ? _slotProps$root : componentsProps.root;
-  const badgeSlotProps = (_slotProps$badge = slotProps == null ? void 0 : slotProps.badge) != null ? _slotProps$badge : componentsProps.badge;
-  return /*#__PURE__*/jsx(BadgeUnstyled$1, _extends({
-    invisible: invisibleProp,
-    badgeContent: displayValue,
-    showZero: showZero,
-    max: max
-  }, other, {
-    slots: {
-      root: RootSlot,
-      badge: BadgeSlot
-    },
-    className: clsx(rootSlotProps == null ? void 0 : rootSlotProps.className, classes.root, className),
-    slotProps: {
-      root: _extends({}, rootSlotProps, shouldSpreadAdditionalProps$1(RootSlot) && {
-        as: component,
-        ownerState: _extends({}, rootSlotProps == null ? void 0 : rootSlotProps.ownerState, {
-          anchorOrigin,
-          color,
-          overlap,
-          variant
-        })
-      }),
-      badge: _extends({}, badgeSlotProps, {
-        className: clsx(classes.badge, badgeSlotProps == null ? void 0 : badgeSlotProps.className)
-      }, shouldSpreadAdditionalProps$1(BadgeSlot) && {
-        ownerState: _extends({}, badgeSlotProps == null ? void 0 : badgeSlotProps.ownerState, {
-          anchorOrigin,
-          color,
-          overlap,
-          variant
-        })
-      })
-    },
-    ref: ref
-  }));
-});
-process.env.NODE_ENV !== "production" ? Badge.propTypes /* remove-proptypes */ = {
-  // ----------------------------- Warning --------------------------------
-  // | These PropTypes are generated from the TypeScript type definitions |
-  // |     To update them edit the d.ts file and run "yarn proptypes"     |
-  // ----------------------------------------------------------------------
-  /**
-   * The anchor of the badge.
-   * @default {
-   *   vertical: 'top',
-   *   horizontal: 'right',
-   * }
-   */
-  anchorOrigin: PropTypes.shape({
-    horizontal: PropTypes.oneOf(['left', 'right']).isRequired,
-    vertical: PropTypes.oneOf(['bottom', 'top']).isRequired
-  }),
-  /**
-   * The content rendered within the badge.
-   */
-  badgeContent: PropTypes.node,
-  /**
-   * The badge will be added relative to this node.
-   */
-  children: PropTypes.node,
-  /**
-   * Override or extend the styles applied to the component.
-   */
-  classes: PropTypes.object,
-  /**
-   * @ignore
-   */
-  className: PropTypes.string,
-  /**
-   * The color of the component.
-   * It supports both default and custom theme colors, which can be added as shown in the
-   * [palette customization guide](https://mui.com/material-ui/customization/palette/#adding-new-colors).
-   * @default 'default'
-   */
-  color: PropTypes /* @typescript-to-proptypes-ignore */.oneOfType([PropTypes.oneOf(['default', 'primary', 'secondary', 'error', 'info', 'success', 'warning']), PropTypes.string]),
-  /**
-   * The component used for the root node.
-   * Either a string to use a HTML element or a component.
-   */
-  component: PropTypes.elementType,
-  /**
-   * The components used for each slot inside.
-   *
-   * This prop is an alias for the `slots` prop.
-   * It's recommended to use the `slots` prop instead.
-   *
-   * @default {}
-   */
-  components: PropTypes.shape({
-    Badge: PropTypes.elementType,
-    Root: PropTypes.elementType
-  }),
-  /**
-   * The extra props for the slot components.
-   * You can override the existing props or add new ones.
-   *
-   * This prop is an alias for the `slotProps` prop.
-   * It's recommended to use the `slotProps` prop instead, as `componentsProps` will be deprecated in the future.
-   *
-   * @default {}
-   */
-  componentsProps: PropTypes.shape({
-    badge: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
-    root: PropTypes.oneOfType([PropTypes.func, PropTypes.object])
-  }),
-  /**
-   * If `true`, the badge is invisible.
-   * @default false
-   */
-  invisible: PropTypes.bool,
-  /**
-   * Max count to show.
-   * @default 99
-   */
-  max: PropTypes.number,
-  /**
-   * Wrapped shape the badge should overlap.
-   * @default 'rectangular'
-   */
-  overlap: PropTypes.oneOf(['circular', 'rectangular']),
-  /**
-   * Controls whether the badge is hidden when `badgeContent` is zero.
-   * @default false
-   */
-  showZero: PropTypes.bool,
-  /**
-   * The props used for each slot inside the Badge.
-   * @default {}
-   */
-  slotProps: PropTypes.shape({
-    badge: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
-    root: PropTypes.oneOfType([PropTypes.func, PropTypes.object])
-  }),
-  /**
-   * The components used for each slot inside the Badge.
-   * Either a string to use a HTML element or a component.
-   * @default {}
-   */
-  slots: PropTypes.shape({
-    badge: PropTypes.elementType,
-    root: PropTypes.elementType
-  }),
-  /**
-   * The system prop that allows defining system overrides as well as additional CSS styles.
-   */
-  sx: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.func, PropTypes.object, PropTypes.bool])), PropTypes.func, PropTypes.object]),
-  /**
-   * The variant to use.
-   * @default 'standard'
-   */
-  variant: PropTypes /* @typescript-to-proptypes-ignore */.oneOfType([PropTypes.oneOf(['dot', 'standard']), PropTypes.string])
-} : void 0;
-var Badge$1 = Badge;
 
 function getButtonUtilityClass(slot) {
   return generateUtilityClass('MuiButton', slot);
@@ -21660,7 +22067,7 @@ function formControlState({
 /**
  * @ignore - internal component.
  */
-const FormControlContext = /*#__PURE__*/React.createContext();
+const FormControlContext = /*#__PURE__*/React.createContext(undefined);
 if (process.env.NODE_ENV !== 'production') {
   FormControlContext.displayName = 'FormControlContext';
 }
@@ -26169,7 +26576,7 @@ const UserDropdown = props => {
     Icon: LogoutVariant,
     onClick: handleLogout
   }];
-  return /*#__PURE__*/jsxs(Fragment, {
+  return /*#__PURE__*/jsxs(Fragment$1, {
     children: [/*#__PURE__*/jsx(Badge$1, {
       overlap: "circular",
       onClick: handleDropdownOpen,
@@ -26345,7 +26752,7 @@ const AppBarContent$1 = props => {
   } = props;
   const render = {
     loading: null,
-    authorized: /*#__PURE__*/jsxs(Fragment, {
+    authorized: /*#__PURE__*/jsxs(Fragment$1, {
       children: [/*#__PURE__*/jsx(LanguageDropdown, {
         settings: settings,
         saveSettings: saveSettings
@@ -26391,7 +26798,7 @@ const AppBarContent = props => {
   } = props;
   const render = {
     loading: null,
-    authorized: /*#__PURE__*/jsxs(Fragment, {
+    authorized: /*#__PURE__*/jsxs(Fragment$1, {
       children: [/*#__PURE__*/jsxs(Box$1, {
         className: "actions-left",
         sx: {
@@ -26445,6 +26852,7 @@ const UserLayout = ({
   user,
   logout,
   status,
+  router,
   children
 }) => {
   // ** Hooks
@@ -26468,9 +26876,11 @@ const UserLayout = ({
   const hidden = useMediaQuery(_theme => _theme.breakpoints.down('lg'), {
     noSsr: true
   });
+  useTheme$5();
   const horizontalLayoutProps = {
     horizontalNavItems: horizontalNavItems && horizontalNavItems(),
     subNavElements: subNavElements && subNavElements(),
+    router,
     horizontalAppBarContent: () => /*#__PURE__*/jsx(AppBarContent$1, {
       ...acountStatusProps,
       settings: settings,
@@ -26480,6 +26890,7 @@ const UserLayout = ({
   const verticalLayoutProps = {
     verticalNavItems: verticalNavItems && verticalNavItems(),
     subNavElements: subNavElements && subNavElements(),
+    router,
     verticalAppBarContent: props => /*#__PURE__*/jsx(AppBarContent, {
       ...acountStatusProps,
       hidden: hidden,
@@ -26498,5 +26909,5 @@ const UserLayout = ({
   });
 };
 
-export { BlankLayout, FallbackSpinner, GlobalStyles$1 as GlobalStyles, Logo, ReactHotToast, ScrollToTop, SettingsConsumer, SettingsContext, SettingsProvider, StepperWrapper, ThemeComponent, UseBgColor, UserLayout, createEmotionCache, formatCVC, formatCreditCardNumber, formatDate, formatDateToMonthShort, formatExpirationDate, getDateRange, getInitials, hexToRGBA, isFloat, themeConfig, useClipboard, useSettings };
+export { BlankLayout, FallbackSpinner, GlobalStyles$1 as GlobalStyles, Logo, Overrides, ReactHotToast, ScrollToTop, SettingsConsumer, SettingsContext, SettingsProvider, StepperWrapper, SwiperControls, SwiperFreeMode, ThemeComponent, ThemeComponentService, Typography$2 as Typography, UseBgColor, UserLayout, UserThemeOptions, breakpoints, createEmotionCache, formatCVC, formatCreditCardNumber, formatDate, formatDateToMonthShort, formatExpirationDate, getDateRange, getInitials, hexToRGBA, isFloat, themeConfig, themeOptions, useClipboard, useSettings };
 //# sourceMappingURL=index.es.js.map

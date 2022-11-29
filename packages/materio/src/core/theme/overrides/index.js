@@ -29,7 +29,7 @@ import MuiToggleButton from './toggleButton'
 import MuiTooltip from './tooltip'
 import MuiTypography from './typography'
 
-const Overrides = (theme, settings) => {
+export const Overrides = (theme, settings) => {
   const { skin } = settings
   const button = MuiButton(theme)
   const chip = MuiChip(theme)

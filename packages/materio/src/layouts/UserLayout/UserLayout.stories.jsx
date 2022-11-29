@@ -1,5 +1,6 @@
 /* eslint-disable import/no-anonymous-default-export */
 
+import { DiamondSharp, HomeMaxOutlined, ShieldOutlined } from '@mui/icons-material'
 import UserLayout from './UserLayout'
 
 const args = {
@@ -11,23 +12,28 @@ const args = {
     avatar: 'https://randomuser.me/api/?gender=female&results=1'
   },
   logout: () => {},
-  horizonalNavItems: () => [
+  horizontalNavItems: () => [
     {
       title: 'Dashboard',
       path: '/dashboard',
-      icon: HomeOutline
+      icon: HomeMaxOutlined
     },
     {
       title: 'Events',
       path: '/events',
-      icon: ShieldOutline
+      icon: ShieldOutlined
     },
     {
       title: 'Challenges',
       path: '/challenges',
-      icon: DiamondStone
+      icon: DiamondSharp
     }
-  ]
+  ],
+  router: {
+    pathname: '/dashboard',
+    asPath: '/dashboard',
+    query: {}
+  }
 }
 
 const Template = () => <UserLayout {...args} />

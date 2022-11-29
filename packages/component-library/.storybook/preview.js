@@ -1,6 +1,11 @@
 import { useMemo } from 'react'
 
-import { SettingsConsumer, SettingsProvider, ThemeComponent, themeConfig } from 'materio'
+import CssBaseline from '@mui/material/CssBaseline'
+import GlobalStyles from '@mui/material/GlobalStyles'
+import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material/styles'
+import { deepmerge } from '@mui/utils'
+
+import { SettingsConsumer, SettingsProvider, ThemeComponentService, themeConfig } from 'materio'
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -47,7 +52,7 @@ export const withMuiTheme = (Story, context) => {
     <SettingsProvider>
       <SettingsConsumer>
         {({ settings }) => (
-          <ThemeComponent settings={theme}>
+          <ThemeComponent settings={settings}>
             <Story />
           </ThemeComponent>
         )}
@@ -55,5 +60,14 @@ export const withMuiTheme = (Story, context) => {
     </SettingsProvider>
   )
 }
+
+const ThemeComponent = ThemeComponentService({
+  CssBaseline,
+  GlobalStyles,
+  createTheme,
+  responsiveFontSizes,
+  ThemeProvider,
+  deepmerge
+})
 
 export const decorators = [withMuiTheme]

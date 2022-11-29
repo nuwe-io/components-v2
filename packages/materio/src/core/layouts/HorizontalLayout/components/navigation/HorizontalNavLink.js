@@ -3,7 +3,6 @@ import { Fragment } from 'react'
 
 // ** Next Imports
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 
 // ** MUI Imports
 import Box from '@mui/material/Box'
@@ -57,10 +56,9 @@ const ListItem = styled(MuiListItem)(({ theme }) => ({
 
 const HorizontalNavLink = props => {
   // ** Props
-  const { item, settings, hasParent } = props
+  const { item, settings, hasParent, router } = props
 
   // ** Hook & Vars
-  const router = useRouter()
   const { navSubItemIcon, menuTextTruncate } = themeConfig
   const IconTag = item.icon ? item.icon : navSubItemIcon
   const Wrapper = !hasParent ? List : Fragment

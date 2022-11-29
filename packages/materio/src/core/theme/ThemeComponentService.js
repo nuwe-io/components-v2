@@ -1,9 +1,3 @@
-// ** MUI Imports
-import CssBaseline from '@mui/material/CssBaseline'
-import GlobalStyles from '@mui/material/GlobalStyles'
-import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material/styles'
-import { deepmerge } from '@mui/utils'
-
 // ** Theme Override Imports
 import { themeConfig } from '../../configs'
 import UserThemeOptions from '../../layouts/UserLayout/UserThemeOptions'
@@ -12,9 +6,12 @@ import overrides from './overrides'
 import themeOptions from './ThemeOptions'
 import typography from './typography'
 
-export const ThemeComponent = props => {
+export const ThemeComponentService = themeProps => props => {
   // ** Props
   const { settings, children } = props
+
+  const { CssBaseline, GlobalStyles, createTheme, responsiveFontSizes, ThemeProvider, deepmerge } =
+    themeProps
 
   // ** Merged ThemeOptions of Core and User
   const coreThemeConfig = themeOptions(settings)
@@ -48,5 +45,3 @@ export const ThemeComponent = props => {
     </ThemeProvider>
   )
 }
-
-export default ThemeComponent

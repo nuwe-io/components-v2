@@ -1,3 +1,4 @@
+import { useTheme } from '@emotion/react'
 import useMediaQuery from '@mui/material/useMediaQuery'
 
 // ** Component Import
@@ -15,6 +16,7 @@ export const UserLayout = ({
   user,
   logout,
   status,
+  router,
   children
 }) => {
   // ** Hooks
@@ -28,13 +30,14 @@ export const UserLayout = ({
    *  Please refer useMediaQuery() hook: https://mui.com/material-ui/react-use-media-query/,
    *  to know more about what values can be passed to this hook.
    */
-  const hidden = useMediaQuery(_theme => _theme.breakpoints.down('lg'), {
-    noSsr: true
-  })
+  const hidden = useMediaQuery(_theme => _theme.breakpoints.down('lg'), { noSsr: true })
+
+  const theme = useTheme()
 
   const horizontalLayoutProps = {
     horizontalNavItems: horizontalNavItems && horizontalNavItems(),
     subNavElements: subNavElements && subNavElements(),
+    router,
     horizontalAppBarContent: () => (
       <HorizontalAppBarContent
         {...acountStatusProps}
@@ -47,6 +50,7 @@ export const UserLayout = ({
   const verticalLayoutProps = {
     verticalNavItems: verticalNavItems && verticalNavItems(),
     subNavElements: subNavElements && subNavElements(),
+    router,
     verticalAppBarContent: props => (
       <VerticalAppBarContent
         {...acountStatusProps}
