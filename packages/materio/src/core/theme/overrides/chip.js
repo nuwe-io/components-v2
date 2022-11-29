@@ -1,5 +1,6 @@
 // ** Util Imports
-import { hexToRGBA } from '@core/utils/hex-to-rgba'
+
+import { hexToRGBA } from '../../utils'
 
 const Chip = theme => {
   return {

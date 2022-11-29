@@ -22,13 +22,13 @@ import ChevronLeft from 'mdi-material-ui/ChevronLeft'
 import ChevronRight from 'mdi-material-ui/ChevronRight'
 
 // ** Configs Import
-import themeConfig from '@configs/themeConfig'
 
 // ** Utils
-import { hasActiveChild, removeChildren } from '@core/layouts/utils'
 
 // ** Custom Components Imports
-import UserIcon from '@layouts/components/UserIcon'
+import { themeConfig } from '../../../../../configs'
+import UserIcon from '../../../../../layouts/components/UserIcon'
+import { hasActiveChild, removeChildren } from '../../../utils'
 import VerticalNavItems from './VerticalNavItems'
 
 const MenuItemTextWrapper = styled(Box)(() => ({

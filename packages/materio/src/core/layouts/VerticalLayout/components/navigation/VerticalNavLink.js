@@ -12,13 +12,13 @@ import { styled, useTheme } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 
 // ** Configs Import
-import themeConfig from '@configs/themeConfig'
 
 // ** Custom Components Imports
-import UserIcon from '@layouts/components/UserIcon'
+import { themeConfig } from '../../../../../configs'
+import UserIcon from '../../../../../layouts/components/UserIcon'
+import { handleURLQueries } from '../../../utils'
 
 // ** Utils
-import { handleURLQueries } from '@core/layouts/utils'
 
 // ** Styled Components
 const MenuNavLink = styled(ListItemButton)(({ theme }) => ({

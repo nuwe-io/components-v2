@@ -1,5 +1,6 @@
 // ** Util Import
-import { hexToRGBA } from '@core/utils/hex-to-rgba'
+
+import { hexToRGBA } from '../../utils'
 
 const Pagination = theme => {
   return {

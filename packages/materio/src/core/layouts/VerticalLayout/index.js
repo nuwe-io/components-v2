@@ -1,1 +1,1 @@
-export { default as VerticalLayout } from './VerticalLayout'
+export * from './VerticalLayout'

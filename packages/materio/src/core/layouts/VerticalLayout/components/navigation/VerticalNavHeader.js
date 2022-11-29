@@ -11,9 +11,9 @@ import Typography from '@mui/material/Typography'
 import CircleOutline from 'mdi-material-ui/CircleOutline'
 import Close from 'mdi-material-ui/Close'
 import RecordCircleOutline from 'mdi-material-ui/RecordCircleOutline'
+import { themeConfig } from '../../../../../configs'
 
 // ** Configs
-import themeConfig from '@configs/themeConfig'
 
 // ** Styled Components
 const MenuHeaderWrapper = styled(Box)(({ theme }) => ({

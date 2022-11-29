@@ -1,7 +1,7 @@
 /* eslint-disable import/no-anonymous-default-export */
-import themeConfig from '@configs/themeConfig'
 
-import UserDropdownComponent from './UserDropdown'
+import { themeConfig } from '../../../configs'
+import { UserDropdown as UserDropdownComponent } from './UserDropdown'
 
 export default {
   title: 'core/components',

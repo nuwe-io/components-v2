@@ -7,19 +7,19 @@ import Box from '@mui/material/Box'
 // ** Icons Imports
 
 // ** Theme Config Import
-import themeConfig from '@configs/themeConfig'
 
 // ** Components
-import DatePickerWrapper from '@core/styles/libs/react-datepicker'
 
 // ** Styled Component
 import AppBar from './components/appBar'
 import Navigation from './components/navigation'
 
+import { themeConfig } from '../../../configs'
+import DatePickerWrapper from '../../styles/libs/react-datepicker'
 import { ScrollToTopSection } from '../components/ScrollToTopSection'
 import { ContentWrapper, MainContentWrapper, VerticalLayoutWrapper } from './styles'
 
-const VerticalLayout = props => {
+export const VerticalLayout = props => {
   // ** Props
   const { hidden, settings, children, scrollToTop } = props
 
@@ -81,5 +81,3 @@ const VerticalLayout = props => {
     </>
   )
 }
-
-export default VerticalLayout

@@ -17,13 +17,13 @@ import Typography from '@mui/material/Typography'
 import clsx from 'clsx'
 
 // ** Theme Config Import
-import themeConfig from '@configs/themeConfig'
 
 // ** Custom Components Imports
-import UserIcon from '@layouts/components/UserIcon'
+import { themeConfig } from '../../../../../configs'
+import UserIcon from '../../../../../layouts/components/UserIcon'
+import { hexToRGBA } from '../../../../utils'
 
 // ** Util Import
-import { hexToRGBA } from '@core/utils/hex-to-rgba'
 
 const ListItem = styled(MuiListItem)(({ theme }) => ({
   width: 'auto',

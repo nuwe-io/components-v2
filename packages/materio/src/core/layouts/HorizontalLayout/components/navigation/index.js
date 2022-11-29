@@ -1,8 +1,8 @@
 // ** MUI Imports
 import Box from '@mui/material/Box'
+import { themeConfig } from '../../../../../configs'
 
 // ** Config Import
-import themeConfig from '@configs/themeConfig'
 
 // ** Menu Components
 import HorizontalNavItems from './HorizontalNavItems'

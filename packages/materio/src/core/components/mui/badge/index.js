@@ -1,15 +1,15 @@
 // ** MUI Imports
 import MuiBadge from '@mui/material/Badge'
+import { UseBgColor } from '../../../hooks'
 
 // ** Hooks Imports
-import useBgColor from '@core/hooks/useBgColor'
 
 const Badge = props => {
   // ** Props
   const { sx, skin, color } = props
 
   // ** Hook
-  const bgColors = useBgColor()
+  const bgColors = UseBgColor()
 
   const colors = {
     primary: { ...bgColors.primaryLight },

@@ -3,12 +3,12 @@ import CssBaseline from '@mui/material/CssBaseline'
 import GlobalStyles from '@mui/material/GlobalStyles'
 import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material/styles'
 import { deepmerge } from '@mui/utils'
+import { themeConfig } from '../../configs'
 
 // ** Module imports
-import themeConfig from '@configs/themeConfig'
-import UserThemeOptions from '@layouts/UserLayout/UserThemeOptions'
 
 // ** Theme Override Imports
+import UserThemeOptions from '../../layouts/UserLayout/UserThemeOptions'
 import GlobalStyling from './globalStyles'
 import overrides from './overrides'
 import themeOptions from './ThemeOptions'

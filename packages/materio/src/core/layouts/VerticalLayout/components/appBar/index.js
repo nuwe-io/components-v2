@@ -4,8 +4,9 @@ import { styled, useTheme } from '@mui/material/styles'
 import MuiToolbar from '@mui/material/Toolbar'
 import useScrollTrigger from '@mui/material/useScrollTrigger'
 
+import { hexToRGBA } from '../../../../utils'
+
 // ** Util Import
-import { hexToRGBA } from '@core/utils/hex-to-rgba'
 
 const AppBar = styled(MuiAppBar)(({ theme }) => ({
   transition: 'none',

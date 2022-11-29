@@ -18,15 +18,13 @@ import Typography from '@mui/material/Typography'
 import clsx from 'clsx'
 
 // ** Theme Config Import
-import themeConfig from '@configs/themeConfig'
 
 // ** Custom Components Imports
-import UserIcon from '@layouts/components/UserIcon'
-
-// import CanViewNavLink from layouts/components/acl/CanViewNavLink'
+import { themeConfig } from '../../../../configs'
+import { hexToRGBA } from '../../../../core'
+import UserIcon from '../../UserIcon'
 
 // ** Util Import
-import { hexToRGBA } from '@core/utils/hex-to-rgba'
 
 const ListItem = styled(MuiListItem)(({ theme }) => ({
   width: 'auto',

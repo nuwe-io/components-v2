@@ -26,16 +26,14 @@ import ChevronLeft from 'mdi-material-ui/ChevronLeft'
 import ChevronRight from 'mdi-material-ui/ChevronRight'
 
 // ** Theme Config Import
-import themeConfig from '@configs/themeConfig'
 
 // ** Custom Components Imports
-import UserIcon from '@layouts/components/UserIcon'
 import HorizontalNavItems from './HorizontalNavItems'
 
-// ** Utils
-import { hasActiveChild } from '@core/layouts/utils'
-
-import { hexToRGBA } from '@core/utils/hex-to-rgba'
+import { themeConfig } from '../../../../configs'
+import { hexToRGBA } from '../../../../core'
+import { hasActiveChild } from '../../../../core/layouts/utils'
+import UserIcon from '../../UserIcon'
 
 // ** Styled Components
 const ListItem = styled(MuiListItem)(({ theme }) => ({

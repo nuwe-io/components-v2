@@ -3,10 +3,7 @@ import { useMemo } from 'react'
 import themeConfig from '../src/configs/themeConfig'
 import ThemeComponent from '../src/core/theme/ThemeComponent'
 
-import {
-  SettingsConsumer,
-  SettingsProvider
-} from '../src/core/context/settingsContext'
+import { SettingsConsumer, SettingsProvider } from '../src/core/context/settingsContext'
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },

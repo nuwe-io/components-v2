@@ -7,16 +7,16 @@ import List from '@mui/material/List'
 import { styled, useTheme } from '@mui/material/styles'
 
 // ** Third Party Components
-import themeConfig from '@configs/themeConfig'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 
 // ** Component Imports
+import { themeConfig } from '../../../../../configs'
+import { hexToRGBA } from '../../../../utils'
 import Drawer from './Drawer'
 import VerticalNavHeader from './VerticalNavHeader'
 import VerticalNavItems from './VerticalNavItems'
 
 // ** Util Import
-import { hexToRGBA } from '@core/utils/hex-to-rgba'
 
 const StyledBoxForShadow = styled(Box)(({ theme }) => ({
   top: 60,

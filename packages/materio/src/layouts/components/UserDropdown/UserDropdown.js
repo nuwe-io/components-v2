@@ -23,10 +23,9 @@ import LogoutVariant from 'mdi-material-ui/LogoutVariant'
 import { DialogContact } from '../ContactDialog'
 import { styles } from './styles'
 
-const UserDropdown = props => {
+export const UserDropdown = props => {
   // ** Props
-  const { settings, user, logout, feedBack, texts, goToSettings, goToProfile } =
-    props
+  const { settings, user, logout, feedBack, texts, goToSettings, goToProfile } = props
 
   // ** States
   const [show, setShow] = useState(false)
@@ -137,11 +136,7 @@ const UserDropdown = props => {
                 horizontal: 'right'
               }}
             >
-              <Avatar
-                alt={user.name}
-                src={user.image}
-                sx={{ width: '2.5rem', height: '2.5rem' }}
-              />
+              <Avatar alt={user.name} src={user.image} sx={{ width: '2.5rem', height: '2.5rem' }} />
             </Badge>
             <Box
               sx={{
@@ -152,10 +147,7 @@ const UserDropdown = props => {
               }}
             >
               <Typography sx={{ fontWeight: 600 }}>{user.username}</Typography>
-              <Typography
-                variant='body2'
-                sx={{ fontSize: '0.8rem', color: 'text.disabled' }}
-              >
+              <Typography variant='body2' sx={{ fontSize: '0.8rem', color: 'text.disabled' }}>
                 {user.role}
               </Typography>
             </Box>
@@ -224,5 +216,3 @@ const CustomMenuIcon = ({ title, onClick, children }) => (
     </Box>
   </MenuItem>
 )
-
-export default UserDropdown

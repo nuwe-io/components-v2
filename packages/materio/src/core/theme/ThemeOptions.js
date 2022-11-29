@@ -1,14 +1,13 @@
 // ** MUI Theme Provider
 import { deepmerge } from '@mui/utils'
 
+import UserThemeOptions from '../../layouts/UserLayout/UserThemeOptions'
+
 // ** Theme Override Imports
 import breakpoints from './breakpoints'
 import palette from './palette'
 import shadows from './shadows'
 import spacing from './spacing'
-
-// ** User Theme Options
-import UserThemeOptions from '@layouts/UserLayout/UserThemeOptions'
 
 const themeOptions = settings => {
   // ** Vars

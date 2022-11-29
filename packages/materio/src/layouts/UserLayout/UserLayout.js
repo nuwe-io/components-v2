@@ -1,16 +1,14 @@
 import useMediaQuery from '@mui/material/useMediaQuery'
 
-// ** Layout Imports
-import Layout from '@core/layouts/Layout'
-
 // ** Component Import
+import { useSettings } from '../../core'
+import Layout from '../../core/layouts/Layout'
 import HorizontalAppBarContent from '../components/horizontal/AppBarContent'
 import VerticalAppBarContent from '../components/vertical/AppBarContent'
 
 // ** Hook Import
-import { useSettings } from '@core/hooks/useSettings'
 
-const UserLayout = ({
+export const UserLayout = ({
   horizontalNavItems,
   verticalNavItems,
   subNavElements,

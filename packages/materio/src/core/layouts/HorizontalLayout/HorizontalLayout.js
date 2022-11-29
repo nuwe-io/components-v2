@@ -3,15 +3,16 @@ import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 
 // ** Core imports
-import DatePickerWrapper from '@core/styles/libs/react-datepicker'
-import { hexToRGBA } from '@core/utils/hex-to-rgba'
+
+import DatePickerWrapper from '../../styles/libs/react-datepicker'
+import { hexToRGBA } from '../../utils'
 
 import { ScrollToTopSection } from '../components/ScrollToTopSection'
 import AppBarContent from './components/app-bar-content'
 
 import { ContentWrapper, HorizontalLayoutWrapper, Toolbar } from './styles'
 
-const HorizontalLayout = props => {
+export const HorizontalLayout = props => {
   // ** Props
   const { hidden, children, settings, scrollToTop, saveSettings } = props
 
@@ -93,5 +94,3 @@ const HorizontalLayout = props => {
     </HorizontalLayoutWrapper>
   )
 }
-
-export default HorizontalLayout

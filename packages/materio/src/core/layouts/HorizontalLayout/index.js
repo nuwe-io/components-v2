@@ -1,1 +1,1 @@
-export { default as HorizontalLayout } from './HorizontalLayout'
+export * from './HorizontalLayout'

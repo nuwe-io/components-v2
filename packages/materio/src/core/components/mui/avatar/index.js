@@ -5,8 +5,9 @@ import { forwardRef } from 'react'
 import MuiAvatar from '@mui/material/Avatar'
 import { lighten, useTheme } from '@mui/material/styles'
 
+import { UseBgColor } from '../../../hooks'
+
 // ** Hooks Imports
-import useBgColor from '@core/hooks/useBgColor'
 
 const Avatar = forwardRef((props, ref) => {
   // ** Props
@@ -14,7 +15,7 @@ const Avatar = forwardRef((props, ref) => {
 
   // ** Hook
   const theme = useTheme()
-  const bgColors = useBgColor()
+  const bgColors = UseBgColor()
 
   const getAvatarStyles = (skin, skinColor) => {
     let avatarStyles

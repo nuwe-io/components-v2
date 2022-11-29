@@ -29,6 +29,8 @@ export const globalTypes = {
   }
 }
 
+// Add your theme configurations to an object that you can
+// pull your desired theme from.
 const THEMES = {
   light: themeConfig,
   dark: { ...themeConfig, mode: 'dark' }

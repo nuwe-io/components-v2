@@ -2,9 +2,9 @@
 import Box from '@mui/material/Box'
 import PropTypes from 'prop-types'
 
-import { useSettings } from '@core/hooks/useSettings'
-import LanguageDropdown from '@core/layouts/components/LanguageDropdown'
-import ModeToggler from '@core/layouts/components/ModeToggler'
+import { useSettings } from '../../core'
+import LanguageDropdown from '../../core/layouts/components/LanguageDropdown'
+import ModeToggler from '../../core/layouts/components/ModeToggler'
 
 import { BlankLayoutWrapper } from './BlankLayoutWrapper'
 
@@ -14,7 +14,7 @@ import { BlankLayoutWrapper } from './BlankLayoutWrapper'
  * @param {*} param0
  * @returns
  */
-const BlankLayout = ({ hideNav, children }) => {
+export const BlankLayout = ({ hideNav, children }) => {
   const { settings, saveSettings } = useSettings()
 
   return (
