@@ -1,16 +1,16 @@
 /* eslint-disable import/no-anonymous-default-export */
 import themeConfig from 'configs/themeConfig'
 
-import UserDropdown from './UserDropdown'
+import UserDropdownComponent from './UserDropdown'
 
 export default {
-  title: 'Materio/UserDropdown',
-  component: UserDropdown
+  title: 'core/components',
+  component: UserDropdownComponent
 }
 
-const Template = args => <UserDropdown {...args} />
+const Template = args => <UserDropdownComponent {...args} />
 
-export const Default = Template.bind({})
-Default.args = {
+export const UserDropdown = Template.bind({})
+UserDropdown.args = {
   settings: themeConfig
 }

@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Box from '@mui/material/Box'
 import { styled } from '@mui/material/styles'
 
+import { Logo } from 'core/components'
 import Navigation from '../navigation'
 
 const StyledLink = styled('a')(({ theme }) => ({
@@ -35,7 +36,9 @@ const AppBarContent = props => {
       ) : (
         <>
           <Link href='/' passHref>
-            <StyledLink>{/*<Logo />*/}</StyledLink>
+            <StyledLink>
+              <Logo />
+            </StyledLink>
           </Link>
           <Navigation {...props} />
         </>

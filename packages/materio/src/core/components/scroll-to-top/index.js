@@ -10,7 +10,7 @@ const ScrollToTopStyled = styled('div')(({ theme }) => ({
   bottom: theme.spacing(10)
 }))
 
-const ScrollToTop = (props) => {
+export const ScrollToTop = props => {
   // ** Props
   const { children, className } = props
 
