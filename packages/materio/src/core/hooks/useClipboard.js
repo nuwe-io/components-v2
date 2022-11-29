@@ -4,11 +4,11 @@ import { useCallback, useRef } from 'react'
 // ** Third Party Imports
 import copy from 'clipboard-copy'
 
-const isInputLike = (node) => {
+const isInputLike = node => {
   return node && (node.nodeName === 'TEXTAREA' || node.nodeName === 'INPUT')
 }
 
-const useClipboard = (options = {}) => {
+export const useClipboard = (options = {}) => {
   const targetRef = useRef(null)
 
   const handleSuccess = () => {
@@ -30,11 +30,11 @@ const useClipboard = (options = {}) => {
     }
   }
 
-  const clipboardCopy = (text) => {
+  const clipboardCopy = text => {
     copy(text).then(handleSuccess).catch(handleError)
   }
 
-  const copyHandler = useCallback((text) => {
+  const copyHandler = useCallback(text => {
     if (typeof text === 'string') {
       clipboardCopy(text)
     } else if (targetRef.current) {

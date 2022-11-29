@@ -5,7 +5,7 @@ import { styled } from '@mui/material/styles'
 // ** Util Imports
 import { hexToRGBA } from 'core/utils/hex-to-rgba'
 
-const StepperWrapper = styled(Box)(({ theme }) => ({
+export const StepperWrapper = styled(Box)(({ theme }) => ({
   [theme.breakpoints.down('md')]: {
     '& .MuiStepper-horizontal:not(.MuiStepper-alternativeLabel)': {
       flexDirection: 'column',
@@ -39,10 +39,9 @@ const StepperWrapper = styled(Box)(({ theme }) => ({
       }
     },
     '& .Mui-error': {
-      '& .MuiStepLabel-labelContainer, & .step-number, & .step-title, & .step-subtitle':
-        {
-          color: theme.palette.error.main
-        }
+      '& .MuiStepLabel-labelContainer, & .step-number, & .step-title, & .step-subtitle': {
+        color: theme.palette.error.main
+      }
     }
   },
   '& .MuiStepConnector-root': {

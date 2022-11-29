@@ -5,7 +5,7 @@ import { styled } from '@mui/material/styles'
 // ** Hook Import
 import { useSettings } from 'core/hooks/useSettings'
 
-const ReactHotToast = styled(Box)(({ theme }) => {
+export const ReactHotToast = styled(Box)(({ theme }) => {
   // ** Hook & Var
   const { settings } = useSettings()
   const { layout, navHidden } = settings
@@ -15,10 +15,7 @@ const ReactHotToast = styled(Box)(({ theme }) => {
       left: `${theme.spacing(6)} !important`,
       right: `${theme.spacing(6)} !important`,
       bottom: `${theme.spacing(6)} !important`,
-      top:
-        layout === 'horizontal' && !navHidden
-          ? '71px !important'
-          : '75px !important'
+      top: layout === 'horizontal' && !navHidden ? '71px !important' : '75px !important'
     },
     '& .react-hot-toast': {
       fontWeight: 400,

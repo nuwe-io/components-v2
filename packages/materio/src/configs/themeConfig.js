@@ -7,7 +7,7 @@
 // ** Icon Import
 import CircleOutline from '@mui/icons-material/Circle'
 
-const themeConfig = {
+export const themeConfig = {
   // ** Layout Configs
   templateName: 'Nuwe' /* App Name */,
   layout: 'horizontal' /* vertical | horizontal */,

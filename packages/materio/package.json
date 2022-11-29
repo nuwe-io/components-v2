@@ -4,7 +4,7 @@
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "scripts": {
-    "dev": "next dev",
+    "build": "rollup -c",
     "start": "next start",
     "lint": "next lint",
     "storybook": "start-storybook -p 6006",
@@ -33,7 +33,6 @@
     "@mui/material": "^5.10.15",
     "@mui/styles": "^5.10.15",
     "@mui/x-data-grid": "^5.17.13",
-    "component-library": "*",
     "date-fns": "^2.29.3"
   },
   "license": "ISC",
@@ -56,6 +55,7 @@
     "rollup": "^2.78.0",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-scss": "^4.0.0",
