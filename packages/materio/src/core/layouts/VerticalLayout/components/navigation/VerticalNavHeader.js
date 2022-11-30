@@ -1,6 +1,3 @@
-// ** Next Import
-import Link from 'next/link'
-
 // ** MUI Imports
 import Box from '@mui/material/Box'
 import IconButton from '@mui/material/IconButton'
@@ -12,6 +9,7 @@ import CircleOutline from 'mdi-material-ui/CircleOutline'
 import Close from 'mdi-material-ui/Close'
 import RecordCircleOutline from 'mdi-material-ui/RecordCircleOutline'
 import { themeConfig } from '../../../../../configs'
+import { Link } from '../../../../components'
 
 // ** Configs
 

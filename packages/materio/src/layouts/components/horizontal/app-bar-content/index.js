@@ -1,12 +1,10 @@
-// ** Next Import
-import Link from 'next/link'
-
 // ** MUI Imports
 import Box from '@mui/material/Box'
 import { styled } from '@mui/material/styles'
 
 import { Logo } from 'components/atoms'
 
+import { Link } from '../../../../core'
 import Navigation from '../../horizontal/navigation'
 
 const StyledLink = styled('a')(({ theme }) => ({
@@ -16,7 +14,7 @@ const StyledLink = styled('a')(({ theme }) => ({
   marginRight: theme.spacing(8)
 }))
 
-const AppBarContent = (props) => {
+const AppBarContent = props => {
   // ** Props
   const {
     horizontalAppBarContent: userHorizontalAppBarContent,

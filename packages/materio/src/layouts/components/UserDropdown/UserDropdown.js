@@ -1,5 +1,4 @@
 // ** React Imports
-import { useRouter } from 'next/router'
 import { Fragment, useState } from 'react'
 
 import PropTypes from 'prop-types'
@@ -20,6 +19,7 @@ import CogOutline from 'mdi-material-ui/CogOutline'
 import EmailOutline from 'mdi-material-ui/EmailOutline'
 import LogoutVariant from 'mdi-material-ui/LogoutVariant'
 
+import { useRouter } from '../../../core'
 import { DialogContact } from '../ContactDialog'
 import { styles } from './styles'
 

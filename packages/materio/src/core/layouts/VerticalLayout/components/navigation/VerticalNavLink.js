@@ -1,7 +1,3 @@
-// ** Next Imports
-import Link from 'next/link'
-import { useRouter } from 'next/router'
-
 // ** MUI Imports
 import Box from '@mui/material/Box'
 import Chip from '@mui/material/Chip'
@@ -16,6 +12,8 @@ import Typography from '@mui/material/Typography'
 // ** Custom Components Imports
 import { themeConfig } from '../../../../../configs'
 import UserIcon from '../../../../../layouts/components/UserIcon'
+import { Link } from '../../../../components'
+import { useRouter } from '../../../../hooks'
 import { handleURLQueries } from '../../../utils'
 
 // ** Utils

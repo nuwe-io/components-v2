@@ -1,9 +1,76 @@
-
 # Nuwe multipackage monorepo
+
+Monorepo for design system, shared components and other utils.
 
 ## Project strcuture
 
 ![Packages](./public/packages.png)
+
+## Table of contents
+
+- [Nuwe multipackage monorepo](#nuwe-multipackage-monorepo)
+  - [Project strcuture](#project-strcuture)
+  - [Table of contents](#table-of-contents)
+  - [Test the packages in other repos](#test-the-packages-in-other-repos)
+  - [Using conventional commits](#using-conventional-commits)
+    - [There is no develop branch](#there-is-no-develop-branch)
+    - [Branch naming convention](#branch-naming-convention)
+  - [Getting Started](#getting-started)
+  - [Test the packages in other repos](#test-the-packages-in-other-repos-1)
+  - [Using conventional commits](#using-conventional-commits-1)
+    - [Types](#types)
+    - [Scope](#scope)
+    - [Breaking changes](#breaking-changes)
+    - [Fixing up commits](#fixing-up-commits)
+  - [Publishing changes to NPM](#publishing-changes-to-npm)
+  - [Updating dependencies](#updating-dependencies)
+  - [Usefull links](#usefull-links)
+
+
+## Test the packages in other repos
+
+## Using conventional commits
+
+### There is no develop branch
+
+Features should branch off `main` and PRs should go into `main`. This means when a feature has been completed and PR merged, a release will be made in production.
+
+### Branch naming convention
+
+As this is a monorepo and all commits are in one place, we must distinguish branches for the different projects so that we know which commits belong to which when looking at this history. Refer to the below table for how to name branches.
+
+| Project           | Branch Prefix | Examples                                                     |
+| :---------------- | :------------ | :------------------------------------------------------------|
+| Component Library | cl            | `cl/feat/nav-bar`, `cl/fix/footer`                           |
+| Materio           | materio       | `materio/feat/dynamic-inputs`, `materio/fix/firefox-buttons` |
+| Hooks             | hooks         | `hooks/feat/use-auth-user`, `hooks/fix/api-module`           |
+| lib               | lib           | `lib/feat/get-request`, `lib/fix/post-request`               |
+
+
+
+## Getting Started
+
+Install all dependencies via npm
+
+```bash
+npm i
+```
+
+Create build versions for all the shared packages
+
+This runs the `npm build:library` command for all packages where this command is available
+
+```bash
+lerna run build:library
+```
+
+Now you're ready to start developing! `cd` into the directory you want develop in and run commands as normal e.g.
+
+```bash
+cd packages/materio
+npm run storybook
+```
+
 
 ## Test the packages in other repos
 
@@ -61,6 +128,24 @@ If you already made commits and they don't meet the Conventional Commits specifi
 
 - if there's only one commit to redo, the easiest option is to use git *commit --amend with* no staged changes, which will allow you to edit the commit message.
 - if you have multiple commits to reformat, you'll probably need to do an interactive rebase and use the reword option.
+
+
+## Publishing changes to NPM
+
+To publish shared packages:
+
+-   Ensure you are authenticated to publish to NPM via the console (Run `npm login` in your terminal and use the email & credentials in 1password).
+-   Make sure you have installed on required packages (Run `npm` in root directory)
+-   Make sure you're on the `main` branch and there are no local commits
+-   Go to the root directory for the monorepo
+-   Run `lerna publish`
+-   Follow the wizard instructions to publish the packages to NPM
+
+
+## Updating dependencies
+
+Run `npm lernaupdate`, which will start a wizard where you can choose which dependencies to update for which package/app.
+
 
 ## Usefull links
 

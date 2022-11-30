@@ -1,9 +1,6 @@
 // ** React Imports
 import { Fragment, useEffect, useState } from 'react'
 
-// ** Next Import
-import { useRouter } from 'next/router'
-
 // ** MUI Imports
 import Box from '@mui/material/Box'
 import Chip from '@mui/material/Chip'
@@ -33,6 +30,7 @@ import HorizontalNavItems from './HorizontalNavItems'
 // ** Utils
 import { themeConfig } from '../../../../../configs'
 import UserIcon from '../../../../../layouts/components/UserIcon'
+import { useRouter } from '../../../../hooks'
 import { hexToRGBA } from '../../../../utils'
 import { hasActiveChild } from '../../../utils'
 

@@ -1,9 +1,6 @@
 // ** React Imports
 import { Fragment, useEffect, useState } from 'react'
 
-// ** Next Import
-import { useRouter } from 'next/router'
-
 // ** MUI Imports
 import Box from '@mui/material/Box'
 import Chip from '@mui/material/Chip'
@@ -31,7 +28,7 @@ import ChevronRight from 'mdi-material-ui/ChevronRight'
 import HorizontalNavItems from './HorizontalNavItems'
 
 import { themeConfig } from '../../../../configs'
-import { hexToRGBA } from '../../../../core'
+import { hexToRGBA, useRouter } from '../../../../core'
 import { hasActiveChild } from '../../../../core/layouts/utils'
 import UserIcon from '../../UserIcon'
 
@@ -80,6 +77,7 @@ const HorizontalNavGroup = props => {
   // ** Hooks & Vars
   const theme = useTheme()
   const router = useRouter()
+
   const currentURL = router.pathname
   const { skin, direction } = settings
 

@@ -1,10 +1,10 @@
 {
-  "name": "materio",
-  "version": "0.1.0",
+  "name": "@nuwe/materio",
+  "version": "0.0.1",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "scripts": {
-    "build": "rollup -c",
+    "build:library": "rollup -c",
     "start": "next start",
     "lint": "next lint",
     "storybook": "start-storybook -p 6006",

@@ -1,9 +1,6 @@
 // ** React Imports
 import { Fragment } from 'react'
 
-// ** Next Imports
-import Link from 'next/link'
-
 // ** MUI Imports
 import Box from '@mui/material/Box'
 import Chip from '@mui/material/Chip'
@@ -20,6 +17,7 @@ import clsx from 'clsx'
 // ** Custom Components Imports
 import { themeConfig } from '../../../../../configs'
 import UserIcon from '../../../../../layouts/components/UserIcon'
+import { Link } from '../../../../components'
 import { hexToRGBA } from '../../../../utils'
 
 // ** Util Import

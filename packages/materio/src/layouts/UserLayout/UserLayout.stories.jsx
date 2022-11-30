@@ -29,6 +29,23 @@ const args = {
       icon: DiamondSharp
     }
   ],
+  subNavElements: () => [
+    {
+      title: 'Dashboard',
+      path: '/dashboard',
+      icon: HomeMaxOutlined
+    },
+    {
+      title: 'Events',
+      path: '/events',
+      icon: ShieldOutlined
+    },
+    {
+      title: 'Challenges',
+      path: '/challenges',
+      icon: DiamondSharp
+    }
+  ],
   router: {
     pathname: '/dashboard',
     asPath: '/dashboard',

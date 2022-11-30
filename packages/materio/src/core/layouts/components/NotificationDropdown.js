@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 // ** React Imports
-import { useRouter } from 'next/router'
 import { Fragment, useEffect, useState } from 'react'
 
 // ** MUI Imports
@@ -28,6 +27,7 @@ import { NotificationBox } from '@components/organisms'
 import { useNotifications } from '@shared/context/notifications/application/hooks'
 
 import { useTranslations } from '@shared/utils/translation/Translations'
+import { useRouter } from '../../hooks'
 
 const NotificationDropdown = props => {
   const {} = useNotifications()

@@ -50,22 +50,23 @@ const salesData = [
   }
 ]
 
-const renderStats = (data) => {
+const renderStats = data => {
   return data.map((item, index) => {
     console.log(item)
-    return(
-    <Grid style={{ margin: '1rem' }} item xs={6} md={3} key={index}>
-      <Box key={index} sx={{ display: 'flex', alignItems: 'center' }}>
-        <CustomAvatar variant='rounded' color={item.color} sx={{ mr: 3, boxShadow: 3 }}>
-          {item.icon}
-        </CustomAvatar>
-        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-          <Typography variant='caption'>{item.title}</Typography>
-          <Typography variant='h6'>{item.stats}</Typography>
+    return (
+      <Grid style={{ margin: '1rem' }} item xs={6} md={3} key={index}>
+        <Box key={index} sx={{ display: 'flex', alignItems: 'center' }}>
+          <CustomAvatar variant='rounded' color={item.color} sx={{ mr: 3, boxShadow: 3 }}>
+            {item.icon}
+          </CustomAvatar>
+          <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+            <Typography variant='caption'>{item.title}</Typography>
+            <Typography variant='h6'>{item.stats}</Typography>
+          </Box>
         </Box>
-      </Box>
-    </Grid>
-  )})
+      </Grid>
+    )
+  })
 }
 
 const CardStatisticsUserResume = ({ data, profile, showProjectsButton }) => {
@@ -85,7 +86,7 @@ const CardStatisticsUserResume = ({ data, profile, showProjectsButton }) => {
           }}
           action={
             showProjectsButton && (
-              <Button onClick={() => setSeeProjects((pre) => !pre)}>
+              <Button onClick={() => setSeeProjects(pre => !pre)}>
                 {!seeProjects ? (
                   <Translations ns='profile' text='profile_resume_actions' />
                 ) : (
@@ -109,7 +110,7 @@ const CardStatisticsUserResume = ({ data, profile, showProjectsButton }) => {
               width: '100%'
             }}
           >
-            {profile.data.projects.map((item) => {
+            {profile.data.projects.map(item => {
               const submittedAt = new Date(item.createdAt).toLocaleDateString(format, options)
 
               return (
@@ -124,11 +125,11 @@ const CardStatisticsUserResume = ({ data, profile, showProjectsButton }) => {
                     }}
                   >
                     <Box>
-                      <Link
+                      <Lin
                         href={'/challenges/' + item?.challenge?.challengeURL}
                         rel='noopener'
                         target='_blank'
-                        onClick={(e) => e.preventDefault()}
+                        onClick={e => e.preventDefault()}
                       >
                         <Typography
                           sx={{
@@ -142,7 +143,7 @@ const CardStatisticsUserResume = ({ data, profile, showProjectsButton }) => {
                         >
                           {item?.challenge?.title}
                         </Typography>
-                      </Link>
+                      </Lin>
                       <Typography variant='body2' sx={{ mb: 5 }}>
                         {item.description}
                       </Typography>
@@ -154,7 +155,7 @@ const CardStatisticsUserResume = ({ data, profile, showProjectsButton }) => {
                           gap: '10px'
                         }}
                       >
-                        {item.technologies.map((skill) => (
+                        {item.technologies.map(skill => (
                           <Chip
                             variant='outlined'
                             size='small'

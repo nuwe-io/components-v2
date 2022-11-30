@@ -1,9 +1,6 @@
 // ** React Imports
 import { Fragment, useEffect } from 'react'
 
-// ** Next Import
-import { useRouter } from 'next/router'
-
 // ** MUI Imports
 import Box from '@mui/material/Box'
 import Chip from '@mui/material/Chip'
@@ -28,6 +25,7 @@ import ChevronRight from 'mdi-material-ui/ChevronRight'
 // ** Custom Components Imports
 import { themeConfig } from '../../../../../configs'
 import UserIcon from '../../../../../layouts/components/UserIcon'
+import { useRouter } from '../../../../hooks'
 import { hasActiveChild, removeChildren } from '../../../utils'
 import VerticalNavItems from './VerticalNavItems'
 
