@@ -1,4 +1,4 @@
-import { checkSocialUrl } from '../../src/functions/'
+import { checkSocialUrl } from '../../src/functions'
 
 describe('checkSocialUrl', () => {
   it('should return true for a valid twitter url', () => {
