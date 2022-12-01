@@ -1,4 +1,3 @@
-export * from './keen-slider'
 export * from './react-apexcharts'
 export * from './react-cleave'
 export * from './react-datepicker'

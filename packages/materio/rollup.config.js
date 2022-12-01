@@ -2,6 +2,7 @@
 import babel from 'rollup-plugin-babel'
 import commonjs from 'rollup-plugin-commonjs'
 import resolve from 'rollup-plugin-node-resolve'
+import external from 'rollup-plugin-peer-deps-external'
 import postcss from 'rollup-plugin-postcss'
 import scss from 'rollup-plugin-scss'
 import { terser } from 'rollup-plugin-terser'
@@ -27,6 +28,9 @@ export default {
     }
   ],
   plugins: [
+    external({
+      includeDependencies: true
+    }),
     resolve({
       extensions,
       modulesOnly: true
@@ -73,8 +77,8 @@ export default {
     'react/jsx-runtime',
     '@mui/icons-material/Circle',
     '@mui/material',
-    'keen-slider/keen-slider.min.css',
     '@babel/runtime/helpers/extends',
-    'stylis'
+    'stylis',
+    'date-fns'
   ]
 }

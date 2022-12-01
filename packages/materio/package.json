@@ -18,10 +18,6 @@
     "@mui/icons-material": "^5.10.15",
     "@mui/material": "^5.10.15",
     "@mui/styles": "^5.10.15",
-    "clsx": "^1.2.1",
-    "date-fns": "^2.29.3",
-    "keen-slider": "^6.8.5",
-    "mdi-material-ui": "^7.6.0",
     "react-hot-toast": "^2.4.0"
   },
   "license": "ISC",

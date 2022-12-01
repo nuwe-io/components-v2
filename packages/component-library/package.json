@@ -5,8 +5,8 @@
   "module": "dist/index.es.js",
   "scripts": {
     "build:library": "rollup -c",
-    "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint --fix \"src/**/*.{js,jsx}\"",
+    "format": "prettier --write \"src/**/*.{js,jsx}\"",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
@@ -14,7 +14,8 @@
   "peerDependencies": {
     "next": "12.1",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "@nuwe/materio": "*"
   },
   "devDependencies": {
     "@babel/core": "^7.20.5",
