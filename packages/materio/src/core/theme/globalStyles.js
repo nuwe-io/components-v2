@@ -1,5 +1,4 @@
 // ** Util Import
-
 import { hexToRGBA } from '../utils'
 
 export const GlobalStyles = (theme, settings) => {

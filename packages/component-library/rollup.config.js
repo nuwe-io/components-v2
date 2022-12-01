@@ -2,8 +2,10 @@
 import babel from 'rollup-plugin-babel'
 import commonjs from 'rollup-plugin-commonjs'
 import resolve from 'rollup-plugin-node-resolve'
+import peerDepsExternal from 'rollup-plugin-peer-deps-external'
 import postcss from 'rollup-plugin-postcss'
 import scss from 'rollup-plugin-scss'
+import { terser } from 'rollup-plugin-terser'
 
 import pkg from './package.json'
 
@@ -26,10 +28,8 @@ export default {
     }
   ],
   plugins: [
-    resolve({
-      extensions,
-      modulesOnly: true
-    }),
+    peerDepsExternal({ includeDependencies: true }),
+    resolve(),
     commonjs({
       include: 'node_modules/**',
       namedExports: {
@@ -58,18 +58,18 @@ export default {
           }
         ]
       ]
-    })
+    }),
+    terser()
   ],
   external: [
     ...Object.keys(pkg.dependencies || {}),
     ...Object.keys(pkg.peerDependencies || {}),
-    'deepmerge',
-    'react-is',
-    'prop-types',
-    'hoist-non-react-statics',
     'react',
     'next',
-    'next/router',
-    'react/jsx-runtime'
+    'prop-types',
+    'react-is',
+    '@babel/runtime/helpers/extends',
+    'stylis',
+    'hoist-non-react-statics'
   ]
 }

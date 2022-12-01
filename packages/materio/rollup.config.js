@@ -4,6 +4,7 @@ import commonjs from 'rollup-plugin-commonjs'
 import resolve from 'rollup-plugin-node-resolve'
 import postcss from 'rollup-plugin-postcss'
 import scss from 'rollup-plugin-scss'
+import { terser } from 'rollup-plugin-terser'
 
 import pkg from './package.json'
 
@@ -27,7 +28,6 @@ export default {
   ],
   plugins: [
     resolve({
-      browser: true,
       extensions,
       modulesOnly: true
     }),
@@ -59,7 +59,8 @@ export default {
           }
         ]
       ]
-    })
+    }),
+    terser()
   ],
   external: [
     ...Object.keys(pkg.dependencies || {}),
@@ -72,6 +73,7 @@ export default {
     'next',
     'next/router',
     'react/jsx-runtime',
-    '@mui/icons-material/Circle'
+    '@mui/icons-material/Circle',
+    '@mui/material'
   ]
 }

@@ -5,7 +5,12 @@ import GlobalStyles from '@mui/material/GlobalStyles'
 import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material/styles'
 import { deepmerge } from '@mui/utils'
 
-import { SettingsConsumer, SettingsProvider, ThemeComponentService, themeConfig } from 'materio'
+import {
+  SettingsConsumer,
+  SettingsProvider,
+  ThemeComponentService,
+  themeConfig
+} from '@nuwe/materio'
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },

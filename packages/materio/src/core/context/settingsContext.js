@@ -3,8 +3,6 @@ import { createContext, useEffect, useState } from 'react'
 
 import { themeConfig } from '../../configs'
 
-// ** ThemeConfig Import
-
 const initialSettings = {
   themeColor: 'primary',
   mode: themeConfig.mode,
@@ -47,7 +45,7 @@ const restoreSettings = () => {
       settings = initialSettings
     }
   } catch (err) {
-    console.log(err)
+    console.error(res)
   }
 
   return settings
