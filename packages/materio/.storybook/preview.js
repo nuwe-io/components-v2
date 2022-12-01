@@ -1,7 +1,12 @@
 import { useMemo } from 'react'
 
 import themeConfig from '../src/configs/themeConfig'
-import ThemeComponent from '../src/core/theme/ThemeComponent'
+import { ThemeComponentService } from '../src/core/theme/ThemeComponentService'
+
+import CssBaseline from '@mui/material/CssBaseline'
+import GlobalStyles from '@mui/material/GlobalStyles'
+import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material/styles'
+import { deepmerge } from '@mui/utils'
 
 import { SettingsConsumer, SettingsProvider } from '../src/core/context/settingsContext'
 
@@ -50,7 +55,7 @@ export const withMuiTheme = (Story, context) => {
     <SettingsProvider>
       <SettingsConsumer>
         {({ settings }) => (
-          <ThemeComponent settings={settings}>
+          <ThemeComponent settings={theme}>
             <Story />
           </ThemeComponent>
         )}
@@ -58,5 +63,14 @@ export const withMuiTheme = (Story, context) => {
     </SettingsProvider>
   )
 }
+
+const ThemeComponent = ThemeComponentService({
+  CssBaseline,
+  GlobalStyles,
+  createTheme,
+  responsiveFontSizes,
+  ThemeProvider,
+  deepmerge
+})
 
 export const decorators = [withMuiTheme]

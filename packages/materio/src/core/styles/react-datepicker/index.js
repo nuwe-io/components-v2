@@ -5,8 +5,8 @@ import { styled } from '@mui/material/styles'
 // ** Hooks
 
 // ** Util Import
-import { useSettings } from '../../../hooks'
-import { hexToRGBA } from '../../../utils'
+import { useSettings } from '../../hooks'
+import { hexToRGBA } from '../../utils'
 
 export const DatePickerWrapper = styled(Box)(({ theme }) => {
   // ** Hook

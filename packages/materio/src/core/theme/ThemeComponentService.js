@@ -1,10 +1,10 @@
 // ** Theme Override Imports
 import { themeConfig } from '../../configs'
-import UserThemeOptions from '../../layouts/UserLayout/UserThemeOptions'
 import GlobalStyling from './globalStyles'
 import overrides from './overrides'
 import themeOptions from './ThemeOptions'
 import typography from './typography'
+import UserThemeOptions from './UserThemeOptions'
 
 export const ThemeComponentService = themeProps => props => {
   // ** Props

@@ -2,7 +2,7 @@
 import Box from '@mui/material/Box'
 import { styled } from '@mui/material/styles'
 
-import { useSettings } from '../../../hooks'
+import { useSettings } from '../../hooks'
 
 // ** Hook Import
 

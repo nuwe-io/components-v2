@@ -1,7 +1,7 @@
 // ** MUI Theme Provider
 import { deepmerge } from '@mui/utils'
 
-import UserThemeOptions from '../../layouts/UserLayout/UserThemeOptions'
+import UserThemeOptions from './UserThemeOptions'
 
 // ** Theme Override Imports
 import breakpoints from './breakpoints'

@@ -1,7 +1,6 @@
 export * from './breakpoints'
 export * from './globalStyles'
 export * from './overrides'
-export * from './ThemeComponent'
 export * from './ThemeComponentService'
 export * from './ThemeOptions'
 export * from './typography'

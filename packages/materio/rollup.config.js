@@ -70,10 +70,11 @@ export default {
     'prop-types',
     'hoist-non-react-statics',
     'react',
-    'next',
-    'next/router',
     'react/jsx-runtime',
     '@mui/icons-material/Circle',
-    '@mui/material'
+    '@mui/material',
+    'keen-slider/keen-slider.min.css',
+    '@babel/runtime/helpers/extends',
+    'stylis'
   ]
 }

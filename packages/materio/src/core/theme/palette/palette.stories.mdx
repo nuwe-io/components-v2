@@ -1,0 +1,57 @@
+import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs'
+
+import { primaryPalette } from './palette.stories.jsx'
+
+<Meta title='Colors' />
+
+<ColorPalette>
+  <ColorItem
+    title='palette.primary'
+    subtitle='Primary color'
+    colors={{ Main: primaryPalette.primary.main,
+      Light: primaryPalette.primary.light,
+      Dark: primaryPalette.primary.dark
+    }}
+  />
+
+<ColorItem
+  title='palette.secondary'
+  subtitle='Secondary color'
+  colors={{
+    Main: primaryPalette.secondary.main,
+    Light: primaryPalette.secondary.light,
+    Dark: primaryPalette.secondary.dark
+  }}
+/>
+
+<ColorItem
+  title='palette.common'
+  subtitle='Common color'
+  colors={{
+    Black: primaryPalette.common.black,
+    White: primaryPalette.common.white
+  }}
+/>
+
+<ColorItem
+  title='palette.background'
+  subtitle='Background colors'
+  colors={{
+    Default: primaryPalette.background.default,
+    Papert: primaryPalette.background.paper
+  }}
+/>
+
+<ColorItem
+  title='theme.customColors.bodyBg'
+  subtitle='Dark mode background'
+  colors={{ Dark: primaryPalette.customColors.bodyBg }}
+/>
+
+<ColorItem
+  title='theme.divider'
+  subtitle='Divider'
+  colors={{ Divider: `rgba(${primaryPalette.customColors.main}, 0.68)` }}
+/>
+
+</ColorPalette>
