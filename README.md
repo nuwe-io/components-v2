@@ -11,12 +11,11 @@ Monorepo for design system, shared components and other utils.
 - [Nuwe multipackage monorepo](#nuwe-multipackage-monorepo)
   - [Project strcuture](#project-strcuture)
   - [Table of contents](#table-of-contents)
-  - [Test the packages in other repos](#test-the-packages-in-other-repos)
   - [Using conventional commits](#using-conventional-commits)
     - [There is no develop branch](#there-is-no-develop-branch)
     - [Branch naming convention](#branch-naming-convention)
   - [Getting Started](#getting-started)
-  - [Test the packages in other repos](#test-the-packages-in-other-repos-1)
+  - [Test the packages in other repos](#test-the-packages-in-other-repos)
   - [Using conventional commits](#using-conventional-commits-1)
     - [Types](#types)
     - [Scope](#scope)
@@ -26,8 +25,6 @@ Monorepo for design system, shared components and other utils.
   - [Updating dependencies](#updating-dependencies)
   - [Usefull links](#usefull-links)
 
-
-## Test the packages in other repos
 
 ## Using conventional commits
 
