@@ -1,6 +1,6 @@
 {
   "name": "@nuwe/components-v2",
-  "private": false,
+  "private": true,
   "workspaces": [
     "packages/*"
   ],
@@ -49,5 +49,8 @@
     "branches": [
       "main"
     ]
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
