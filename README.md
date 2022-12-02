@@ -11,12 +11,11 @@ Monorepo for design system, shared components and other utils.
 - [Nuwe multipackage monorepo](#nuwe-multipackage-monorepo)
   - [Project strcuture](#project-strcuture)
   - [Table of contents](#table-of-contents)
-  - [Test the packages in other repos](#test-the-packages-in-other-repos)
   - [Using conventional commits](#using-conventional-commits)
     - [There is no develop branch](#there-is-no-develop-branch)
     - [Branch naming convention](#branch-naming-convention)
   - [Getting Started](#getting-started)
-  - [Test the packages in other repos](#test-the-packages-in-other-repos-1)
+  - [Test the packages in other repos](#test-the-packages-in-other-repos)
   - [Using conventional commits](#using-conventional-commits-1)
     - [Types](#types)
     - [Scope](#scope)
@@ -26,8 +25,6 @@ Monorepo for design system, shared components and other utils.
   - [Updating dependencies](#updating-dependencies)
   - [Usefull links](#usefull-links)
 
-
-## Test the packages in other repos
 
 ## Using conventional commits
 
@@ -53,12 +50,12 @@ As this is a monorepo and all commits are in one place, we must distinguish bran
 Install all dependencies via npm
 
 ```bash
-npm i
+yarn
 ```
 
 Create build versions for all the shared packages
 
-This runs the `npm build:library` command for all packages where this command is available
+This runs the `yarn build:library` command for all packages where this command is available
 
 ```bash
 lerna run build:library
@@ -68,7 +65,7 @@ Now you're ready to start developing! `cd` into the directory you want develop i
 
 ```bash
 cd packages/materio
-npm run storybook
+yarn storybook
 ```
 
 
@@ -144,7 +141,7 @@ To publish shared packages:
 
 ## Updating dependencies
 
-Run `npm lernaupdate`, which will start a wizard where you can choose which dependencies to update for which package/app.
+Run `yarn lernaupdate`, which will start a wizard where you can choose which dependencies to update for which package/app.
 
 
 ## Usefull links

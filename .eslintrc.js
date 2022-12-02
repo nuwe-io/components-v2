@@ -5,11 +5,16 @@ module.exports = {
     browser: true
   },
   parser: '@babel/eslint-parser',
-  extends: ['next/core-web-vitals', 'prettier'],
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
+    'plugin:prettier/recommended',
+    'plugin:jsx-a11y/strict'
+  ],
   parserOptions: {
     ecmaVersion: 11,
     sourceType: 'module',
-    project: './jsconfig.json',
     ecmaFeatures: {
       jsx: true,
       modules: true,
