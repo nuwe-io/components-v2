@@ -1,9 +1,13 @@
 {
-  "name": "root",
+  "name": "@nuwe/components-v2",
   "private": true,
   "workspaces": [
     "packages/*"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nuwe-io/components-v2"
+  },
   "devDependencies": {
     "@commitlint/cli": "^17.3.0",
     "@commitlint/config-conventional": "^17.3.0",
@@ -15,8 +19,10 @@
     "eslint-plugin-prettier": "^4.2.1",
     "husky": "^8.0.2",
     "lerna": "^6.0.3",
+    "semantic-release": "^19.0.5"
     "lint-staged": "^13.0.4",
-    "prettier": "^2.8.0"
+    "prettier": "^2.8.0",
+    "semantic-release": "^19.0.5"
   },
   "dependencies": {
     "@mui/icons-material": "^5.10.15",
@@ -38,5 +44,14 @@
       "eslint",
       "prettier --write"
     ]
+  },
+    "version": "0.0.0-development",
+  "scripts": {
+    "semantic-release": "semantic-release"
+  },
+  "release": {
+    "branches": [
+      "main"
+     ]
   }
 }
