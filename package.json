@@ -10,9 +10,13 @@
     "@storybook/addons": "^6.5.13",
     "@storybook/theming": "^6.5.13",
     "cz-conventional-changelog": "^3.3.0",
+    "devmoji": "^2.3.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "husky": "^8.0.2",
     "lerna": "^6.0.3",
-    "devmoji": "^2.3.0"
+    "lint-staged": "^13.0.4",
+    "prettier": "^2.8.0"
   },
   "dependencies": {
     "@mui/icons-material": "^5.10.15",
@@ -25,5 +29,14 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "scripts": {
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "**/*.{js,ts,jsx,tsx}": [
+      "eslint",
+      "prettier --write"
+    ]
   }
 }
