@@ -4,6 +4,10 @@
   "workspaces": [
     "packages/*"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nuwe-io/components-v2"
+  },
   "devDependencies": {
     "@commitlint/cli": "^17.3.0",
     "@commitlint/config-conventional": "^17.3.0",
@@ -11,7 +15,8 @@
     "@storybook/theming": "^6.5.13",
     "cz-conventional-changelog": "^3.3.0",
     "husky": "^8.0.2",
-    "lerna": "^6.0.3"
+    "lerna": "^6.0.3",
+    "semantic-release": "^19.0.5"
   },
   "dependencies": {
     "@mui/icons-material": "^5.10.15",
@@ -24,5 +29,9 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "version": "0.0.0-development",
+  "scripts": {
+    "semantic-release": "semantic-release"
   }
 }
