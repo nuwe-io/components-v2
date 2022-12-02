@@ -9,6 +9,8 @@
     "@commitlint/config-conventional": "^17.3.0",
     "@storybook/addons": "^6.5.13",
     "@storybook/theming": "^6.5.13",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^8.0.2",
     "lerna": "^6.0.3"
   },
   "dependencies": {
@@ -17,5 +19,10 @@
     "@mui/material": "^5.10.15",
     "@mui/styles": "^5.10.15",
     "@mui/x-data-grid": "^5.17.13"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
