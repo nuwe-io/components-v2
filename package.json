@@ -1,5 +1,5 @@
 {
-  "name": "root",
+  "name": "@nuwe/components-v2",
   "private": true,
   "workspaces": [
     "packages/*"
@@ -33,5 +33,10 @@
   "version": "0.0.0-development",
   "scripts": {
     "semantic-release": "semantic-release"
+  },
+  "release": {
+    "branches": [
+      "main"
+    ]
   }
 }
