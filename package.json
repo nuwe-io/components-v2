@@ -19,7 +19,6 @@
     "eslint-plugin-prettier": "^4.2.1",
     "husky": "^8.0.2",
     "lerna": "^6.0.3",
-    "semantic-release": "^19.0.5"
     "lint-staged": "^13.0.4",
     "prettier": "^2.8.0",
     "semantic-release": "^19.0.5"
@@ -35,9 +34,6 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  },
-  "scripts": {
-    "prepare": "husky install"
   },
   "lint-staged": {
     "**/*.{js,ts,jsx,tsx}": [
