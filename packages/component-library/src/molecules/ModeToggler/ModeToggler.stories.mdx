@@ -1,0 +1,20 @@
+import { Canvas, Meta, Story, ArgsTable } from '@storybook/addon-docs'
+
+import { ModeToggler } from './ModeToggler'
+import * as stories from './ModeToggler.stories.jsx'
+
+<Meta title='molecules/ModeToggler' component={ModeToggler} />
+
+# Theme switcher with icon
+
+In order for this component to properly work here on storybook you should
+
+---
+
+<Canvas>
+  <Story story={stories.Default} name='Default' />
+</Canvas>
+
+## Props
+
+<ArgsTable of={ModeToggler} />
