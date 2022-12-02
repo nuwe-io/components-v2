@@ -1,3 +1,14 @@
-node_modules/
-
+# IDEs
+.idea
+.vscode
 .DS_Store
+
+# dependencies
+node_modules
+dist
+
+# misc
+coverage
+lerna-debug.log
+npm-debug.log*
+npm-error.log*
