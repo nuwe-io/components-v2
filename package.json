@@ -42,12 +42,14 @@
   },
   "version": "0.0.0-development",
   "scripts": {
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "prepare": "husky install"
   },
   "release": {
     "branches": [
       "main"
-    ]
+    ],
+   "extends": "semantic-release-monorepo"
   },
   "publishConfig": {
     "access": "public"
