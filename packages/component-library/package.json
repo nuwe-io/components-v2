@@ -56,5 +56,14 @@
     "@mui/styles": "^5.10.16",
     "@mui/utils": "^5.10.16",
     "@mui/x-data-grid": "^5.17.13"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "release": {
+    "branches": [
+      "main"
+    ],
+    "extends": "semantic-release-monorepo"
   }
 }
