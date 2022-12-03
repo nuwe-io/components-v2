@@ -1,5 +1,3 @@
-import { useMemo } from 'react'
-
 import themeConfig from '../src/configs/themeConfig'
 import { ThemeComponentService } from '../src/core/theme/ThemeComponentService'
 
@@ -7,6 +5,8 @@ import CssBaseline from '@mui/material/CssBaseline'
 import GlobalStyles from '@mui/material/GlobalStyles'
 import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material/styles'
 import { deepmerge } from '@mui/utils'
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 
 import { SettingsConsumer, SettingsProvider } from '../src/core/context/settingsContext'
 
@@ -55,12 +55,20 @@ export const withMuiTheme = (Story, context) => {
     <SettingsProvider>
       <SettingsConsumer>
         {({ settings }) => (
-          <ThemeComponent settings={theme}>
+          <ThemeComponentProvider settings={settings}>
             <Story />
-          </ThemeComponent>
+          </ThemeComponentProvider>
         )}
       </SettingsConsumer>
     </SettingsProvider>
+  )
+}
+
+const ThemeComponentProvider = ({ Story, settings }) => {
+  return (
+    <ThemeComponent settings={settings}>
+      <Story />
+    </ThemeComponent>
   )
 }
 
@@ -70,6 +78,8 @@ const ThemeComponent = ThemeComponentService({
   createTheme,
   responsiveFontSizes,
   ThemeProvider,
+  AdapterDayjs,
+  LocalizationProvider,
   deepmerge
 })
 

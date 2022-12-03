@@ -55,7 +55,10 @@
     "@mui/material": "^5.10.16",
     "@mui/styles": "^5.10.16",
     "@mui/utils": "^5.10.16",
-    "@mui/x-data-grid": "^5.17.13"
+    "@mui/x-data-grid": "^5.17.13",
+    "@mui/x-date-pickers": "^5.0.9",
+    "dayjs": "^1.11.6",
+    "mdi-material-ui": "^7.6.0"
   },
   "publishConfig": {
     "access": "public"

@@ -10,8 +10,16 @@ export const ThemeComponentService = themeProps => props => {
   // ** Props
   const { settings, children } = props
 
-  const { CssBaseline, GlobalStyles, createTheme, responsiveFontSizes, ThemeProvider, deepmerge } =
-    themeProps
+  const {
+    CssBaseline,
+    GlobalStyles,
+    createTheme,
+    responsiveFontSizes,
+    ThemeProvider,
+    deepmerge,
+    AdapterDayjs,
+    LocalizationProvider
+  } = themeProps
 
   // ** Merged ThemeOptions of Core and User
   const coreThemeConfig = themeOptions(settings)
@@ -39,9 +47,11 @@ export const ThemeComponentService = themeProps => props => {
 
   return (
     <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <GlobalStyles styles={() => GlobalStyling(theme, settings)} />
-      {children}
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <CssBaseline />
+        <GlobalStyles styles={() => GlobalStyling(theme, settings)} />
+        {children}
+      </LocalizationProvider>
     </ThemeProvider>
   )
 }

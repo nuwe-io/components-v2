@@ -4,6 +4,8 @@ import CssBaseline from '@mui/material/CssBaseline'
 import GlobalStyles from '@mui/material/GlobalStyles'
 import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material/styles'
 import { deepmerge } from '@mui/utils'
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 
 import {
   SettingsConsumer,
@@ -50,14 +52,15 @@ export const withMuiTheme = (Story, context) => {
   // The theme global we just declared
   const { theme: themeKey } = context.globals
 
-  // only recompute the theme if the themeKey changes
+  // Only recompute the theme if the themeKey changes
   const theme = useMemo(() => THEMES[themeKey] || THEMES['light'], [themeKey])
 
+  // If you want the theme switcher to work change theme for settings ( the one generated inside SettingsConsumer)
   return (
     <SettingsProvider>
       <SettingsConsumer>
         {({ settings }) => (
-          <ThemeComponent settings={settings}>
+          <ThemeComponent settings={theme}>
             <Story />
           </ThemeComponent>
         )}
@@ -72,7 +75,9 @@ const ThemeComponent = ThemeComponentService({
   createTheme,
   responsiveFontSizes,
   ThemeProvider,
-  deepmerge
+  deepmerge,
+  AdapterDayjs,
+  LocalizationProvider
 })
 
 export const decorators = [withMuiTheme]
