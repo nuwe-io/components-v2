@@ -1,8 +1,7 @@
-/* eslint-disable import/no-anonymous-default-export */
 import babel from 'rollup-plugin-babel'
 import commonjs from 'rollup-plugin-commonjs'
 import resolve from 'rollup-plugin-node-resolve'
-import peerDepsExternal from 'rollup-plugin-peer-deps-external'
+import external from 'rollup-plugin-peer-deps-external'
 import postcss from 'rollup-plugin-postcss'
 import scss from 'rollup-plugin-scss'
 import { terser } from 'rollup-plugin-terser'
@@ -28,8 +27,13 @@ export default {
     }
   ],
   plugins: [
-    peerDepsExternal({ includeDependencies: true }),
-    resolve(),
+    external({
+      includeDependencies: true
+    }),
+    resolve({
+      extensions,
+      modulesOnly: true
+    }),
     commonjs({
       include: 'node_modules/**',
       namedExports: {
@@ -64,12 +68,16 @@ export default {
   external: [
     ...Object.keys(pkg.dependencies || {}),
     ...Object.keys(pkg.peerDependencies || {}),
-    'react',
-    'next',
-    'prop-types',
+    'deepmerge',
     'react-is',
+    'prop-types',
+    'hoist-non-react-statics',
+    'react',
+    'react/jsx-runtime',
+    '@mui/icons-material/Circle',
+    '@mui/material',
     '@babel/runtime/helpers/extends',
     'stylis',
-    'hoist-non-react-statics'
+    'date-fns'
   ]
 }
