@@ -55,7 +55,6 @@
   "release": {
     "branches": [
       "main"
-    ],
-    "extends": "semantic-release-monorepo"
+    ]
   }
 }
