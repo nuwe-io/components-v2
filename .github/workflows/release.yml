@@ -29,9 +29,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NPM_CONFIG_EMAIL: 'adrian@nuwe.io'
-          NPM_CONFIG_USERNAME: 'adriansanfelix'
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          RELEASE_GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          RELEASE_GH_USERNAME: 'AdrianNuwe'
-        run: lerna exec --concurrency 1 -- npx --no-install semantic-release -e semantic-release-monorepo
+        run: npx semantic-release
