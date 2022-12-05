@@ -1,6 +1,6 @@
 {
   "name": "@nuwe/components-v2",
-  "private": true,
+  "private": false,
   "workspaces": [
     "packages/*"
   ],
