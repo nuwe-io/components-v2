@@ -49,5 +49,11 @@
   "dependencies": {
     "react": "18.2",
     "react-dom": "18.2"
+  },
+  "release": {
+    "branches": [
+      "main"
+    ],
+    "extends": "semantic-release-monorepo"
   }
 }
