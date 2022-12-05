@@ -3112,7 +3112,7 @@
 
 "@nuwe/materio@file:/Users/adriansanfelixmarti/nuwe/components-v2/packages/materio":
   "resolved" "file:packages/materio"
-  "version" "0.0.1"
+  "version" "0.0.5"
   dependencies:
     "dayjs" "^1.11.6"
     "react" "18.2.0"
