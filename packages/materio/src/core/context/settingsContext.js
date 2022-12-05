@@ -1,6 +1,8 @@
 // ** React Imports
 import { createContext, useEffect, useState } from 'react'
 
+import PropTypes from 'prop-types'
+
 import { themeConfig } from '../../configs'
 
 const initialSettings = {
@@ -16,6 +18,8 @@ const initialSettings = {
   contentWidth: themeConfig.contentWidth,
   toastPosition: themeConfig.toastPosition,
   verticalNavToggleType: themeConfig.verticalNavToggleType,
+  subNavType: 'account',
+  subNavProps: {},
   skin:
     themeConfig.layout === 'horizontal' && themeConfig.skin === 'semi-dark'
       ? 'default'
@@ -32,7 +36,9 @@ const staticSettings = {
   layout: initialSettings.layout,
   navHidden: initialSettings.navHidden,
   lastLayout: initialSettings.lastLayout,
-  toastPosition: initialSettings.toastPosition
+  toastPosition: initialSettings.toastPosition,
+  subNavType: initialSettings.subNavType,
+  subNavProps: initialSettings.subNavProps
 }
 
 const restoreSettings = () => {
@@ -45,14 +51,14 @@ const restoreSettings = () => {
       settings = initialSettings
     }
   } catch (err) {
-    console.error(res)
+    console.error(err)
   }
 
   return settings
 }
 
 // set settings in localStorage
-const storeSettings = settings => {
+const storeSettings = (settings) => {
   const initSettings = Object.assign({}, settings)
   delete initSettings.appBar
   delete initSettings.footer
@@ -82,6 +88,7 @@ export const SettingsProvider = ({ children, pageSettings }) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageSettings])
+
   useEffect(() => {
     if (settings.layout === 'horizontal' && settings.skin === 'semi-dark') {
       saveSettings({ ...settings, skin: 'default' })
@@ -92,7 +99,7 @@ export const SettingsProvider = ({ children, pageSettings }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [settings.layout])
 
-  const saveSettings = updatedSettings => {
+  const saveSettings = (updatedSettings) => {
     storeSettings(updatedSettings)
     setSettings(updatedSettings)
   }
@@ -102,6 +109,11 @@ export const SettingsProvider = ({ children, pageSettings }) => {
       {children}
     </SettingsContext.Provider>
   )
+}
+
+SettingsProvider.propTypes = {
+  children: PropTypes.node,
+  pageSettings: PropTypes.object
 }
 
 export const SettingsConsumer = SettingsContext.Consumer
