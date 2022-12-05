@@ -16,6 +16,7 @@
     "cz-conventional-changelog": "^3.3.0",
     "devmoji": "^2.3.0",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-mdx": "^2.0.5",
     "eslint-plugin-prettier": "^4.2.1",
     "husky": "^8.0.2",
     "lerna": "^6.0.3",
@@ -49,7 +50,7 @@
     "branches": [
       "main"
     ],
-   "extends": "semantic-release-monorepo"
+    "extends": "semantic-release-monorepo"
   },
   "publishConfig": {
     "access": "public"

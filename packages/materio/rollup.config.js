@@ -1,4 +1,3 @@
-/* eslint-disable import/no-anonymous-default-export */
 import babel from 'rollup-plugin-babel'
 import commonjs from 'rollup-plugin-commonjs'
 import resolve from 'rollup-plugin-node-resolve'
