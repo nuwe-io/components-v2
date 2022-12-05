@@ -2,6 +2,7 @@
   "name": "@nuwe/lib",
   "version": "0.0.1",
   "description": "Nuwe's shared utility library",
+  "private": false,
   "homepage": "https://github.com/nuwe-io/components-v2#readme",
   "main": "dist/index.ts",
   "module": "dist/index.esm.ts",
