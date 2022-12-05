@@ -18,15 +18,15 @@ jobs:
           node-version: 'lts/*'
       - name: Install dependencies
         run: |
-          if [ -e package-lock.json ]; then
-          npm ci
-          elif [ -e yarn.lock ]; then
+          if [ -e yarn.lock ]; then
           yarn install --frozen-lockfile
+          elif [ -e package-lock.json ]; then
+          npm ci
           else
           npm i
           fi
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: lerna exec --concurrency 1 -- npx --no-install semantic-release -e semantic-release-monorepo
