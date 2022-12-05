@@ -1,7 +1,7 @@
 {
   "name": "@nuwe/materio",
   "version": "0.0.7",
-  "private": false,
+  "private": true,
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "scripts": {
