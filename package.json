@@ -47,7 +47,8 @@
   "license": "MIT",
   "scripts": {
     "semantic-release": "semantic-release",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "lint-staged": "lint-staged"
   },
   "release": {
     "branches": [
