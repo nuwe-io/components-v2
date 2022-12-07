@@ -2,6 +2,10 @@
 
 Monorepo for design system, shared components and other utils.
 
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
+
 ## Project strcuture
 
 ![Packages](./public/packages.png)
@@ -25,7 +29,6 @@ Monorepo for design system, shared components and other utils.
   - [Updating dependencies](#updating-dependencies)
   - [Usefull links](#usefull-links)
 
-
 ## Using conventional commits
 
 ### There is no develop branch
@@ -37,13 +40,11 @@ Features should branch off `main` and PRs should go into `main`. This means when
 As this is a monorepo and all commits are in one place, we must distinguish branches for the different projects so that we know which commits belong to which when looking at this history. Refer to the below table for how to name branches.
 
 | Project           | Branch Prefix | Examples                                                     |
-| :---------------- | :------------ | :------------------------------------------------------------|
+| :---------------- | :------------ | :----------------------------------------------------------- |
 | Component Library | cl            | `cl/feat/nav-bar`, `cl/fix/footer`                           |
 | Materio           | materio       | `materio/feat/dynamic-inputs`, `materio/fix/firefox-buttons` |
 | Hooks             | hooks         | `hooks/feat/use-auth-user`, `hooks/fix/api-module`           |
 | lib               | lib           | `lib/feat/get-request`, `lib/fix/post-request`               |
-
-
 
 ## Getting Started
 
@@ -67,7 +68,6 @@ Now you're ready to start developing! `cd` into the directory you want develop i
 cd packages/materio
 yarn storybook
 ```
-
 
 ## Test the packages in other repos
 
@@ -123,26 +123,23 @@ Breaking changes are indicated by putting BREAKING CHANGE: at the start of the m
 
 If you already made commits and they don't meet the Conventional Commits specification, you have a couple of options:
 
-- if there's only one commit to redo, the easiest option is to use git *commit --amend with* no staged changes, which will allow you to edit the commit message.
+- if there's only one commit to redo, the easiest option is to use git _commit --amend with_ no staged changes, which will allow you to edit the commit message.
 - if you have multiple commits to reformat, you'll probably need to do an interactive rebase and use the reword option.
-
 
 ## Publishing changes to NPM
 
 To publish shared packages:
 
--   Ensure you are authenticated to publish to NPM via the console (Run `npm login` in your terminal and use the email & credentials in 1password).
--   Make sure you have installed on required packages (Run `npm` in root directory)
--   Make sure you're on the `main` branch and there are no local commits
--   Go to the root directory for the monorepo
--   Run `lerna publish`
--   Follow the wizard instructions to publish the packages to NPM
-
+- Ensure you are authenticated to publish to NPM via the console (Run `npm login` in your terminal and use the email & credentials in 1password).
+- Make sure you have installed on required packages (Run `npm` in root directory)
+- Make sure you're on the `main` branch and there are no local commits
+- Go to the root directory for the monorepo
+- Run `lerna publish`
+- Follow the wizard instructions to publish the packages to NPM
 
 ## Updating dependencies
 
 Run `yarn lernaupdate`, which will start a wizard where you can choose which dependencies to update for which package/app.
-
 
 ## Usefull links
 
