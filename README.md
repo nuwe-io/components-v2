@@ -4,7 +4,7 @@ Monorepo for design system, shared components and other utils.
 
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
-## Project strcuture
+## Project structure
 
 ![Packages](./public/packages.png)
 
@@ -144,5 +144,6 @@ Run `yarn lernaupdate`, which will start a wizard where you can choose which dep
 - [Lerna version and publish](https://lerna.js.org/docs/features/version-and-publish)
 - [Commit lint](https://github.com/conventional-changelog/commitlint)
 - [Commits and versioning](https://levelup.gitconnected.com/improve-your-commits-and-versioning-in-javascript-56f72c0ab761)
+- [Semantic release monorepo](https://github.com/pmowrer/semantic-release-monorepo)
 - [Storybook with nextjs](https://itnext.io/nextjs-storybookjs-material-ui-jest-swr-fe2ff5cb9af8)
 - [Locally test packages with npm](https://javascript.plainenglish.io/test-your-library-locally-with-npm-link-a5aa79d07270)
