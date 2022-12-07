@@ -44,7 +44,6 @@
     ]
   },
   "version": "0.0.3-development",
-  "license": "MIT",
   "scripts": {
     "semantic-release": "semantic-release",
     "prepare": "husky install",
