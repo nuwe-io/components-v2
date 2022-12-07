@@ -43,7 +43,7 @@
       "prettier --write"
     ]
   },
-  "version": "0.0.3-development",
+  "version": "0.0.4-development",
   "scripts": {
     "semantic-release": "semantic-release",
     "prepare": "husky install",
