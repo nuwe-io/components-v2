@@ -1,3 +1,4 @@
 {
-  "extends": ["plugin:react/recommended", "eslint-config-prettier", "../../.eslintrc.json"]
+  "extends": ["plugin:react/recommended", "eslint-config-prettier", "../../.eslintrc.json"],
+  "endOfLine": "auto"
 }
