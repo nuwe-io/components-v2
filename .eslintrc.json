@@ -11,6 +11,12 @@
     "plugin:prettier/recommended",
     "plugin:jsx-a11y/strict"
   ],
+  "prettier/prettier": [
+    "error",
+    {
+      "endOfLine": "auto"
+    }
+  ],
   "parserOptions": {
     "ecmaVersion": 12,
     "sourceType": "module",
