@@ -2,7 +2,7 @@
   "name": "@nuwe/hooks",
   "version": "0.0.1",
   "description": "Reusable custom hooks from nuwe.io and nuwe components library",
-  "private": true,
+  "private": false,
   "homepage": "https://github.com/nuwe-io/components-v2#readme",
   "main": "dist/index.ts",
   "module": "dist/index.esm.ts",
@@ -49,6 +49,9 @@
   "dependencies": {
     "react": "18.2",
     "react-dom": "18.2"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "release": {
     "branches": [
