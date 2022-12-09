@@ -11,7 +11,7 @@ Monorepo for design system, shared components and other utils.
 ## Table of contents
 
 - [Nuwe multipackage monorepo](#nuwe-multipackage-monorepo)
-  - [Project strcuture](#project-strcuture)
+  - [Project structure](#project-structure)
   - [Table of contents](#table-of-contents)
   - [Using conventional commits](#using-conventional-commits)
     - [There is no develop branch](#there-is-no-develop-branch)
