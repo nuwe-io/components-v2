@@ -48,11 +48,6 @@
     "prepare": "husky install",
     "lint-staged": "lint-staged"
   },
-  "release": {
-    "branches": [
-      "main"
-    ]
-  },
   "publishConfig": {
     "access": "public"
   }
