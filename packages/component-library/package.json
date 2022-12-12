@@ -13,8 +13,8 @@
   },
   "license": "ISC",
   "peerDependencies": {
-    "@nuwe/materio": "*",
     "@nuwe/lib": "*",
+    "@nuwe/materio": "*",
     "next": "12.1",
     "react": "18.2.0",
     "react-dom": "18.2.0"
@@ -46,8 +46,7 @@
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
-    "rollup-plugin-scss": "^4.0.0",
-    "semantic-release-monorepo": "^7.0.5"
+    "rollup-plugin-scss": "^4.0.0"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
