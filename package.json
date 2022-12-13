@@ -29,7 +29,8 @@
     "@mui/icons-material": "^5.10.15",
     "@mui/material": "^5.10.15",
     "@mui/styles": "^5.10.15",
-    "@mui/x-data-grid": "^5.17.13"
+    "@mui/x-data-grid": "^5.17.13",
+    "@semantic-release/changelog": "^6.0.2"
   },
   "config": {
     "commitizen": {
