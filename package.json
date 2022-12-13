@@ -11,6 +11,8 @@
   "devDependencies": {
     "@commitlint/cli": "^17.3.0",
     "@commitlint/config-conventional": "^17.3.0",
+    "@semantic-release/changelog": "^6.0.2",
+    "@semantic-release/git": "^10.0.1",
     "@storybook/addons": "^6.5.13",
     "@storybook/theming": "^6.5.13",
     "cz-conventional-changelog": "^3.3.0",
@@ -29,9 +31,7 @@
     "@mui/icons-material": "^5.10.15",
     "@mui/material": "^5.10.15",
     "@mui/styles": "^5.10.15",
-    "@mui/x-data-grid": "^5.17.13",
-    "@semantic-release/changelog": "^6.0.2",
-    "@semantic-release/git": "^10.0.1"
+    "@mui/x-data-grid": "^5.17.13"
   },
   "config": {
     "commitizen": {
