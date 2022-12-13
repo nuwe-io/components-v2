@@ -9,7 +9,7 @@ import palette from './palette'
 import shadows from './shadows'
 import spacing from './spacing'
 
-export const themeOptions = settings => {
+export const themeOptions = (settings) => {
   // ** Vars
   const { skin, mode, direction, themeColor } = settings
 

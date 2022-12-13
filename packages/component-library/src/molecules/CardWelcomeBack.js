@@ -4,6 +4,7 @@ import CardContent from '@mui/material/CardContent'
 import Grid from '@mui/material/Grid'
 import { styled } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
+import { PropTypes } from 'prop-types'
 
 // Styled Grid component
 const StyledGrid = styled(Grid)(({ theme }) => ({
@@ -44,6 +45,13 @@ const CardWelcomeBack = ({ title, message1, message2, width }) => {
       </CardContent>
     </Card>
   )
+}
+
+CardWelcomeBack.propTypes = {
+  title: PropTypes.string.isRequired,
+  message1: PropTypes.string.isRequired,
+  message2: PropTypes.string,
+  width: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 }
 
 export default CardWelcomeBack

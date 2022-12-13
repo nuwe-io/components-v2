@@ -2,7 +2,7 @@
 
 import { hexToRGBA } from '../../utils'
 
-const Backdrop = theme => {
+const Backdrop = (theme) => {
   return {
     MuiBackdrop: {
       styleOverrides: {

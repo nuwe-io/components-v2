@@ -1,5 +1,5 @@
-// ** MUI Import
 import Grid from '@mui/material/Grid'
+import { PropTypes } from 'prop-types'
 
 /**
  * ! Icons Imports:
@@ -7,7 +7,6 @@ import Grid from '@mui/material/Grid'
  * ! If you need all the icons from the library, use "import * as Icon from 'mdi-material-ui'"
  * */
 
-// ** Demo Components Imports
 import CardStatisticsVertical from 'src/shared/materio/@core/components/card-statistics/card-stats-vertical'
 
 const CardStatsVertical = ({ data, minMaxWidth = '240px, 1fr', ns }) => {
@@ -28,6 +27,12 @@ const CardStatsVertical = ({ data, minMaxWidth = '240px, 1fr', ns }) => {
   } else {
     return null
   }
+}
+
+CardStatsVertical.propTypes = {
+  data: PropTypes.array,
+  minMaxWidth: PropTypes.string,
+  ns: PropTypes.string
 }
 
 export default CardStatsVertical

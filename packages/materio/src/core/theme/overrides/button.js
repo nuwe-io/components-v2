@@ -2,7 +2,7 @@
 
 import { themeConfig } from '../../../configs'
 
-const Button = theme => {
+const Button = (theme) => {
   return {
     MuiButton: {
       styleOverrides: {

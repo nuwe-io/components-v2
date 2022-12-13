@@ -1,5 +1,7 @@
+import { PropTypes } from 'prop-types'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
+
 // ** MUI Imports
 import { IconButton } from '@mui/material'
 import Card from '@mui/material/Card'
@@ -204,3 +206,12 @@ const CardWidgetBarChar = ({ series = [] }) => {
 }
 
 export default CardWidgetBarChar
+
+InformationDialog.propTypes = {
+  open: PropTypes.bool.isRequired,
+  handleClose: PropTypes.func.isRequired
+}
+
+CardWidgetBarChar.propTypes = {
+  series: PropTypes.array.isRequired
+}

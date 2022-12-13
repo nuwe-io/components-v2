@@ -1,4 +1,4 @@
-export const Typography = theme => {
+export const Typography = (theme) => {
   return {
     h1: {
       fontWeight: 500,

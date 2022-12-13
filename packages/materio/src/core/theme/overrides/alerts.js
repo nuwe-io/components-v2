@@ -3,7 +3,7 @@ import { hexToRGBA } from '../../utils'
 
 // ** Util Import
 
-const Alert = theme => {
+const Alert = (theme) => {
   const getColor = theme.palette.mode === 'light' ? darken : lighten
 
   return {
