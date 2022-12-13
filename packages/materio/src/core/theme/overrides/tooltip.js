@@ -2,7 +2,7 @@
 
 import { hexToRGBA } from '../../utils'
 
-const Tooltip = theme => {
+const Tooltip = (theme) => {
   return {
     MuiTooltip: {
       styleOverrides: {

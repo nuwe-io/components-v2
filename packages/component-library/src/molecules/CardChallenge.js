@@ -97,6 +97,7 @@ CardChallenge.propTypes = {
     startTime: PropTypes.string,
     endTime: PropTypes.string,
     sponsors: PropTypes.array,
+    level: PropTypes.array,
     category: PropTypes.string
   }),
   bigCard: PropTypes.bool,
@@ -121,4 +122,16 @@ CardChallenge.defaultProps = {
   url: 'https://nuwe.io',
   bigCard: false,
   isSmall: false
+}
+
+Chips.propTypes = {
+  levels: PropTypes.array,
+  category: PropTypes.string,
+  showCategory: PropTypes.bool
+}
+
+Chips.defaultProps = {
+  levels: [],
+  category: '',
+  showCategory: true
 }

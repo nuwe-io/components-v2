@@ -5,11 +5,11 @@ import PropTypes from 'prop-types'
 import WeatherNight from 'mdi-material-ui/WeatherNight'
 import WeatherSunny from 'mdi-material-ui/WeatherSunny'
 
-export const ModeToggler = props => {
+export const ModeToggler = (props) => {
   // ** Props
   const { settings, saveSettings } = props
 
-  const handleModeChange = mode => {
+  const handleModeChange = (mode) => {
     saveSettings({ ...settings, mode })
   }
 

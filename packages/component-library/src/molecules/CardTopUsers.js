@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { PropTypes } from 'prop-types'
 import { Fragment } from 'react'
 
 // ** MUI Imports
@@ -87,6 +88,14 @@ const CardTopUsers = ({ users }) => {
       </CardContent>
     </Card>
   )
+}
+
+CardTopUsers.propTypes = {
+  users: PropTypes.array.isRequired
+}
+
+CardTopUsers.defaultProps = {
+  users: []
 }
 
 export default CardTopUsers

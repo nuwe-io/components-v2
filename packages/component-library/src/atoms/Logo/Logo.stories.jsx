@@ -1,6 +1,6 @@
 import { Logo as LogoComponent } from './Logo'
 
-const Template = args => <LogoComponent {...args} />
+const Template = (args) => <LogoComponent {...args} />
 
 export const Logo = Template.bind({})
 

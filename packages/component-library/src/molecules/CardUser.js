@@ -14,17 +14,17 @@ import { Countdown } from 'src/shared/components/molecules/Countdown/Countdown'
 
 //* This component should in another repo
 export const CardUser = ({
+  actionText,
   avatar,
   background,
-  name,
-  text,
-  actionText,
+  callAction,
+  event,
   friends,
-  maxFriends,
   friendsLabel,
   isEvent,
-  callAction,
-  event
+  maxFriends,
+  name,
+  text
 }) => {
   const eventIsFinished = isEvent && new Date(event?.endTime) < new Date()
 
@@ -41,7 +41,7 @@ export const CardUser = ({
             left: '1.313rem',
             top: '10.28125rem',
             position: 'absolute',
-            border: theme => `0.25rem solid ${theme.palette.common.white}`
+            border: (theme) => `0.25rem solid ${theme.palette.common.white}`
           }}
         />
       )}
@@ -52,12 +52,12 @@ export const CardUser = ({
           left: '1.313rem',
           top: '10.28125rem',
           position: 'absolute',
-          border: theme => `0.25rem solid ${theme.palette.background.paper}`,
+          border: (theme) => `0.25rem solid ${theme.palette.background.paper}`,
           borderRadius: '50%',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          background: theme => theme.palette.background.default
+          background: (theme) => theme.palette.background.default
         }}
       >
         <div style={{ marginLeft: 10, marginTop: 5 }}>
@@ -112,7 +112,7 @@ export const CardUser = ({
           <Typography variant='subtitle2' sx={{ whiteSpace: 'nowrap', color: 'text.primary' }}>
             {isEvent && (
               <Countdown
-                date={countDownDate()}
+                date={countDownDate(eventIsFinished, event)}
                 title={
                   eventIsFinished
                     ? 'finished_on_label'
@@ -140,23 +140,24 @@ export const CardUser = ({
   )
 }
 
-const countDownDate = () => {
+const countDownDate = (eventIsFinished, event) => {
   if ((eventIsFinished && !event?.active) || (!eventIsFinished && event?.active))
     return event?.endTime
   return event?.startTime
 }
 
 CardUser.propTypes = {
-  callAction: PropTypes.func,
+  actionText: PropTypes.string,
   avatar: PropTypes.string,
   background: PropTypes.string,
-  name: PropTypes.string,
-  text: PropTypes.string,
-  actionText: PropTypes.string,
+  callAction: PropTypes.func,
+  event: PropTypes.object,
   friends: PropTypes.array,
-  maxFriends: PropTypes.number,
   friendsLabel: PropTypes.string,
-  isEvent: PropTypes.bool
+  isEvent: PropTypes.bool,
+  maxFriends: PropTypes.number,
+  name: PropTypes.string,
+  text: PropTypes.string
 }
 
 CardUser.defaultProps = {

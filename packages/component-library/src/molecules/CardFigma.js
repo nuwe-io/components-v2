@@ -29,7 +29,16 @@ export const FigmaCard = ({ figmaURL, width, height }) => {
 
 const Figma = ({ url }) => {
   if (url)
-    return <iframe width='100%' height='100%' src={url} allowFullScreen={true} frameBorder='0' />
+    return (
+      <iframe
+        title={url}
+        width='100%'
+        height='100%'
+        src={url}
+        allowFullScreen={true}
+        frameBorder='0'
+      />
+    )
   return null
 }
 
@@ -45,4 +54,12 @@ FigmaCard.defaultProps = {
   width: '100%',
   height: '100%',
   hidden: false
+}
+
+Figma.propTypes = {
+  url: PropTypes.string
+}
+
+Figma.defaultProps = {
+  url: ''
 }

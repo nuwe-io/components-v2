@@ -1,2 +1,2 @@
-export * from './themeConfig'
 export * from './acl'
+export * from './themeConfig'

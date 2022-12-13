@@ -61,7 +61,8 @@ const CardAward = ({ username, score, action, rank }) => {
 CardAward.propTypes = {
   username: PropTypes.string,
   score: PropTypes.number,
-  action: PropTypes.func
+  action: PropTypes.func,
+  rank: PropTypes.string
 }
 
 CardAward.defaultProps = {

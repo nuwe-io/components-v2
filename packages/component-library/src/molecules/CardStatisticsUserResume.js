@@ -1,15 +1,3 @@
-import Link from 'next/link'
-import { Fragment, useState } from 'react'
-// ** MUI Imports
-import { Translations } from 'src/shared/utils/translation/Translations'
-// ** Icons Imports
-import { currentLanguage } from '@shared/lib'
-import AccountOutline from 'mdi-material-ui/AccountOutline'
-import CellphoneLink from 'mdi-material-ui/CellphoneLink'
-import CurrencyUsd from 'mdi-material-ui/CurrencyUsd'
-import TrendingUp from 'mdi-material-ui/TrendingUp'
-
-// ** Custom Components Imports
 import {
   Box,
   Button,
@@ -21,7 +9,17 @@ import {
   Grid,
   Typography
 } from '@mui/material'
+import { currentLanguage } from '@shared/lib'
+import AccountOutline from 'mdi-material-ui/AccountOutline'
+import CellphoneLink from 'mdi-material-ui/CellphoneLink'
+import CurrencyUsd from 'mdi-material-ui/CurrencyUsd'
+import TrendingUp from 'mdi-material-ui/TrendingUp'
+import Link from 'next/link'
+import { PropTypes } from 'prop-types'
+import { Fragment, useState } from 'react'
+
 import CustomAvatar from 'src/shared/materio/@core/components/mui/avatar'
+import { Translations } from 'src/shared/utils/translation/Translations'
 
 const salesData = [
   {
@@ -50,7 +48,7 @@ const salesData = [
   }
 ]
 
-const renderStats = data => {
+const renderStats = (data) => {
   return data.map((item, index) => {
     console.log(item)
     return (
@@ -86,7 +84,7 @@ const CardStatisticsUserResume = ({ data, profile, showProjectsButton }) => {
           }}
           action={
             showProjectsButton && (
-              <Button onClick={() => setSeeProjects(pre => !pre)}>
+              <Button onClick={() => setSeeProjects((pre) => !pre)}>
                 {!seeProjects ? (
                   <Translations ns='profile' text='profile_resume_actions' />
                 ) : (
@@ -110,7 +108,7 @@ const CardStatisticsUserResume = ({ data, profile, showProjectsButton }) => {
               width: '100%'
             }}
           >
-            {profile.data.projects.map(item => {
+            {profile.data.projects.map((item) => {
               const submittedAt = new Date(item.createdAt).toLocaleDateString(format, options)
 
               return (
@@ -125,11 +123,11 @@ const CardStatisticsUserResume = ({ data, profile, showProjectsButton }) => {
                     }}
                   >
                     <Box>
-                      <Lin
+                      <Link
                         href={'/challenges/' + item?.challenge?.challengeURL}
                         rel='noopener'
                         target='_blank'
-                        onClick={e => e.preventDefault()}
+                        onClick={(e) => e.preventDefault()}
                       >
                         <Typography
                           sx={{
@@ -143,7 +141,7 @@ const CardStatisticsUserResume = ({ data, profile, showProjectsButton }) => {
                         >
                           {item?.challenge?.title}
                         </Typography>
-                      </Lin>
+                      </Link>
                       <Typography variant='body2' sx={{ mb: 5 }}>
                         {item.description}
                       </Typography>
@@ -155,7 +153,7 @@ const CardStatisticsUserResume = ({ data, profile, showProjectsButton }) => {
                           gap: '10px'
                         }}
                       >
-                        {item.technologies.map(skill => (
+                        {item.technologies.map((skill) => (
                           <Chip
                             variant='outlined'
                             size='small'
@@ -212,6 +210,18 @@ const CardStatisticsUserResume = ({ data, profile, showProjectsButton }) => {
       )}
     </Fragment>
   )
+}
+
+CardStatisticsUserResume.propTypes = {
+  data: PropTypes.array,
+  profile: PropTypes.object,
+  showProjectsButton: PropTypes.bool
+}
+
+CardStatisticsUserResume.defaultProps = {
+  data: salesData,
+  profile: {},
+  showProjectsButton: false
 }
 
 export default CardStatisticsUserResume

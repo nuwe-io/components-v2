@@ -30,18 +30,17 @@ You will also need the following peer dependencies installed in the host project
 
 ### Deploying with Vercel
 
-
 ## Directives for building new components (in progress)
 
--   Avoid exporting styled-components directly unless it's really necessary.
--   Never export styled component css snippets.
--   Annotate the component props with relevant info to help understand how to use them.
--   Export theme as a variable with a list of constants.
--   Write unit tests for complex components. Visually check everything else in Storybook.
--   Add stories for components as they would appear in the app. This should go in a `[component].stories.tsx` file.
--   Add documentation for the component to explain its usage. This should go in a `[component].stories.mdx` file.
--   Use storybook [parameters](https://storybook.js.org/docs/react/writing-stories/introduction#using-parameters) to set up common background colours/layouts where a component could be used.
--   Use storybook [controls](https://storybook.js.org/docs/react/essentials/controls) to allow for users to test the props variant where possible.
+- Avoid exporting styled-components directly unless it's really necessary.
+- Never export styled component css snippets.
+- Annotate the component props with relevant info to help understand how to use them.
+- Export theme as a variable with a list of constants.
+- Write unit tests for complex components. Visually check everything else in Storybook.
+- Add stories for components as they would appear in the app. This should go in a `[component].stories.tsx` file.
+- Add documentation for the component to explain its usage. This should go in a `[component].stories.mdx` file.
+- Use storybook [parameters](https://storybook.js.org/docs/react/writing-stories/introduction#using-parameters) to set up common background colours/layouts where a component could be used.
+- Use storybook [controls](https://storybook.js.org/docs/react/essentials/controls) to allow for users to test the props variant where possible.
 
 ## Usage
 
@@ -49,10 +48,7 @@ You will also need the following peer dependencies installed in the host project
 import { NavBar } from "@nuwe/component-library";
 ```
 
-
 ### Installation
-
-
 
 ### Storybook
 
