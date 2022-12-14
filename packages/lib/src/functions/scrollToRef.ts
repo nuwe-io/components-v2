@@ -4,5 +4,6 @@
  * @returns
  */
 export const scrollToRef = (route: any) => {
-  route.ref.current.scrollIntoView({ behavior: 'auto', block: 'center' })
+  if (route?.ref?.current?.scrollIntoView)
+    route.ref.current.scrollIntoView({ behavior: 'auto', block: 'center' })
 }
