@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next'
 export const Translations = ({
   text = '',
   ns = 'common',
-  plural = false,
   lowerCase = false,
   scope = [
     'common',

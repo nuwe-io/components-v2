@@ -30,4 +30,5 @@ export const socialReggex = [
   instagramProfile
 ]
 
-export const checkSocialUrl = (url: string) => socialReggex.some((regex) => regex.test(url))
+export const checkSocialUrl = (url: string): boolean =>
+  socialReggex.some((regex) => regex.test(url))
