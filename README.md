@@ -14,7 +14,7 @@
 </p>
 
 <p align="center">
-<a href="https://www.npmjs.com/package/@nuwe/hooks">
+  <a href="https://www.npmjs.com/package/@nuwe/hooks">
     <img alt="@nuwe/hooks" src="https://img.shields.io/npm/v/@nuwe/hooks?color=blueviolet&label=%40nuwe%2Fhooks">
   </a>
   <a href="https://www.npmjs.com/package/@nuwe/lib">
