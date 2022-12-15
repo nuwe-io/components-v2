@@ -15,13 +15,13 @@
 
 <p align="center">
   <a href="https://www.npmjs.com/package/@nuwe/lib">
-    <img alt="@nuwe/lib" src="https://img.shields.io/npm/v/@nuwe/lib?color=brown&label=%40nuwe%2Flib">
+    <img alt="@nuwe/lib" src="https://img.shields.io/npm/v/@nuwe/lib?color=brown&label=%40nuwe%2Flib&style=for-the-badge">
   </a>
   <a href="https://www.npmjs.com/package/@nuwe/materio">
-    <img alt="@nuwe/materio" src="https://img.shields.io/npm/v/@nuwe/materio?color=blue&label=%40nuwe%2Fmaterio">
+    <img alt="@nuwe/materio" src="https://img.shields.io/npm/v/@nuwe/materio?color=blue&label=%40nuwe%2Fmaterio&style=for-the-badge">
   </a>
   <a href="https://www.npmjs.com/package/@nuwe/hooks">
-    <img alt="@nuwe/hooks" src="https://img.shields.io/npm/v/@nuwe/hooks?color=blueviolet&label=%40nuwe%2Fhooks">
+    <img alt="@nuwe/hooks" src="https://img.shields.io/npm/v/@nuwe/hooks?color=blueviolet&label=%40nuwe%2Fhooks&style=for-the-badge">
   </a>
 </p>
 
