@@ -1,8 +1,17 @@
-# Nuwe multipackage monorepo
+<h1 align="center" style="border-bottom: none;">📦 Nuwe multipackage monorepo</h1>
+<h3 align="center">Monorepo for design system, shared components and other utils.</h3>
 
-Monorepo for design system, shared components and other utils.
-
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release) [![Release](https://github.com/nuwe-io/components-v2/actions/workflows/release.yml/badge.svg)](https://github.com/nuwe-io/components-v2/actions/workflows/release.yml)
+<p align="center">
+  <a href="http://commitizen.github.io/cz-cli">
+    <img alt="npm latest version" src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg">
+  </a>
+  <a href="https://github.com/semantic-release/semantic-release">
+    <img alt="npm next version" src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg">
+  </a>
+  <a href="https://github.com/nuwe-io/components-v2/actions/workflows/release.yml">
+    <img alt="npm beta version" src="https://github.com/nuwe-io/components-v2/actions/workflows/release.yml/badge.svg">
+  </a>
+</p>
 
 ## Project structure
 
