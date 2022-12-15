@@ -1,15 +1,27 @@
 <h1 align="center" style="border-bottom: none;">📦 Nuwe multipackage monorepo</h1>
-<h3 align="center">Monorepo for design system, shared components and other utils.</h3>
+<h3 align="center">Monorepo for design system, shared components and other utils</h3>
 
 <p align="center">
   <a href="http://commitizen.github.io/cz-cli">
-    <img alt="npm latest version" src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg">
+    <img alt="commitizen" src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg">
   </a>
   <a href="https://github.com/semantic-release/semantic-release">
-    <img alt="npm next version" src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg">
+    <img alt="semantic release" src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg">
   </a>
   <a href="https://github.com/nuwe-io/components-v2/actions/workflows/release.yml">
-    <img alt="npm beta version" src="https://github.com/nuwe-io/components-v2/actions/workflows/release.yml/badge.svg">
+    <img alt="monorepo release" src="https://github.com/nuwe-io/components-v2/actions/workflows/release.yml/badge.svg">
+  </a>
+</p>
+
+<p align="center">
+<a href="https://www.npmjs.com/package/@nuwe/hooks">
+    <img alt="@nuwe/hooks" src="https://img.shields.io/npm/v/@nuwe/hooks?color=blueviolet&label=%40nuwe%2Fhooks">
+  </a>
+  <a href="https://www.npmjs.com/package/@nuwe/lib">
+    <img alt="@nuwe/lib" src="https://img.shields.io/npm/v/@nuwe/lib?color=brown&label=%40nuwe%2Flib">
+  </a>
+  <a href="https://www.npmjs.com/package/@nuwe/materio">
+    <img alt="@nuwe/materio" src="https://img.shields.io/npm/v/@nuwe/materio?color=blue&label=%40nuwe%2Fmaterio">
   </a>
 </p>
 
