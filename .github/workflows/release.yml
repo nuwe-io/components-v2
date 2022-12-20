@@ -8,9 +8,6 @@ jobs:
     name: Release
     runs-on: ubuntu-latest
     steps:
-      - name: Set git to use LF
-        run: git config --global core.autocrlf true && git config --global core.eol lf
-
       - name: Checkout
         uses: actions/checkout@v3
         with:
