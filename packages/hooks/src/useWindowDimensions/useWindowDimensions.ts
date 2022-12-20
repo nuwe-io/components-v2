@@ -1,12 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react'
 
-interface WindowDimensions {
+export interface WindowDimensions {
   width: number
   height: number
 }
 
-export function useWindowDimensions(maxWidthSm = null, maxWidthMd = null) {
+export function useWindowDimensions(
+  maxWidthSm: number | null = null,
+  maxWidthMd: number | null = null
+) {
   const [windowDimensions, setWindowDimensions] = useState<WindowDimensions>({
     width: 0,
     height: 0
