@@ -6,8 +6,8 @@
   "module": "dist/index.es.js",
   "scripts": {
     "build:library": "rollup -c",
-    "lint": "eslint --fix \"src/**/*.{ts,tsx}\"",
-    "format": "prettier --write \"src/**/*.{ts,tsx}\"",
+    "lint": "eslint --fix \"src/**/*.{js,ts,jsx,tsx}\"",
+    "format": "prettier --write \"src/**/*.{js,ts,jsx,tsx}\"",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
