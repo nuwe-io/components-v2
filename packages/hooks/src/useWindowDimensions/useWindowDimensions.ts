@@ -14,7 +14,7 @@ export function useWindowDimensions(
     width: 0,
     height: 0
   })
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState<boolean>(true)
 
   useEffect(() => {
     function getWindowDimensions() {

@@ -91,7 +91,7 @@ const onClickInfo = (setShowInfo: any) => () => {
 }
 
 const CardWidgetBarChar = ({ series = [] }: CardWidgetBarCharProps) => {
-  const [showInfo, setShowInfo] = useState(false)
+  const [showInfo, setShowInfo] = useState<boolean>(false)
   const { i18n } = useTranslation()
   const categories = {
     es: ['Extraversión', 'Amabilidad', 'Escrupolosidad', 'Neuroticismo', 'Apertura'],
