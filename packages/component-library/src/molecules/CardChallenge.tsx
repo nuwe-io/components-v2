@@ -4,12 +4,49 @@ import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
+import useId from '@mui/material/utils/useId'
 import { useTheme } from '@mui/styles'
-import { PropTypes } from 'prop-types'
 
-export const CardChallenge = ({ url, challenge, bigCard, isSmall, showCategory }) => {
+const defaultProps = {
+  challenge: {
+    type: 'Individual',
+    level: ['Junior'],
+    sponsors: [],
+    title: 'The Googler',
+    legend: "Femhack's front-end individual challenge",
+    imageURL: 'https://challenges-asset-files.s3.us-east-2.amazonaws.com/Femhack/googlegirl.png',
+    challengeURL: 'the-googler',
+    category: 'Frontend',
+    startTime: '2022-01-22T10:00:00.000Z',
+    endTime: '2022-01-23T06:00:00.000Z'
+  },
+  url: 'https://nuwe.io',
+  bigCard: false,
+  isSmall: false,
+  showCategory: true
+}
+
+interface CardChallengeProps {
+  url: string
+  challenge: any
+  bigCard?: boolean
+  isSmall?: boolean
+  showCategory?: boolean
+}
+
+const onClickCardAction = (url: string) => () => {
+  window.open(url, '_blank')
+}
+
+export const CardChallenge = ({
+  url = defaultProps.url,
+  challenge = defaultProps.challenge,
+  bigCard = defaultProps.bigCard,
+  isSmall = defaultProps.isSmall,
+  showCategory = defaultProps.showCategory
+}: CardChallengeProps) => {
   return (
-    <CardActionArea onClick={() => window.open(url, '_blank')}>
+    <CardActionArea onClick={onClickCardAction(url)}>
       <Card
         sx={{
           height: '362px'
@@ -42,14 +79,21 @@ export const CardChallenge = ({ url, challenge, bigCard, isSmall, showCategory }
   )
 }
 
-const Chips = ({ levels, category, showCategory }) => {
+interface chipsProps {
+  levels: string[]
+  category: string
+  showCategory: boolean
+}
+
+const Chips = ({ levels, category, showCategory }: chipsProps) => {
   const theme = useTheme()
+  const id = useId()
 
   return (
     <Box style={{ display: 'flex' }}>
-      {levels?.map((level, i) => (
+      {levels?.map((level) => (
         <Box
-          key={i}
+          key={id}
           style={{
             border: `1px solid ${theme.palette.primary.main}`,
             borderRadius: '20px',
@@ -85,53 +129,4 @@ const Chips = ({ levels, category, showCategory }) => {
       )}
     </Box>
   )
-}
-
-CardChallenge.propTypes = {
-  challenge: PropTypes.shape({
-    title: PropTypes.string,
-    imageURL: PropTypes.string,
-    legend: PropTypes.string,
-    challengeURL: PropTypes.string,
-    subCategory: PropTypes.string,
-    startTime: PropTypes.string,
-    endTime: PropTypes.string,
-    sponsors: PropTypes.array,
-    level: PropTypes.array,
-    category: PropTypes.string
-  }),
-  bigCard: PropTypes.bool,
-  isSmall: PropTypes.bool,
-  url: PropTypes.string,
-  showCategory: PropTypes.bool
-}
-
-CardChallenge.defaultProps = {
-  challenge: {
-    type: 'Individual',
-    level: ['Junior'],
-    sponsors: [],
-    title: 'The Googler',
-    legend: "Femhack's front-end individual challenge",
-    imageURL: 'https://challenges-asset-files.s3.us-east-2.amazonaws.com/Femhack/googlegirl.png',
-    challengeURL: 'the-googler',
-    category: 'Frontend',
-    startTime: '2022-01-22T10:00:00.000Z',
-    endTime: '2022-01-23T06:00:00.000Z'
-  },
-  url: 'https://nuwe.io',
-  bigCard: false,
-  isSmall: false
-}
-
-Chips.propTypes = {
-  levels: PropTypes.array,
-  category: PropTypes.string,
-  showCategory: PropTypes.bool
-}
-
-Chips.defaultProps = {
-  levels: [],
-  category: '',
-  showCategory: true
 }

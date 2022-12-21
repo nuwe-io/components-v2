@@ -4,7 +4,6 @@ import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import { styled, useTheme } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
-import PropTypes from 'prop-types'
 
 import { BadgeRank } from 'src/shared/components/molecules/BadgeRanks/BadgeRank'
 import { Translations } from 'src/shared/utils/translation/Translations'
@@ -21,7 +20,19 @@ const RankSVG = styled('div')({
   }
 })
 
-const CardAward = ({ username, score, action, rank }) => {
+interface CardAwardProps {
+  username: string
+  score: number
+  action: () => void
+  rank: string
+}
+
+const CardAward = ({
+  username = 'none',
+  score = 0,
+  action = () => console.log('need action'),
+  rank = 'explorer'
+}: CardAwardProps) => {
   const theme = useTheme()
   return (
     <Card sx={{ position: 'relative' }}>
@@ -56,20 +67,6 @@ const CardAward = ({ username, score, action, rank }) => {
       </CardContent>
     </Card>
   )
-}
-
-CardAward.propTypes = {
-  username: PropTypes.string,
-  score: PropTypes.number,
-  action: PropTypes.func,
-  rank: PropTypes.string
-}
-
-CardAward.defaultProps = {
-  username: 'none',
-  score: 0,
-  action: () => console.log('need action'),
-  rank: 'explorer'
 }
 
 export default CardAward

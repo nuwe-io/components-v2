@@ -1,7 +1,12 @@
 import { useTheme } from '@mui/material'
-import PropTypes from 'prop-types'
 
-export const Logo = ({ width, height, onlyIcon }) => {
+interface LogoProps {
+  width: number
+  height: number
+  onlyIcon: boolean
+}
+
+export const Logo = ({ width, height, onlyIcon }: LogoProps) => {
   const theme = useTheme()
 
   return (
@@ -28,15 +33,4 @@ export const Logo = ({ width, height, onlyIcon }) => {
       )}
     </svg>
   )
-}
-
-Logo.propTypes = {
-  width: PropTypes.number,
-  height: PropTypes.number,
-  onlyIcon: PropTypes.bool
-}
-
-Logo.defaultProps = {
-  width: 150,
-  height: 40
 }

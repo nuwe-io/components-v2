@@ -1,4 +1,3 @@
-import { PropTypes } from 'prop-types'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -17,11 +16,20 @@ import { useTheme } from '@mui/styles'
 import ReactApexcharts from 'src/shared/materio/@core/components/react-apexcharts'
 import { Translations } from 'src/shared/utils/translation/Translations'
 
-export const InformationDialog = ({ open, handleClose }) => {
+interface informationDialogProps {
+  open: boolean
+  handleClose: (value: boolean) => void
+}
+
+const onClose = (handleClose: any) => () => {
+  handleClose(false)
+}
+
+export const InformationDialog = ({ open, handleClose }: informationDialogProps) => {
   return (
     <Dialog
       open={open}
-      onClose={() => handleClose(false)}
+      onClose={onClose(handleClose)}
       aria-labelledby='alert-dialog-title'
       aria-describedby='alert-dialog-description'
     >
@@ -74,7 +82,15 @@ const columnColors = {
   series2: '#407D3CA2'
 }
 
-const CardWidgetBarChar = ({ series = [] }) => {
+interface CardWidgetBarCharProps {
+  series: any[]
+}
+
+const onClickInfo = (setShowInfo: any) => () => {
+  setShowInfo(true)
+}
+
+const CardWidgetBarChar = ({ series = [] }: CardWidgetBarCharProps) => {
   const [showInfo, setShowInfo] = useState(false)
   const { i18n } = useTranslation()
   const categories = {
@@ -192,7 +208,7 @@ const CardWidgetBarChar = ({ series = [] }) => {
           '& .MuiCardHeader-content': { mb: [2, 0] }
         }}
         action={
-          <IconButton onClick={() => setShowInfo(true)}>
+          <IconButton onClick={onClickInfo(setShowInfo)}>
             <Information />
           </IconButton>
         }
@@ -206,12 +222,3 @@ const CardWidgetBarChar = ({ series = [] }) => {
 }
 
 export default CardWidgetBarChar
-
-InformationDialog.propTypes = {
-  open: PropTypes.bool.isRequired,
-  handleClose: PropTypes.func.isRequired
-}
-
-CardWidgetBarChar.propTypes = {
-  series: PropTypes.array.isRequired
-}

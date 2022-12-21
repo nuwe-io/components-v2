@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import { PropTypes } from 'prop-types'
 import { Fragment } from 'react'
 
 // ** MUI Imports
@@ -26,7 +25,18 @@ const StyledLink = styled(Box)(({ theme }) => ({
   }
 }))
 
-const CardTopUsers = ({ users }) => {
+interface CardTopUsersProps {
+  users: {
+    id: string
+    title: string
+    image: string
+    username: string
+    position: number
+    rank: number
+  }[]
+}
+
+const CardTopUsers = ({ users }: CardTopUsersProps) => {
   return (
     <Card>
       <CardHeader title={<Translations ns='events' text='top_ranking' />} action={<Trophy />} />
@@ -88,14 +98,6 @@ const CardTopUsers = ({ users }) => {
       </CardContent>
     </Card>
   )
-}
-
-CardTopUsers.propTypes = {
-  users: PropTypes.array.isRequired
-}
-
-CardTopUsers.defaultProps = {
-  users: []
 }
 
 export default CardTopUsers

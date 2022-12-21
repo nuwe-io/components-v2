@@ -15,13 +15,19 @@ import CellphoneLink from 'mdi-material-ui/CellphoneLink'
 import CurrencyUsd from 'mdi-material-ui/CurrencyUsd'
 import TrendingUp from 'mdi-material-ui/TrendingUp'
 import Link from 'next/link'
-import { PropTypes } from 'prop-types'
-import { Fragment, useState } from 'react'
+import { Fragment, useId, useState } from 'react'
 
 import CustomAvatar from 'src/shared/materio/@core/components/mui/avatar'
 import { Translations } from 'src/shared/utils/translation/Translations'
 
-const salesData = [
+type dataType = {
+  stats: string
+  title: string
+  color: string
+  icon: JSX.Element
+}
+
+const salesData: dataType[] = [
   {
     stats: '245k',
     title: 'Sales',
@@ -48,12 +54,11 @@ const salesData = [
   }
 ]
 
-const renderStats = (data) => {
-  return data.map((item, index) => {
-    console.log(item)
+const renderStats = (data: dataType[], id: string) => {
+  return data.map((item) => {
     return (
-      <Grid style={{ margin: '1rem' }} item xs={6} md={3} key={index}>
-        <Box key={index} sx={{ display: 'flex', alignItems: 'center' }}>
+      <Grid style={{ margin: '1rem' }} item xs={6} md={3} key={id}>
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
           <CustomAvatar variant='rounded' color={item.color} sx={{ mr: 3, boxShadow: 3 }}>
             {item.icon}
           </CustomAvatar>
@@ -67,12 +72,47 @@ const renderStats = (data) => {
   })
 }
 
-const CardStatisticsUserResume = ({ data, profile, showProjectsButton }) => {
+interface CardStatisticsUserResumeProps {
+  data?: dataType[]
+  profile: {
+    isAuthor: boolean
+    data: {
+      projects: {
+        id: string
+        description: string
+        createdAt: string
+        challenge: {
+          challengeURL: string
+          title: string
+        }
+        technologies: {
+          name: string
+        }[]
+        projectURL: string
+      }[]
+    }
+  }
+  showProjectsButton?: boolean
+}
+
+const onClickSeeProjects = (setSeeProjects: any) => () => {
+  setSeeProjects((prev: boolean) => !prev)
+}
+
+const onLinkClick = (event: any) => () => event.preventDefault()
+
+const CardStatisticsUserResume = ({
+  data,
+  profile,
+  showProjectsButton
+}: CardStatisticsUserResumeProps) => {
   const { date } = currentLanguage()
   const { format, options } = date
 
   const information = data || salesData
-  const [seeProjects, setSeeProjects] = useState(false)
+  const [seeProjects, setSeeProjects] = useState<boolean>(false)
+
+  const id = useId()
 
   return (
     <Fragment>
@@ -84,7 +124,7 @@ const CardStatisticsUserResume = ({ data, profile, showProjectsButton }) => {
           }}
           action={
             showProjectsButton && (
-              <Button onClick={() => setSeeProjects((pre) => !pre)}>
+              <Button onClick={onClickSeeProjects(setSeeProjects)}>
                 {!seeProjects ? (
                   <Translations ns='profile' text='profile_resume_actions' />
                 ) : (
@@ -95,7 +135,7 @@ const CardStatisticsUserResume = ({ data, profile, showProjectsButton }) => {
           }
         />
         <CardContent>
-          <Grid container>{renderStats(information)}</Grid>
+          <Grid container>{renderStats(information, id)}</Grid>
         </CardContent>
       </Card>
       {seeProjects && (
@@ -127,7 +167,7 @@ const CardStatisticsUserResume = ({ data, profile, showProjectsButton }) => {
                         href={'/challenges/' + item?.challenge?.challengeURL}
                         rel='noopener'
                         target='_blank'
-                        onClick={(e) => e.preventDefault()}
+                        onClick={onLinkClick}
                       >
                         <Typography
                           sx={{
@@ -210,18 +250,6 @@ const CardStatisticsUserResume = ({ data, profile, showProjectsButton }) => {
       )}
     </Fragment>
   )
-}
-
-CardStatisticsUserResume.propTypes = {
-  data: PropTypes.array,
-  profile: PropTypes.object,
-  showProjectsButton: PropTypes.bool
-}
-
-CardStatisticsUserResume.defaultProps = {
-  data: salesData,
-  profile: {},
-  showProjectsButton: false
 }
 
 export default CardStatisticsUserResume

@@ -1,5 +1,5 @@
 import Grid from '@mui/material/Grid'
-import { PropTypes } from 'prop-types'
+import useId from '@mui/material/utils/useId'
 
 /**
  * ! Icons Imports:
@@ -9,7 +9,15 @@ import { PropTypes } from 'prop-types'
 
 import CardStatisticsVertical from 'src/shared/materio/@core/components/card-statistics/card-stats-vertical'
 
-const CardStatsVertical = ({ data, minMaxWidth = '240px, 1fr', ns }) => {
+interface CardStatsVerticalProps {
+  data: any
+  minMaxWidth?: string
+  ns?: string
+}
+
+const CardStatsVertical = ({ data, minMaxWidth = '240px, 1fr', ns }: CardStatsVerticalProps) => {
+  const id = useId()
+
   if (data) {
     return (
       <Grid
@@ -19,20 +27,14 @@ const CardStatsVertical = ({ data, minMaxWidth = '240px, 1fr', ns }) => {
           gap: '2rem'
         }}
       >
-        {data.map((item, index) => {
-          return <CardStatisticsVertical ns={ns} key={index} {...item} icon={item.icon} />
+        {data.map((item: any) => {
+          return <CardStatisticsVertical ns={ns} key={id} {...item} icon={item.icon} />
         })}
       </Grid>
     )
   } else {
     return null
   }
-}
-
-CardStatsVertical.propTypes = {
-  data: PropTypes.array,
-  minMaxWidth: PropTypes.string,
-  ns: PropTypes.string
 }
 
 export default CardStatsVertical

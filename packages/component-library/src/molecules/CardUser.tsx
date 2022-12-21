@@ -8,9 +8,23 @@ import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
 import Tooltip from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
-import { PropTypes } from 'prop-types'
+import useId from '@mui/material/utils/useId'
 
 import { Countdown } from 'src/shared/components/molecules/Countdown/Countdown'
+
+interface CardUserProps {
+  actionText?: string
+  avatar?: string
+  background?: string
+  callAction?: () => void
+  event?: any
+  friends?: any[]
+  friendsLabel?: string
+  isEvent?: boolean
+  maxFriends?: number
+  name?: string
+  text?: string
+}
 
 //* This component should in another repo
 export const CardUser = ({
@@ -19,14 +33,15 @@ export const CardUser = ({
   background,
   callAction,
   event,
-  friends,
+  friends = [],
   friendsLabel,
   isEvent,
-  maxFriends,
+  maxFriends = 0,
   name,
   text
-}) => {
-  const eventIsFinished = isEvent && new Date(event?.endTime) < new Date()
+}: CardUserProps) => {
+  const id = useId()
+  const eventIsFinished = isEvent ? new Date(event?.endTime) < new Date() : false
 
   return (
     <Card sx={{ position: 'relative' }}>
@@ -112,14 +127,8 @@ export const CardUser = ({
           <Typography variant='subtitle2' sx={{ whiteSpace: 'nowrap', color: 'text.primary' }}>
             {isEvent && (
               <Countdown
-                date={countDownDate(eventIsFinished, event)}
-                title={
-                  eventIsFinished
-                    ? 'finished_on_label'
-                    : new Date(event.startTime) > new Date()
-                    ? 'starts_at_label'
-                    : 'ends_in_label'
-                }
+                date={countDownDate({ eventIsFinished, event })}
+                title={countDownTitle({ eventIsFinished, event })}
                 isEvent
               />
             )}
@@ -127,8 +136,8 @@ export const CardUser = ({
           </Typography>
           {maxFriends > 0 && (
             <AvatarGroup max={5}>
-              {friends.map((friend, i) => (
-                <Tooltip key={'item' + i} title={friend.name} arrow>
+              {friends.map((friend) => (
+                <Tooltip key={id} title={friend.name} arrow>
                   <Avatar src={friend.logo} alt={friend.name} />
                 </Tooltip>
               ))}
@@ -140,35 +149,19 @@ export const CardUser = ({
   )
 }
 
-const countDownDate = (eventIsFinished, event) => {
+const countDownTitle = ({ eventIsFinished, event }: countDownDateProps) => {
+  if (eventIsFinished) return 'finished_on_label'
+  if (new Date(event.startTime) > new Date()) return 'starts_at_label'
+  return 'ends_in_label'
+}
+
+interface countDownDateProps {
+  eventIsFinished: boolean
+  event: any
+}
+
+const countDownDate = ({ eventIsFinished, event }: countDownDateProps) => {
   if ((eventIsFinished && !event?.active) || (!eventIsFinished && event?.active))
     return event?.endTime
   return event?.startTime
-}
-
-CardUser.propTypes = {
-  actionText: PropTypes.string,
-  avatar: PropTypes.string,
-  background: PropTypes.string,
-  callAction: PropTypes.func,
-  event: PropTypes.object,
-  friends: PropTypes.array,
-  friendsLabel: PropTypes.string,
-  isEvent: PropTypes.bool,
-  maxFriends: PropTypes.number,
-  name: PropTypes.string,
-  text: PropTypes.string
-}
-
-CardUser.defaultProps = {
-  callAction: null,
-  avatar: '',
-  background: '',
-  name: '',
-  text: '',
-  actionText: '',
-  friends: [],
-  maxFriends: 0,
-  friendsLabel: '',
-  isEvent: false
 }

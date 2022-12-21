@@ -4,7 +4,6 @@ import CardContent from '@mui/material/CardContent'
 import Grid from '@mui/material/Grid'
 import { styled } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
-import { PropTypes } from 'prop-types'
 
 // Styled Grid component
 const StyledGrid = styled(Grid)(({ theme }) => ({
@@ -26,7 +25,14 @@ const Img = styled('img')(({ theme }) => ({
   }
 }))
 
-const CardWelcomeBack = ({ title, message1, message2, width }) => {
+interface CardWelcomeBackProps {
+  title: string
+  message1: string
+  message2?: string
+  width?: number | string
+}
+
+const CardWelcomeBack = ({ title, message1, message2, width }: CardWelcomeBackProps) => {
   return (
     <Card sx={{ position: 'relative', overflow: 'visible', mt: { xs: 0, sm: 14.4, md: 0 }, width }}>
       <CardContent sx={{ p: (theme) => theme.spacing(7.25, 7.5, 7.75, 7.5) }}>
@@ -45,13 +51,6 @@ const CardWelcomeBack = ({ title, message1, message2, width }) => {
       </CardContent>
     </Card>
   )
-}
-
-CardWelcomeBack.propTypes = {
-  title: PropTypes.string.isRequired,
-  message1: PropTypes.string.isRequired,
-  message2: PropTypes.string,
-  width: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 }
 
 export default CardWelcomeBack

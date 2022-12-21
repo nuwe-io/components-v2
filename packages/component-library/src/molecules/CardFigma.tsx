@@ -1,9 +1,14 @@
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 
-import { PropTypes } from 'prop-types'
+interface FigmaCardProps {
+  figmaURL: string
+  width: number
+  height: number
+  hidden: boolean
+}
 
-export const FigmaCard = ({ figmaURL, width, height }) => {
+export const FigmaCard = ({ figmaURL, width, height }: FigmaCardProps) => {
   return (
     <Card
       sx={{
@@ -27,8 +32,12 @@ export const FigmaCard = ({ figmaURL, width, height }) => {
   )
 }
 
-const Figma = ({ url }) => {
-  if (url)
+interface FigmaProps {
+  url: string
+}
+
+const Figma = ({ url }: FigmaProps) => {
+  if (url) {
     return (
       <iframe
         title={url}
@@ -39,27 +48,7 @@ const Figma = ({ url }) => {
         frameBorder='0'
       />
     )
+  }
+
   return null
-}
-
-FigmaCard.propTypes = {
-  figmaURL: PropTypes.string,
-  width: PropTypes.any,
-  height: PropTypes.any,
-  hidden: PropTypes.bool
-}
-
-FigmaCard.defaultProps = {
-  figmaURL: '',
-  width: '100%',
-  height: '100%',
-  hidden: false
-}
-
-Figma.propTypes = {
-  url: PropTypes.string
-}
-
-Figma.defaultProps = {
-  url: ''
 }
