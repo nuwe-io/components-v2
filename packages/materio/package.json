@@ -12,9 +12,16 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "dayjs": "^1.11.6",
+    "i18next": "^22.4.6",
+    "i18next-browser-languagedetector": "^7.0.1",
+    "i18next-chained-backend": "^4.2.0",
+    "i18next-http-backend": "^2.1.1",
+    "i18next-localstorage-backend": "^4.1.0",
+    "next-i18next": "^13.0.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "dayjs": "^1.11.6"
+    "react-i18next": "^12.1.1"
   },
   "peerDependencies": {
     "@mui/icons-material": "^5.10.15",
