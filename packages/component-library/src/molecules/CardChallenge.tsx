@@ -91,9 +91,9 @@ const Chips = ({ levels, category, showCategory }: chipsProps) => {
 
   return (
     <Box style={{ display: 'flex' }}>
-      {levels?.map((level) => (
+      {levels?.map((level, i) => (
         <Box
-          key={id}
+          key={`${id}-${i}`}
           style={{
             border: `1px solid ${theme.palette.primary.main}`,
             borderRadius: '20px',
