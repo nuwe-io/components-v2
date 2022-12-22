@@ -6,15 +6,22 @@
   "module": "dist/index.es.js",
   "scripts": {
     "build:library": "rollup -c",
-    "lint": "eslint --fix \"src/**/*.{js,jsx}\"",
-    "format": "prettier --write \"src/**/*.{js,jsx}\"",
+    "lint": "eslint --fix \"src/**/*.{js,ts,jsx,tsx}\"",
+    "format": "prettier --write \"src/**/*.{js,ts,jsx,tsx}\"",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "dayjs": "^1.11.6",
+    "i18next": "^22.4.6",
+    "i18next-browser-languagedetector": "^7.0.1",
+    "i18next-chained-backend": "^4.2.0",
+    "i18next-http-backend": "^2.1.1",
+    "i18next-localstorage-backend": "^4.1.0",
+    "next-i18next": "^13.0.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "dayjs": "^1.11.6"
+    "react-i18next": "^12.1.1"
   },
   "peerDependencies": {
     "@mui/icons-material": "^5.10.15",
@@ -38,6 +45,9 @@
     "@storybook/manager-webpack5": "^6.5.13",
     "@storybook/react": "^6.5.13",
     "@storybook/testing-library": "^0.0.13",
+    "@types/jest": "^29.2.4",
+    "@typescript-eslint/eslint-plugin": "^5.47.0",
+    "@typescript-eslint/parser": "^5.47.0",
     "babel-loader": "^8.3.0",
     "eslint": "^8.28.0",
     "eslint-config-next": "^13.0.5",
@@ -50,6 +60,10 @@
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-scss": "^4.0.0",
-    "rollup-plugin-terser": "^7.0.2"
+    "rollup-plugin-terser": "^7.0.2",
+    "tsconfig-paths-webpack-plugin": "^4.0.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "typescript": "^4.9.4"
   }
 }
