@@ -1,13 +1,15 @@
 export const categories = [
+  'Algorithmic',
   'Backend',
-  'Frontend',
-  'Mobile',
-  'Desktop',
-  'Data Science',
-  'UX/UI',
+  'Business Analytics',
   'Cybersecurity',
+  'Data Science',
+  'Desktop',
+  'Frontend',
   'Fullstack',
-  'Algorithmic'
+  'Mobile',
+  'Multi',
+  'UX/UI'
 ]
 
 export const levels = [
