@@ -14,7 +14,7 @@ type CountryCodes = {
   dial_code: string
 }
 
-const CountriesAPI = () => {
+export const CountriesAPI = () => {
   const fetchCountries = async () =>
     fetch(BASEURL, { method: 'GET', redirect: 'follow' })
       .then((resp) => resp.json())
@@ -34,5 +34,3 @@ const CountriesAPI = () => {
     fetchCodes
   }
 }
-
-export default CountriesAPI

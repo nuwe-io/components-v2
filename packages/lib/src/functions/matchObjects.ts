@@ -1,4 +1,4 @@
-const matchObjects = (template: any, templateArray: any) =>
+export const matchObjects = (template: any, templateArray: any) =>
   templateArray?.map((item: any, index: number) => {
     const obj = {
       id: 0,
@@ -14,5 +14,3 @@ const matchObjects = (template: any, templateArray: any) =>
     obj.id = index
     return obj
   })
-
-export default matchObjects
