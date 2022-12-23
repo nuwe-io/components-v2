@@ -4,9 +4,9 @@
   "description": "Nuwe's shared utility library",
   "private": false,
   "homepage": "https://github.com/nuwe-io/components-v2#readme",
-  "main": "dist/index.ts",
-  "module": "dist/index.esm.ts",
-  "types": "dist/index.d.ts",
+  "main": "./index.ts",
+  "module": "./index.esm.ts",
+  "types": "./index.d.ts",
   "license": "ISC",
   "author": "NUWE TECH SL",
   "scripts": {
