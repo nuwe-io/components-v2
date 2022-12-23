@@ -1,10 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react'
-
-export interface WindowDimensions {
-  width: number
-  height: number
-}
+import { WindowDimensions } from '../../types'
 
 export function useWindowDimensions(
   maxWidthSm: number | null = null,
