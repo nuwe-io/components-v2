@@ -2,7 +2,7 @@
 
 import { themeConfig } from '../../../configs'
 
-const Button = (theme: any) => {
+export const Button = (theme: any) => {
   return {
     MuiButton: {
       styleOverrides: {
@@ -47,5 +47,3 @@ const Button = (theme: any) => {
     }
   }
 }
-
-export default Button

@@ -27,7 +27,7 @@ interface CardAwardProps {
   rank: string
 }
 
-const CardAward = ({
+export const CardAward = ({
   username = 'none',
   score = 0,
   action = () => console.log('need action'),
@@ -68,5 +68,3 @@ const CardAward = ({
     </Card>
   )
 }
-
-export default CardAward

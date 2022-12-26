@@ -2,7 +2,7 @@
 
 import { hexToRGBA } from '../../utils'
 
-const Chip = (theme: any) => {
+export const Chip = (theme: any) => {
   return {
     MuiChip: {
       styleOverrides: {
@@ -73,5 +73,3 @@ const Chip = (theme: any) => {
     }
   }
 }
-
-export default Chip

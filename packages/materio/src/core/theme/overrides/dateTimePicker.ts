@@ -1,4 +1,4 @@
-const DateTimePicker = (theme: any) => {
+export const DateTimePicker = (theme: any) => {
   return {
     MuiCalendarPicker: {
       styleOverrides: {
@@ -60,5 +60,3 @@ const DateTimePicker = (theme: any) => {
     }
   }
 }
-
-export default DateTimePicker

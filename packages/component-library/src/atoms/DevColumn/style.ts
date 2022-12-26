@@ -1,6 +1,6 @@
 import { makeStyles } from '@mui/styles'
 
-const useStyles = makeStyles(() => ({
+export const useStyles = makeStyles(() => ({
   container: {
     display: 'flex',
     alignItems: 'center',
@@ -15,5 +15,3 @@ const useStyles = makeStyles(() => ({
     backgroundColor: 'rgba(86, 155, 81, 0.8)'
   }
 }))
-
-export default useStyles

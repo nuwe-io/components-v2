@@ -36,7 +36,7 @@ interface CardTopUsersProps {
   }[]
 }
 
-const CardTopUsers = ({ users }: CardTopUsersProps) => {
+export const CardTopUsers = ({ users }: CardTopUsersProps) => {
   return (
     <Card>
       <CardHeader title={<Translations ns='events' text='top_ranking' />} action={<Trophy />} />
@@ -99,5 +99,3 @@ const CardTopUsers = ({ users }: CardTopUsersProps) => {
     </Card>
   )
 }
-
-export default CardTopUsers

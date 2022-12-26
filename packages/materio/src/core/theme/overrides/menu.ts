@@ -1,6 +1,6 @@
 import { Settings } from '../../../../types'
 
-const Menu = (theme: any, skin: Settings['skin']) => {
+export const Menu = (theme: any, skin: Settings['skin']) => {
   const boxShadow = () => {
     if (skin === 'bordered') {
       return theme.shadows[0]
@@ -23,5 +23,3 @@ const Menu = (theme: any, skin: Settings['skin']) => {
     }
   }
 }
-
-export default Menu

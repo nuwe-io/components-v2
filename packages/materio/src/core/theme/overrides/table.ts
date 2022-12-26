@@ -1,4 +1,4 @@
-const Table = (theme: any) => {
+export const Table = (theme: any) => {
   return {
     MuiTableContainer: {
       styleOverrides: {
@@ -63,5 +63,3 @@ const Table = (theme: any) => {
     }
   }
 }
-
-export default Table

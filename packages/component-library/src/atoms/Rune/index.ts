@@ -1,1 +1,1 @@
-export { Rune } from './Rune'
+export * from './Rune'

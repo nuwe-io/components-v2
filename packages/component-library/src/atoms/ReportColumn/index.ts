@@ -1,1 +1,1 @@
-export { ReportColumn } from './ReportColumn.jsx'
+export * from './ReportColumn.jsx'

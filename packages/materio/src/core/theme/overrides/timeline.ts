@@ -2,7 +2,7 @@
 
 import { hexToRGBA } from '../../utils'
 
-const Timeline = (theme: any) => {
+export const Timeline = (theme: any) => {
   return {
     MuiTimelineItem: {
       styleOverrides: {
@@ -77,5 +77,3 @@ const Timeline = (theme: any) => {
     }
   }
 }
-
-export default Timeline

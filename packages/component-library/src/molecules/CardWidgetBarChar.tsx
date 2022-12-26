@@ -90,7 +90,7 @@ const onClickInfo = (setShowInfo: any) => () => {
   setShowInfo(true)
 }
 
-const CardWidgetBarChar = ({ series = [] }: CardWidgetBarCharProps) => {
+export const CardWidgetBarChar = ({ series = [] }: CardWidgetBarCharProps) => {
   const [showInfo, setShowInfo] = useState<boolean>(false)
   const { i18n } = useTranslation()
   const categories = {
@@ -220,5 +220,3 @@ const CardWidgetBarChar = ({ series = [] }: CardWidgetBarCharProps) => {
     </Card>
   )
 }
-
-export default CardWidgetBarChar

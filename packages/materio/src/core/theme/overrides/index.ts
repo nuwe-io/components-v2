@@ -89,5 +89,3 @@ export const Overrides = (theme: any, settings: Settings) => {
     MuiToggleButton
   )
 }
-
-export default Overrides

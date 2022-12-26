@@ -67,5 +67,3 @@ export const themeOptions = (settings: Settings) => {
     }
   })
 }
-
-export default themeOptions

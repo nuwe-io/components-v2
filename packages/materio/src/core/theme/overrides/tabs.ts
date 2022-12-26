@@ -1,4 +1,4 @@
-const Tabs = (theme: any) => {
+export const Tabs = (theme: any) => {
   return {
     MuiTabs: {
       styleOverrides: {
@@ -23,5 +23,3 @@ const Tabs = (theme: any) => {
     }
   }
 }
-
-export default Tabs

@@ -1,4 +1,4 @@
-const List = (theme: any) => {
+export const List = (theme: any) => {
   return {
     MuiListItemIcon: {
       styleOverrides: {
@@ -37,5 +37,3 @@ const List = (theme: any) => {
     }
   }
 }
-
-export default List

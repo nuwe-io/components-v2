@@ -15,7 +15,11 @@ interface CardStatsVerticalProps {
   ns?: string
 }
 
-const CardStatsVertical = ({ data, minMaxWidth = '240px, 1fr', ns }: CardStatsVerticalProps) => {
+export const CardStatsVertical = ({
+  data,
+  minMaxWidth = '240px, 1fr',
+  ns
+}: CardStatsVerticalProps) => {
   const id = useId()
 
   if (data) {
@@ -36,5 +40,3 @@ const CardStatsVertical = ({ data, minMaxWidth = '240px, 1fr', ns }: CardStatsVe
     return null
   }
 }
-
-export default CardStatsVertical

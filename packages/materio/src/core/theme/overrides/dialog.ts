@@ -3,7 +3,7 @@
 import { Settings } from '../../../../types'
 import { hexToRGBA } from '../../utils'
 
-const Dialog = (theme: any, skin: Settings['skin']) => {
+export const Dialog = (theme: any, skin: Settings['skin']) => {
   return {
     MuiDialog: {
       styleOverrides: {
@@ -108,5 +108,3 @@ const Dialog = (theme: any, skin: Settings['skin']) => {
     }
   }
 }
-
-export default Dialog

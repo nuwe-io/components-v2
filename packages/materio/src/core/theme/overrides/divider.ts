@@ -1,4 +1,4 @@
-const Divider = (theme: any) => {
+export const Divider = (theme: any) => {
   return {
     MuiDivider: {
       styleOverrides: {
@@ -9,5 +9,3 @@ const Divider = (theme: any) => {
     }
   }
 }
-
-export default Divider

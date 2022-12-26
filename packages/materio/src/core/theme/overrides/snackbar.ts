@@ -1,6 +1,6 @@
 import { Settings } from '../../../../types'
 
-const Snackbar = (theme: any, skin: Settings['skin']) => {
+export const Snackbar = (theme: any, skin: Settings['skin']) => {
   return {
     MuiSnackbarContent: {
       styleOverrides: {
@@ -13,5 +13,3 @@ const Snackbar = (theme: any, skin: Settings['skin']) => {
     }
   }
 }
-
-export default Snackbar

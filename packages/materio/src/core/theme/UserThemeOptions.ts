@@ -2,7 +2,7 @@
 // import corePalette from 'src/@core/theme/palette'
 // ** To use mode (light/dark), skin(default/bordered/semi-dark), direction(ltr/rtl), etc. for conditional styles, uncomment below line
 // import { useSettings } from 'src/@core/hooks/useSettings'
-const UserThemeOptions = () => {
+export const UserThemeOptions = () => {
   // ** To use mode (light/dark), skin(default/bordered/semi-dark), direction(ltr/rtl), etc. for conditional styles, uncomment below line
   // const { settings } = useSettings()
   // ** To use mode (light/dark), skin(default/bordered/semi-dark), direction(ltr/rtl), etc. for conditional styles, uncomment below line
@@ -170,5 +170,3 @@ const UserThemeOptions = () => {
     } */
   }
 }
-
-export default UserThemeOptions

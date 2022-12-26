@@ -59,5 +59,3 @@ export const UseBgColor = () => {
     }
   }
 }
-
-export default UseBgColor

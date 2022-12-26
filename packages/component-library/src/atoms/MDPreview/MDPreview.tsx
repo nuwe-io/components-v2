@@ -11,7 +11,7 @@ interface elementProps {
   node: React.ReactNode
 }
 
-const MDPreview = ({ description }: MDPreviewProps) => {
+export const MDPreview = ({ description }: MDPreviewProps) => {
   const theme = useTheme()
 
   const textStyle = { color: theme.palette.text.primary }
@@ -46,5 +46,3 @@ const MDPreview = ({ description }: MDPreviewProps) => {
     </div>
   )
 }
-
-export default MDPreview

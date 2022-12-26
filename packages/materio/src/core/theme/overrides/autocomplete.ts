@@ -1,6 +1,6 @@
 import { Settings } from '../../../../types'
 
-const Autocomplete = (theme: any, skin: Settings['skin']) => {
+export const Autocomplete = (theme: any, skin: Settings['skin']) => {
   return {
     MuiAutocomplete: {
       styleOverrides: {
@@ -14,5 +14,3 @@ const Autocomplete = (theme: any, skin: Settings['skin']) => {
     }
   }
 }
-
-export default Autocomplete

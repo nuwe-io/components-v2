@@ -2,7 +2,7 @@
 
 import { hexToRGBA } from '../../utils'
 
-const Pagination = (theme: any) => {
+export const Pagination = (theme: any) => {
   return {
     MuiPaginationItem: {
       styleOverrides: {
@@ -35,5 +35,3 @@ const Pagination = (theme: any) => {
     }
   }
 }
-
-export default Pagination

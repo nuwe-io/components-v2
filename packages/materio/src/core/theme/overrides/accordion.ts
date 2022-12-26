@@ -1,4 +1,4 @@
-const Accordion = (theme: any) => {
+export const Accordion = (theme: any) => {
   return {
     MuiAccordion: {
       styleOverrides: {
@@ -42,5 +42,3 @@ const Accordion = (theme: any) => {
     }
   }
 }
-
-export default Accordion

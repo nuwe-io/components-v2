@@ -1,4 +1,4 @@
-const Switch = (theme: any) => {
+export const Switch = (theme: any) => {
   return {
     MuiSwitch: {
       styleOverrides: {
@@ -11,5 +11,3 @@ const Switch = (theme: any) => {
     }
   }
 }
-
-export default Switch

@@ -1,6 +1,6 @@
 import { Settings } from '../../../../types'
 
-const DefaultPalette = (
+export const DefaultPalette = (
   mode: Settings['mode'],
   skin: Settings['skin'],
   themeColor: Settings['themeColor']
@@ -124,5 +124,3 @@ const DefaultPalette = (
     }
   }
 }
-
-export default DefaultPalette
