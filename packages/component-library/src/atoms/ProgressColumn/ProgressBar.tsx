@@ -6,12 +6,29 @@ import { memo } from 'react'
  */
 
 interface ProgressBarProps {
-  isSecondary: boolean
+  isSecondary?: boolean
   label: boolean
-  labelPosition: 'top' | 'center'
-  text: string
-  textAndValue: boolean
-  textVariant: string
+  labelPosition?: 'top' | 'center'
+  text?: string
+  textAndValue?: boolean
+  height: string
+  color: string
+  textVariant?:
+    | 'h1'
+    | 'h2'
+    | 'h3'
+    | 'h4'
+    | 'h5'
+    | 'h6'
+    | 'subtitle1'
+    | 'subtitle2'
+    | 'body1'
+    | 'body2'
+    | 'caption'
+    | 'button'
+    | 'overline'
+    | 'inherit'
+    | undefined
   value: number
 }
 
@@ -23,7 +40,9 @@ export const ProgressBar = memo(
     text,
     textAndValue,
     textVariant,
-    value
+    value,
+    height,
+    color
   }: ProgressBarProps) => {
     return (
       <>
@@ -45,3 +64,5 @@ export const ProgressBar = memo(
     )
   }
 )
+
+ProgressBar.displayName = 'ProgressBar'

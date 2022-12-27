@@ -1,6 +1,6 @@
 import { makeStyles } from '@mui/styles'
 
-export const useStyles = makeStyles((theme) => ({
+export const useStyles = makeStyles(() => ({
   wrapper: {
     position: 'relative',
     display: 'flex',
@@ -16,7 +16,7 @@ export const useStyles = makeStyles((theme) => ({
     width: '100%',
     height: '100%',
     borderRadius: '20px',
-    left: (props) => props.left,
+    left: (props: any) => props.left,
     background: '#14151F',
     zIndex: 1
   },

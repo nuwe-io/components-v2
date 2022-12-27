@@ -1,6 +1,6 @@
 import { Avatar, Box, Typography } from '@mui/material'
 import { useRouter } from 'next/router'
-import useStyles from './style'
+import { useStyles } from './style'
 
 interface DevColumnProps {
   username: string

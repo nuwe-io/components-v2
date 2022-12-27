@@ -1,4 +1,4 @@
-export const Rating = (theme: any) => {
+const Rating = (theme: any) => {
   return {
     MuiRating: {
       styleOverrides: {
@@ -9,3 +9,5 @@ export const Rating = (theme: any) => {
     }
   }
 }
+
+export default Rating

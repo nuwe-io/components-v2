@@ -1,4 +1,4 @@
-export const Typography = (theme: any) => {
+const Typography = (theme: any) => {
   return {
     MuiTypography: {
       styleOverrides: {
@@ -9,3 +9,5 @@ export const Typography = (theme: any) => {
     }
   }
 }
+
+export default Typography

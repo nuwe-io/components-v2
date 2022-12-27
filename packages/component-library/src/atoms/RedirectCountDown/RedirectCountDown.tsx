@@ -10,7 +10,7 @@ interface ProgressColumnProps {
   url: string
 }
 
-export const ProgressColumn = ({ seconds, url }: ProgressColumnProps) => {
+export const RedirectCountDown = ({ seconds, url }: ProgressColumnProps) => {
   const counter = useCountDown(seconds)
 
   const router = useRouter()

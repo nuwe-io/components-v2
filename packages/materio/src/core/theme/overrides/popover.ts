@@ -1,6 +1,6 @@
 import { Settings } from '../../../../types'
 
-export const Popover = (theme: any, skin: Settings['skin']) => {
+const Popover = (theme: any, skin: Settings['skin']) => {
   return {
     MuiPopover: {
       styleOverrides: {
@@ -14,3 +14,5 @@ export const Popover = (theme: any, skin: Settings['skin']) => {
     }
   }
 }
+
+export default Popover

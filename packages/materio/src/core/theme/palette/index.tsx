@@ -1,6 +1,6 @@
 import { Settings } from '../../../../types'
 
-export const DefaultPalette = (
+export const Palette = (
   mode: Settings['mode'],
   skin: Settings['skin'],
   themeColor: Settings['themeColor']

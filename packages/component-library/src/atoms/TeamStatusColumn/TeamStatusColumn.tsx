@@ -37,7 +37,9 @@ export const TeamStatusColumn = ({ status }: TeamStatusColumnProps) => {
       }}
     >
       <Typography style={{ color: 'white', paddingLeft: 5, fontSize: '0.85rem' }} variant='body1'>
-        {language?.includes('en') ? status.toUpperCase() : computeStatusLabelES().toUpperCase()}
+        {language && language.includes('en')
+          ? status.toUpperCase()
+          : computeStatusLabelES().toUpperCase()}
       </Typography>
     </div>
   )

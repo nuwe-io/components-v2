@@ -1,6 +1,6 @@
 import { Settings } from '../../../../types'
 
-export const Card = (theme: any, skin: Settings['skin']) => {
+const Card = (theme: any, skin: Settings['skin']) => {
   return {
     MuiCard: {
       styleOverrides: {
@@ -82,3 +82,5 @@ export const Card = (theme: any, skin: Settings['skin']) => {
     }
   }
 }
+
+export default Card

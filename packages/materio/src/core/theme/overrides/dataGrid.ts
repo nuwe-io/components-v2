@@ -1,4 +1,4 @@
-export const DataGrid = (theme: any) => {
+const DataGrid = (theme: any) => {
   return {
     MuiDataGrid: {
       styleOverrides: {
@@ -91,3 +91,5 @@ export const DataGrid = (theme: any) => {
     }
   }
 }
+
+export default DataGrid

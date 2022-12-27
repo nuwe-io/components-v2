@@ -1,4 +1,4 @@
-import { BaseLink } from 'components/atoms'
+import { BaseLink } from '../BaseLink'
 
 import { scrollToRef } from '@nuwe/lib'
 

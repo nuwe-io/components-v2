@@ -1,4 +1,4 @@
-import { ChipOption } from 'src/shared/components/atoms/ChipOption'
+import { ChipOption } from '../ChipOption'
 
 interface ChipSelectorProps {
   options: string[]

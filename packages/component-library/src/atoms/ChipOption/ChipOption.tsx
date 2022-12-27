@@ -5,7 +5,7 @@ import { useStyles } from './styles'
 interface ChipOptionProps {
   value: string
   condition: boolean
-  updateSelected: () => void
+  updateSelected: (e: any) => void
   selectedAvatar?: React.ReactNode
   defaultAvatar?: React.ReactNode
 }
@@ -13,7 +13,7 @@ interface ChipOptionProps {
 export const ChipOption = ({
   value = '',
   condition = false,
-  updateSelected = () => console.log('updateSelected'),
+  updateSelected = (e: any) => console.log('updateSelected'),
   selectedAvatar,
   defaultAvatar,
   ...props

@@ -13,8 +13,8 @@ import DialogTitle from '@mui/material/DialogTitle'
 import { Information } from 'mdi-material-ui'
 // ** Component Import
 import { useTheme } from '@mui/styles'
-import ReactApexcharts from 'src/shared/materio/@core/components/react-apexcharts'
-import { Translations } from 'src/shared/utils/translation/Translations'
+import { Translations } from '@nuwe/lib'
+import { ReactApexcharts } from '@nuwe/materio'
 
 interface informationDialogProps {
   open: boolean

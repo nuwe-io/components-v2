@@ -1,3 +1,4 @@
+export * from './BadgeRanks'
 export * from './CardAward'
 export * from './CardChallenge'
 export * from './CardFigma'

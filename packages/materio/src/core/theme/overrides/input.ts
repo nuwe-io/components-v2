@@ -1,4 +1,4 @@
-export const input = (theme: any) => {
+const input = (theme: any) => {
   return {
     MuiInputLabel: {
       styleOverrides: {
@@ -58,3 +58,5 @@ export const input = (theme: any) => {
     }
   }
 }
+
+export default input
