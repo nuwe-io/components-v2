@@ -1,9 +1,9 @@
 interface CheckCircleProps {
-  size?: number
+  size?: string
   color?: string
 }
 
-export const CheckCircle = ({ size = 24, color = '#000000' }: CheckCircleProps) => (
+export const CheckCircle = ({ size = '24', color = '#000000' }: CheckCircleProps) => (
   <svg
     xmlns='http://www.w3.org/2000/svg'
     width={size}

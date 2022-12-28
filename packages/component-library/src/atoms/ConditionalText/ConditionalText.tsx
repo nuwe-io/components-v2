@@ -4,7 +4,16 @@ import { useStyles } from './styles'
 
 interface ConditionalTextProps {
   show: string
-  variant:
+  color?:
+    | 'error'
+    | 'inherit'
+    | 'primary'
+    | 'secondary'
+    | 'textPrimary'
+    | 'textSecondary'
+    | 'warning'
+    | undefined
+  variant?:
     | 'body2'
     | 'body1'
     | 'h6'
@@ -29,11 +38,9 @@ export const ConditionalText = ({
 }: ConditionalTextProps) => {
   const { helperText } = useStyles()
 
-  return (
-    show && (
-      <Typography variant={variant} className={helperText} {...props}>
-        {show}
-      </Typography>
-    )
-  )
+  return show ? (
+    <Typography variant={variant} className={helperText} {...props}>
+      {show}
+    </Typography>
+  ) : null
 }

@@ -1,9 +1,9 @@
 interface AlertCircleProps {
-  size?: number
+  size?: string
   color?: string
 }
 
-export const AlertCircle = ({ size = 24, color = '#000000' }: AlertCircleProps) => (
+export const AlertCircle = ({ size = '24', color = '#000000' }: AlertCircleProps) => (
   <svg
     xmlns='http://www.w3.org/2000/svg'
     width={size}
