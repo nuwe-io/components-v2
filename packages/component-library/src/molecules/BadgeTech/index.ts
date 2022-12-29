@@ -1,0 +1,1 @@
+export { BadgeTech } from './BadgeTech'

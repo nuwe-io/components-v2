@@ -1,6 +1,6 @@
 import { Settings } from '../../../../types'
 
-const Shadows = (mode: Settings['mode']) => {
+export const Shadows = (mode: Settings['mode']) => {
   if (mode === 'light') {
     return [
       'none',
@@ -59,5 +59,3 @@ const Shadows = (mode: Settings['mode']) => {
     ]
   }
 }
-
-export default Shadows

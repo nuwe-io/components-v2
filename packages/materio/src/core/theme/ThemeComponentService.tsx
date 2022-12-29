@@ -1,11 +1,11 @@
 // ** Theme Override Imports
 import { Settings } from '../../../types'
 import { themeConfig } from '../../configs'
-import GlobalStyling from './globalStyles'
-import overrides from './overrides'
-import themeOptions from './ThemeOptions'
-import typography from './typography'
-import UserThemeOptions from './UserThemeOptions'
+import { GlobalStyles as GlobalStyling } from './globalStyles'
+import { Overrides } from './overrides'
+import { themeOptions } from './ThemeOptions'
+import { Typography } from './typography'
+import { UserThemeOptions } from './UserThemeOptions'
 
 interface ThemeComponentServiceProps {
   CssBaseline: any
@@ -35,11 +35,11 @@ export const ThemeComponentService = (themeProps: ThemeComponentServiceProps) =>
 
     // ** Deep Merge Component overrides of core and user
     const mergeComponentOverrides = (theme: any, settings: Settings) =>
-      deepmerge({ ...overrides(theme, settings) }, UserThemeOptions()?.components)
+      deepmerge({ ...Overrides(theme, settings) }, UserThemeOptions()?.components)
 
     // ** Deep Merge Typography of core and user
     const mergeTypography = (theme: any) =>
-      deepmerge(typography(theme), UserThemeOptions()?.typography)
+      deepmerge(Typography(theme), UserThemeOptions()?.typography)
 
     // ** Continue theme creation and pass merged component overrides to CreateTheme function
     theme = createTheme(theme, {

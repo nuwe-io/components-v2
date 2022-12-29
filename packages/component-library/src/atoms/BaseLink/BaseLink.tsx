@@ -1,10 +1,12 @@
 import { Link } from '@mui/material'
 
-import useStyles from './styles'
+import { useStyles } from './styles'
 
 interface BaseLinkProps {
+  id: string
   selected: boolean
   name: string
+  onClick: () => void
 }
 
 export const BaseLink = ({ selected, name, ...props }: BaseLinkProps) => {

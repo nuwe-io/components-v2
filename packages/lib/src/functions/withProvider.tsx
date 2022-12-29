@@ -1,5 +1,5 @@
 /* eslint-disable indent */
-const withProviders =
+export const withProviders =
   (...providers: any[]) =>
   (WrappedComponent: any) =>
   (props: any) =>
@@ -13,5 +13,3 @@ const withProviders =
 
       return <Provider>{acc}</Provider>
     }, <WrappedComponent {...props} />)
-
-export { withProviders }

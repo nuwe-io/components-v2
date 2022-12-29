@@ -101,7 +101,7 @@ const onClickSeeProjects = (setSeeProjects: any) => () => {
 
 const onLinkClick = (event: any) => () => event.preventDefault()
 
-const CardStatisticsUserResume = ({
+export const CardStatisticsUserResume = ({
   data,
   profile,
   showProjectsButton
@@ -251,5 +251,3 @@ const CardStatisticsUserResume = ({
     </Fragment>
   )
 }
-
-export default CardStatisticsUserResume

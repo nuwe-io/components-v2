@@ -2,12 +2,12 @@
 import { deepmerge } from '@mui/utils'
 
 import { Settings } from '../../../types'
-import UserThemeOptions from './UserThemeOptions'
+import { UserThemeOptions } from './UserThemeOptions'
 
 // ** Theme Override Imports
-import breakpoints from './breakpoints'
-import palette from './palette'
-import shadows from './shadows'
+import { breakpoints } from './breakpoints'
+import { Palette } from './palette'
+import { Shadows } from './shadows'
 import spacing from './spacing'
 
 export const themeOptions = (settings: Settings) => {
@@ -15,7 +15,7 @@ export const themeOptions = (settings: Settings) => {
   const { skin, mode, direction, themeColor } = settings
 
   // ** Create New object before removing user component overrides and typography objects from userThemeOptions
-  const userThemeConfig = Object.assign({}, UserThemeOptions())
+  const userThemeConfig: any = Object.assign({}, UserThemeOptions())
   const userFontFamily = userThemeConfig.typography?.fontFamily
 
   // ** Remove component overrides and typography objects from userThemeOptions
@@ -25,7 +25,7 @@ export const themeOptions = (settings: Settings) => {
   const mergedThemeConfig = deepmerge(
     {
       direction,
-      palette: palette(mode, skin, themeColor),
+      palette: Palette(mode, skin, themeColor),
       typography: {
         fontFamily:
           userFontFamily ||
@@ -44,7 +44,7 @@ export const themeOptions = (settings: Settings) => {
             '"Segoe UI Symbol"'
           ].join(',')
       },
-      shadows: shadows(mode),
+      shadows: Shadows(mode),
       ...spacing,
       breakpoints: breakpoints(),
       shape: {
@@ -67,5 +67,3 @@ export const themeOptions = (settings: Settings) => {
     }
   })
 }
-
-export default themeOptions

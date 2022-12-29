@@ -1,5 +1,12 @@
 import { useTranslation } from 'react-i18next'
 
+interface TranslationsProps {
+  text: string
+  ns: string
+  lowerCase?: boolean
+  scope?: string[] | string | undefined
+}
+
 export const Translations = ({
   text = '',
   ns = 'common',
@@ -19,10 +26,10 @@ export const Translations = ({
     'teams',
     'notifications'
   ]
-}) => {
+}: TranslationsProps) => {
   const { t } = useTranslation(scope)
   const value = t(text, { ns })
-  return lowerCase ? value.toLowerCase() : value
+  return <>{lowerCase ? value.toLowerCase() : value}</>
 }
 
 export const useTranslations = () => {

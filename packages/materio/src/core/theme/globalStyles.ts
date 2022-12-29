@@ -83,5 +83,3 @@ export const GlobalStyles = (theme: any, settings: Settings) => {
     }
   }
 }
-
-export default GlobalStyles

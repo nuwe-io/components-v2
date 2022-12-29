@@ -32,7 +32,7 @@ interface CardWelcomeBackProps {
   width?: number | string
 }
 
-const CardWelcomeBack = ({ title, message1, message2, width }: CardWelcomeBackProps) => {
+export const CardWelcomeBack = ({ title, message1, message2, width }: CardWelcomeBackProps) => {
   return (
     <Card sx={{ position: 'relative', overflow: 'visible', mt: { xs: 0, sm: 14.4, md: 0 }, width }}>
       <CardContent sx={{ p: (theme) => theme.spacing(7.25, 7.5, 7.75, 7.5) }}>
@@ -52,5 +52,3 @@ const CardWelcomeBack = ({ title, message1, message2, width }: CardWelcomeBackPr
     </Card>
   )
 }
-
-export default CardWelcomeBack

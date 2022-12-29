@@ -1,6 +1,6 @@
 import { makeStyles } from '@mui/styles'
 
-const useStyles = makeStyles((theme) => ({
+export const useStyles = makeStyles((theme: any) => ({
   divLink: {
     marginRight: '15px',
     textAlign: 'center',
@@ -24,5 +24,3 @@ const useStyles = makeStyles((theme) => ({
     }
   }
 }))
-
-export default useStyles

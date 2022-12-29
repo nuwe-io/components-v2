@@ -7,7 +7,7 @@
     "declaration": true,
     "module": "esnext",
     "target": "es5",
-    "lib": ["es6", "dom"],
+    "lib": ["es6", "dom", "es2017"],
     "sourceMap": true,
     "outDir": "dist",
     "jsx": "preserve",
