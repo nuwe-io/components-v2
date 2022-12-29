@@ -7,7 +7,13 @@ interface TranslationsProps {
   scope?: string[] | string | undefined
 }
 
-export const Translations = ({
+export const Translations = ({ text, ns, lowerCase, scope }: TranslationsProps) => {
+  const { t } = useTranslation(scope)
+  const value = t(text, { ns })
+  return <>{lowerCase ? value.toLowerCase() : value}</>
+}
+
+export const TranslationsDevs = ({
   text = '',
   ns = 'common',
   lowerCase = false,
@@ -27,12 +33,33 @@ export const Translations = ({
     'notifications'
   ]
 }: TranslationsProps) => {
-  const { t } = useTranslation(scope)
-  const value = t(text, { ns })
-  return <>{lowerCase ? value.toLowerCase() : value}</>
+  return <Translations text={text} ns={ns} lowerCase={lowerCase} scope={scope} />
 }
 
-export const useTranslations = () => {
+export const TranslationsBusiness = ({
+  text = '',
+  ns = 'common',
+  lowerCase = false,
+  scope = ['common', 'event', 'events', 'login', 'position', 'positions', 'report', 'account']
+}: TranslationsProps) => {
+  return <Translations text={text} ns={ns} lowerCase={lowerCase} scope={scope} />
+}
+
+export const TranslationsBackoffice = ({
+  text = '',
+  ns = 'common',
+  lowerCase = false,
+  scope = ['common', 'event', 'events', 'login', 'position', 'positions', 'report', 'account']
+}: TranslationsProps) => {
+  return <Translations text={text} ns={ns} lowerCase={lowerCase} scope={scope} />
+}
+
+export const useTranslations = (scope: string[] | string | undefined = ['common']) => {
+  const { t } = useTranslation(scope)
+  return { translate: (text: string, ns: string) => t(text, { ns }) }
+}
+
+export const useTranslationsDevs = () => {
   const scope = [
     'common',
     'dashboard',
@@ -48,6 +75,15 @@ export const useTranslations = () => {
     'teams',
     'notifications'
   ]
-  const { t } = useTranslation(scope)
-  return { translate: (text: string, ns: string) => t(text, { ns }) }
+  return useTranslations(scope)
+}
+
+export const useTranslationsBusiness = () => {
+  const scope = ['common', 'event', 'events', 'login', 'position', 'positions', 'report', 'account']
+  return useTranslations(scope)
+}
+
+export const useTranslationsBackoffice = () => {
+  const scope = ['common', 'event', 'events', 'login', 'position', 'positions', 'report', 'account']
+  return useTranslations(scope)
 }
