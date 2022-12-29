@@ -136,8 +136,8 @@ export const CardUser = ({
           </Typography>
           {maxFriends > 0 && (
             <AvatarGroup max={5}>
-              {friends.map((friend) => (
-                <Tooltip key={id} title={friend.name} arrow>
+              {friends.map((friend: any, i: number) => (
+                <Tooltip key={`${id}-${i}`} title={friend.name} arrow>
                   <Avatar src={friend.logo} alt={friend.name} />
                 </Tooltip>
               ))}

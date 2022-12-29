@@ -27,8 +27,8 @@ const CardStatsVertical = ({ data, minMaxWidth = '240px, 1fr', ns }: CardStatsVe
           gap: '2rem'
         }}
       >
-        {data.map((item: any) => {
-          return <CardStatisticsVertical ns={ns} key={id} {...item} icon={item.icon} />
+        {data.map((item: any, i: number) => {
+          return <CardStatisticsVertical ns={ns} key={`${id}-${i}`} {...item} icon={item.icon} />
         })}
       </Grid>
     )
