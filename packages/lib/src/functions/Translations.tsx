@@ -4,7 +4,7 @@ interface TranslationsProps {
   text: string
   ns: string
   lowerCase?: boolean
-  scope?: string[]
+  scope?: string[] | string | undefined
 }
 
 export const Translations = ({
