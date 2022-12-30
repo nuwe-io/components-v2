@@ -1,3 +1,4 @@
+import { GridDensity } from '@mui/x-data-grid'
 import { useRouter } from 'next/router'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 
@@ -14,7 +15,7 @@ interface DataTableProps {
   height: number | string
   width: number | string
   loading: boolean
-  tableDensity: string
+  tableDensity: GridDensity | undefined
   checkboxSelection: boolean
   headerAction: any
   showLauncher: boolean
@@ -22,7 +23,7 @@ interface DataTableProps {
   headerButton: any
   disableColumnMenu: boolean
   noRowsLabel: string
-  headerActionTitle: string
+  headerActionTitle: object
   useServerSidePagination: any
 }
 
@@ -48,14 +49,14 @@ export const DataTable = ({
   headerActionTitle,
   useServerSidePagination
 }: DataTableProps) => {
-  const [selectedOpen, setSelectedOpen] = useState(false)
-  const [filterValue, setFilterValue] = useState('')
-  const [selectionModel, setSelectionModel] = useState([])
-  const [rows, setRows] = useState(() => data)
+  const [selectedOpen, setSelectedOpen] = useState<boolean>(false)
+  const [filterValue, setFilterValue] = useState<string>('')
+  const [selectionModel, setSelectionModel] = useState<any>([])
+  const [rows, setRows] = useState<any>([])
 
   const initialRows = useMemo(() => data, [data])
 
-  const [snackbar, setSnackbar] = useState({
+  const [snackbar, setSnackbar] = useState<any>({
     severity: 'warning',
     message: '',
     open: false
@@ -175,7 +176,7 @@ export const DataTable = ({
       disableColumnMenu={disableColumnMenu}
       noRowsLabel={noRowsLabel}
       serverSideMode={useServerSidePagination}
-      pagination={pagination}
+      pagination={useServerSidePagination}
     />
   )
 }

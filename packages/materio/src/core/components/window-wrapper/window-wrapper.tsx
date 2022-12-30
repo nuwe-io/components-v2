@@ -10,7 +10,7 @@ interface WindowWrapperProps {
 
 const WindowWrapper = ({ children }: WindowWrapperProps) => {
   // ** State
-  const [windowReadyFlag, setWindowReadyFlag] = useState(false)
+  const [windowReadyFlag, setWindowReadyFlag] = useState<boolean>(false)
   const router = useRouter()
   useEffect(
     () => {

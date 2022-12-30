@@ -24,7 +24,7 @@ export const SatisfactionSurveyDialog = ({
 }: SatisfactionSurveyDialogProps) => {
   const { translate } = useTranslations()
 
-  const [state, setState] = useState({
+  const [state, setState] = useState<any>({
     challenge: {
       answers: {
         level: 0,

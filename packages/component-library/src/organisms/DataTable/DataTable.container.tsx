@@ -18,7 +18,7 @@ interface DataTableProps {
   headerActionTitle: object
   headerButton: object
   height: string | number
-  launch: () => void
+  launch: (() => Promise<boolean>) | null
   loading: boolean
   noRowsLabel: string
   pagination: boolean

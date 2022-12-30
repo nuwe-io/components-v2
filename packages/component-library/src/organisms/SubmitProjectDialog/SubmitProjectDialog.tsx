@@ -65,11 +65,11 @@ export const SubmitProjectDialog = ({
   setProject
 }: SubmitProjectDialogProps) => {
   const { technologies, loading } = useTechnologies(open)
-  const [indexedTechs, setIndexedTechs] = useState([])
-  const [loader, setLoader] = useState(false)
-  const [data, setData] = useState({})
-  const [dataScienceChecksError, setDataScienceChecksError] = useState(false)
-  const [openSurvey, setOpenSurvey] = useState(false)
+  const [indexedTechs, setIndexedTechs] = useState<any>({})
+  const [loader, setLoader] = useState<boolean>(false)
+  const [data, setData] = useState<any>({})
+  const [dataScienceChecksError, setDataScienceChecksError] = useState<boolean>(false)
+  const [openSurvey, setOpenSurvey] = useState<boolean>(false)
 
   const { translate } = useTranslations()
 
@@ -116,7 +116,7 @@ export const SubmitProjectDialog = ({
     })
   }
 
-  const submitIndividual = async (stack) => {
+  const submitIndividual = async (stack: any) => {
     const response = await submitIndividualChallenge({
       ...data,
       technologies: stack,
@@ -139,7 +139,7 @@ export const SubmitProjectDialog = ({
     }
   }
 
-  const submitTeam = async (stack) => {
+  const submitTeam = async (stack: any) => {
     const event = await getEventById(challenge.from.id)
 
     const userTeam = await getUserTeamFromEvent(user.id, event.data.eventURL)

@@ -35,7 +35,7 @@ export const GiveFeedback = ({
   projectId,
   setFeedback
 }: GiveFeedbackProps) => {
-  const [showDialog, setShowDialog] = useState(false)
+  const [showDialog, setShowDialog] = useState<boolean>(false)
 
   return (
     <div style={{ height: '100%', width: '100%', display: 'flex', alignItems: 'center' }}>
@@ -82,11 +82,11 @@ const GiveFeedbackDialog = ({
   setShowDialog,
   setFeedback
 }: GiveFeedbackDialogProps) => {
-  const [teamwork, setTeamwork] = useState(null)
-  const [analysis, setAnalysis] = useState(null)
-  const [resolution, setResolution] = useState(null)
-  const [communication, setCommunication] = useState(null)
-  const [error, setError] = useState(false)
+  const [teamwork, setTeamwork] = useState<any>(null)
+  const [analysis, setAnalysis] = useState<any>(null)
+  const [resolution, setResolution] = useState<any>(null)
+  const [communication, setCommunication] = useState<any>(null)
+  const [error, setError] = useState<boolean>(false)
   const [attributes, setAttributes] = useState<any[]>([])
 
   useEffect(() => {

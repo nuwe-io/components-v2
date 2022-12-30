@@ -15,7 +15,7 @@ import { ButtonLoader } from '../../atoms'
 interface ActionAlertGroupProps {
   save?: () => void
   deleteAction?: () => void
-  launch?: () => void
+  launch?: (() => Promise<boolean>) | null
   severity?: 'error' | 'warning' | 'info' | 'success'
   cancel?: () => void
 }
@@ -164,7 +164,7 @@ interface MessageAlertProps {
   cancel: () => void
   variant?: 'filled' | 'outlined' | 'standard'
   severity: 'error' | 'warning' | 'info' | 'success'
-  launch?: () => void
+  launch?: (() => Promise<boolean>) | null
   deleteAction?: () => void
   isNotification?: boolean
   notification?: any
