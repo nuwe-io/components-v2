@@ -24,6 +24,14 @@ interface CardUserProps {
   maxFriends?: number
   name?: string
   text?: string
+  ns?: string
+  displayedTexts: {
+    daysLabel: string
+    hoursLabel: string
+    minutesLabel: string
+    title: string
+    timeoutLabel: string
+  }
 }
 
 //* This component should in another repo
@@ -38,7 +46,8 @@ export const CardUser = ({
   isEvent,
   maxFriends = 0,
   name,
-  text
+  text,
+  displayedTexts
 }: CardUserProps) => {
   const id = useId()
   const eventIsFinished = isEvent ? new Date(event?.endTime) < new Date() : false
@@ -130,6 +139,7 @@ export const CardUser = ({
                 date={countDownDate({ eventIsFinished, event })}
                 title={countDownTitle({ eventIsFinished, event })}
                 isEvent
+                displayedTexts={displayedTexts}
               />
             )}
             {!isEvent && friendsLabel}

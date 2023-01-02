@@ -6,6 +6,8 @@ interface ChipProps {
   variant?: 'filled' | 'outlined' | undefined
   size?: 'small' | 'medium' | undefined
   moreProps?: object
+  skin?: 'light' | 'dark'
+  sx?: object
 }
 
 export const Chip = ({ label, color, variant, size, ...moreProps }: ChipProps) => (

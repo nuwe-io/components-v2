@@ -17,7 +17,7 @@ import TrendingUp from 'mdi-material-ui/TrendingUp'
 import Link from 'next/link'
 import { Fragment, useId, useState } from 'react'
 
-import { CustomAvatar } from '@nuwe/materio'
+import { Avatar } from '@nuwe/materio'
 
 type dataType = {
   stats: string
@@ -54,13 +54,13 @@ const salesData: dataType[] = [
 ]
 
 const renderStats = (data: dataType[], id: string) => {
-  return data.map((item) => {
+  return data.map((item: any) => {
     return (
       <Grid style={{ margin: '1rem' }} item xs={6} md={3} key={id}>
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <CustomAvatar variant='rounded' color={item.color} sx={{ mr: 3, boxShadow: 3 }}>
+          <Avatar variant='rounded' color={item.color} sx={{ mr: 3, boxShadow: 3 }}>
             {item.icon}
-          </CustomAvatar>
+          </Avatar>
           <Box sx={{ display: 'flex', flexDirection: 'column' }}>
             <Typography variant='caption'>{item.title}</Typography>
             <Typography variant='h6'>{item.stats}</Typography>
@@ -115,7 +115,7 @@ export const CardStatisticsUserResume = ({
   displayedTexts
 }: CardStatisticsUserResumeProps) => {
   const { date } = currentLanguage()
-  const { format, options } = date
+  const { format, options } = date as any
 
   const information = data || salesData
   const [seeProjects, setSeeProjects] = useState<boolean>(false)

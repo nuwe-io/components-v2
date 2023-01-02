@@ -5,7 +5,7 @@ import CardContent from '@mui/material/CardContent'
 import { styled, useTheme } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 import PropTypes from 'prop-types'
-import { BadgeRank } from 'src/shared/components/molecules/BadgeRanks/BadgeRank'
+import { BadgeRank } from '../BadgeRanks'
 
 // Styled component for the trophy image
 const RankSVG = styled('div')({
@@ -23,7 +23,7 @@ interface CardAwardProps {
   username: string
   score: number
   action: () => void
-  rank: string
+  rank: 'creator' | 'moderator' | 'admin' | 'artisan' | 'master' | 'explorer'
   displayedTexts: {
     cardAwardTitle: string
     cardAwardPoints: string
@@ -55,7 +55,7 @@ const CardAward = ({ username, score, action, rank, displayedTexts }: CardAwardP
             size='md'
             shadow={theme.palette.mode !== 'dark' ? false : true}
             animation={true}
-            stars={'none'}
+            stars={-1}
             level={-1}
             rank={rank}
             lights={theme.palette.mode !== 'dark' ? false : true}

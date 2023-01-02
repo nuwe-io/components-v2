@@ -8,7 +8,7 @@ import SaveIcon from '@mui/icons-material/Save'
 
 import Box from '@mui/material/Box'
 import { styled } from '@mui/material/styles'
-import { CustomAvatar } from '@nuwe/materio'
+import { Avatar } from '@nuwe/materio'
 import { ButtonLoader } from '../../atoms'
 
 interface ActionAlertGroupProps {
@@ -86,7 +86,7 @@ const ActionAlertGroup = ({
   )
 }
 
-const Avatar = styled(CustomAvatar)({
+const AvatarStyled: any = styled(Avatar)({
   width: '2.375rem',
   height: '2.375rem',
   fontSize: '1.125rem'
@@ -149,7 +149,7 @@ const NotificationAlert = ({ notification, displayedTexts }: NotificationAlertPr
 
   return (
     <Box sx={{ width: '100%', display: 'flex', alignItems: 'center' }}>
-      <Avatar alt='Avatar' src={notification.user.image} />
+      <AvatarStyled alt='Avatar' src={notification.user.image} />
       <Box
         sx={{ mx: 4, flex: '1 1', display: 'flex', overflow: 'hidden', flexDirection: 'column' }}
       >

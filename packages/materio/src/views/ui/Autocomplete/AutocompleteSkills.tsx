@@ -8,13 +8,13 @@ import { useTechnologies } from './useTechnologies'
 const logosURL = 'https://cdn.svgporn.com/logos/'
 
 interface AutocompleteSkillsProps {
-  control: any
+  control?: any
   controller?: boolean
   handlers?: {
     data: any[]
     handlerData: (inputs: any) => void
   }
-  cardsMode?: 'default' | 'small'
+  cardsMode?: 'default' | 'small' | 'black'
 }
 
 export const AutocompleteSkills = ({

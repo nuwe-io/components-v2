@@ -1,13 +1,14 @@
 import { Paper, Typography } from '@mui/material'
-import { Translations } from 'src/shared/utils/translation/Translations'
 import { useStyles } from './style'
 
 interface PanelProps {
-  label: string
   n: number
+  displayedTexts: {
+    label: string
+  }
 }
 
-const Panel = ({ label, n }: PanelProps) => {
+const Panel = ({ n, displayedTexts }: PanelProps) => {
   const classes = useStyles()
 
   return (
@@ -15,9 +16,7 @@ const Panel = ({ label, n }: PanelProps) => {
       <Typography variant='h5' className={classes.num}>
         {n < 10 ? '0' + n : n}
       </Typography>
-      <Typography className={classes.txt}>
-        <Translations ns={'events'} text={label} />
-      </Typography>
+      <Typography className={classes.txt}>{displayedTexts.label}</Typography>
     </div>
   )
 }
@@ -28,15 +27,18 @@ interface CountdownProps {
   hours: number
   minutes: number
   timeOut: boolean
-  daysLabel: string
-  hoursLabel: string
-  minutesLabel: string
-  timeoutLabel: string
   day: number
   month: number
   year: number
   language: string
   isEvent: boolean
+  displayedTexts: {
+    daysLabel: string
+    hoursLabel: string
+    minutesLabel: string
+    title: string
+    timeoutLabel: string
+  }
 }
 
 export const CountdownDummy = ({
@@ -45,15 +47,12 @@ export const CountdownDummy = ({
   hours,
   minutes,
   timeOut,
-  daysLabel,
-  hoursLabel,
-  minutesLabel,
-  timeoutLabel,
   day,
   month,
   year,
   language,
-  isEvent
+  isEvent,
+  displayedTexts
 }: CountdownProps) => {
   const classes = useStyles()
   const formattedDay = day < 10 ? '0' + day : day
@@ -65,20 +64,26 @@ export const CountdownDummy = ({
         <Paper className={classes.paper} elevation={0}>
           {title && (
             <Typography variant='subtitle1' component='h2' align='center' className={classes.title}>
-              <Translations ns={'events'} text={title} />
+              {displayedTexts.title}
             </Typography>
           )}
           <div className={classes.counter}>
             <div className={classes.panels}>
-              <Panel label={daysLabel} n={days > 0 ? days : 0} />
+              <Panel n={days > 0 ? days : 0} displayedTexts={{ label: displayedTexts.daysLabel }} />
               <Typography variant='h5' className={classes.divider}>
                 :
               </Typography>
-              <Panel label={hoursLabel} n={hours > 0 ? hours : 0} />
+              <Panel
+                n={hours > 0 ? hours : 0}
+                displayedTexts={{ label: displayedTexts.hoursLabel }}
+              />
               <Typography variant='h5' className={classes.divider}>
                 :
               </Typography>
-              <Panel label={minutesLabel} n={minutes > 0 ? minutes : 0} />
+              <Panel
+                n={minutes > 0 ? minutes : 0}
+                displayedTexts={{ label: displayedTexts.minutesLabel }}
+              />
             </div>
           </div>
         </Paper>
@@ -89,7 +94,7 @@ export const CountdownDummy = ({
             <Paper className={classes.paper} elevation={0}>
               <div style={{ display: 'flex', width: '100%', justifyContent: 'center' }}>
                 <Typography variant='subtitle1' component='h2' className={classes.title}>
-                  <Translations ns={'events'} text={timeoutLabel} />
+                  {displayedTexts.timeoutLabel}
                 </Typography>
               </div>
             </Paper>

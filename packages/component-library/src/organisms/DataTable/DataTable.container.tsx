@@ -33,6 +33,19 @@ interface DataTableProps {
   }
   tableDensity: GridDensity | undefined
   width: string | number
+  displayedTexts: {
+    newTeamRequest: string
+    teamRequestAccepted: string
+    teamUpdate: string
+    newNotification: string
+    joinedYourTeam: string
+    wantsToJoin: string
+    invitedYou: string
+    addedYou: string
+    leftYourTeam: string
+    newTeamLeader: string
+    userWasKicked: string
+  }
 }
 
 const DataTable = ({
@@ -60,7 +73,8 @@ const DataTable = ({
   showHeader,
   snackbar,
   tableDensity,
-  width
+  width,
+  displayedTexts
 }: DataTableProps) => {
   return (
     <div style={{ width, height }}>
@@ -71,6 +85,7 @@ const DataTable = ({
         deleteAction={deleteAction}
         launch={launch}
         severity={snackbar?.severity}
+        displayedTexts={displayedTexts}
       />
       <Card>
         <DataGrid

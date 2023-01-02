@@ -11,7 +11,7 @@ interface SatisfactionSurveyDialogProps {
   event: any
   user: any
   popup: any
-  landingCheck: boolean
+  landingCheck?: boolean
   displayedTexts: {
     thankYouForYourParticipation: string
     solutionSuccessfullySubmitted: string

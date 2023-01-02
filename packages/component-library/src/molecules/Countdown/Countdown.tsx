@@ -7,22 +7,17 @@ import { CountdownDummy } from './Countdown.container.jsx'
 interface CountdownProps {
   date: string
   title: string
-  daysLabel: string
-  hoursLabel: string
-  minutesLabel: string
-  timeoutLabel: string
   isEvent: boolean
+  displayedTexts: {
+    daysLabel: string
+    hoursLabel: string
+    minutesLabel: string
+    title: string
+    timeoutLabel: string
+  }
 }
 
-export const Countdown = ({
-  date,
-  title,
-  daysLabel,
-  hoursLabel,
-  minutesLabel,
-  timeoutLabel,
-  isEvent
-}: CountdownProps) => {
+export const Countdown = ({ date, title, isEvent, displayedTexts }: CountdownProps) => {
   const { language } = currentLanguage()
 
   const [secondsLeft, setSecondsLeft] = useState<number>(
@@ -67,15 +62,12 @@ export const Countdown = ({
       hours={hours}
       minutes={minutes}
       timeOut={timeOut}
-      daysLabel={daysLabel}
-      hoursLabel={hoursLabel}
-      minutesLabel={minutesLabel}
-      timeoutLabel={timeoutLabel}
       month={month}
       day={day}
       year={year}
       language={language ? language : 'en'}
       isEvent={isEvent}
+      displayedTexts={displayedTexts}
     />
   )
 }

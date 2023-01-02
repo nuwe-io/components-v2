@@ -3,10 +3,10 @@ import { styled } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 
 import { createdAt } from '@nuwe/lib'
-import CustomAvatar from '@nuwe/materio'
+import { Avatar } from '@nuwe/materio'
 
 // ** Styled Avatar component
-const Avatar = styled(CustomAvatar)({
+const AvatarStyled = styled(Avatar)({
   width: '2.375rem',
   height: '2.375rem',
   fontSize: '1.125rem'
@@ -79,7 +79,7 @@ export const NotificationBox = ({ notification, displayedTexts }: NotificationBo
 
   return notification.hasOwnProperty('user') ? (
     <Box sx={{ width: '100%', display: 'flex', alignItems: 'center' }}>
-      <Avatar alt='Avatar' src={notification.user.image} />
+      <AvatarStyled alt='Avatar' src={notification.user.image} />
       <Box
         sx={{ mx: 4, flex: '1 1', display: 'flex', overflow: 'hidden', flexDirection: 'column' }}
       >

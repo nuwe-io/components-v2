@@ -1,4 +1,3 @@
-import { ButtonLoader } from '@components/atoms'
 import {
   Button,
   Chip,
@@ -10,8 +9,7 @@ import {
   TextField,
   Typography
 } from '@mui/material'
-
-import { Translations, useTranslations } from '@nuwe/lib'
+import { ButtonLoader } from '../../atoms'
 
 interface SubmitProjectDialogViewProps {
   challenge: any
@@ -24,6 +22,16 @@ interface SubmitProjectDialogViewProps {
   loader: boolean
   loading: boolean
   dataScienceChecksError: any
+  displayedTexts: {
+    supercoolSolutionBuiltWithSuperpowers: string
+    submitFormTitle: string
+    inputSolutionDescription: string
+    inputRepoLink: string
+    inputSolutionStack: string
+    dataRepoError: string
+    actionCancel: string
+    actionSubmit: string
+  }
 }
 
 export const SubmitProjectDialogView = ({
@@ -36,10 +44,9 @@ export const SubmitProjectDialogView = ({
   submitSolution,
   loader,
   loading,
-  dataScienceChecksError
+  dataScienceChecksError,
+  displayedTexts
 }: SubmitProjectDialogViewProps) => {
-  const { translate } = useTranslations()
-
   return (
     <Dialog open={open}>
       {loading ? (
@@ -54,12 +61,12 @@ export const SubmitProjectDialogView = ({
       ) : (
         <DialogContent>
           <DialogTitle>
-            <Translations ns='challenge' text='submit_form_title' /> {challenge?.title}
+            {displayedTexts.submitFormTitle} {challenge?.title}
           </DialogTitle>
           <DialogContent>
             <div style={{ margin: '15px 0px' }}>
               <Typography style={{ margin: '5px 0px' }}>
-                <Translations ns='challenge' text='input_solution_description' />
+                {displayedTexts.inputSolutionDescription}
               </Typography>
               <TextField
                 fullWidth
@@ -69,13 +76,11 @@ export const SubmitProjectDialogView = ({
                 multiline
                 onChange={(e) => handlerData(e, null, 'description')}
                 maxRows={6}
-                label={translate('supercool_solution_built_with_superpowers', 'teams')}
+                label={displayedTexts.supercoolSolutionBuiltWithSuperpowers}
               />
             </div>
             <div style={{ margin: '15px 0px' }}>
-              <Typography style={{ margin: '5px 0px' }}>
-                <Translations ns='challenge' text='input_repo_link' />
-              </Typography>
+              <Typography style={{ margin: '5px 0px' }}>{displayedTexts.inputRepoLink}</Typography>
               <TextField
                 onChange={(e) => handlerData(e, null, 'projectURL')}
                 fullWidth
@@ -87,7 +92,7 @@ export const SubmitProjectDialogView = ({
             </div>
             <div style={{ margin: '15px 0px' }}>
               <Typography style={{ margin: '5px 0px' }}>
-                <Translations ns='challenge' text='input_solution_stack' />
+                {displayedTexts.inputSolutionStack}
               </Typography>
               <div>
                 {techsInProjects &&
@@ -112,7 +117,7 @@ export const SubmitProjectDialogView = ({
             {dataScienceChecksError && (
               <div style={{ marginTop: '20px' }}>
                 <Typography align='center' sx={{ color: 'orangered' }}>
-                  <Translations ns='challenge' text='data_repo_error' />
+                  {displayedTexts.dataRepoError}
                 </Typography>
               </div>
             )}
@@ -120,16 +125,20 @@ export const SubmitProjectDialogView = ({
           <DialogActions>
             <Button
               size='small'
-              loading={loader}
+              //loading={loader}
               disabled={loader}
               color='secondary'
               variant='outlined'
               onClick={() => setSendSolution(false)}
             >
-              <Translations ns='challenge' text='action_cancel' />
+              {displayedTexts.actionCancel}
             </Button>
-            <ButtonLoader loading={loader} disabled={loader} size='small' onClick={submitSolution}>
-              <Translations ns='challenge' text='action_submit' />
+            <ButtonLoader
+              loading={loader}
+              disabled={loader}
+              /* size='small' */ onClick={submitSolution}
+            >
+              {displayedTexts.actionSubmit}
             </ButtonLoader>
           </DialogActions>
         </DialogContent>

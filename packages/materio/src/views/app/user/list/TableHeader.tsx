@@ -21,7 +21,7 @@ interface TableHeaderProps {
   }
 }
 
-const TableHeader = (props: TableHeaderProps) => {
+export const TableHeader = (props: TableHeaderProps) => {
   // ** Props
   const {
     onChange,
@@ -88,5 +88,3 @@ const TableHeader = (props: TableHeaderProps) => {
     </Box>
   )
 }
-
-export default TableHeader

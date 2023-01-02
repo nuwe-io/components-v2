@@ -1,7 +1,7 @@
 /* eslint-disable comma-spacing */
 import { Chip } from '@mui/material'
 
-import { actionsSwal, actionsSwalDefaultValues } from '@shared/utils/swal/swal'
+import { actionsSwal, actionsSwalDefaultValues } from '@nuwe/lib'
 
 interface KickUserColumnProps {
   data: any
