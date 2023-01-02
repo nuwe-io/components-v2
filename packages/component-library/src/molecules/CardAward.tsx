@@ -5,7 +5,6 @@ import CardContent from '@mui/material/CardContent'
 import { styled, useTheme } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 
-import { Translations } from '@nuwe/lib'
 import { BadgeRank } from '../molecules'
 
 // Styled component for the trophy image
@@ -25,32 +24,37 @@ interface CardAwardProps {
   score: number
   action: () => void
   rank: 'explorer' | 'creator' | 'moderator' | 'admin' | 'artisan' | 'master' | undefined
+  displayedTexts: {
+    cardAwardTitle: string
+    cardAwardPoints: string
+    cardAwardGrowing: string
+    cardAwardButton: string
+  }
 }
 
 export const CardAward = ({
   username = 'none',
   score = 0,
   action = () => console.log('need action'),
-  rank = 'explorer'
+  rank = 'explorer',
+  displayedTexts
 }: CardAwardProps) => {
   const theme = useTheme()
   return (
     <Card sx={{ position: 'relative' }}>
       <CardContent>
         <Typography variant='h6'>
-          <Translations ns='dashboard' text='card_award_title' /> {username} 👋
+          {displayedTexts.cardAwardTitle} {username} 👋
         </Typography>
-        <Typography variant='body2'>
-          <Translations ns='dashboard' text='card_award_points' />
-        </Typography>
+        <Typography variant='body2'>{displayedTexts.cardAwardPoints}</Typography>
         <Typography variant='h5' sx={{ mt: 3.5, color: 'primary.main' }}>
           {score}
         </Typography>
         <Typography variant='body2' sx={{ mb: 4.25 }}>
-          <Translations ns='dashboard' text='card_award_growing' /> 🚀
+          {displayedTexts.cardAwardGrowing} 🚀
         </Typography>
         <Button onClick={action} size='small' variant='contained'>
-          <Translations ns='dashboard' text='card_award_button' />
+          {displayedTexts.cardAwardButton}
         </Button>
         <RankSVG>
           <BadgeRank

@@ -2,7 +2,7 @@ import Box from '@mui/material/Box'
 import { styled } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 
-import { createdAt, Translations } from '@nuwe/lib'
+import { createdAt } from '@nuwe/lib'
 import CustomAvatar from '@nuwe/materio'
 
 // ** Styled Avatar component
@@ -33,41 +33,48 @@ const MenuItemSubtitle = styled(Typography)({
 
 interface NotificationBoxProps {
   notification: any
+  displayedTexts: {
+    zeroMinAgo: string
+    now: string
+    newTeamRequest: string
+    teamRequestAccepted: string
+    teamUpdate: string
+    newNotification: string
+    wantsToJoin: string
+    invitedYou: string
+    addedYou: string
+    joinedYourTeam: string
+    leftYourTeam: string
+    newTeamLeader: string
+    userWasKicked: string
+  }
 }
 
-export const NotificationBox = ({ notification }: NotificationBoxProps) => {
+export const NotificationBox = ({ notification, displayedTexts }: NotificationBoxProps) => {
   const type = notification.type
 
   const date = notification.hasOwnProperty('user') && createdAt(notification.createdAt)
 
-  const timestamp =
-    date === <Translations ns='notifications' text='zero_min_ago' /> ? (
-      <Translations ns='notifications' text='now' />
-    ) : (
-      date
-    )
+  const timestamp = date === displayedTexts.zeroMinAgo ? displayedTexts.now : date
 
   const title = () => {
-    if (type === 'lead2user' || type === 'user2lead')
-      return <Translations ns='notifications' text='new_team_request' />
+    if (type === 'lead2user' || type === 'user2lead') return displayedTexts.newTeamRequest
     if (type === 'lead2userAccepted' || type === 'user2leadAccepted')
-      return <Translations ns='notifications' text='team_request_accepted' />
+      return displayedTexts.teamRequestAccepted
     if (type === 'userLeftTeam' || type === 'newTeamLeader' || type === 'leaderKicksUser')
-      return <Translations ns='notifications' text='team_update' />
-    else return <Translations ns='notifications' text='new_notification' />
+      return displayedTexts.teamUpdate
+    else return displayedTexts.newNotification
   }
 
   const message = () => {
-    if (type === 'user2lead') return <Translations ns='notifications' text='wants_to_join' />
-    if (type === 'lead2user') return <Translations ns='notifications' text='invited_you' />
-    if (type === 'user2leadAccepted') return <Translations ns='notifications' text='added_you' />
-    if (type === 'lead2userAccepted')
-      return <Translations ns='notifications' text='joined_your_team' />
-    if (type === 'userLeftTeam') return <Translations ns='notifications' text='left_your_team' />
-    if (type === 'newTeamLeader') return <Translations ns='notifications' text='new_team_leader' />
-    if (type === 'leaderKicksUser')
-      return <Translations ns='notifications' text='user_was_kicked' />
-    else return <Translations ns='notifications' text='new_notification' />
+    if (type === 'user2lead') return displayedTexts.wantsToJoin
+    if (type === 'lead2user') return displayedTexts.invitedYou
+    if (type === 'user2leadAccepted') return displayedTexts.addedYou
+    if (type === 'lead2userAccepted') return displayedTexts.joinedYourTeam
+    if (type === 'userLeftTeam') return displayedTexts.leftYourTeam
+    if (type === 'newTeamLeader') return displayedTexts.newTeamLeader
+    if (type === 'leaderKicksUser') return displayedTexts.userWasKicked
+    else return displayedTexts.newNotification
   }
 
   return notification.hasOwnProperty('user') ? (

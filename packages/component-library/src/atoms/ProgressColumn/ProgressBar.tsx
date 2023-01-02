@@ -11,8 +11,6 @@ interface ProgressBarProps {
   labelPosition?: 'top' | 'center'
   text?: string
   textAndValue?: boolean
-  height: string
-  color: string
   textVariant?:
     | 'h1'
     | 'h2'
@@ -40,9 +38,7 @@ export const ProgressBar = memo(
     text,
     textAndValue,
     textVariant,
-    value,
-    height,
-    color
+    value
   }: ProgressBarProps) => {
     return (
       <>

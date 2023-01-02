@@ -10,7 +10,7 @@ import Tooltip from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
 import useId from '@mui/material/utils/useId'
 
-import { Countdown } from '../Countdown'
+import { Countdown } from './Countdown'
 
 interface CardUserProps {
   actionText?: string

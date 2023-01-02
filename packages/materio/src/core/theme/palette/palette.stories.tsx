@@ -1,4 +1,4 @@
-import Palette from './index'
+import { Palette } from './index'
 
 const palette = Palette('dark', 'default', 'primary')
 

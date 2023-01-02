@@ -8,7 +8,7 @@ interface ChipProps {
   moreProps?: object
 }
 
-const Chip = ({ label, color, variant, size, ...moreProps }: ChipProps) => (
+export const Chip = ({ label, color, variant, size, ...moreProps }: ChipProps) => (
   <MUIChip size={size} label={label} color={color} variant={variant} {...moreProps} />
 )
 
@@ -17,5 +17,3 @@ Chip.defaultProps = {
   size: 'small',
   variant: 'outlined'
 }
-
-export default Chip

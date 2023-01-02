@@ -1,17 +1,23 @@
 /* eslint-disable comma-spacing */
 import { Button } from '@mui/material'
-import { Translations, useTranslations } from '@nuwe/lib'
 
 interface InvitationActionsColumnProps {
   invitation: any
   actions: any
+  displayedTexts: {
+    joinTheTeam: string
+    addToTeam: string
+    deleteRequest: string
+  }
 }
 
-export const InvitationActionsColumn = ({ invitation, actions }: InvitationActionsColumnProps) => {
+export const InvitationActionsColumn = ({
+  invitation,
+  actions,
+  displayedTexts
+}: InvitationActionsColumnProps) => {
   const { type } = invitation
   const { emitDeleteInvitation, emitAddUser2Team, setDeleteInvitation } = actions
-
-  const { translate } = useTranslations()
 
   return (
     <div style={{ height: '100%', width: '100%', display: 'flex', alignItems: 'center' }}>
@@ -27,8 +33,8 @@ export const InvitationActionsColumn = ({ invitation, actions }: InvitationActio
         size='small'
         style={{ marginRight: 10 }}
       >
-        {type === 'lead2user' && translate('join_the_team', 'teams')}
-        {type === 'user2lead' && translate('add_to_team', 'teams')}
+        {type === 'lead2user' && displayedTexts.joinTheTeam}
+        {type === 'user2lead' && displayedTexts.addToTeam}
       </Button>
       <Button
         onClick={() => {
@@ -46,7 +52,7 @@ export const InvitationActionsColumn = ({ invitation, actions }: InvitationActio
         color='secondary'
         size='small'
       >
-        <Translations ns='teams' text='delete_request' />
+        {displayedTexts.deleteRequest}
       </Button>
     </div>
   )

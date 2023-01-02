@@ -7,7 +7,7 @@ import useId from '@mui/material/utils/useId'
  * ! If you need all the icons from the library, use "import * as Icon from 'mdi-material-ui'"
  * */
 
-import CardStatisticsVertical from 'src/shared/materio/@core/components/card-statistics/card-stats-vertical'
+import { CardStatsVertical } from '@nuwe/materio'
 
 interface CardStatsVerticalProps {
   data: any
@@ -15,7 +15,7 @@ interface CardStatsVerticalProps {
   ns?: string
 }
 
-export const CardStatsVertical = ({
+export const CardStatisticsVertical = ({
   data,
   minMaxWidth = '240px, 1fr',
   ns
@@ -32,7 +32,7 @@ export const CardStatsVertical = ({
         }}
       >
         {data.map((item: any) => {
-          return <CardStatisticsVertical ns={ns} key={id} {...item} icon={item.icon} />
+          return <CardStatsVertical ns={ns} key={id} {...item} icon={item.icon} />
         })}
       </Grid>
     )

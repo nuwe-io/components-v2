@@ -1,14 +1,17 @@
 /* eslint-disable comma-spacing */
 import { Chip } from '@mui/material'
 
-import { Translations } from '@nuwe/lib'
-
 interface InviteToTeamColumnProps {
   data: any
   actions: any
+  displayedTexts: {
+    inviteLabel: string
+    requestSentLabel: string
+    teammateLabel: string
+  }
 }
 
-export const InviteToTeamColumn = ({ data, actions }: InviteToTeamColumnProps) => {
+export const InviteToTeamColumn = ({ data, actions, displayedTexts }: InviteToTeamColumnProps) => {
   const { invitation, participation, user } = data
   const { emitSendInvitation, setInvitationStatus } = actions
 
@@ -16,7 +19,7 @@ export const InviteToTeamColumn = ({ data, actions }: InviteToTeamColumnProps) =
     return (
       <div style={{ height: '100%', width: '100%', display: 'flex', alignItems: 'center' }}>
         <Chip
-          label={<Translations ns='teams' text='invite_label' />}
+          label={displayedTexts.inviteLabel}
           color='secondary'
           size='small'
           style={{
@@ -41,7 +44,7 @@ export const InviteToTeamColumn = ({ data, actions }: InviteToTeamColumnProps) =
     return (
       <div style={{ height: '100%', width: '100%', display: 'flex', alignItems: 'center' }}>
         <Chip
-          label={<Translations ns='teams' text='request_sent_label' />}
+          label={displayedTexts.requestSentLabel}
           color='warning'
           size='small'
           variant='outlined'
@@ -57,7 +60,7 @@ export const InviteToTeamColumn = ({ data, actions }: InviteToTeamColumnProps) =
     return (
       <div style={{ height: '100%', width: '100%', display: 'flex', alignItems: 'center' }}>
         <Chip
-          label={<Translations ns='teams' text='teammate_label' />}
+          label={displayedTexts.teammateLabel}
           color='primary'
           size='small'
           variant='outlined'

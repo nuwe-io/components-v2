@@ -18,8 +18,6 @@ import {
   Typography
 } from '@mui/material'
 
-import { Translations } from '@nuwe/lib'
-
 const API_URL = process.env.NEXT_PUBLIC_API_URL
 
 interface GiveFeedbackProps {
@@ -27,20 +25,30 @@ interface GiveFeedbackProps {
   toUserId: string
   projectId: string
   setFeedback: (feedback: any) => void
+  displayedTexts: {
+    giveFeedbackLabel: string
+    giveFeedbackText: string
+    teamworkLabel: string
+    analysisLabel: string
+    resolutionLabel: string
+    communicationLabel: string
+    createTeamError: string
+  }
 }
 
 export const GiveFeedback = ({
   fromUserId,
   toUserId,
   projectId,
-  setFeedback
+  setFeedback,
+  displayedTexts
 }: GiveFeedbackProps) => {
   const [showDialog, setShowDialog] = useState<boolean>(false)
 
   return (
     <div style={{ height: '100%', width: '100%', display: 'flex', alignItems: 'center' }}>
       <Chip
-        label={<Translations ns='teams' text='give_feedback_label' />}
+        label={displayedTexts.giveFeedbackLabel}
         color='error'
         size='small'
         style={{
@@ -60,6 +68,7 @@ export const GiveFeedback = ({
         showDialog={showDialog}
         setShowDialog={setShowDialog}
         setFeedback={setFeedback}
+        displayedTexts={displayedTexts}
       />
     </div>
   )
@@ -72,6 +81,15 @@ interface GiveFeedbackDialogProps {
   showDialog: boolean
   setShowDialog: (showDialog: boolean) => void
   setFeedback: (feedback: any) => void
+  displayedTexts: {
+    giveFeedbackLabel: string
+    giveFeedbackText: string
+    teamworkLabel: string
+    analysisLabel: string
+    resolutionLabel: string
+    communicationLabel: string
+    createTeamError: string
+  }
 }
 
 const GiveFeedbackDialog = ({
@@ -80,7 +98,8 @@ const GiveFeedbackDialog = ({
   projectId,
   showDialog,
   setShowDialog,
-  setFeedback
+  setFeedback,
+  displayedTexts
 }: GiveFeedbackDialogProps) => {
   const [teamwork, setTeamwork] = useState<any>(null)
   const [analysis, setAnalysis] = useState<any>(null)
@@ -159,16 +178,12 @@ const GiveFeedbackDialog = ({
 
   return (
     <Dialog open={showDialog} onClose={() => setShowDialog(false)}>
-      <DialogContent style={{ display: 'flex', flexDirection: 'column', p: 10, maxWidth: 400 }}>
-        <DialogTitle sx={{ pt: 0, pl: 0 }}>
-          <Translations ns='teams' text='give_feedback_label' />
-        </DialogTitle>
-        <Box sx={{ mb: 7 }}>
-          <Translations ns='teams' text='give_feedback_text' />
-        </Box>
+      <DialogContent sx={{ display: 'flex', flexDirection: 'column', p: 10, maxWidth: 400 }}>
+        <DialogTitle sx={{ pt: 0, pl: 0 }}>{displayedTexts.giveFeedbackLabel}</DialogTitle>
+        <Box sx={{ mb: 7 }}>{displayedTexts.giveFeedbackText}</Box>
         <FormControl component='fieldset'>
           <FormLabel component='legend' required>
-            <Translations ns='teams' text='teamwork_label' />
+            {displayedTexts.teamworkLabel}
           </FormLabel>
           <RadioGroup
             aria-label='Team'
@@ -181,7 +196,7 @@ const GiveFeedbackDialog = ({
             <Options />
           </RadioGroup>
           <FormLabel component='legend' required>
-            <Translations ns='teams' text='analysis_label' />
+            {displayedTexts.analysisLabel}
           </FormLabel>
           <RadioGroup
             aria-label='Analysis'
@@ -194,7 +209,7 @@ const GiveFeedbackDialog = ({
             <Options />
           </RadioGroup>
           <FormLabel component='legend' required>
-            <Translations ns='teams' text='resolution_label' />
+            {displayedTexts.resolutionLabel}
           </FormLabel>
           <RadioGroup
             aria-label='Resolution'
@@ -207,7 +222,7 @@ const GiveFeedbackDialog = ({
             <Options />
           </RadioGroup>
           <FormLabel component='legend' required>
-            <Translations ns='teams' text='communication_label' />
+            {displayedTexts.communicationLabel}
           </FormLabel>
           <RadioGroup
             aria-label='Communication'
@@ -222,7 +237,7 @@ const GiveFeedbackDialog = ({
         </FormControl>
         {error && (
           <Typography align='center' style={{ color: 'orangered', margin: '10px 0' }}>
-            <Translations ns='teams' text='create_team_error' />
+            {displayedTexts.createTeamError}
           </Typography>
         )}
         <Button onClick={() => createFeedback()} variant='contained' sx={{ mt: 5 }}>

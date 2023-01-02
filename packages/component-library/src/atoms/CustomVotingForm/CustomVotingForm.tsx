@@ -16,10 +16,10 @@ import useMediaQuery from '@mui/material/useMediaQuery'
 import { ActionType, reducer } from './form-reducer'
 import { DEFAULT_STATE } from './test-data'
 
-import { useAuthStatus } from '@shared/auth'
+import { useAuthStatus } from '@nuwe/hooks'
 import toast from 'react-hot-toast'
 
-const handlePost = async (state: any, teamId: string, userID: string, sourceID: string) => {
+const handlePost = async (state: any, userID: string) => {
   const data = {
     author: userID,
     comments: state.comments,
@@ -215,7 +215,7 @@ export const CustomVotingForm = ({
   open
 }: CustomVotingFormProps) => {
   const [state, dispatch] = useReducer(reducer, DEFAULT_STATE)
-  const { user } = useAuthStatus()
+  const { user } = useAuthStatus() as any
 
   const theme = useTheme()
   const fullScreen = useMediaQuery(theme.breakpoints.down('md'))
@@ -262,7 +262,7 @@ export const CustomVotingForm = ({
   )
 
   const submitScore = () => {
-    handlePost(state, teamId, user._id, projectId)
+    handlePost(state, user._id)
     handleClose()
   }
   return (

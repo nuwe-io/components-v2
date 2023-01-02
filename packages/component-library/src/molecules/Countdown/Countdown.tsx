@@ -26,7 +26,7 @@ export const Countdown = ({
   const { language } = currentLanguage()
 
   const [secondsLeft, setSecondsLeft] = useState<number>(
-    (Date.parse(new Date(date)) - Date.parse(new Date())) / 1000
+    (Date.parse(date) - Date.parse(new Date().toString())) / 1000
   )
 
   const timeOut = new Date(date) < new Date()
@@ -45,7 +45,7 @@ export const Countdown = ({
 
   useEffect(() => {
     if (!timeOut) {
-      setSecondsLeft((Date.parse(new Date(date)) - Date.parse(new Date())) / 1000)
+      setSecondsLeft((Date.parse(date) - Date.parse(new Date().toString())) / 1000)
     }
   }, [date])
 
@@ -74,7 +74,7 @@ export const Countdown = ({
       month={month}
       day={day}
       year={year}
-      language={language}
+      language={language ? language : 'en'}
       isEvent={isEvent}
     />
   )

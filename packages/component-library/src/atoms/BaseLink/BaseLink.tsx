@@ -7,7 +7,7 @@ interface BaseLinkProps {
   selected: boolean
   name: string
   onClick?: () => void
-  href: string
+  href?: string
 }
 
 export const BaseLink = ({ selected, name, ...props }: BaseLinkProps) => {

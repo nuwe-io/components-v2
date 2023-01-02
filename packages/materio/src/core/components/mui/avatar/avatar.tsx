@@ -11,8 +11,10 @@ import { UseBgColor } from '../../../hooks/useBgColor'
 interface AvatarProps {
   sx?: any
   src?: string
-  skin: 'light' | 'light-static' | 'filled'
+  skin?: 'light' | 'light-static' | 'filled'
   color?: 'primary' | 'secondary' | 'success' | 'error' | 'warning' | 'info'
+  children?: React.ReactNode
+  variant?: 'rounded' | 'square'
 }
 
 export const Avatar = forwardRef((props: AvatarProps, _ref) => {
@@ -38,14 +40,16 @@ export const Avatar = forwardRef((props: AvatarProps, _ref) => {
     return avatarStyles
   }
 
-  const colors = {
-    primary: getAvatarStyles(skin, 'primary'),
-    secondary: getAvatarStyles(skin, 'secondary'),
-    success: getAvatarStyles(skin, 'success'),
-    error: getAvatarStyles(skin, 'error'),
-    warning: getAvatarStyles(skin, 'warning'),
-    info: getAvatarStyles(skin, 'info')
-  }
+  const colors = skin
+    ? {
+        primary: getAvatarStyles(skin, 'primary'),
+        secondary: getAvatarStyles(skin, 'secondary'),
+        success: getAvatarStyles(skin, 'success'),
+        error: getAvatarStyles(skin, 'error'),
+        warning: getAvatarStyles(skin, 'warning'),
+        info: getAvatarStyles(skin, 'info')
+      }
+    : {}
 
   return (
     <MuiAvatar

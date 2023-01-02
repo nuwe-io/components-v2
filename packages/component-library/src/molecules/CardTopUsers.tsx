@@ -15,8 +15,7 @@ import Typography from '@mui/material/Typography'
 import { Trophy } from 'mdi-material-ui'
 
 // ** Custom Components
-import { Translations } from '@nuwe/lib'
-import { Chip } from '@nuwe/materio'
+import { Chip } from '../atoms'
 
 const StyledLink = styled(Box)(({ theme }) => ({
   '& a': {
@@ -34,12 +33,16 @@ interface CardTopUsersProps {
     position: number
     rank: number
   }[]
+  displayedTexts: {
+    topRanking: string
+    position: string
+  }
 }
 
-export const CardTopUsers = ({ users }: CardTopUsersProps) => {
+export const CardTopUsers = ({ users, displayedTexts }: CardTopUsersProps) => {
   return (
     <Card>
-      <CardHeader title={<Translations ns='events' text='top_ranking' />} action={<Trophy />} />
+      <CardHeader title={displayedTexts.topRanking} action={<Trophy />} />
       <CardContent>
         {users.map((item, index) => {
           return (
@@ -76,7 +79,7 @@ export const CardTopUsers = ({ users }: CardTopUsersProps) => {
                         }}
                       />
                       <Typography variant='caption'>
-                        <Translations ns='events' text='position' /> - {item.position}
+                        {displayedTexts.position} - {item.position}
                       </Typography>
                     </Box>
                   </Box>

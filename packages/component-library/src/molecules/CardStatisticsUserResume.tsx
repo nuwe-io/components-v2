@@ -9,7 +9,7 @@ import {
   Grid,
   Typography
 } from '@mui/material'
-import { currentLanguage } from '@shared/lib'
+import { currentLanguage } from '@nuwe/lib'
 import AccountOutline from 'mdi-material-ui/AccountOutline'
 import CellphoneLink from 'mdi-material-ui/CellphoneLink'
 import CurrencyUsd from 'mdi-material-ui/CurrencyUsd'
@@ -17,8 +17,7 @@ import TrendingUp from 'mdi-material-ui/TrendingUp'
 import Link from 'next/link'
 import { Fragment, useId, useState } from 'react'
 
-import CustomAvatar from 'src/shared/materio/@core/components/mui/avatar'
-import { Translations } from 'src/shared/utils/translation/Translations'
+import { CustomAvatar } from '@nuwe/materio'
 
 type dataType = {
   stats: string
@@ -93,6 +92,14 @@ interface CardStatisticsUserResumeProps {
     }
   }
   showProjectsButton?: boolean
+  displayedTexts: {
+    profileResume: string
+    profileResumeActions: string
+    profileProjectsActionsClose: string
+    submittedAt: string
+    viewRepository: string
+    viewReport: string
+  }
 }
 
 const onClickSeeProjects = (setSeeProjects: any) => () => {
@@ -104,7 +111,8 @@ const onLinkClick = (event: any) => () => event.preventDefault()
 export const CardStatisticsUserResume = ({
   data,
   profile,
-  showProjectsButton
+  showProjectsButton,
+  displayedTexts
 }: CardStatisticsUserResumeProps) => {
   const { date } = currentLanguage()
   const { format, options } = date
@@ -118,18 +126,16 @@ export const CardStatisticsUserResume = ({
     <Fragment>
       <Card>
         <CardHeader
-          title={<Translations ns='profile' text='profile_resume' />}
+          title={displayedTexts.profileResume}
           titleTypographyProps={{
             sx: { lineHeight: '2rem !important', letterSpacing: '0.15px !important' }
           }}
           action={
             showProjectsButton && (
               <Button onClick={onClickSeeProjects(setSeeProjects)}>
-                {!seeProjects ? (
-                  <Translations ns='profile' text='profile_resume_actions' />
-                ) : (
-                  <Translations ns='profile' text='profile_projects_actions_clouse' />
-                )}
+                {!seeProjects
+                  ? displayedTexts.profileResumeActions
+                  : displayedTexts.profileProjectsActionsClose}
               </Button>
             )
           }
@@ -212,7 +218,7 @@ export const CardStatisticsUserResume = ({
                           fontSize: '.8rem !important'
                         }}
                       >
-                        <Translations ns='profile' text='submitted_at' />:{' '}
+                        {displayedTexts.submittedAt}:{' '}
                         {submittedAt.charAt(0).toUpperCase() + submittedAt.slice(1)}.
                       </Typography>
                       <Box sx={{ display: 'flex', justifyContent: 'center', mt: 5 }}>
@@ -224,7 +230,7 @@ export const CardStatisticsUserResume = ({
                             sx={{ mr: 2 }}
                             color='secondary'
                           >
-                            <Translations ns='profile' text='view_repository' />
+                            {displayedTexts.viewRepository}
                           </Button>
                         </Link>
                         {profile?.isAuthor && (
@@ -235,7 +241,7 @@ export const CardStatisticsUserResume = ({
                               variant='contained'
                               color='primary'
                             >
-                              <Translations ns='profile' text='view_report'></Translations>
+                              {displayedTexts.viewReport}
                             </Button>
                           </Link>
                         )}

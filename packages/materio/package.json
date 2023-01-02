@@ -18,12 +18,16 @@
     "i18next-chained-backend": "^4.2.0",
     "i18next-http-backend": "^2.1.1",
     "i18next-localstorage-backend": "^4.1.0",
+    "keen-slider": "^6.8.5",
     "next-i18next": "^13.0.2",
     "react": "18.2.0",
     "react-apexcharts": "^1.4.0",
     "react-dom": "18.2.0",
     "react-draft-wysiwyg": "^1.15.0",
-    "react-i18next": "^12.1.1"
+    "react-hook-form": "^7.41.3",
+    "react-i18next": "^12.1.1",
+    "recharts": "^2.2.0",
+    "swr": "^2.0.0"
   },
   "peerDependencies": {
     "@mui/icons-material": "^5.10.15",
@@ -35,6 +39,7 @@
   "devDependencies": {
     "@babel/core": "^7.20.5",
     "@mdx-js/react": "^1.6.22",
+    "@mui/lab": "^5.0.0-alpha.114",
     "@mui/x-date-pickers": "^5.0.9",
     "@rollup/plugin-alias": "^4.0.2",
     "@rollup/plugin-node-resolve": "^15.0.1",

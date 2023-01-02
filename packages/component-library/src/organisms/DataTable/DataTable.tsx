@@ -137,18 +137,6 @@ export const DataTable = ({
 
   const launchCallback = selectionModel?.length === 1 && showLauncher ? launch : null
 
-  const pagination = useServerSidePagination
-    ? {
-        pagination: {
-          onPageChange: (_e: any, n: number) => useServerSidePagination?.onPageChange(n),
-          nextIconButtonProps: {
-            disabled: useServerSidePagination?.page === useServerSidePagination?.rowCount - 1
-          },
-          backIconButtonProps: { disabled: useServerSidePagination?.page === 0 }
-        }
-      }
-    : {}
-
   return (
     <DataTableView
       data={rows}
