@@ -4,29 +4,27 @@ import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
-import { Translations } from 'src/shared/utils/translation/Translations'
 
 interface CardImgTopProps {
-  title: string
-  text: string
   img: string
   clickeable?: boolean
   action?: () => void
-  ns: string
+  displayedTexts: {
+    title: string
+    text: string
+  }
 }
 
-const CardImgTop = ({ title, text, img, clickeable, action, ns }: CardImgTopProps) => {
+const CardImgTop = ({ img, clickeable, action, displayedTexts }: CardImgTopProps) => {
   return (
     <Card>
       <CardActionArea disabled={!clickeable} onClick={action}>
         <CardMedia sx={{ height: '14.5625rem' }} image={img} />
         <CardContent>
           <Typography variant='h6' sx={{ mb: 2 }}>
-            <Translations ns={ns} text={title} />
+            {displayedTexts.title}
           </Typography>
-          <Typography variant='body2'>
-            <Translations ns={ns} text={text} />
-          </Typography>
+          <Typography variant='body2'>{displayedTexts.text}</Typography>
         </CardContent>
       </CardActionArea>
     </Card>
