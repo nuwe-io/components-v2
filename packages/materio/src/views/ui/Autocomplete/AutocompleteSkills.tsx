@@ -2,8 +2,8 @@ import { Box, Card, CardContent } from '@mui/material'
 import Autocomplete from '@mui/material/Autocomplete'
 import TextField from '@mui/material/TextField'
 import { useTheme } from '@mui/styles'
+import { useTechnologies } from '@nuwe/hooks'
 import { Controller } from 'react-hook-form'
-import { useTechnologies } from './useTechnologies'
 
 const logosURL = 'https://cdn.svgporn.com/logos/'
 
