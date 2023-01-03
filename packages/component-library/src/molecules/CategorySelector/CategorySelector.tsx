@@ -3,8 +3,6 @@ import { Chip, Typography } from '@mui/material'
 import { AutocompleteSkills } from '@nuwe/materio'
 import { ConditionalText } from '../../atoms'
 
-import { Translations } from '@nuwe/lib'
-
 const options = [
   'FRONT-END',
   'BACK-END',
@@ -20,21 +18,30 @@ interface CategorySelectorProps {
   data: any
   handlerData: any
   error: string
+  displayedTexts: {
+    skillsTitle: string
+    skillsSpecialty: string
+    skillsOther: string
+    skillsStack: string
+  }
 }
 
-export const CategorySelector = ({ handlerData, data, error }: CategorySelectorProps) => {
+export const CategorySelector = ({
+  handlerData,
+  data,
+  error,
+  displayedTexts
+}: CategorySelectorProps) => {
   return (
     <div>
-      <Typography variant='h5'>
-        <Translations ns='auth' text='skills_title' />
-      </Typography>
+      <Typography variant='h5'>{displayedTexts.skillsTitle}</Typography>
       <div style={{ margin: '1rem 0rem' }}>
         <ConditionalText show={error} color='error' />
         <Typography gutterBottom variant='subtitle1'>
-          <Translations ns='auth' text='skills_specialty' />
+          {displayedTexts.skillsSpecialty}
         </Typography>
         <Typography color='text' gutterBottom>
-          <Translations ns='auth' text='skills_other' />
+          {displayedTexts.skillsOther}
         </Typography>
         <div>
           {options.map((key) => (
@@ -57,7 +64,7 @@ export const CategorySelector = ({ handlerData, data, error }: CategorySelectorP
       </div>
       <div style={{ margin: '1rem 0rem' }}>
         <Typography style={{ margin: '1rem 0rem' }} variant='subtitle1'>
-          <Translations ns='auth' text='skills_stack' />
+          {displayedTexts.skillsStack}
         </Typography>
         <AutocompleteSkills
           controller={false}

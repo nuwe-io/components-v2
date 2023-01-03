@@ -2,7 +2,6 @@ import { useState } from 'react'
 
 import axios from 'axios'
 
-import { useTranslations } from '@nuwe/lib'
 import { SatisfactionSurveyDialogView } from './SatisfactionSurveyDialog.container.jsx'
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL
@@ -12,7 +11,14 @@ interface SatisfactionSurveyDialogProps {
   event: any
   user: any
   popup: any
-  landingCheck: boolean
+  landingCheck?: boolean
+  displayedTexts: {
+    thankYouForYourParticipation: string
+    solutionSuccessfullySubmitted: string
+    close: string
+    submit: string
+    fillInAllTheRequiredFields: string
+  }
 }
 
 export const SatisfactionSurveyDialog = ({
@@ -20,11 +26,10 @@ export const SatisfactionSurveyDialog = ({
   event,
   user,
   popup,
-  landingCheck
+  landingCheck,
+  displayedTexts
 }: SatisfactionSurveyDialogProps) => {
-  const { translate } = useTranslations()
-
-  const [state, setState] = useState({
+  const [state, setState] = useState<any>({
     challenge: {
       answers: {
         level: 0,
@@ -133,7 +138,7 @@ export const SatisfactionSurveyDialog = ({
       satisfactionAnswers: {
         level: state.event.answers.level,
         comment: state.event.answers.comment,
-        motivations: state.event.answers.motivations.filter((motivation) => motivation)
+        motivations: state.event.answers.motivations.filter((motivation: any) => motivation)
       }
     }
 
@@ -149,11 +154,11 @@ export const SatisfactionSurveyDialog = ({
   const labels = () => {
     return {
       success: landingCheck
-        ? translate('thank_you_for_your_participation', 'teams')
-        : translate('solution_successfully_submitted', 'teams'),
-      close: translate('close', 'teams'),
-      submit: translate('submit', 'teams'),
-      error: translate('fill_in_all_the_required_fields', 'teams')
+        ? displayedTexts.thankYouForYourParticipation
+        : displayedTexts.solutionSuccessfullySubmitted,
+      close: displayedTexts.close,
+      submit: displayedTexts.submit,
+      error: displayedTexts.fillInAllTheRequiredFields
     }
   }
 

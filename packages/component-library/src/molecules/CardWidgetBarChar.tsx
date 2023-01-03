@@ -13,19 +13,35 @@ import DialogTitle from '@mui/material/DialogTitle'
 import { Information } from 'mdi-material-ui'
 // ** Component Import
 import { useTheme } from '@mui/styles'
-import { Translations } from '@nuwe/lib'
 import { ReactApexcharts } from '@nuwe/materio'
 
 interface informationDialogProps {
   open: boolean
   handleClose: (value: boolean) => void
+  displayedTexts: {
+    profileOceanInfoTitle: string
+    profileOceanInfoOTitle: string
+    profileOceanInfoOText: string
+    profileOceanInfoCTitle: string
+    profileOceanInfoCText: string
+    profileOceanInfoETitle: string
+    profileOceanInfoEText: string
+    profileOceanInfoATitle: string
+    profileOceanInfoAText: string
+    profileOceanInfoNTitle: string
+    profileOceanInfoNText: string
+  }
 }
 
 const onClose = (handleClose: any) => () => {
   handleClose(false)
 }
 
-export const InformationDialog = ({ open, handleClose }: informationDialogProps) => {
+export const InformationDialog = ({
+  open,
+  handleClose,
+  displayedTexts
+}: informationDialogProps) => {
   return (
     <Dialog
       open={open}
@@ -33,43 +49,31 @@ export const InformationDialog = ({ open, handleClose }: informationDialogProps)
       aria-labelledby='alert-dialog-title'
       aria-describedby='alert-dialog-description'
     >
-      <DialogTitle>
-        <Translations ns='profile' text='profile_ocean_info_title' />
-      </DialogTitle>
+      <DialogTitle>{displayedTexts.profileOceanInfoTitle}</DialogTitle>
       <DialogContent>
         <DialogContentText style={{ margin: '10px 0px' }}>
-          <span style={{ color: '#5EBF0D' }}>
-            <Translations ns='profile' text='profile_ocean_info_o_title' />
-          </span>{' '}
-          <Translations ns='profile' text='profile_ocean_info_o_text' />
+          <span style={{ color: '#5EBF0D' }}>{displayedTexts.profileOceanInfoOTitle}</span>{' '}
+          {displayedTexts.profileOceanInfoOText}
         </DialogContentText>
 
         <DialogContentText style={{ margin: '10px 0px' }}>
-          <span style={{ color: '#5EBF0D' }}>
-            <Translations ns='profile' text='profile_ocean_info_c_title' />
-          </span>{' '}
-          <Translations ns='profile' text='profile_ocean_info_c_text' />
+          <span style={{ color: '#5EBF0D' }}>{displayedTexts.profileOceanInfoCTitle}</span>{' '}
+          {displayedTexts.profileOceanInfoCText}
         </DialogContentText>
 
         <DialogContentText style={{ margin: '10px 0px' }}>
-          <span style={{ color: '#5EBF0D' }}>
-            <Translations ns='profile' text='profile_ocean_info_e_title' />
-          </span>{' '}
-          <Translations ns='profile' text='profile_ocean_info_e_text' />
+          <span style={{ color: '#5EBF0D' }}>{displayedTexts.profileOceanInfoETitle}</span>{' '}
+          {displayedTexts.profileOceanInfoEText}
         </DialogContentText>
 
         <DialogContentText style={{ margin: '10px 0px' }}>
-          <span style={{ color: '#5EBF0D' }}>
-            <Translations ns='profile' text='profile_ocean_info_a_title' />
-          </span>{' '}
-          <Translations ns='profile' text='profile_ocean_info_a_text' />
+          <span style={{ color: '#5EBF0D' }}>{displayedTexts.profileOceanInfoATitle}</span>{' '}
+          {displayedTexts.profileOceanInfoAText}
         </DialogContentText>
 
         <DialogContentText style={{ margin: '10px 0px' }}>
-          <span style={{ color: '#5EBF0D' }}>
-            <Translations ns='profile' text='profile_ocean_info_n_title' />
-          </span>{' '}
-          <Translations ns='profile' text='profile_ocean_info_n_text' />
+          <span style={{ color: '#5EBF0D' }}>{displayedTexts.profileOceanInfoNTitle}</span>{' '}
+          {displayedTexts.profileOceanInfoNText}
         </DialogContentText>
       </DialogContent>
     </Dialog>
@@ -84,20 +88,34 @@ const columnColors = {
 
 interface CardWidgetBarCharProps {
   series: any[]
+  displayedTexts: {
+    profileOceanCheck: string
+    profileOceanInfoTitle: string
+    profileOceanInfoOTitle: string
+    profileOceanInfoOText: string
+    profileOceanInfoCTitle: string
+    profileOceanInfoCText: string
+    profileOceanInfoETitle: string
+    profileOceanInfoEText: string
+    profileOceanInfoATitle: string
+    profileOceanInfoAText: string
+    profileOceanInfoNTitle: string
+    profileOceanInfoNText: string
+  }
 }
 
 const onClickInfo = (setShowInfo: any) => () => {
   setShowInfo(true)
 }
 
-export const CardWidgetBarChar = ({ series = [] }: CardWidgetBarCharProps) => {
+export const CardWidgetBarChar = ({ series = [], displayedTexts }: CardWidgetBarCharProps) => {
   const [showInfo, setShowInfo] = useState<boolean>(false)
   const { i18n } = useTranslation()
   const categories = {
     es: ['Extraversión', 'Amabilidad', 'Escrupolosidad', 'Neuroticismo', 'Apertura'],
     en: ['Extraversion', 'Agreeableness', 'Conscientiousness', 'Neuroticism', 'Openness']
   }
-  const theme = useTheme()
+  const theme = useTheme() as any
 
   const options = {
     chart: {
@@ -199,7 +217,7 @@ export const CardWidgetBarChar = ({ series = [] }: CardWidgetBarCharProps) => {
   return (
     <Card>
       <CardHeader
-        title={<Translations ns='profile' text='profile_ocean_check' />}
+        title={displayedTexts.profileOceanCheck}
         titleTypographyProps={{ variant: 'h6' }}
         sx={{
           flexDirection: ['column', 'row'],
@@ -216,7 +234,11 @@ export const CardWidgetBarChar = ({ series = [] }: CardWidgetBarCharProps) => {
       <CardContent>
         <ReactApexcharts options={options} series={series} type='bar' height={350} />
       </CardContent>
-      <InformationDialog open={showInfo} handleClose={setShowInfo} />
+      <InformationDialog
+        open={showInfo}
+        handleClose={setShowInfo}
+        displayedTexts={displayedTexts}
+      />
     </Card>
   )
 }

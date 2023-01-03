@@ -1,8 +1,6 @@
 import { Typography } from '@mui/material'
 import { useStyles } from './styles'
 
-import { Translations } from '@nuwe/lib'
-
 interface TextBodyProps {
   children: React.ReactNode
 }
@@ -17,17 +15,19 @@ const TextBody = ({ children }: TextBodyProps) => {
   )
 }
 
-export const AboutUs = () => {
+interface AboutUsProps {
+  displayTexts: { aboutTitle: string; aboutTextOne: string }
+}
+
+export const AboutUs = ({ displayTexts }: AboutUsProps) => {
   const { root, title } = useStyles()
 
   return (
     <div className={root}>
       <Typography className={title} variant='h5'>
-        <Translations ns='auth' text='about_title' />
+        {displayTexts.aboutTitle}
       </Typography>
-      <TextBody>
-        <Translations ns='auth' text='about_text_one' />
-      </TextBody>
+      <TextBody>{displayTexts.aboutTextOne}</TextBody>
     </div>
   )
 }

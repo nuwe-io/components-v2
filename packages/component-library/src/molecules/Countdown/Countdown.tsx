@@ -7,26 +7,21 @@ import { CountdownDummy } from './Countdown.container.jsx'
 interface CountdownProps {
   date: string
   title: string
-  daysLabel: string
-  hoursLabel: string
-  minutesLabel: string
-  timeoutLabel: string
   isEvent: boolean
+  displayedTexts: {
+    daysLabel: string
+    hoursLabel: string
+    minutesLabel: string
+    title: string
+    timeoutLabel: string
+  }
 }
 
-export const Countdown = ({
-  date,
-  title,
-  daysLabel,
-  hoursLabel,
-  minutesLabel,
-  timeoutLabel,
-  isEvent
-}: CountdownProps) => {
+export const Countdown = ({ date, title, isEvent, displayedTexts }: CountdownProps) => {
   const { language } = currentLanguage()
 
   const [secondsLeft, setSecondsLeft] = useState<number>(
-    (Date.parse(new Date(date)) - Date.parse(new Date())) / 1000
+    (Date.parse(date) - Date.parse(new Date().toString())) / 1000
   )
 
   const timeOut = new Date(date) < new Date()
@@ -45,7 +40,7 @@ export const Countdown = ({
 
   useEffect(() => {
     if (!timeOut) {
-      setSecondsLeft((Date.parse(new Date(date)) - Date.parse(new Date())) / 1000)
+      setSecondsLeft((Date.parse(date) - Date.parse(new Date().toString())) / 1000)
     }
   }, [date])
 
@@ -67,15 +62,12 @@ export const Countdown = ({
       hours={hours}
       minutes={minutes}
       timeOut={timeOut}
-      daysLabel={daysLabel}
-      hoursLabel={hoursLabel}
-      minutesLabel={minutesLabel}
-      timeoutLabel={timeoutLabel}
       month={month}
       day={day}
       year={year}
-      language={language}
+      language={language ? language : 'en'}
       isEvent={isEvent}
+      displayedTexts={displayedTexts}
     />
   )
 }

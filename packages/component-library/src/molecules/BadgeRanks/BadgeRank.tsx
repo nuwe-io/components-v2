@@ -7010,7 +7010,6 @@ const Artisan = ({
 const Master = ({
   animation = false,
   level = 0,
-  lights = true,
   locked = false,
   mod = 'data',
   rank = 'master',

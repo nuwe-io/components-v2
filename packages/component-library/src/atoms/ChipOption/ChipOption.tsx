@@ -6,8 +6,8 @@ interface ChipOptionProps {
   value: string
   condition: boolean
   updateSelected: (e: any) => void
-  selectedAvatar?: React.ReactNode
-  defaultAvatar?: React.ReactNode
+  selectedAvatar?: React.ReactElement
+  defaultAvatar?: React.ReactElement
 }
 
 export const ChipOption = ({
@@ -31,6 +31,7 @@ export const ChipOption = ({
       className={root}
       onClick={updateSelected}
       avatar={condition ? selectedAvatar : defaultAvatar}
+      component='button'
       {...props}
     />
   )

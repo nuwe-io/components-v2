@@ -4,14 +4,13 @@ import { ProgressBar } from './ProgressBar'
 
 interface ProgressColumnProps {
   value: number
-  color: string
 }
 
-export const ProgressColumn = ({ value, color }: ProgressColumnProps) => {
+export const ProgressColumn = ({ value }: ProgressColumnProps) => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', width: '100%', marginRight: '40px' }}>
       <Typography variant='body1'>{`${value}%`}</Typography>
-      <ProgressBar value={value} height={'10px'} text={''} label={false} color={color} />
+      <ProgressBar value={value} text={''} label={false} />
     </div>
   )
 }

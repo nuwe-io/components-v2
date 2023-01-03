@@ -4,8 +4,6 @@ import { ChangeEventHandler } from 'react'
 
 import { AlertCircle, CheckCircle, ChipSelector, ConditionalText } from '../../atoms'
 
-import { Translations, useTranslations } from '@nuwe/lib'
-
 import { useStyles } from './styles'
 
 interface TextFieldBaseProps {
@@ -38,14 +36,17 @@ interface PersonalInfoProps {
   handlerData: (value: string, key: string) => void
   data: any
   error: string
+  displayedTexts: {
+    nameTitle: string
+    nameLabel: string
+    nameProfile: string
+    nameFullName: string
+    nameNuweName: string
+  }
 }
 
-export const PersonalInfo = ({ handlerData, data, error }: PersonalInfoProps) => {
+export const PersonalInfo = ({ handlerData, data, error, displayedTexts }: PersonalInfoProps) => {
   const { root, baseMargin } = useStyles()
-
-  const { translate } = useTranslations()
-  const nameTranslate = translate('name_full_name', 'auth')
-  const usernameTranslate = translate('name_nuwe_name', 'auth')
 
   const changeName = (value: string) => {
     handlerData(value, 'name')
@@ -57,29 +58,23 @@ export const PersonalInfo = ({ handlerData, data, error }: PersonalInfoProps) =>
 
   return (
     <div className={root}>
-      <Typography variant='h5'>
-        <Translations ns='auth' text='name_title' />
-      </Typography>
+      <Typography variant='h5'>{displayedTexts.nameTitle}</Typography>
       <div className={baseMargin}>
         <ConditionalText show={error} color='error' />
-        <Typography variant='subtitle1'>
-          <Translations ns='auth' text='name_label' />
-        </Typography>
+        <Typography variant='subtitle1'>{displayedTexts.nameLabel}</Typography>
         <TextFieldBase
           changeText={(e) => changeName(e.target.value)}
           value={data?.name}
-          label={nameTranslate}
+          label={displayedTexts.nameFullName}
         />
         <TextFieldBase
           value={data?.username}
-          label={usernameTranslate}
+          label={displayedTexts.nameNuweName}
           changeText={(e) => changeUsername(e.target.value)}
         />
       </div>
       <div className={baseMargin}>
-        <Typography variant='subtitle1'>
-          {<Translations ns='auth' text='name_profile' />}
-        </Typography>
+        <Typography variant='subtitle1'>{displayedTexts.nameProfile}</Typography>
         <div style={{ marginTop: '10px' }}>
           <ChipSelector
             condition={isSelected}

@@ -1,25 +1,29 @@
 /* eslint-disable comma-spacing */
 import { Chip } from '@mui/material'
 
-import { Translations, useTranslations } from '@nuwe/lib'
-import { actionsSwal, actionsSwalDefaultValues } from '@shared/utils/swal/swal'
+import { actionsSwal, actionsSwalDefaultValues } from '@nuwe/lib'
 
 interface KickUserColumnProps {
   data: any
   actions: any
+  displayedTexts: {
+    kickUserLabel: string
+    youAreGoingToKickYourTeammate: string
+    yourTeammateWill_beKickedOffTheTeam: string
+    yesContinue: string
+    cancel: string
+  }
 }
 
-export const KickUserColumn = ({ data, actions }: KickUserColumnProps) => {
+export const KickUserColumn = ({ data, actions, displayedTexts }: KickUserColumnProps) => {
   const { switchRoles } = data
   const { emitLeaveTeam } = actions
-
-  const { translate } = useTranslations()
 
   if (switchRoles.isEnabled && switchRoles.currentUser.id !== switchRoles.member.id)
     return (
       <div style={{ height: '100%', width: '100%', display: 'flex', alignItems: 'center' }}>
         <Chip
-          label={<Translations ns='teams' text='kick_user_label' />}
+          label={displayedTexts.kickUserLabel}
           color='error'
           variant='outlined'
           size='small'
@@ -33,10 +37,10 @@ export const KickUserColumn = ({ data, actions }: KickUserColumnProps) => {
             actionsSwal(
               {
                 ...actionsSwalDefaultValues,
-                title: translate('you_are_going_to_kick_your_teammate', 'teams'),
-                text: translate('your_teammate_will_be_kicked_off_the_team', 'teams'),
-                confirmButtonText: translate('yes_continue', 'teams'),
-                cancelButtonText: translate('cancel', 'teams')
+                title: displayedTexts.youAreGoingToKickYourTeammate,
+                text: displayedTexts.yourTeammateWill_beKickedOffTheTeam,
+                confirmButtonText: displayedTexts.yesContinue,
+                cancelButtonText: displayedTexts.cancel
               },
               {
                 actionConfirm: () => {

@@ -1,14 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import { actionsSwal, actionsSwalDefaultValues, errorSwal, errorSwalDefaultValues } from '@nuwe/lib'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import {
-  actionsSwal,
-  actionsSwalDefaultValues,
-  errorSwal,
-  errorSwalDefaultValues
-} from 'src/shared/utils/swal/swal'
 
-import { useTechnologies } from 'src/shared/materio/views/ui/Autocomplete/useTechnologies'
+import { useTechnologies } from '@nuwe/materio'
 
 import { projectsServices } from 'src/shared/context/projects/domain/projects.services'
 import { projectsRespository } from 'src/shared/context/projects/infrastructure/projects.repository'
@@ -20,24 +15,22 @@ import { SubmitProjectDialogView } from './SubmitProjectDialog.container'
 
 import { SatisfactionSurveyDialog } from '../SatisfactionSurveyDialog'
 
-import { useTranslations } from '@nuwe/lib'
-
 const { submitIndividualChallenge, submitTeamChallenge } = projectsServices(projectsRespository)
 const { getUserTeamFromEvent, getEventById } = eventServices(eventRepository)
 
-const indexedArray = (arr, key) =>
-  arr.reduce((acc, el) => {
+const indexedArray = (arr: any, key: any) =>
+  arr.reduce((acc: any, el: any) => {
     acc[el[key]] = el
 
     return acc
   }, {})
 
-const verify = (data) => {
-  let aux = []
-  data.forEach((element) => {
+const verify = (data: any) => {
+  let aux: any = []
+  data.forEach((element: any) => {
     if (aux.includes(element)) {
       aux.splice(2, 1)
-      const remove = aux?.filter((item) => item !== element)
+      const remove = aux?.filter((item: any) => item !== element)
       aux = remove
     } else {
       aux.push(element)
@@ -52,8 +45,20 @@ interface SubmitProjectDialogProps {
   setSendSolution: (value: boolean) => void
   challenge: any
   user: any
-  setChallengeUserSubmit: (value: boolean) => void
+  setChallengeUserSubmit: (value: any) => void
   setProject: (value: any) => void
+  displayTexts: {
+    youNeedATeamToSubmitTheSolution: string
+    checkYourTeamMembersBeforeSubmit: string
+    makeSureAllSolutionParticipantsAreOnYourTeam: string
+    yesContinue: string
+    cancel: string
+    thankYouForYourParticipation: string
+    solutionSuccessfullySubmitted: string
+    close: string
+    submit: string
+    fillInAllTheRequiredFields: string
+  }
 }
 
 export const SubmitProjectDialog = ({
@@ -62,16 +67,15 @@ export const SubmitProjectDialog = ({
   challenge,
   user,
   setChallengeUserSubmit,
-  setProject
+  setProject,
+  displayTexts
 }: SubmitProjectDialogProps) => {
   const { technologies, loading } = useTechnologies(open)
-  const [indexedTechs, setIndexedTechs] = useState([])
-  const [loader, setLoader] = useState(false)
-  const [data, setData] = useState({})
-  const [dataScienceChecksError, setDataScienceChecksError] = useState(false)
-  const [openSurvey, setOpenSurvey] = useState(false)
-
-  const { translate } = useTranslations()
+  const [indexedTechs, setIndexedTechs] = useState<any>({})
+  const [loader, setLoader] = useState<boolean>(false)
+  const [data, setData] = useState<any>({})
+  const [dataScienceChecksError, setDataScienceChecksError] = useState<boolean>(false)
+  const [openSurvey, setOpenSurvey] = useState<boolean>(false)
 
   const techsInProjects = challenge?.stack?.map((tech: any) => tech.name)
 
@@ -116,7 +120,7 @@ export const SubmitProjectDialog = ({
     })
   }
 
-  const submitIndividual = async (stack) => {
+  const submitIndividual = async (stack: any) => {
     const response = await submitIndividualChallenge({
       ...data,
       technologies: stack,
@@ -139,7 +143,7 @@ export const SubmitProjectDialog = ({
     }
   }
 
-  const submitTeam = async (stack) => {
+  const submitTeam = async (stack: any) => {
     const event = await getEventById(challenge.from.id)
 
     const userTeam = await getUserTeamFromEvent(user.id, event.data.eventURL)
@@ -148,7 +152,7 @@ export const SubmitProjectDialog = ({
       return errorSwal({
         ...errorSwalDefaultValues,
         title: 'Error',
-        text: translate('you_need_a_team_to_submit_the_solution', 'teams'),
+        text: displayTexts.youNeedATeamToSubmitTheSolution,
         didOpen: () => {
           setLoader(false)
           setSendSolution(false)
@@ -166,10 +170,10 @@ export const SubmitProjectDialog = ({
     actionsSwal(
       {
         ...actionsSwalDefaultValues,
-        title: translate('check_your_team_members_before_submit', 'teams'),
-        text: translate('make_sure_all_solution_participants_are_on_your_team', 'teams'),
-        confirmButtonText: translate('yes_continue', 'teams'),
-        cancelButtonText: translate('cancel', 'teams')
+        title: displayTexts.checkYourTeamMembersBeforeSubmit,
+        text: displayTexts.makeSureAllSolutionParticipantsAreOnYourTeam,
+        confirmButtonText: displayTexts.yesContinue,
+        cancelButtonText: displayTexts.cancel
       },
       {
         actionConfirm: async () => {
@@ -227,7 +231,7 @@ export const SubmitProjectDialog = ({
       if (!checks.predictions || !checks.app) return
     }
 
-    const stack = data.technologies.map((key) => indexedTechs[key]._id)
+    const stack = data.technologies.map((key: any) => indexedTechs[key]._id)
 
     challenge.type === 'Grupal' ? submitTeam(stack) : submitIndividual(stack)
   }
@@ -251,6 +255,7 @@ export const SubmitProjectDialog = ({
         event={{ id: challenge?.lastChallenge && challenge?.from?.id }}
         user={{ id: user?.id }}
         popup={{ open: openSurvey, close: () => setOpenSurvey(false) }}
+        displayedTexts={displayTexts}
       />
     </>
   )

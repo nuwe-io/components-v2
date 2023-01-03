@@ -14,7 +14,7 @@ interface RatingBoxProps {
 export const RatingBox = ({ setAnswer, isEvent }: RatingBoxProps) => {
   const { language } = currentLanguage()
 
-  const [comment, setComment] = useState(null)
+  const [comment, setComment] = useState<string>('')
   const [level, setLevel] = useState<number>(0)
 
   const handleChangeLevel = (value: number | null) => {

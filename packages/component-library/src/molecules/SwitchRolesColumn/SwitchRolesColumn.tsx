@@ -1,25 +1,29 @@
 /* eslint-disable comma-spacing */
 import { Chip } from '@mui/material'
 
-import { Translations, useTranslations } from '@nuwe/lib'
-import { actionsSwal, actionsSwalDefaultValues } from '@shared/utils/swal/swal'
+import { actionsSwal, actionsSwalDefaultValues } from '@nuwe/lib'
 
 interface SwitchRolesColumnProps {
   data: any
   actions: any
+  displayedTexts: {
+    switchRolesLabel: string
+    youAreGoingToSwitchRolesWithYourTeammate: string
+    yourTeammateWillBecomeTeamLeader: string
+    yesContinue: string
+    cancel: string
+  }
 }
 
-export const SwitchRolesColumn = ({ data, actions }: SwitchRolesColumnProps) => {
+export const SwitchRolesColumn = ({ data, actions, displayedTexts }: SwitchRolesColumnProps) => {
   const { switchRoles } = data
   const { emitAsignTeamLeader, setSwitchRoles } = actions
-
-  const { translate } = useTranslations()
 
   if (switchRoles.isEnabled && switchRoles.currentUser.id !== switchRoles.member.id)
     return (
       <div style={{ height: '100%', width: '100%', display: 'flex', alignItems: 'center' }}>
         <Chip
-          label={<Translations ns='teams' text='switch_roles_label' />}
+          label={displayedTexts.switchRolesLabel}
           color='secondary'
           size='small'
           style={{
@@ -32,10 +36,10 @@ export const SwitchRolesColumn = ({ data, actions }: SwitchRolesColumnProps) => 
             actionsSwal(
               {
                 ...actionsSwalDefaultValues,
-                title: translate('you_are_going_to_switch_roles_with_your_teammate', 'teams'),
-                text: translate('your_teammate_will_become_team_leader', 'teams'),
-                confirmButtonText: translate('yes_continue', 'teams'),
-                cancelButtonText: translate('cancel', 'teams')
+                title: displayedTexts.youAreGoingToSwitchRolesWithYourTeammate,
+                text: displayedTexts.yourTeammateWillBecomeTeamLeader,
+                confirmButtonText: displayedTexts.yesContinue,
+                cancelButtonText: displayedTexts.cancel
               },
               {
                 actionConfirm: () => {

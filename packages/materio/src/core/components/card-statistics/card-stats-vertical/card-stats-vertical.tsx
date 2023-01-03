@@ -9,7 +9,6 @@ import Typography from '@mui/material/Typography'
 import DotsVertical from 'mdi-material-ui/DotsVertical'
 
 // ** Custom Components Imports
-import { Translations } from '@nuwe/lib'
 import { Avatar } from '../../mui/avatar'
 
 interface CardStatsVerticalProps {
@@ -21,12 +20,11 @@ interface CardStatsVerticalProps {
   trend: 'positive' | 'negative'
   trendNumber: string | number
   showDots?: boolean
-  ns: string
 }
 
-const CardStatsVertical = (props: CardStatsVerticalProps) => {
+export const CardStatsVertical = (props: CardStatsVerticalProps) => {
   // ** Props
-  const { title, subtitle, color, icon, stats, trend, trendNumber, showDots, ns } = props
+  const { title, subtitle, color, icon, stats, trend, trendNumber, showDots } = props
 
   return (
     <Card>
@@ -53,9 +51,7 @@ const CardStatsVertical = (props: CardStatsVerticalProps) => {
             </IconButton>
           )}
         </Box>
-        <Typography sx={{ fontWeight: 600, fontSize: '0.875rem' }}>
-          <Translations ns={ns} text={title} />
-        </Typography>
+        <Typography sx={{ fontWeight: 600, fontSize: '0.875rem' }}>{title}</Typography>
         <Box sx={{ mt: 1.5, display: 'flex', flexWrap: 'wrap', mb: 1.5, alignItems: 'flex-start' }}>
           <Typography variant='h6' sx={{ mr: 2 }}>
             {stats}
@@ -68,15 +64,11 @@ const CardStatsVertical = (props: CardStatsVerticalProps) => {
             {trendNumber}
           </Typography>
         </Box>
-        <Typography variant='h6'>
-          <Translations ns={ns} text={subtitle} />
-        </Typography>
+        <Typography variant='h6'>{subtitle}</Typography>
       </CardContent>
     </Card>
   )
 }
-
-export default CardStatsVertical
 
 CardStatsVertical.defaultProps = {
   color: 'primary',

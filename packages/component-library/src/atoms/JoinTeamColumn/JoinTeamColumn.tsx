@@ -1,6 +1,5 @@
 /* eslint-disable comma-spacing */
 import { Chip } from '@mui/material'
-import { useTranslations } from '@nuwe/lib'
 
 interface JoinTeamColumnProps {
   data: {
@@ -27,12 +26,16 @@ interface JoinTeamColumnProps {
     emitSendInvitation: (invitation: any) => void
     setInvitationStatus: (invitation: any) => void
   }
+  displayedTexts: {
+    sendRequestLabel: string
+    requestSentLabel: string
+    viewMyTeamLabel: string
+  }
 }
 
-export const JoinTeamColumn = ({ data, actions }: JoinTeamColumnProps) => {
+export const JoinTeamColumn = ({ data, actions, displayedTexts }: JoinTeamColumnProps) => {
   const { invitation, isAvailableToJoin, participation, team, event } = data
   const { emitSendInvitation, setInvitationStatus } = actions
-  const { translate } = useTranslations()
 
   if (
     isAvailableToJoin ||
@@ -43,7 +46,7 @@ export const JoinTeamColumn = ({ data, actions }: JoinTeamColumnProps) => {
       return (
         <div style={{ height: '100%', width: '100%', display: 'flex', alignItems: 'center' }}>
           <Chip
-            label={translate('send_request_label', 'teams')}
+            label={displayedTexts.sendRequestLabel}
             color='secondary'
             size='small'
             style={{
@@ -68,7 +71,7 @@ export const JoinTeamColumn = ({ data, actions }: JoinTeamColumnProps) => {
       return (
         <div style={{ height: '100%', width: '100%', display: 'flex', alignItems: 'center' }}>
           <Chip
-            label={translate('request_sent_label', 'teams')}
+            label={displayedTexts.requestSentLabel}
             color='warning'
             size='small'
             variant='outlined'
@@ -84,7 +87,7 @@ export const JoinTeamColumn = ({ data, actions }: JoinTeamColumnProps) => {
       return (
         <div style={{ height: '100%', width: '100%', display: 'flex', alignItems: 'center' }}>
           <Chip
-            label={translate('view_my_team_label', 'teams')}
+            label={displayedTexts.viewMyTeamLabel}
             color='primary'
             size='small'
             onClick={() => window.open(`/dev/event/teams/${event.url}/myteam`, '_self')}

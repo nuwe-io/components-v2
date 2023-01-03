@@ -1,8 +1,6 @@
 import { Box, Checkbox, Chip, Grid, Typography } from '@mui/material'
 import { makeStyles } from '@mui/styles'
 
-import { Translations } from '@nuwe/lib'
-
 export const useStyles = makeStyles((_theme: any) => ({
   flex: {
     display: 'flex',
@@ -20,15 +18,30 @@ interface ProfessionalInfoProps {
   handlerData: (value: any, key: string, parent?: string) => void
   data: any
   error: string
+  displayedTexts: {
+    companySizeSmall: string
+    companySizeMid: string
+    companySizeBig: string
+    companySizeMulti: string
+    workTitle: string
+    workOpentowork: string
+    workRemote: string
+    workCompanySize: string
+  }
 }
 
-export const ProfessionalInfo = ({ handlerData, data, error }: ProfessionalInfoProps) => {
+export const ProfessionalInfo = ({
+  handlerData,
+  data,
+  error,
+  displayedTexts
+}: ProfessionalInfoProps) => {
   const options = ['PEQUEÑA', 'MEDIANA', 'GRANDE', 'MULTINACIONAL']
   const sizes = [
-    <Translations key={0} ns='auth' text='company_size_small' />,
-    <Translations key={1} ns='auth' text='company_size_mid' />,
-    <Translations key={2} ns='auth' text='company_size_big' />,
-    <Translations key={3} ns='auth' text='company_size_multi' />
+    displayedTexts.companySizeSmall,
+    displayedTexts.companySizeMid,
+    displayedTexts.companySizeBig,
+    displayedTexts.companySizeMulti
   ]
 
   const updateCompanyParams = (value: any, key: string) => handlerData(value, key, 'company')
@@ -38,7 +51,7 @@ export const ProfessionalInfo = ({ handlerData, data, error }: ProfessionalInfoP
     <Grid container spacing={6}>
       <Grid item xs={12}>
         <Typography style={{ marginBottom: '1rem' }} variant='h5'>
-          <Translations ns='auth' text='work_title' />
+          {displayedTexts.workTitle}
         </Typography>
         {error && (
           <Typography variant='body2' style={{ color: '#E22208', margin: '7px 0px' }}>
@@ -52,9 +65,7 @@ export const ProfessionalInfo = ({ handlerData, data, error }: ProfessionalInfoP
             onChange={(e) => handlerData(e.target.checked, 'opentowork')}
             checked={data.opentowork}
           />
-          <Typography>
-            <Translations ns='auth' text='work_opentowork' />
-          </Typography>
+          <Typography>{displayedTexts.workOpentowork}</Typography>
         </Box>
 
         <Box className={flex}>
@@ -63,20 +74,16 @@ export const ProfessionalInfo = ({ handlerData, data, error }: ProfessionalInfoP
             onChange={(e) => updateCompanyParams(e.target.checked, 'remote')}
             checked={data.company.remote}
           />
-          <Typography>
-            <Translations ns='auth' text='work_remote' />
-          </Typography>
+          <Typography>{displayedTexts.workRemote}</Typography>
         </Box>
       </Grid>
 
       <Grid item xs={12}>
-        <Typography variant='body1'>
-          <Translations ns='auth' text='work_company_size' />
-        </Typography>
+        <Typography variant='body1'>{displayedTexts.workCompanySize}</Typography>
         <Box style={{ marginTop: '10px' }}>
-          {sizes.map((size) => (
+          {sizes.map((size: any) => (
             <Chip
-              name={`chip-${size.key}`}
+              //name={`chip-${size.key}`}
               style={{
                 padding: '0rem 1rem',
                 marginRight: '10px',

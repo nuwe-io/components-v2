@@ -3,14 +3,17 @@ import { Typography } from '@mui/material'
 import { useRouter } from 'next/router'
 
 import { useCountDown } from '@nuwe/hooks'
-import { Translations } from '@nuwe/lib'
 
 interface ProgressColumnProps {
   seconds: number
   url: string
+  displayedTexts: {
+    redirecting: string
+    seconds: string
+  }
 }
 
-export const RedirectCountDown = ({ seconds, url }: ProgressColumnProps) => {
+export const RedirectCountDown = ({ seconds, url, displayedTexts }: ProgressColumnProps) => {
   const counter = useCountDown(seconds)
 
   const router = useRouter()
@@ -19,8 +22,7 @@ export const RedirectCountDown = ({ seconds, url }: ProgressColumnProps) => {
 
   return (
     <Typography>
-      <Translations ns='common' text='redirecting' /> {counter}{' '}
-      <Translations ns='common' text='seconds' />
+      {displayedTexts.redirecting} {counter} {displayedTexts.seconds}
       ...
     </Typography>
   )

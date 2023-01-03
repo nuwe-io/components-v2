@@ -1,12 +1,19 @@
 import router from 'next/router'
 
-import { CardUser } from '@nuwe/materio'
+import { CardUser } from '../CardUser'
 
 interface EventsGridCardsProps {
   events: any[]
+  displayedTexts: {
+    daysLabel: string
+    hoursLabel: string
+    minutesLabel: string
+    title: string
+    timeoutLabel: string
+  }
 }
 
-export const EventsGridCards = ({ events }: EventsGridCardsProps) => {
+export const EventsGridCards = ({ events, displayedTexts }: EventsGridCardsProps) => {
   return (
     <div
       style={{
@@ -33,6 +40,7 @@ export const EventsGridCards = ({ events }: EventsGridCardsProps) => {
             endTime: event.endTime,
             active: event.active
           }}
+          displayedTexts={displayedTexts}
         />
       ))}
     </div>

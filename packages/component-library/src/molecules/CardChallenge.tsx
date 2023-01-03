@@ -86,7 +86,7 @@ interface chipsProps {
 }
 
 const Chips = ({ levels, category, showCategory }: chipsProps) => {
-  const theme = useTheme()
+  const theme = useTheme() as any
   const id = useId()
 
   return (

@@ -24,7 +24,8 @@
     "esModuleInterop": true,
     "strict": true,
     "resolveJsonModule": true,
-    "noEmit": true
+    "noEmit": true,
+    "downlevelIteration": true
   },
   "include": ["src"],
   "exclude": ["node_modules", ".storybook", "dist", "build", "jest", "tests"]
