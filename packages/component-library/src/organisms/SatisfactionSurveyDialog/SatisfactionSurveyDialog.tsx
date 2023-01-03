@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import axios from 'axios'
 
-import { SatisfactionSurveyDialogView } from './SatisfactionSurveyDialog.container.jsx'
+import { SatisfactionSurveyDialogView } from './SatisfactionSurveyDialog.container'
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL
 

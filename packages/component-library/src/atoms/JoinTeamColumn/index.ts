@@ -1,1 +1,1 @@
-export * from './JoinTeamColumn.jsx'
+export * from './JoinTeamColumn'

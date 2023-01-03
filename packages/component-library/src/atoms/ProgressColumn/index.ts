@@ -1,1 +1,1 @@
-export * from './ProgressColumn.jsx'
+export * from './ProgressColumn'

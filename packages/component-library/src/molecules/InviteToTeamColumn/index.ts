@@ -1,1 +1,1 @@
-export { InviteToTeamColumn } from './InviteToTeamColumn.jsx'
+export { InviteToTeamColumn } from './InviteToTeamColumn'

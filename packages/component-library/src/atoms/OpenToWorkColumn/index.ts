@@ -1,1 +1,1 @@
-export * from './OpenToWorkColumn.jsx'
+export * from './OpenToWorkColumn'

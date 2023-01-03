@@ -1,1 +1,1 @@
-export { CommentsPopup } from './CommentsPopup.jsx'
+export { CommentsPopup } from './CommentsPopup'

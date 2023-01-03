@@ -1,1 +1,1 @@
-export * from './DevColumn.jsx'
+export * from './DevColumn'

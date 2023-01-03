@@ -1,1 +1,1 @@
-export { SwitchRolesColumn } from './SwitchRolesColumn.jsx'
+export { SwitchRolesColumn } from './SwitchRolesColumn'

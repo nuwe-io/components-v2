@@ -1,1 +1,1 @@
-export { RatingColumn } from './RatingColumn.jsx'
+export { RatingColumn } from './RatingColumn'

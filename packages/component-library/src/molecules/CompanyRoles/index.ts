@@ -1,1 +1,1 @@
-export { CompanyRoles } from './CompanyRoles.jsx'
+export { CompanyRoles } from './CompanyRoles'

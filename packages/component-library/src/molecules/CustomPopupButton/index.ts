@@ -1,1 +1,1 @@
-export { CustomPopupButton } from './CustomPopupButton.jsx'
+export { CustomPopupButton } from './CustomPopupButton'

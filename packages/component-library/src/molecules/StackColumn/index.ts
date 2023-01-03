@@ -1,1 +1,1 @@
-export { StackColumn } from './StackColumn.jsx'
+export { StackColumn } from './StackColumn'

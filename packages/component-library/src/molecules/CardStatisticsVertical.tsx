@@ -7,8 +7,6 @@ import useId from '@mui/material/utils/useId'
  * ! If you need all the icons from the library, use "import * as Icon from 'mdi-material-ui'"
  * */
 
-import { CardStatsVertical } from '@nuwe/materio'
-
 interface CardStatsVerticalProps {
   data: any
   minMaxWidth?: string
