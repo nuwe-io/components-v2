@@ -54,9 +54,9 @@ const salesData: dataType[] = [
 ]
 
 const renderStats = (data: dataType[], id: string) => {
-  return data.map((item: any) => {
+  return data.map((item: any, i: number) => {
     return (
-      <Grid style={{ margin: '1rem' }} item xs={6} md={3} key={id}>
+      <Grid style={{ margin: '1rem' }} item xs={6} md={3} key={`${id}-${i}`}>
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
           <Avatar variant='rounded' color={item.color} sx={{ mr: 3, boxShadow: 3 }}>
             {item.icon}

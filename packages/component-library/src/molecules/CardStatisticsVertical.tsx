@@ -31,8 +31,8 @@ export const CardStatisticsVertical = ({
           gap: '2rem'
         }}
       >
-        {data.map((item: any) => {
-          return <CardStatsVertical ns={ns} key={id} {...item} icon={item.icon} />
+        {data.map((item: any, i: number) => {
+          return <CardStatisticsVertical ns={ns} key={`${id}-${i}`} {...item} icon={item.icon} />
         })}
       </Grid>
     )
