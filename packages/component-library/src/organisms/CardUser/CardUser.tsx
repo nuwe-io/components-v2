@@ -8,8 +8,7 @@ import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
 import Tooltip from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
-import { Countdown } from 'src/shared/components/molecules/Countdown/Countdown'
-import { Translations } from 'src/shared/utils/translation/Translations'
+import { Countdown } from '../../molecules'
 
 interface CardUserProps {
   actionText?: string
@@ -24,6 +23,14 @@ interface CardUserProps {
   name?: string
   text?: string
   ns?: string
+  displayedTexts: {
+    actionText: string
+    daysLabel: string
+    hoursLabel: string
+    minutesLabel: string
+    title: string
+    timeoutLabel: string
+  }
 }
 
 const CardUser = ({
@@ -31,14 +38,13 @@ const CardUser = ({
   background,
   name,
   text,
-  actionText,
   friends,
   maxFriends,
   friendsLabel,
   isEvent,
   callAction,
   event,
-  ns
+  displayedTexts
 }: CardUserProps) => {
   const eventIsFinished = isEvent && new Date(event?.endTime) < new Date()
 
@@ -117,7 +123,7 @@ const CardUser = ({
             style={{ width: '150px', margin: '15px 0px' }}
             variant='contained'
           >
-            <Translations ns={ns} text={actionText} />
+            {displayedTexts.actionText}
           </Button>
         </Box>
         <Box
@@ -141,6 +147,7 @@ const CardUser = ({
                     : 'ends_in_label'
                 }
                 isEvent
+                displayedTexts={displayedTexts}
               />
             )}
             {!isEvent && friendsLabel}
