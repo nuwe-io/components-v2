@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import { Fragment, useState } from 'react'
 // ** MUI Imports
-import { Translations } from 'src/shared/utils/translation/Translations'
 // ** Icons Imports
 import { currentLanguage } from '@nuwe/lib'
 import AccountOutline from 'mdi-material-ui/AccountOutline'
@@ -80,6 +79,7 @@ interface CardStatisticsUserResumeProps {
     submitedAt: string
     viewRepository: string
     viewReport: string
+    itemName: string
   }
 }
 
@@ -123,7 +123,7 @@ const CardStatisticsUserResume = ({
               ].map((item) => (
                 <Link key={item.name} href={item.href} passHref>
                   <Button variant='outlined' color='primary'>
-                    <Translations ns='dashboard' text={item.name} />
+                    {displayedTexts.itemName}
                   </Button>
                 </Link>
               ))}
