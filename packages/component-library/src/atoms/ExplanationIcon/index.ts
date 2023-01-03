@@ -1,1 +1,1 @@
-export { ExplanationIcon } from './ExplanationIcon.jsx'
+export { ExplanationIcon } from './ExplanationIcon'

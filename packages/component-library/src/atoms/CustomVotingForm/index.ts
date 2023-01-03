@@ -1,1 +1,1 @@
-export { CustomVotingForm } from './CustomVotingForm.jsx'
+export { CustomVotingForm } from './CustomVotingForm'

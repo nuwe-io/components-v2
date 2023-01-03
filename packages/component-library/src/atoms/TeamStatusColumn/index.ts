@@ -1,1 +1,1 @@
-export * from './TeamStatusColumn.jsx'
+export * from './TeamStatusColumn'

@@ -1,1 +1,1 @@
-export { ChallengeColumn } from './ChallengeColumn.jsx'
+export { ChallengeColumn } from './ChallengeColumn'

@@ -1,1 +1,1 @@
-export { AvatarsColumn } from './AvatarsColumn.jsx'
+export { AvatarsColumn } from './AvatarsColumn'

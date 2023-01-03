@@ -1,1 +1,1 @@
-export { StackItem } from './StackItem.jsx'
+export { StackItem } from './StackItem'

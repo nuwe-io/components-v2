@@ -1,3 +1,3 @@
-export * from './CircularChart.jsx'
-export * from './DoubleCircularChart.jsx'
-export * from './TripleCircularChart.jsx'
+export * from './CircularChart'
+export * from './DoubleCircularChart'
+export * from './TripleCircularChart'

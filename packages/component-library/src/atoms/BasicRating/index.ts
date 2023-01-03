@@ -1,1 +1,1 @@
-export { BasicRating } from './BasicRating.jsx'
+export { BasicRating } from './BasicRating'

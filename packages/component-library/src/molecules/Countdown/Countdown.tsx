@@ -2,7 +2,7 @@
 import { currentLanguage } from '@nuwe/lib'
 import { useEffect, useState } from 'react'
 
-import { CountdownDummy } from './Countdown.container.jsx'
+import { CountdownDummy } from './Countdown.container'
 
 interface CountdownProps {
   date: string
