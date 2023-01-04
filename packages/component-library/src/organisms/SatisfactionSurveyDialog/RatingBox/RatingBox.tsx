@@ -4,14 +4,17 @@ import { useState } from 'react'
 // Material UI
 import { Box, FormControl, FormLabel, Rating, TextField } from '@mui/material'
 
-import { currentLanguage, Translations } from '@nuwe/lib'
+import { currentLanguage } from '@nuwe/lib'
 
 interface RatingBoxProps {
   setAnswer: (answer: any) => void
   isEvent?: boolean
+  displayedTexts: {
+    letUsKnowIfYouHaveAnyComments: string
+  }
 }
 
-export const RatingBox = ({ setAnswer, isEvent }: RatingBoxProps) => {
+export const RatingBox = ({ setAnswer, isEvent, displayedTexts }: RatingBoxProps) => {
   const { language } = currentLanguage()
 
   const [comment, setComment] = useState<string>('')
@@ -94,7 +97,7 @@ export const RatingBox = ({ setAnswer, isEvent }: RatingBoxProps) => {
         >
           <FormControl component='fieldset'>
             <FormLabel style={{ marginBottom: 15 }} component='legend'>
-              <Translations ns='teams' text='let_us_know_if_you_have_any_comments' />
+              {displayedTexts.letUsKnowIfYouHaveAnyComments}
             </FormLabel>
             <TextField
               id='outlined-basic'
