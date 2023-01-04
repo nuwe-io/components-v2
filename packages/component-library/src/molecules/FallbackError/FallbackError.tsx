@@ -5,7 +5,7 @@ interface FallbackErrorProps {
   msg: string
 }
 
-const FallbackError = ({ msg }: FallbackErrorProps) => {
+export const FallbackError = ({ msg }: FallbackErrorProps) => {
   return (
     <Box m={1} display='flex' justifyContent='center' alignItems='center'>
       <Alert variant='filled' severity='error' icon={<ErrorOutlineIcon />}>
@@ -15,5 +15,3 @@ const FallbackError = ({ msg }: FallbackErrorProps) => {
     </Box>
   )
 }
-
-export default FallbackError
