@@ -4,56 +4,69 @@ import { useState } from 'react'
 // Material UI
 import { Box, FormLabel, MenuItem, Select } from '@mui/material'
 
-import { Translations, useTranslations } from '@nuwe/lib'
-
 interface MotivationsProps {
   setMotivation: {
     first: (val: any) => void
     second: (val: any) => void
     third: (val: any) => void
   }
+  displayedTexts: {
+    selectYour3MostRelevantMotivations: string
+    first: string
+    second: string
+    third: string
+    learn: string
+    findAJob: string
+    gainExperience: string
+    networking: string
+    challengeYourself: string
+    testAHackathon: string
+    haveFun: string
+    buildPortfolio: string
+    teamwork: string
+    jobChange: string
+    getSkillsReport: string
+  }
 }
 
-export const Motivations = ({ setMotivation }: MotivationsProps) => {
-  const { translate } = useTranslations()
-
+export const Motivations = ({ setMotivation, displayedTexts }: MotivationsProps) => {
   const [answerOne, setAnswerOne] = useState<number>(0)
   const [answerTwo, setAnswerTwo] = useState<number>(0)
   const [answerThree, setAnswerThree] = useState<number>(0)
 
   const options = [
     {
-      label: translate('learn', 'teams')
+      label: displayedTexts.learn
     },
     {
-      label: translate('find_a_job', 'teams')
+      label: displayedTexts.findAJob
     },
     {
-      label: translate('gain_experience', 'teams')
+      label: displayedTexts.gainExperience
     },
     {
-      label: translate('networking', 'teams')
+      label: displayedTexts.networking
     },
     {
-      label: translate('challenge_yourself', 'teams')
+      label: displayedTexts.challengeYourself
     },
     {
-      label: translate('test_a_hackathon', 'teams')
+      label: displayedTexts.testAHackathon
     },
     {
-      label: translate('have_fun', 'teams')
+      label: displayedTexts.haveFun
     },
     {
-      label: translate('build_portfolio', 'teams')
+      label: displayedTexts.buildPortfolio
     },
     {
-      label: translate('teamwork', 'teams')
+      label: displayedTexts.teamwork
     },
     {
-      label: translate('job_change', 'teams')
+      label: displayedTexts.jobChange
     },
     {
-      label: translate('get_skills_report', 'teams')
+      label: displayedTexts.getSkillsReport
     }
   ]
 
@@ -98,9 +111,7 @@ export const Motivations = ({ setMotivation }: MotivationsProps) => {
             }}
           >
             <FormLabel style={{ marginBottom: 15 }} component='legend'>
-              <span>
-                <Translations ns='teams' text='select_your_3_most_relevant_motivations' />
-              </span>
+              <span>{displayedTexts.selectYour3MostRelevantMotivations}</span>
             </FormLabel>
             <Box
               style={{
@@ -117,9 +128,7 @@ export const Motivations = ({ setMotivation }: MotivationsProps) => {
                 sx={{ mb: 5 }}
               >
                 <MenuItem disabled value=''>
-                  <em>
-                    <Translations ns='teams' text='first' />
-                  </em>
+                  <em>{displayedTexts.first}</em>
                 </MenuItem>
                 {options.map((option, i) => {
                   return (
@@ -137,9 +146,7 @@ export const Motivations = ({ setMotivation }: MotivationsProps) => {
                 sx={{ mb: 5 }}
               >
                 <MenuItem disabled value=''>
-                  <em>
-                    <Translations ns='teams' text='second' />
-                  </em>
+                  <em>{displayedTexts.second}</em>
                 </MenuItem>
                 {options.map((option, i) => {
                   return (
@@ -157,9 +164,7 @@ export const Motivations = ({ setMotivation }: MotivationsProps) => {
                 sx={{ mb: 5 }}
               >
                 <MenuItem disabled value=''>
-                  <em>
-                    <Translations ns='teams' text='third' />
-                  </em>
+                  <em>{displayedTexts.third}</em>
                 </MenuItem>
                 {options.map((option, i) => {
                   return (
