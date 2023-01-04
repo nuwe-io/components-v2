@@ -10,6 +10,10 @@ interface ButtonLoaderProps {
   startIcon?: React.ReactNode
   showStartIcon?: boolean
   outlined?: boolean
+  size?: 'small' | 'medium' | 'large'
+  variant?: 'text' | 'outlined' | 'contained'
+  color?: 'inherit' | 'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning'
+  sx?: any
 }
 
 export const ButtonLoader = ({

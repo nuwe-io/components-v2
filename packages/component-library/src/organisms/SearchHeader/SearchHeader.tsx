@@ -9,8 +9,7 @@ import Magnify from 'mdi-material-ui/Magnify'
 import { Card, TextField } from './styles'
 
 //** Shared components
-import { ButtonLoader } from '@components/atoms'
-import { Translations } from '@nuwe/lib'
+import { ButtonLoader } from '../../atoms'
 
 interface SearchHeaderProps {
   searchTerm: string
@@ -21,20 +20,17 @@ interface SearchHeaderProps {
   searchPlaceholder: string
   buttonTitle: string
   headerOnClick: () => void
+  displayedTexts: {
+    title: string
+    description: string
+    buttonTitle: string
+  }
 }
 
 export const SearchHeader = (props: SearchHeaderProps) => {
   // ** Props
-  const {
-    searchTerm,
-    setSearchTerm,
-    loading,
-    title,
-    description,
-    searchPlaceholder,
-    buttonTitle,
-    headerOnClick
-  } = props
+  const { searchTerm, setSearchTerm, loading, searchPlaceholder, headerOnClick, displayedTexts } =
+    props
 
   const handleFaqFilter = (e: any) => setSearchTerm(e.target.value)
 
@@ -51,10 +47,10 @@ export const SearchHeader = (props: SearchHeaderProps) => {
           variant='h4'
           sx={{ mb: 1.5, color: 'primary.main', fontWeight: 600, fontSize: '1.5rem !important' }}
         >
-          <Translations text={title} ns='event' />
+          {displayedTexts.title}
         </Typography>
         <Typography variant='body2' sx={{ mb: 7 }}>
-          <Translations text={description} ns='event' scope='event' />
+          {displayedTexts.description}
         </Typography>
         <TextField
           value={searchTerm}
@@ -78,7 +74,7 @@ export const SearchHeader = (props: SearchHeaderProps) => {
           color='primary'
           sx={{ ml: 2 }}
         >
-          <Translations text={buttonTitle ?? 'Search'} ns='event' />
+          {displayedTexts.buttonTitle}
         </ButtonLoader>
       </CardContent>
     </Card>
