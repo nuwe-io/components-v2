@@ -14,6 +14,8 @@ interface ButtonLoaderProps {
   variant?: 'text' | 'outlined' | 'contained'
   color?: 'inherit' | 'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning'
   sx?: any
+  style?: any
+  form?: any
 }
 
 export const ButtonLoader = ({

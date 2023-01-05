@@ -14,6 +14,7 @@ export const Column = (props: ColumnProps) => (
 interface GridProps {
   spacing?: number
   children: React.ReactNode
+  sx?: any
 }
 
 export const Grid = ({ children, spacing = 4, ...props }: GridProps) => (

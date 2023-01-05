@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 interface SnackbarAlertProps {
   open: boolean
   autoHideDuration?: number
-  onClose: () => void
+  onClose: any
   message: string
   severity: 'error' | 'info' | 'success' | 'warning'
   variant?: 'filled' | 'outlined' | 'standard'
