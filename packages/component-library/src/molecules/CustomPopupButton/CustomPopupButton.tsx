@@ -5,6 +5,7 @@ interface CustomPopupButtonProps {
   text: string
   disabled?: boolean
   ElementToDisplay: any
+  projectId: string
 }
 
 export const CustomPopupButton = ({

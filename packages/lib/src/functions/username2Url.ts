@@ -6,10 +6,10 @@ const links = {
   linkedin: (username: string) => `https://linkedin.com/in/${username}`
 }
 
-export const username2Url = (url: string, type: string) => {
+export const username2Url = (url: string, type?: string) => {
   if (checkSocialUrl(url)) {
     return url
-  } else if (Object.keys(links).some((key) => key === type)) {
+  } else if (type && Object.keys(links).some((key) => key === type)) {
     return links[type](url)
   } else {
     return false
