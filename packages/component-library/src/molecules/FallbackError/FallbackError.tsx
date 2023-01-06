@@ -2,7 +2,7 @@ import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline'
 import { Alert, AlertTitle, Box } from '@mui/material'
 
 interface FallbackErrorProps {
-  msg: string
+  msg?: string
 }
 
 export const FallbackError = ({ msg }: FallbackErrorProps) => {
@@ -10,7 +10,7 @@ export const FallbackError = ({ msg }: FallbackErrorProps) => {
     <Box m={1} display='flex' justifyContent='center' alignItems='center'>
       <Alert variant='filled' severity='error' icon={<ErrorOutlineIcon />}>
         <AlertTitle>Error</AlertTitle>
-        {msg}
+        {msg ? msg : null}
       </Alert>
     </Box>
   )

@@ -12,7 +12,7 @@ interface AutocompleteSkillsProps {
   controller?: boolean
   handlers?: {
     data: any[]
-    handlerData: (inputs: any) => void
+    handleData: (inputs: any) => void
   }
   cardsMode?: 'default' | 'small' | 'black'
 }
@@ -22,7 +22,7 @@ export const AutocompleteSkills = ({
   controller = true,
   handlers = {
     data: [],
-    handlerData: (inputs) => console.log(inputs)
+    handleData: (inputs) => console.log(inputs)
   },
   cardsMode = 'default'
 }: AutocompleteSkillsProps) => {
@@ -101,7 +101,7 @@ export const AutocompleteSkills = ({
           loading={loading}
           getOptionLabel={(option) => option.name}
           filterSelectedOptions
-          onChange={(_e, v) => handlers.handlerData(v)}
+          onChange={(_e, v) => handlers.handleData(v)}
           renderInput={(params) => (
             <TextField {...params} label='Stack' placeholder='Stack' required />
           )}

@@ -1,6 +1,6 @@
-export const technologiesServices = (projectsRespository: any) => {
+export const technologiesServices = (projectsRepository: any) => {
   const getAllTechnologies = async () => {
-    const response = await projectsRespository.getAllTechnologies()
+    const response = await projectsRepository.getAllTechnologies()
     return response
   }
   return {
