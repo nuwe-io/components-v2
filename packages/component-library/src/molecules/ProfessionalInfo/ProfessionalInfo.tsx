@@ -15,7 +15,7 @@ export const useStyles = makeStyles((_theme: any) => ({
 }))
 
 interface ProfessionalInfoProps {
-  handlerData: (value: any, key: string, parent?: string) => void
+  handleData: (value: any, key: string, parent?: string) => void
   data: any
   error: string
   displayedTexts: {
@@ -31,7 +31,7 @@ interface ProfessionalInfoProps {
 }
 
 export const ProfessionalInfo = ({
-  handlerData,
+  handleData,
   data,
   error,
   displayedTexts
@@ -44,7 +44,7 @@ export const ProfessionalInfo = ({
     displayedTexts.companySizeMulti
   ]
 
-  const updateCompanyParams = (value: any, key: string) => handlerData(value, key, 'company')
+  const updateCompanyParams = (value: any, key: string) => handleData(value, key, 'company')
   const updateSize = (value: any) => updateCompanyParams(value, 'size')
   const { flex } = useStyles()
   return (
@@ -62,7 +62,7 @@ export const ProfessionalInfo = ({
         <Box className={flex}>
           <Checkbox
             name='opentowork'
-            onChange={(e) => handlerData(e.target.checked, 'opentowork')}
+            onChange={(e) => handleData(e.target.checked, 'opentowork')}
             checked={data.opentowork}
           />
           <Typography>{displayedTexts.workOpentowork}</Typography>

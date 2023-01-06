@@ -1,8 +1,8 @@
 import useSWR from 'swr'
-import { technologiesRespository } from './useTechnologies.repository'
+import { technologiesRepository } from './useTechnologies.repository'
 import { technologiesServices } from './useTechnologies.services'
 
-const { getAllTechnologies } = technologiesServices(technologiesRespository)
+const { getAllTechnologies } = technologiesServices(technologiesRepository)
 
 export const useTechnologies = (open: boolean) => {
   const { data, error } = useSWR(open ? 'technologies' : null, getAllTechnologies)

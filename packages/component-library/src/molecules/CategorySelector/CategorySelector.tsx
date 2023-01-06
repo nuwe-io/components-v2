@@ -16,7 +16,7 @@ const options = [
 
 interface CategorySelectorProps {
   data: any
-  handlerData: any
+  handleData: any
   error: string
   displayedTexts: {
     skillsTitle: string
@@ -27,7 +27,7 @@ interface CategorySelectorProps {
 }
 
 export const CategorySelector = ({
-  handlerData,
+  handleData,
   data,
   error,
   displayedTexts
@@ -54,7 +54,7 @@ export const CategorySelector = ({
                 color: data.role.includes(key) ? '#569B51' : ''
               }}
               clickable
-              onClick={(_e) => handlerData(key, 'role')}
+              onClick={(_e) => handleData(key, 'role')}
               label={key}
               key={key}
               variant='outlined'
@@ -70,7 +70,7 @@ export const CategorySelector = ({
           controller={false}
           handlers={{
             data: data.skills,
-            handlerData: (inputs: any) => handlerData(inputs, 'skills')
+            handleData: (inputs: any) => handleData(inputs, 'skills')
           }}
           cardsMode='black'
         />

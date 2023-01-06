@@ -17,6 +17,6 @@ const catchAxios = async (fn: any) =>
       return false
     })
 
-export const technologiesRespository = {
+export const technologiesRepository = {
   getAllTechnologies: async () => catchAxios(instance.get(`${BACKEND_URL}/technologies`))
 }

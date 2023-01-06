@@ -14,7 +14,7 @@ import { ButtonLoader } from '../../atoms'
 interface SubmitProjectDialogViewProps {
   challenge: any
   open: boolean
-  handlerData: (e: any, index: number | null, type: string) => void
+  handleData: (e: any, index: number | null, type: string) => void
   techsInProjects: any
   data: any
   setSendSolution: (sendSolution: boolean) => void
@@ -37,7 +37,7 @@ interface SubmitProjectDialogViewProps {
 export const SubmitProjectDialogView = ({
   challenge,
   open,
-  handlerData,
+  handleData,
   techsInProjects,
   data,
   setSendSolution,
@@ -74,7 +74,7 @@ export const SubmitProjectDialogView = ({
                 size='small'
                 margin='dense'
                 multiline
-                onChange={(e) => handlerData(e, null, 'description')}
+                onChange={(e) => handleData(e, null, 'description')}
                 maxRows={6}
                 label={displayedTexts.supercoolSolutionBuiltWithSuperpowers}
               />
@@ -82,7 +82,7 @@ export const SubmitProjectDialogView = ({
             <div style={{ margin: '15px 0px' }}>
               <Typography style={{ margin: '5px 0px' }}>{displayedTexts.inputRepoLink}</Typography>
               <TextField
-                onChange={(e) => handlerData(e, null, 'projectURL')}
+                onChange={(e) => handleData(e, null, 'projectURL')}
                 fullWidth
                 size='small'
                 margin='dense'
@@ -107,7 +107,7 @@ export const SubmitProjectDialogView = ({
                       }}
                       clickable
                       label={key}
-                      onClick={(e) => handlerData(e, [...data.technologies, key], 'technologies')}
+                      onClick={(e) => handleData(e, [...data.technologies, key], 'technologies')}
                       key={key}
                       variant='outlined'
                     />

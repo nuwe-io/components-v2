@@ -33,7 +33,7 @@ const TextFieldBase = ({ changeText, label, value }: TextFieldBaseProps) => {
 const options = ['TRAINEE', 'JUNIOR', 'MID SENIOR', 'SENIOR', 'TECH LEAD']
 
 interface PersonalInfoProps {
-  handlerData: (value: string, key: string) => void
+  handleData: (value: string, key: string) => void
   data: any
   error: string
   displayedTexts: {
@@ -45,13 +45,13 @@ interface PersonalInfoProps {
   }
 }
 
-export const PersonalInfo = ({ handlerData, data, error, displayedTexts }: PersonalInfoProps) => {
+export const PersonalInfo = ({ handleData, data, error, displayedTexts }: PersonalInfoProps) => {
   const { root, baseMargin } = useStyles()
 
   const changeName = (value: string) => {
-    handlerData(value, 'name')
+    handleData(value, 'name')
   }
-  const changeUsername = (value: string) => handlerData(value, 'username')
+  const changeUsername = (value: string) => handleData(value, 'username')
   const isSelected = (key: string) => data.degree === key
 
   const theme = useTheme() as any
@@ -79,7 +79,7 @@ export const PersonalInfo = ({ handlerData, data, error, displayedTexts }: Perso
           <ChipSelector
             condition={isSelected}
             options={options}
-            updateSelected={(value) => handlerData(value, 'degree')}
+            updateSelected={(value) => handleData(value, 'degree')}
             defaultAvatar={<AlertCircle size='15px' color='#FFF' />}
             selectedAvatar={<CheckCircle size='15px' color={theme.palette.primary.main} />}
           />

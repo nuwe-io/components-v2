@@ -5,18 +5,15 @@ import { useEffect, useState } from 'react'
 
 import { useTechnologies } from '@nuwe/hooks'
 
-import { projectsServices } from 'src/shared/context/projects/domain/projects.services'
-import { projectsRespository } from 'src/shared/context/projects/infrastructure/projects.repository'
-
-import { eventServices } from 'src/event/domain/services/event.services'
-import { eventRepository } from 'src/event/infrastructure/repository/event.repository'
+import { submitProjectDialogRepository } from './SubmitProjectDialog.repository'
+import { submitProjectDialogServices } from './SubmitProjectDialog.services'
 
 import { SubmitProjectDialogView } from './SubmitProjectDialog.container'
 
 import { SatisfactionSurveyDialog } from '../SatisfactionSurveyDialog'
 
-const { submitIndividualChallenge, submitTeamChallenge } = projectsServices(projectsRespository)
-const { getUserTeamFromEvent, getEventById } = eventServices(eventRepository)
+const { submitIndividualChallenge, submitTeamChallenge, getUserTeamFromEvent, getEventById } =
+  submitProjectDialogServices(submitProjectDialogRepository)
 
 const indexedArray = (arr: any, key: any) =>
   arr.reduce((acc: any, el: any) => {
@@ -58,6 +55,14 @@ interface SubmitProjectDialogProps {
     close: string
     submit: string
     fillInAllTheRequiredFields: string
+    supercoolSolutionBuiltWithSuperpowers: string
+    submitFormTitle: string
+    inputSolutionDescription: string
+    inputRepoLink: string
+    inputSolutionStack: string
+    dataRepoError: string
+    actionCancel: string
+    actionSubmit: string
   }
 }
 
@@ -107,7 +112,7 @@ export const SubmitProjectDialog = ({
     }
   }, [user, challenge])
 
-  const handlerData = (e: any, value: any, key: string) => {
+  const handleData = (e: any, value: any, key: string) => {
     if (key === 'technologies')
       return setData({
         ...data,
@@ -241,7 +246,7 @@ export const SubmitProjectDialog = ({
       <SubmitProjectDialogView
         challenge={challenge}
         open={open}
-        handlerData={handlerData}
+        handleData={handleData}
         techsInProjects={techsInProjects}
         data={data}
         setSendSolution={setSendSolution}
@@ -249,6 +254,7 @@ export const SubmitProjectDialog = ({
         loader={loader}
         loading={loading}
         dataScienceChecksError={dataScienceChecksError}
+        displayedTexts={displayTexts}
       />
       <SatisfactionSurveyDialog
         challenge={{ id: challenge?.id }}
