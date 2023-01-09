@@ -10,9 +10,9 @@ import BreadcrumbNav from './BreadCrumbNav'
 import { ActionButton, SubNavContainer } from './styles'
 
 interface SubNavProps {
-  buttonTitle: string
-  buttonAction: () => void
-  breadcrumbtitle: string
+  buttonTitle?: string
+  buttonAction?: () => void
+  breadcrumbtitle?: string
   navProps: any
   type: string
   children?: any
