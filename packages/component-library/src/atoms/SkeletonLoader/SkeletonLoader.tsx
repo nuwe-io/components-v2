@@ -17,13 +17,11 @@ export const SkeletonLoader = ({
   variant,
   style
 }: SkeletonLoaderProps) => {
-  return (
-    renderCondition && (
-      <div style={{ width: '100%', ...style }} className={className}>
-        <Skeleton width={width} height={height} variant={variant} />
-      </div>
-    )
-  )
+  return renderCondition ? (
+    <div style={{ width: '100%', ...style }} className={className}>
+      <Skeleton width={width} height={height} variant={variant} />
+    </div>
+  ) : null
 }
 
 SkeletonLoader.defaultProps = {

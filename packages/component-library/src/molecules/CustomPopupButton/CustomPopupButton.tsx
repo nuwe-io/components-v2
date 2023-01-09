@@ -6,6 +6,9 @@ interface CustomPopupButtonProps {
   disabled?: boolean
   ElementToDisplay: any
   projectId: string
+  teamId: string
+  comments?: any
+  title?: string
 }
 
 export const CustomPopupButton = ({

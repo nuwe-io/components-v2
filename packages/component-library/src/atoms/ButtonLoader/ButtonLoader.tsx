@@ -16,6 +16,7 @@ interface ButtonLoaderProps {
   sx?: any
   style?: any
   form?: any
+  type?: string
 }
 
 export const ButtonLoader = ({
