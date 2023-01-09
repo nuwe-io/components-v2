@@ -17,6 +17,7 @@ interface ButtonLoaderProps {
   style?: any
   form?: any
   type?: 'button' | 'submit' | 'reset' | undefined
+  fullwidth?: boolean
 }
 
 export const ButtonLoader = ({
