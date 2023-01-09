@@ -1,9 +1,9 @@
 import { useTheme } from '@mui/material'
 
 interface LogoProps {
-  width: number
-  height: number
-  onlyIcon: boolean
+  width?: number
+  height?: number
+  onlyIcon?: boolean
 }
 
 export const Logo = ({ width, height, onlyIcon }: LogoProps) => {

@@ -1,12 +1,12 @@
 import { Skeleton } from '@mui/material'
 
 interface SkeletonLoaderProps {
-  renderCondition: boolean
+  renderCondition?: boolean
   width: string
   height: string
-  variant: 'text' | 'rectangular' | 'rounded' | 'circular' | undefined
-  className: string
-  style: object
+  variant?: 'text' | 'rectangular' | 'rounded' | 'circular' | undefined
+  className?: string
+  style?: object
 }
 
 export const SkeletonLoader = ({

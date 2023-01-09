@@ -10,16 +10,16 @@ interface DataTableProps {
   showHeader: boolean
   handleCellChange: any
   deleteData: any
-  pageSize: number
-  urlPath: string
-  height: number | string
-  width: number | string
+  pageSize?: number
+  urlPath?: string
+  height?: number | string
+  width?: number | string
   loading: boolean
-  tableDensity: GridDensity | undefined
+  tableDensity?: GridDensity | undefined
   checkboxSelection: boolean
   headerAction: any
-  showLauncher: boolean
-  customFilter: any
+  showLauncher?: boolean
+  customFilter?: any
   headerButton: any
   disableColumnMenu: boolean
   noRowsLabel: string

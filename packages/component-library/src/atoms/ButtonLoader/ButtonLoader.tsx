@@ -5,7 +5,7 @@ interface ButtonLoaderProps {
   loading?: boolean
   disabled?: boolean
   children?: React.ReactNode | string
-  onClick: () => void
+  onClick?: () => void
   isSecondary?: boolean
   startIcon?: React.ReactNode
   showStartIcon?: boolean
@@ -16,7 +16,7 @@ interface ButtonLoaderProps {
   sx?: any
   style?: any
   form?: any
-  type?: string
+  type?: 'button' | 'submit' | 'reset' | undefined
 }
 
 export const ButtonLoader = ({
