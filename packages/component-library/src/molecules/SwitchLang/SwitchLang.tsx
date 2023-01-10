@@ -4,7 +4,7 @@ import TranslateIcon from '@mui/icons-material/translate'
 import useTranslation from 'next-translate/useTranslation'
 
 export const SwitchLang = () => {
-  const { t, lang } = useTranslation()
+  const { t, lang } = useTranslation() as any
 
   const handleChange = (value: string) => {
     lang.changeLanguage(value)
