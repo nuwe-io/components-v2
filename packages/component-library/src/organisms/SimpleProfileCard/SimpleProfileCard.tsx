@@ -22,7 +22,7 @@ import { Avatar } from '../Avatar'
 interface SimpleProfileCardProps {
   user: any
   isProfile?: boolean
-  toggleOpen?: () => void | null
+  toggleOpen?: (() => void) | null
   services?: any
   displayedTexts: {
     accountImageSettings: string
@@ -47,7 +47,7 @@ export const SimpleProfileCard = ({
 
   return (
     <Card>
-      <EditProfile onClick={toggleOpen} isProfile={isProfile} />
+      <EditProfile onClick={toggleOpen ? toggleOpen : undefined} isProfile={isProfile} />
       <CardContent
         style={{
           display: 'flex',

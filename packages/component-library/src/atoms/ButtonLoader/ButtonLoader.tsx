@@ -18,6 +18,7 @@ interface ButtonLoaderProps {
   form?: any
   type?: 'button' | 'submit' | 'reset' | undefined
   fullwidth?: boolean
+  endIcon?: React.ReactNode
 }
 
 export const ButtonLoader = ({
