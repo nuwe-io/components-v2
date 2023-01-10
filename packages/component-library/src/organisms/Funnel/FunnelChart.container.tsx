@@ -1,6 +1,6 @@
 import { Sections } from './components'
 
-import { HideContent } from 'components/atoms'
+import { HideContent } from '../../atoms'
 
 interface DummyFunnelChartProps {
   data: any
@@ -48,7 +48,7 @@ export const DummyFunnelChart = ({
             </HideContent>
           </div>
         </div>
-        <div style={{ width, chartHeight }}>
+        <div style={{ width: width, height: chartHeight }}>
           <canvas ref={canvasRef} width={width} height={chartHeight} />
         </div>
       </div>

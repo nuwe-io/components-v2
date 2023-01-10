@@ -1,15 +1,22 @@
 import { useTheme } from '@mui/material'
-import { PropTypes } from 'prop-types'
 import { useEffect, useRef } from 'react'
 
 import { DummyFunnelChart } from './FunnelChart.container'
 
-export const FunnelChart = ({ width, height, data, theme, hideSections }) => {
+interface FunnelChart {
+  width: number
+  height: number
+  data: any
+  theme: string
+  hideSections: boolean
+}
+
+export const FunnelChart = ({ width, height, data, theme, hideSections }: FunnelChart) => {
   // Canvas DOM element reference
   const canvasRef = useRef(null)
   const thememui = useTheme()
 
-  const sortedData = data.sort((a, b) => {
+  const sortedData = data.sort((a: any, b: any) => {
     if (a.value > b.value) {
       return -1
     }
@@ -34,7 +41,6 @@ export const FunnelChart = ({ width, height, data, theme, hideSections }) => {
     thememui.palette.primary.light,
     '#c1f794'
   ]
-
   Array.prototype.max = function () {
     return Math.max.apply(null, this)
   }
@@ -43,12 +49,12 @@ export const FunnelChart = ({ width, height, data, theme, hideSections }) => {
     return Math.min.apply(null, this)
   }
 
-  const max = data.map((current) => current.value).max()
+  const max = data.map((current: any) => current.value).max()
 
   const csize = max / chartHeight
 
   useEffect(() => {
-    const canvas = canvasRef.current
+    const canvas = canvasRef.current as any
 
     const context = canvas.getContext('2d')
 
@@ -91,20 +97,6 @@ export const FunnelChart = ({ width, height, data, theme, hideSections }) => {
       hideSections={hideSections}
     />
   )
-}
-
-FunnelChart.propTypes = {
-  data: PropTypes.arrayOf(
-    PropTypes.shape({
-      value: PropTypes.number,
-      text: PropTypes.string,
-      action: PropTypes.func
-    })
-  ),
-  height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  hideSections: PropTypes.bool,
-  theme: PropTypes.oneOf(['light', 'dark'])
 }
 
 FunnelChart.defaultProps = {
