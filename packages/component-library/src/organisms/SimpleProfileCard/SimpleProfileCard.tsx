@@ -22,7 +22,7 @@ import { Avatar } from '../Avatar'
 interface SimpleProfileCardProps {
   user: any
   isProfile?: boolean
-  toggleOpen?: () => void
+  toggleOpen?: () => void | null
   services?: any
   displayedTexts: {
     accountImageSettings: string

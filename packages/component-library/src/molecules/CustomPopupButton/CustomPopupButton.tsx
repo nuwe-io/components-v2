@@ -9,6 +9,8 @@ interface CustomPopupButtonProps {
   teamId: string
   comments?: any
   title?: string
+  userId?: string
+  handleSubmit?: any
 }
 
 export const CustomPopupButton = ({
