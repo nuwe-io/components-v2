@@ -38,7 +38,7 @@ export const EmailAutocomplete = ({
       id={label}
       renderTags={(value, getTagProps) =>
         value.map((option, index) => (
-          <Chip key={index} label={option} {...getTagProps({ index })} />
+          <Chip {...getTagProps({ index })} key={index} label={option} />
         ))
       }
       renderInput={(params) => {

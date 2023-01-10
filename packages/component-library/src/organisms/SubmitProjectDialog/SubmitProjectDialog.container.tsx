@@ -14,7 +14,7 @@ import { ButtonLoader } from '../../atoms'
 interface SubmitProjectDialogViewProps {
   challenge: any
   open: boolean
-  handleData: (e: any, index: number | null, type: string) => void
+  handleData: any
   techsInProjects: any
   data: any
   setSendSolution: (sendSolution: boolean) => void
@@ -107,7 +107,9 @@ export const SubmitProjectDialogView = ({
                       }}
                       clickable
                       label={key}
-                      onClick={(e) => handleData(e, [...data.technologies, key], 'technologies')}
+                      onClick={(e: any) =>
+                        handleData(e, [...data.technologies, key], 'technologies')
+                      }
                       key={key}
                       variant='outlined'
                     />

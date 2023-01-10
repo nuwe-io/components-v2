@@ -8,7 +8,7 @@ interface MDPreviewProps {
 }
 
 interface elementProps {
-  node: React.ReactNode
+  children: any
 }
 
 export const MDPreview = ({ description }: MDPreviewProps) => {
@@ -21,23 +21,29 @@ export const MDPreview = ({ description }: MDPreviewProps) => {
       <ReactMarkdown
         // change any component's color into textStyle
         components={{
-          p: ({ node, ...props }: elementProps) => (
-            <p {...props} style={{ ...textStyle, textAlign: 'justify' }} />
+          p: ({ children, ...props }: elementProps) => (
+            <p {...props} style={{ ...textStyle, textAlign: 'justify' }}>
+              {children}
+            </p>
           ),
-          span: ({ node, ...props }: elementProps) => (
+          span: ({ children, ...props }: elementProps) => (
             <div
               {...props}
               style={{
                 ...textStyle,
                 textAlign: 'justify'
               }}
-            />
+            >
+              {children}
+            </div>
           ),
-          div: ({ node, ...props }: elementProps) => (
+          div: ({ children, ...props }: elementProps) => (
             <div
               {...props}
               style={{ ...textStyle, textAlign: 'justify', width: '100%', alignItems: 'center' }}
-            />
+            >
+              {children}
+            </div>
           )
         }}
         children={description}

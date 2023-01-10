@@ -16,6 +16,9 @@ interface SubNavProps {
   navProps: any
   type: string
   children?: any
+  displayedTexts: {
+    routeName: string
+  }
 }
 
 export const SubNav = ({
@@ -24,6 +27,7 @@ export const SubNav = ({
   breadcrumbtitle,
   navProps,
   type,
+  displayedTexts,
   ...props
 }: SubNavProps) => {
   const [currentRoute, setCurrentRoute] = useState('/business')
@@ -52,11 +56,7 @@ export const SubNav = ({
   return (
     <div style={{ marginBottom: '10px' }}>
       <SubNavContainer>
-        <BreadcrumbNav
-          //title={breadcrumbtitle}
-          navigation={navigationElements}
-          //currentRoute={currentRoute}
-        />
+        <BreadcrumbNav navigation={navigationElements} displayedTexts={displayedTexts} />
         <ActionButton id={`create-section-${buttonTitle}`}>
           {props.children ||
             (buttonTitle && (
@@ -65,7 +65,7 @@ export const SubNav = ({
                 startIcon={<PictureAsPdfIcon style={{ marginRight: 10 }} />}
                 loading={loadingFile}
                 disabled={false}
-                onClick={() => buttonAction()}
+                onClick={() => buttonAction && buttonAction()}
               >
                 {buttonTitle}
               </ButtonLoader>

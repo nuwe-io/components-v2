@@ -14,6 +14,7 @@ interface AvatarPickerProps {
     cancel: string
     selectImage: string
     upload: string
+    imageGeneratorSelector: string
   }
 }
 
@@ -50,7 +51,7 @@ export const AvatarPicker = ({ displayedTexts }: AvatarPickerProps) => {
             onChange={(e) => setSourceType(state.sourceTypes[e.target.value])}
           />
         </Hidden>
-        <SourceSelector />
+        <SourceSelector displayedTexts={displayedTexts} />
         <MaterialBaseDialogActions
           cancelText={displayedTexts.cancel}
           disabledText={displayedTexts.selectImage}

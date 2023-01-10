@@ -129,7 +129,7 @@ const DataTable = ({
           sx={{
             height: height || '500px',
             '& .MuiDataGrid-columnHeaders': {
-              borderRadius: showHeader && '0px'
+              borderRadius: showHeader ? '0px' : undefined
             }
           }}
           {...serverSideMode}

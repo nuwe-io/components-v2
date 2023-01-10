@@ -63,6 +63,37 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }))
 
 const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
+  ({ theme, open }) => `
+    width: ${drawerWidth};
+    flex-shrink: 0;
+    background-color: ${theme.palette.background.paper};
+    box-sizing: border-box;
+    ${
+      open &&
+      `
+        ${openedMixin(theme)}
+        & .MuiDrawer-paper {
+            ${openedMixin(theme)}
+        }
+    `
+    }
+    ${
+      !open &&
+      `
+        ${closedMixin(theme)}
+        & .MuiDrawer-paper {
+            ${closedMixin(theme)}
+        }
+    `
+    }
+    @media (min-width: ${theme.breakpoints.up('sm')}px) {
+        width: 20px;
+    }
+`
+)
+
+/*
+const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
     width: drawerWidth,
     flexShrink: 0,
@@ -81,7 +112,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
     }
   })
 )
-
+*/
 interface VerticalNavbarProps {
   items: any
   children: any

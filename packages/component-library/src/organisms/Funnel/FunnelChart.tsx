@@ -41,13 +41,14 @@ export const FunnelChart = ({ width, height, data, theme, hideSections }: Funnel
     thememui.palette.primary.light,
     '#c1f794'
   ]
-  Array.prototype.max = function () {
+
+  /*  Array.prototype.max = function () {
     return Math.max.apply(null, this)
   }
 
   Array.prototype.min = function () {
     return Math.min.apply(null, this)
-  }
+  }*/
 
   const max = data.map((current: any) => current.value).max()
 

@@ -37,7 +37,7 @@ export const DummyFunnelChart = ({
       >
         <div style={{ width, position: 'absolute', top: chartHeight / 2 }}>
           <div style={{ height: chartHeight, backgroundColor: 'transparent', display: 'flex' }}>
-            <HideContent condition={hideSections}>
+            <HideContent hide={hideSections}>
               <Sections
                 data={data}
                 chartHeight={chartHeight}

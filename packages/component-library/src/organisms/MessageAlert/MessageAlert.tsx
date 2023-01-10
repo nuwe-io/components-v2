@@ -19,6 +19,11 @@ interface ActionAlertGroupProps {
   cancel?: () => void
 }
 
+interface buttonStyle {
+  variant: 'text' | 'outlined' | 'contained'
+  style: { backgroundColor: string }
+}
+
 const ActionAlertGroup = ({
   save,
   deleteAction,
@@ -27,15 +32,14 @@ const ActionAlertGroup = ({
   cancel
 }: ActionAlertGroupProps) => {
   const theme = useTheme()
-  const buttonVarian = 'contained'
   const buttonColor = { backgroundColor: theme.palette.warning.main }
-  const buttonStyle = { variant: buttonVarian, style: buttonColor }
+  const buttonStyle: buttonStyle = { variant: 'contained', style: buttonColor }
 
   return (
     <ButtonGroup disabled={severity === 'error'} variant='contained' disableElevation>
       {cancel && (
         <ButtonLoader
-          //size='medium'
+          size='medium'
           key='cancel'
           aria-label='cancel'
           showStartIcon
@@ -48,7 +52,7 @@ const ActionAlertGroup = ({
       )}
       {save && (
         <ButtonLoader
-          //size='medium'
+          size='medium'
           key='save'
           aria-label='save'
           onClick={() => save()}
@@ -61,7 +65,6 @@ const ActionAlertGroup = ({
       )}
       {deleteAction && (
         <Button
-          style={{ backgroundColor: theme.palette.warning.main }}
           aria-label='delete'
           size='medium'
           onClick={() => deleteAction()}
@@ -216,7 +219,7 @@ export const MessageAlert = ({
         <Alert
           action={
             simple ? (
-              () => cancel()
+              ((() => cancel()) as any)
             ) : (
               <ActionAlertGroup
                 launch={launch}
