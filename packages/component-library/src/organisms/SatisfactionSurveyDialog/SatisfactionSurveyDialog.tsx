@@ -18,6 +18,22 @@ interface SatisfactionSurveyDialogProps {
     close: string
     submit: string
     fillInAllTheRequiredFields: string
+    letUsKnowIfYouHaveAnyComments: string
+    selectYour3MostRelevantMotivations: string
+    first: string
+    second: string
+    third: string
+    learn: string
+    findAJob: string
+    gainExperience: string
+    networking: string
+    challengeYourself: string
+    testAHackathon: string
+    haveFun: string
+    buildPortfolio: string
+    teamwork: string
+    jobChange: string
+    getSkillsReport: string
   }
 }
 
@@ -172,6 +188,7 @@ export const SatisfactionSurveyDialog = ({
       setMotivation={setMotivation}
       handleSubmit={handleSubmit}
       showError={state.error}
+      displayedTexts={displayedTexts}
     />
   )
 }

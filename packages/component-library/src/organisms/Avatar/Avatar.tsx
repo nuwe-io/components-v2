@@ -23,6 +23,7 @@ interface AvatarProps {
     cancel: string
     selectImage: string
     upload: string
+    imageGeneratorSelector: string
   }
   label?: string
   width?: string

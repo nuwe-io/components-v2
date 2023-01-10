@@ -79,7 +79,7 @@ export const NotificationBox = ({ notification, displayedTexts }: NotificationBo
 
   return notification.hasOwnProperty('user') ? (
     <Box sx={{ width: '100%', display: 'flex', alignItems: 'center' }}>
-      <AvatarStyled alt='Avatar' src={notification.user.image} />
+      <AvatarStyled src={notification.user.image} />
       <Box
         sx={{ mx: 4, flex: '1 1', display: 'flex', overflow: 'hidden', flexDirection: 'column' }}
       >

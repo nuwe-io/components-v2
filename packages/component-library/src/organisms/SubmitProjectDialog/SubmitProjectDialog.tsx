@@ -45,24 +45,40 @@ interface SubmitProjectDialogProps {
   setChallengeUserSubmit: (value: any) => void
   setProject: (value: any) => void
   displayTexts: {
-    youNeedATeamToSubmitTheSolution: string
-    checkYourTeamMembersBeforeSubmit: string
-    makeSureAllSolutionParticipantsAreOnYourTeam: string
-    yesContinue: string
-    cancel: string
-    thankYouForYourParticipation: string
-    solutionSuccessfullySubmitted: string
-    close: string
-    submit: string
-    fillInAllTheRequiredFields: string
-    supercoolSolutionBuiltWithSuperpowers: string
-    submitFormTitle: string
-    inputSolutionDescription: string
-    inputRepoLink: string
-    inputSolutionStack: string
-    dataRepoError: string
     actionCancel: string
     actionSubmit: string
+    buildPortfolio: string
+    cancel: string
+    challengeYourself: string
+    checkYourTeamMembersBeforeSubmit: string
+    close: string
+    dataRepoError: string
+    fillInAllTheRequiredFields: string
+    findAJob: string
+    first: string
+    gainExperience: string
+    getSkillsReport: string
+    haveFun: string
+    inputRepoLink: string
+    inputSolutionDescription: string
+    inputSolutionStack: string
+    jobChange: string
+    learn: string
+    letUsKnowIfYouHaveAnyComments: string
+    makeSureAllSolutionParticipantsAreOnYourTeam: string
+    networking: string
+    second: string
+    selectYour3MostRelevantMotivations: string
+    solutionSuccessfullySubmitted: string
+    submit: string
+    submitFormTitle: string
+    supercoolSolutionBuiltWithSuperpowers: string
+    teamwork: string
+    testAHackathon: string
+    thankYouForYourParticipation: string
+    third: string
+    yesContinue: string
+    youNeedATeamToSubmitTheSolution: string
   }
 }
 

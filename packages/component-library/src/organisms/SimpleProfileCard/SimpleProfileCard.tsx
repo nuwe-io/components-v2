@@ -33,6 +33,8 @@ interface SimpleProfileCardProps {
     upload: string
     udpateProfileAvatar: string
     viewMyProfile: string
+    imageGeneratorSelector: string
+    stateMessage: string
   }
 }
 
@@ -183,12 +185,14 @@ interface ProfileIconProps {
   user: any
   services?: any
   displayedTexts: {
+    stateMessage: string
     accountImageSettings: string
     username: string
     imageDropwdonSelector: string
     cancel: string
     selectImage: string
     upload: string
+    imageGeneratorSelector: string
   }
 }
 
@@ -199,7 +203,7 @@ const ProfileIcon = ({ isProfile, user, services, displayedTexts }: ProfileIconP
     return (
       <Avatar
         onlySource
-        //width='75px'
+        width='75px'
         image={user.image}
         id={user.id}
         label={user?.name}

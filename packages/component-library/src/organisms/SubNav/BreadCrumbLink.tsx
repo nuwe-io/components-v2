@@ -12,9 +12,10 @@ const BreadCrumbLink = ({ route, index, length }: BreadCrumbLinkProps) => {
       id={`breadcrumb-${route.name}`}
       color='inherit'
       key={route.name}
-      //index={index}
-      //length={length}
+      index={index}
+      length={length}
       href={route.href}
+      theme={route.theme}
     >
       {route.name.toUpperCase()}
     </BreadcrumbLink>

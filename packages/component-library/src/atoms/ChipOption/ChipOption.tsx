@@ -13,7 +13,7 @@ interface ChipOptionProps {
 export const ChipOption = ({
   value = '',
   condition = false,
-  updateSelected = (e: any) => console.log('updateSelected'),
+  updateSelected,
   selectedAvatar,
   defaultAvatar,
   ...props

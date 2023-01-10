@@ -1,16 +1,9 @@
 interface FileSelectorProps {
-  fileError: string
   fileName: string
-  setFileName: (fileName: string) => void
   handleFileChange: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-export const FileSelector = ({
-  fileError,
-  fileName,
-  setFileName,
-  handleFileChange
-}: FileSelectorProps) => {
+export const FileSelector = ({ fileName, handleFileChange }: FileSelectorProps) => {
   return (
     <div>
       <input
