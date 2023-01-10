@@ -1,11 +1,37 @@
 import { Box, CircularProgress, Hidden, Typography, useTheme } from '@mui/material'
-import { PropTypes } from 'prop-types'
 
-import { Concentric } from 'components/atoms'
+import { Concentric } from '../../atoms'
 
 import { useStyles } from './style'
 
-export const CircularChart = (props) => {
+interface CircularChart {
+  total: number
+  top: { color: string; value: number }
+  variant:
+    | 'h1'
+    | 'h2'
+    | 'h3'
+    | 'h4'
+    | 'h5'
+    | 'h6'
+    | 'subtitle1'
+    | 'subtitle2'
+    | 'body1'
+    | 'body2'
+    | 'button'
+    | 'caption'
+    | 'overline'
+  hideSubTotals: boolean
+  bottom: { color: string; value: number }
+  size: number
+  children?: React.ReactNode
+  isRank: boolean
+  thickness: number
+  marginTop: number
+  defaultChildren: boolean
+}
+
+export const CircularChart = (props: CircularChart) => {
   const materialTheme = useTheme()
 
   const {
@@ -74,34 +100,6 @@ export const CircularChart = (props) => {
       </Box>
     </Box>
   )
-}
-
-CircularChart.propTypes = {
-  total: PropTypes.number,
-  top: { color: PropTypes.string, value: PropTypes.number },
-  variant: PropTypes.oneOf([
-    'h1',
-    'h2',
-    'h3',
-    'h4',
-    'h5',
-    'h6',
-    'subtitle1',
-    'subtitle2',
-    'body1',
-    'body2',
-    'button',
-    'caption',
-    'overline'
-  ]),
-  hideSubTotals: PropTypes.bool,
-  bottom: { color: PropTypes.string, value: PropTypes.number },
-  size: PropTypes.number,
-  children: PropTypes.node,
-  isRank: PropTypes.bool,
-  thickness: PropTypes.number,
-  marginTop: PropTypes.number,
-  defaultChildren: PropTypes.bool
 }
 
 CircularChart.defaultProps = {
