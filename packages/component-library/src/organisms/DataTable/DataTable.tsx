@@ -25,6 +25,19 @@ interface DataTableProps {
   noRowsLabel: string
   headerActionTitle: object
   useServerSidePagination: any
+  displayedTexts: {
+    newTeamRequest: string
+    teamRequestAccepted: string
+    teamUpdate: string
+    newNotification: string
+    joinedYourTeam: string
+    wantsToJoin: string
+    invitedYou: string
+    addedYou: string
+    leftYourTeam: string
+    newTeamLeader: string
+    userWasKicked: string
+  }
 }
 
 export const DataTable = ({
@@ -34,9 +47,9 @@ export const DataTable = ({
   handleCellChange,
   deleteData,
   pageSize,
-  urlPath,
-  height,
-  width,
+  urlPath = 'username',
+  height = '70vh',
+  width = '100%',
   loading,
   tableDensity,
   checkboxSelection,
@@ -47,7 +60,8 @@ export const DataTable = ({
   disableColumnMenu,
   noRowsLabel,
   headerActionTitle,
-  useServerSidePagination
+  useServerSidePagination,
+  displayedTexts
 }: DataTableProps) => {
   const [selectedOpen, setSelectedOpen] = useState<boolean>(false)
   const [filterValue, setFilterValue] = useState<string>('')
@@ -146,7 +160,7 @@ export const DataTable = ({
       columns={columns}
       checkboxSelection={checkboxSelection}
       showHeader={showHeader}
-      pageSize={pageSize}
+      pageSize={pageSize || 10}
       filterValue={filterValue}
       handleFilter={handleFilter}
       handleCellChange={handleCellChange}
@@ -165,6 +179,7 @@ export const DataTable = ({
       noRowsLabel={noRowsLabel}
       serverSideMode={useServerSidePagination}
       pagination={useServerSidePagination}
+      displayedTexts={displayedTexts}
     />
   )
 }

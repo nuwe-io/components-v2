@@ -16,6 +16,7 @@ interface AvatarProps {
   }
   onlySource?: boolean
   displayedTexts: {
+    stateMessage: string
     accountImageSettings: string
     username: string
     imageDropwdonSelector: string
@@ -24,6 +25,8 @@ interface AvatarProps {
     upload: string
   }
   label?: string
+  width?: string
+  disabled?: boolean
 }
 
 export const Avatar = ({

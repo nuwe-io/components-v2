@@ -18,7 +18,7 @@ import ChevronRightIcon from '@mui/icons-material/ArrowForwardIosRounded'
 
 import PropTypes from 'prop-types'
 
-import { SwitchLang, SwitchTheme } from '@components/molecules'
+import { SwitchLang, SwitchTheme } from '../../molecules'
 
 import { useTheme } from '@emotion/react'
 import { useRouter } from 'next/router'
