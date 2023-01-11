@@ -5,8 +5,8 @@ interface CustomPopupButtonProps {
   text: string
   disabled?: boolean
   ElementToDisplay: any
-  projectId: string
-  teamId: string
+  projectId?: string
+  teamId?: string
   comments?: any
   title?: string
   userId?: string

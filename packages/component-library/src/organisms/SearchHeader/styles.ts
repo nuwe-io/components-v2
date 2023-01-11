@@ -5,7 +5,7 @@ import { styled } from '@mui/material/styles'
 import MuiTextField from '@mui/material/TextField'
 
 // Styled Card component
-export const Card = styled(MuiCard)(({ theme }) => ({
+export const Card: any = styled(MuiCard)(({ theme }) => ({
   border: 0,
   boxShadow: 'none',
   backgroundSize: 'cover',

@@ -108,6 +108,8 @@ const onClickInfo = (setShowInfo: any) => () => {
   setShowInfo(true)
 }
 
+type position = 'top' | 'bottom' | 'left' | 'right'
+
 export const CardWidgetBarChar = ({ series = [], displayedTexts }: CardWidgetBarCharProps) => {
   const [showInfo, setShowInfo] = useState<boolean>(false)
   const { i18n } = useTranslation()
@@ -157,8 +159,8 @@ export const CardWidgetBarChar = ({ series = [], displayedTexts }: CardWidgetBar
       enabled: false
     },
     legend: {
-      position: 'top',
-      horizontalAlign: 'left',
+      position: 'top' as position,
+      horizontalAlign: 'left' as position,
       labels: {
         colors: theme.palette.text.primary
       }

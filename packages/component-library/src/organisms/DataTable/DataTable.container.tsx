@@ -89,7 +89,7 @@ const DataTable = ({
       />
       <Card>
         <DataGrid
-          pagination
+          pagination={pagination ? true : undefined}
           rows={data}
           disableSelectionOnClick={true}
           pageSize={10}
