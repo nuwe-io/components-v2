@@ -13,9 +13,9 @@ interface TableHeaderProps {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
   toggle: () => void
   value: string
-  title?: React.ReactNode
+  title?: React.FC
   clearSearch?: () => void
-  headerButton?: React.ReactNode
+  headerButton?: React.FC
   displayedTexts: {
     search: string
   }
@@ -81,7 +81,7 @@ export const TableHeader = (props: TableHeaderProps) => {
         />
         {toggle && (
           <Button sx={{ mb: 1, ml: 2 }} onClick={toggle} variant='contained'>
-            {Title}
+            {Title && <Title />}
           </Button>
         )}
       </Box>

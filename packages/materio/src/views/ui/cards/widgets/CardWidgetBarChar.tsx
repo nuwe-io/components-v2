@@ -146,8 +146,8 @@ const CardWidgetBarChar = ({ series = [], displayedTexts }: CardWidgetBarCharPro
       enabled: false
     },
     legend: {
-      position: 'top',
-      horizontalAlign: 'left',
+      position: 'top' as 'top' | 'bottom' | 'left' | 'right',
+      horizontalAlign: 'left' as 'left' | 'right' | 'center' | undefined,
       labels: {
         colors: theme.palette.text.primary
       }
