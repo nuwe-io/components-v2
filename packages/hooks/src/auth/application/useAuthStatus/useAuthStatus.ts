@@ -45,7 +45,7 @@ export const useAuthStatus = () => {
       })
   }, [])
 
-  const handlerLogin = async (data: any) => {
+  const handleLogin = async (data: any) => {
     setAuthStatus((pre) => ({ ...pre, status: 'loading' }))
     const res = await login(data)
     if (!res) {
@@ -55,7 +55,7 @@ export const useAuthStatus = () => {
     }
 
     setAuthStatus((prev) => accepted(prev, res.data))
-    toast.success('Login success!')
+    return toast.success('Login success!')
   }
 
   const handleVotingVerification = async (data: any, url: string) => {
@@ -82,7 +82,7 @@ export const useAuthStatus = () => {
 
     setAuthStatus((prev) => accepted(prev, res.data))
     toast.success('Signup success, welcome!')
-    router.push('/home')
+    return router.push('/home')
   }
 
   const handlerLogout = () => {
@@ -97,7 +97,7 @@ export const useAuthStatus = () => {
     ...authStatus,
     signup: handleSignup,
     logout: handlerLogout,
-    login: handlerLogin,
+    login: handleLogin,
     verifyVotinSignUp: handleVotingVerification
   }
 }

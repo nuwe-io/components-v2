@@ -10,7 +10,7 @@ export const SnackbarContext = createContext({
   snackbar: initiState,
   severities,
   handleSnackbarClose: () => {},
-  handleSnackbarChange: (message: string, variant: string) => {}
+  handleSnackbarChange: (message: any, variant: string) => {}
 })
 
 export const SnackbarProvider = ({ children }: any) => {
