@@ -1,6 +1,7 @@
 export * from './card-statistics'
 export * from './mui'
 export * from './react-apexcharts'
+export * from './react-draft-wysiwyg'
 export * from './scroll-to-top'
 export * from './spinner'
 export * from './window-wrapper'
