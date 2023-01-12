@@ -81,7 +81,7 @@ export const TableHeader = (props: TableHeaderProps) => {
         />
         {toggle && (
           <Button sx={{ mb: 1, ml: 2 }} onClick={toggle} variant='contained'>
-            {Title && <Title />}
+            {Title && <Title />} {/*{Title} TODO: REVISAR*/}
           </Button>
         )}
       </Box>
