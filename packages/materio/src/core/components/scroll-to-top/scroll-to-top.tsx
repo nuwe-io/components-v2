@@ -15,7 +15,7 @@ interface ScrollToTopProps {
   className?: string
 }
 
-const ScrollToTop = (props: ScrollToTopProps) => {
+export const ScrollToTop = (props: ScrollToTopProps) => {
   // ** Props
   const { children, className } = props
 
@@ -40,5 +40,3 @@ const ScrollToTop = (props: ScrollToTopProps) => {
     </Zoom>
   )
 }
-
-export default ScrollToTop
