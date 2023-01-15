@@ -8,7 +8,7 @@ interface WindowWrapperProps {
   children: React.ReactNode
 }
 
-const WindowWrapper = ({ children }: WindowWrapperProps) => {
+export const WindowWrapper = ({ children }: WindowWrapperProps) => {
   // ** State
   const [windowReadyFlag, setWindowReadyFlag] = useState<boolean>(false)
   const router = useRouter()
@@ -27,5 +27,3 @@ const WindowWrapper = ({ children }: WindowWrapperProps) => {
     return null
   }
 }
-
-export default WindowWrapper

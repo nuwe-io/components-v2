@@ -3,7 +3,7 @@ import { Box, Typography } from '@mui/material'
 import CircularProgress from '@mui/material/CircularProgress'
 import { useTheme } from '@mui/material/styles'
 
-const FallbackSpinner = () => {
+export const FallbackSpinner = () => {
   const theme = useTheme()
 
   const svg = (
@@ -49,5 +49,3 @@ const FallbackSpinner = () => {
     </Box>
   )
 }
-
-export default FallbackSpinner
