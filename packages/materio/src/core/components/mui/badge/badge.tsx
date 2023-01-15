@@ -10,7 +10,7 @@ interface BadgeProps {
   color?: 'primary' | 'secondary' | 'success' | 'error' | 'warning' | 'info'
 }
 
-const Badge = (props: BadgeProps) => {
+export const Badge = (props: BadgeProps) => {
   // ** Props
   const { sx, skin, color } = props
 
@@ -35,5 +35,3 @@ const Badge = (props: BadgeProps) => {
     />
   )
 }
-
-export default Badge
