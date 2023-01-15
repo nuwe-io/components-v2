@@ -10,7 +10,7 @@ interface ChipProps {
   color?: 'primary' | 'secondary' | 'success' | 'error' | 'warning' | 'info'
 }
 
-const Chip = (props: ChipProps) => {
+export const Chip = (props: ChipProps) => {
   // ** Props
   const { sx, skin, color } = props
 
@@ -35,5 +35,3 @@ const Chip = (props: ChipProps) => {
     />
   )
 }
-
-export default Chip
