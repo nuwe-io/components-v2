@@ -1,5 +1,5 @@
+export * from './acl'
 export * from './axios'
-export { default as fetch } from './axios'
 export * from './checkSocialUrl'
 export * from './countriesAPI'
 export * from './createdAt'
