@@ -8,9 +8,11 @@ interface ChipProps {
   sx?: any
   skin: 'light' | 'light-static' | 'filled'
   color?: 'primary' | 'secondary' | 'success' | 'error' | 'warning' | 'info'
+  size?: 'small' | 'medium'
+  label?: string
 }
 
-const Chip = (props: ChipProps) => {
+export const Chip = (props: ChipProps) => {
   // ** Props
   const { sx, skin, color } = props
 
@@ -35,5 +37,3 @@ const Chip = (props: ChipProps) => {
     />
   )
 }
-
-export default Chip

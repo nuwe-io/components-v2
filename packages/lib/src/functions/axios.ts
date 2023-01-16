@@ -9,7 +9,7 @@ const instance = axios.create({
 
 const catchAxios = async (fn: any) => fn.then((res: any) => res).catch((err: any) => err.response)
 
-const fetch = (body: object) => catchAxios(instance(body))
+export const fetch = (body: any) => catchAxios(instance(body))
 
 const methods = {
   get: 'get',
@@ -20,5 +20,3 @@ const methods = {
 }
 
 export { catchAxios, instance, methods }
-
-export default fetch
