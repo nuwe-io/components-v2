@@ -15,7 +15,7 @@ import Typography from '@mui/material/Typography'
 import { Trophy } from 'mdi-material-ui'
 
 // ** Custom Components
-import CustomChip from 'src/shared/materio/@core/components/mui/chip'
+import { Chip } from '../../../../core'
 
 const StyledLink = styled(Box)(({ theme }) => ({
   '& a': {
@@ -83,7 +83,7 @@ const CardTopUsers = ({ users, displayedTexts }: CardTopUsersProps) => {
                       </Typography>
                     </Box>
                   </Box>
-                  <CustomChip
+                  <Chip
                     skin='light'
                     size='small'
                     label={`${item.rank} pts`}

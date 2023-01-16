@@ -8,7 +8,7 @@ interface ChipProps {
   sx?: any
   skin: 'light' | 'light-static' | 'filled'
   color?: 'primary' | 'secondary' | 'success' | 'error' | 'warning' | 'info'
-  size?: string
+  size?: 'small' | 'medium'
   label?: string
 }
 
