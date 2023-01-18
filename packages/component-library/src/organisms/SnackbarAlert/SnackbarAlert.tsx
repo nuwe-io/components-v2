@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import { createContext, useReducer } from 'react'
 
 import { initiState, severities, snackbarReducer } from './snackbar.reducer'
@@ -35,7 +34,4 @@ export const SnackbarProvider = ({ children }: any) => {
   )
 }
 
-SnackbarProvider.propTypes = {
-  children: PropTypes.node
-}
 export const withSnackbarProvider = (component: any) => withProviders(SnackbarProvider)(component)

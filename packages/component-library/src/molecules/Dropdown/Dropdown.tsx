@@ -1,5 +1,4 @@
 import { MenuItem, Select, Typography } from '@mui/material'
-import PropTypes from 'prop-types'
 
 interface DropdownProps {
   array: string[]
@@ -43,12 +42,4 @@ export const Dropdown = ({
       </Select>
     </>
   )
-}
-
-Dropdown.propTypes = {
-  array: PropTypes.arrayOf(PropTypes.string).isRequired,
-  value: PropTypes.number.isRequired,
-  onChange: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired,
-  titleVariant: PropTypes.string
 }

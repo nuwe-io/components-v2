@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types'
-
 import { ButtonLoader } from '../../atoms'
 import { withMaterialDialog } from './withMaterialDialog'
 
@@ -34,15 +32,6 @@ export const BaseDialogActions = ({
       </ButtonLoader>
     </>
   )
-}
-
-BaseDialogActions.propTypes = {
-  disableUpload: PropTypes.bool,
-  loading: PropTypes.bool,
-  cancelText: PropTypes.string,
-  disabledText: PropTypes.string,
-  cancelAction: PropTypes.func,
-  acceptAction: PropTypes.func
 }
 
 export default withMaterialDialog(BaseDialogActions)

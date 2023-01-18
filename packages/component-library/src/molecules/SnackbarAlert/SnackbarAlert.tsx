@@ -1,5 +1,4 @@
 import { Alert, Snackbar } from '@mui/material'
-import PropTypes from 'prop-types'
 
 interface SnackbarAlertProps {
   open: boolean
@@ -34,15 +33,6 @@ export const SnackbarAlert = ({
     </Alert>
   </Snackbar>
 )
-
-SnackbarAlert.propTypes = {
-  open: PropTypes.bool.isRequired,
-  autoHideDuration: PropTypes.number,
-  onClose: PropTypes.func.isRequired,
-  message: PropTypes.string.isRequired,
-  variant: PropTypes.string,
-  anchorOrigin: PropTypes.object
-}
 
 SnackbarAlert.defaultProps = {
   variant: 'filled',

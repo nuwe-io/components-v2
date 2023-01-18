@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import { useCallback, useEffect, useReducer } from 'react'
 
 import { errorTypes } from '@nuwe/lib'
@@ -116,14 +115,4 @@ export const Avatar = ({
       <AvatarPicker displayedTexts={displayedTexts} />
     </AvatarContext.Provider>
   )
-}
-
-Avatar.propTypes = {
-  name: PropTypes.string,
-  image: PropTypes.string,
-  id: PropTypes.string,
-  services: PropTypes.shape({
-    udpateAvatar: PropTypes.func,
-    generateAvatar: PropTypes.func
-  })
 }

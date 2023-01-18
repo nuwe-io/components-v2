@@ -4,7 +4,6 @@ import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import { styled, useTheme } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
-import PropTypes from 'prop-types'
 import { BadgeRank } from '../BadgeRanks'
 
 // Styled component for the trophy image
@@ -65,12 +64,6 @@ const CardAward = ({ username, score, action, rank, displayedTexts }: CardAwardP
       </CardContent>
     </Card>
   )
-}
-
-CardAward.propTypes = {
-  username: PropTypes.string,
-  score: PropTypes.number,
-  action: PropTypes.func
 }
 
 CardAward.defaultProps = {

@@ -16,8 +16,6 @@ import { useEffect, useState } from 'react'
 import ChevronLeftIcon from '@mui/icons-material/ArrowBackIosRounded'
 import ChevronRightIcon from '@mui/icons-material/ArrowForwardIosRounded'
 
-import PropTypes from 'prop-types'
-
 import { SwitchLang, SwitchTheme } from '../../molecules'
 
 import { useTheme } from '@emotion/react'
@@ -194,9 +192,4 @@ export const VerticalNavbar = ({ items, children }: VerticalNavbarProps) => {
       </Box>
     </Container>
   )
-}
-
-VerticalNavbar.propTypes = {
-  items: PropTypes.array.isRequired,
-  children: PropTypes.node.isRequired
 }

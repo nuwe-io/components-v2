@@ -3,7 +3,6 @@ import { IconButton } from '@mui/material'
 import { createContext, useContext, useEffect, useState } from 'react'
 
 import { useTheme } from '@emotion/react'
-import PropTypes from 'prop-types'
 
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined'
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined'
@@ -39,10 +38,6 @@ export const SwitchThemeProvider = ({ children }: SwitchThemeProviderProps) => {
       {children}
     </SwitchThemeContext.Provider>
   )
-}
-
-SwitchThemeProvider.propTypes = {
-  children: PropTypes.node
 }
 
 export const SwitchTheme = () => {
