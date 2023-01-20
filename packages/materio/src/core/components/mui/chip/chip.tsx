@@ -6,7 +6,7 @@ import { UseBgColor } from '../../../hooks/useBgColor'
 
 interface ChipProps {
   sx?: any
-  skin: 'light' | 'light-static' | 'filled'
+  skin?: 'light' | 'light-static' | 'filled'
   color?: 'primary' | 'secondary' | 'success' | 'error' | 'warning' | 'info'
   size?: 'small' | 'medium'
   label?: string
