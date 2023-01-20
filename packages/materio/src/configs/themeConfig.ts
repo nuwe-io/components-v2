@@ -1,5 +1,6 @@
 // ** Icon Import
 import CircleOutline from '@mui/icons-material/Circle'
+import { TruckCheckOutline } from 'mdi-material-ui'
 
 export const themeConfig = {
   // ** Layout Configs
@@ -38,7 +39,7 @@ export const themeConfig = {
     'top-right' /* top-left | top-center | top-right | bottom-left | bottom-center | bottom-right */
 }
 
-const businessThemeConfig = {
+export const businessThemeConfig = {
   // ** Layout Configs
   templateName: 'Nuwe' /* App Name */,
   layout: 'horizontal' /* vertical | horizontal */,
