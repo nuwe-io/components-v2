@@ -1,7 +1,7 @@
 import { http } from '@nuwe/lib'
 import { BASE_URL } from '../../config'
 
-export const submitProjectDialogRepository = {
+export const submitProjectDialogRepository: Record<string, any> = {
   getUserTeamFromEvent: async (userId: string, eventURL: string) =>
     http.get(`${BASE_URL}teams/user/${userId}/event/${eventURL}`),
   getEventById: async (id: string) => http.get(`${BASE_URL}events/${id}`),

@@ -39,7 +39,7 @@ const roles = {
 const addAbilities = (type: any, role: any, ability: any) =>
   Object.keys(roles[role][type]).forEach((action) => ability(action, roles[role][type][action]))
 
-export const defineRulesFor = (role: any, subject: any) => {
+export const defineRulesFor = (role: any, subject: any): any => {
   const { can, rules, cannot } = new AbilityBuilder(AppAbility)
 
   const roleNames = Object.keys(roles)
@@ -55,7 +55,7 @@ export const defineRulesFor = (role: any, subject: any) => {
   return rules
 }
 
-export const buildAbilityFor = (role: any, subject: any) => {
+export const buildAbilityFor = (role: any, subject: any): any => {
   return new AppAbility(defineRulesFor(role, subject), {
     // https://casl.js.org/v5/en/guide/subject-type-detection
     detectSubjectType: (object) => object.type

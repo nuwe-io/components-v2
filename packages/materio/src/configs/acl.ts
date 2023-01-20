@@ -7,7 +7,7 @@ export const AppAbility = Ability
  * We have just shown Admin and Client rules for demo purpose where
  * admin can manage everything and client can just visit ACL page
  */
-export const defineRulesFor = (role: string, subject: string) => {
+export const defineRulesFor = (role: string, subject: string): any => {
   const { can, rules } = new AbilityBuilder(AppAbility)
   if (role === 'admin') {
     can('manage', 'all')
@@ -20,7 +20,7 @@ export const defineRulesFor = (role: string, subject: string) => {
   return rules
 }
 
-export const buildAbilityFor = (role: string, subject: string) => {
+export const buildAbilityFor = (role: string, subject: string): any => {
   return new AppAbility(defineRulesFor(role, subject), {
     detectSubjectType: (object: any) => object.type
   })
