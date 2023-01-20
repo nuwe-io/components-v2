@@ -16,7 +16,7 @@ import { useEffect, useState } from 'react'
 import ChevronLeftIcon from '@mui/icons-material/ArrowBackIosRounded'
 import ChevronRightIcon from '@mui/icons-material/ArrowForwardIosRounded'
 
-import { SwitchLang, SwitchTheme } from '../../molecules'
+import { SwitchTheme } from '../../molecules'
 
 import { useTheme } from '@emotion/react'
 import { useRouter } from 'next/router'
@@ -184,7 +184,7 @@ export const VerticalNavbar = ({ items, children }: VerticalNavbarProps) => {
         </Drawer>
         <Container maxWidth='xl' sx={{ marginBottom: 10, width: '100%' }}>
           <div style={{ position: 'absolute', top: '20px', right: '20px' }}>
-            <SwitchLang />
+            {/*<SwitchLang /> */}
             <SwitchTheme />
           </div>
           {children}
