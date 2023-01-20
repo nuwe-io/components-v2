@@ -5,11 +5,11 @@ import { SnackbarAlert } from './SnackbarAlert.container'
 
 import { withProviders } from '@nuwe/lib'
 
-export const SnackbarContext = createContext({
+export const SnackbarContext = createContext<any>({
   snackbar: initiState,
   severities,
   handleSnackbarClose: () => {},
-  handleSnackbarChange: (message: any, variant: string) => {}
+  handleSnackbarChange: () => {}
 })
 
 export const SnackbarProvider = ({ children }: any) => {
