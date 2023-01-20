@@ -1,5 +1,5 @@
 // ** Next Import
-import dynamic from 'next/dynamic'
+/*import dynamic from 'next/dynamic'
 
 // ! To avoid 'Window is not defined' error
 export const ReactDraftWysiwyg = dynamic(
@@ -8,3 +8,5 @@ export const ReactDraftWysiwyg = dynamic(
     ssr: false
   }
 )
+TODO: REVISAR
+*/
