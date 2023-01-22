@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react'
-import { useWindowDimensions } from '../src/useWindowDimensions'
+import { useWindowDimensions } from '../src'
 
 let windowSpy
 
