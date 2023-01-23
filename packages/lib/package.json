@@ -1,6 +1,6 @@
 {
   "name": "@nuwe/lib",
-  "version": "1.7.11",
+  "version": "1.7.12",
   "description": "Nuwe's shared utility library",
   "private": false,
   "homepage": "https://github.com/nuwe-io/components-v2#readme",
