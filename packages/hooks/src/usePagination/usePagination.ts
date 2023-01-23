@@ -5,7 +5,7 @@ const paginationReducer = (state: PaginationState, action: any) => {
   switch (action.type) {
     case 'INIT_PAGINATION':
       return { ...state, ...action.payload, loading: false }
-    case 'UDPATE_PAGE':
+    case 'UPDATE_PAGE':
       return { ...state, loading: true, currentPage: action.payload }
     case 'SET_LOADING':
       return { ...state, loading: action.payload }
@@ -29,7 +29,7 @@ export const useMuiPagination = () => {
   }, [])
 
   const initPagination = (data: any) => handleChange('INIT_PAGINATION', data)
-  const updatePage = (newPage: any) => handleChange('UDPATE_PAGE', newPage)
+  const updatePage = (newPage: any) => handleChange('UPDATE_PAGE', newPage)
   const stopLoadingPaginationChange = () => handleChange('SET_LOADING', false)
 
   const serverSidePagination = {
