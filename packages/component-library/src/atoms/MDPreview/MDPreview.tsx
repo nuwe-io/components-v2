@@ -1,7 +1,9 @@
 /* eslint-disable react/no-children-prop */
 import { useTheme } from '@mui/material'
-import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
+//import ReactMarkdown from 'react-markdown'
+//const ReactMarkdown = (await import('react-markdown')) as typeof import('react-markdown')
+const ReactMarkdown = (await import('react-markdown')).default
 
 interface MDPreviewProps {
   description: string
