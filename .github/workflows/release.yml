@@ -1,3 +1,6 @@
+name: Build
+  run: yarn build
+
 name: Release
 on:
   push:

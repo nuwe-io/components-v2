@@ -1,6 +1,6 @@
 {
   "name": "@nuwe/lib",
-  "version": "1.7.12",
+  "version": "1.7.13",
   "description": "Nuwe's shared utility library",
   "private": false,
   "homepage": "https://github.com/nuwe-io/components-v2#readme",
@@ -13,6 +13,7 @@
   "license": "ISC",
   "author": "NUWE TECH SL",
   "scripts": {
+    "build": "rollup -c",
     "build:library": "rollup -c",
     "lint": "eslint --ignore-path .gitignore . --ext .ts",
     "lint:fix": "npm run lint -- --fix",
