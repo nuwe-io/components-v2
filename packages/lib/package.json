@@ -13,7 +13,6 @@
   "license": "ISC",
   "author": "NUWE TECH SL",
   "scripts": {
-    "build": "rollup -c",
     "build:library": "rollup -c",
     "lint": "eslint --ignore-path .gitignore . --ext .ts",
     "lint:fix": "npm run lint -- --fix",
