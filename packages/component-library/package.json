@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "private": false,
   "main": "dist/index.js",
+  "files": [
+    "dist/**/*"
+  ],
   "module": "dist/index.esm.js",
   "scripts": {
     "build:library": "rollup -c",
