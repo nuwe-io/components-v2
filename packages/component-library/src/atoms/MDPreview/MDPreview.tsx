@@ -1,9 +1,5 @@
 /* eslint-disable react/no-children-prop */
 import { useTheme } from '@mui/material'
-import rehypeRaw from 'rehype-raw'
-//import ReactMarkdown from 'react-markdown'
-//const ReactMarkdown = (await import('react-markdown')) as typeof import('react-markdown')
-//const ReactMarkdown = (await import('react-markdown')).default
 
 interface MDPreviewProps {
   description: string
@@ -19,6 +15,7 @@ export const MDPreview = async ({ description }: MDPreviewProps) => {
   const textStyle = { color: theme.palette.text.primary }
 
   const ReactMarkdown = (await import('react-markdown')).default
+  const rehypeRaw = (await import('rehype-raw')).default
 
   return (
     <div style={{ maxWidth: '85vw' }}>
