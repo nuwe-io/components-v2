@@ -43,9 +43,13 @@ const staticSettings: Settings = {
 const restoreSettings = () => {
   let settings = null
   try {
-    const storedData = window?.localStorage.getItem('settings')
-    if (storedData) {
-      settings = { ...JSON.parse(storedData), ...staticSettings }
+    if (typeof window !== 'undefined' && window.localStorage) {
+      const storedData = window.localStorage.getItem('settings')
+      if (storedData) {
+        settings = { ...JSON.parse(storedData), ...staticSettings }
+      } else {
+        settings = initialSettings
+      }
     } else {
       settings = initialSettings
     }
@@ -65,11 +69,13 @@ const storeSettings = (settings: Settings) => {
   delete initSettings.navHidden
   delete initSettings.lastLayout
   delete initSettings.toastPosition
-  window?.localStorage.setItem('settings', JSON.stringify(initSettings))
+
+  if (typeof window !== 'undefined' && window.localStorage)
+    window.localStorage.setItem('settings', JSON.stringify(initSettings))
 }
 
 // ** Create Context
-export const SettingsContext = createContext({
+export const SettingsContext = createContext<any>({
   saveSettings: (_settings: Settings) => {},
   settings: initialSettings
 })

@@ -2,8 +2,8 @@
   "name": "@nuwe/component-library",
   "version": "1.0.0",
   "private": false,
-  "main": "dist/index.ts",
-  "module": "dist/index.es.js",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
   "scripts": {
     "build:library": "rollup -c",
     "lint": "eslint --fix \"src/**/*.{js,ts,jsx,tsx}\"",
@@ -28,6 +28,7 @@
     "@commitlint/cli": "^17.3.0",
     "@commitlint/config-conventional": "^17.3.0",
     "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-sucrase": "^5.0.1",
     "@storybook/addon-actions": "^6.5.13",
     "@storybook/addon-essentials": "^6.5.13",
     "@storybook/addon-interactions": "^6.5.13",
