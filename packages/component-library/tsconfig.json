@@ -6,7 +6,7 @@
     "noUnusedParameters": true,
     "declaration": true,
     "module": "esnext",
-    "target": "es5",
+    "target": "es2017",
     "lib": ["es6", "dom", "es2017"],
     "sourceMap": true,
     "outDir": "dist",
