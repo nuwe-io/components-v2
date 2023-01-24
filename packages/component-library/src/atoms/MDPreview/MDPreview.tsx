@@ -3,7 +3,7 @@ import { useTheme } from '@mui/material'
 import rehypeRaw from 'rehype-raw'
 //import ReactMarkdown from 'react-markdown'
 //const ReactMarkdown = (await import('react-markdown')) as typeof import('react-markdown')
-const ReactMarkdown = (await import('react-markdown')).default
+//const ReactMarkdown = (await import('react-markdown')).default
 
 interface MDPreviewProps {
   description: string
@@ -13,10 +13,12 @@ interface elementProps {
   children: any
 }
 
-export const MDPreview = ({ description }: MDPreviewProps) => {
+export const MDPreview = async ({ description }: MDPreviewProps) => {
   const theme = useTheme()
 
   const textStyle = { color: theme.palette.text.primary }
+
+  const ReactMarkdown = (await import('react-markdown')).default
 
   return (
     <div style={{ maxWidth: '85vw' }}>
