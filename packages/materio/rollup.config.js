@@ -1,17 +1,20 @@
-import babel from 'rollup-plugin-babel'
+import babel from '@rollup/plugin-babel'
+import sucrase from '@rollup/plugin-sucrase'
+import typescript from '@rollup/plugin-typescript'
 import commonjs from 'rollup-plugin-commonjs'
 import resolve from 'rollup-plugin-node-resolve'
 import external from 'rollup-plugin-peer-deps-external'
 import postcss from 'rollup-plugin-postcss'
 import scss from 'rollup-plugin-scss'
 import { terser } from 'rollup-plugin-terser'
+import tsconfig from './tsconfig.json'
 
 import pkg from './package.json'
 
 const extensions = ['.js', '.jsx', '.ts', '.tsx']
 
 export default {
-  input: './src/index.js',
+  input: './src/index.ts',
   output: [
     {
       file: pkg.main,
@@ -27,8 +30,15 @@ export default {
     }
   ],
   plugins: [
+    sucrase({
+      exclude: ['node_modules/**'],
+      transforms: ['typescript', 'jsx']
+    }),
     external({
       includeDependencies: true
+    }),
+    typescript({
+      compilerOptions: tsconfig.compilerOptions
     }),
     resolve({
       extensions,

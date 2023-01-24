@@ -27,6 +27,6 @@
     "noEmit": true,
     "downlevelIteration": true
   },
-  "include": ["src", "../component-library/src/molecules/gamification"],
+  "include": ["src"],
   "exclude": ["node_modules", ".storybook", "dist", "build", "jest", "tests"]
 }
