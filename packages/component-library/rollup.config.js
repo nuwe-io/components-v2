@@ -7,6 +7,7 @@ import external from 'rollup-plugin-peer-deps-external'
 import postcss from 'rollup-plugin-postcss'
 import scss from 'rollup-plugin-scss'
 import { terser } from 'rollup-plugin-terser'
+import visualizer from 'rollup-plugin-visualizer'
 import tsconfig from './tsconfig.json'
 
 import pkg from './package.json'
@@ -30,6 +31,10 @@ export default {
     }
   ],
   plugins: [
+    visualizer({
+      filename: './bundle-report.html',
+      open: false
+    }),
     sucrase({
       exclude: ['node_modules/**'],
       transforms: ['typescript', 'jsx']
