@@ -87,6 +87,7 @@
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-scss": "^4.0.0",
     "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-visualizer": "^5.9.0",
     "tsconfig-paths-webpack-plugin": "^4.0.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-eslint-rules": "^5.4.0",
