@@ -87,7 +87,6 @@ export default {
     'react-is',
     'prop-types',
     'hoist-non-react-statics',
-    'react',
     'react/jsx-runtime',
     '@mui/icons-material/Circle',
     '@mui/material',
