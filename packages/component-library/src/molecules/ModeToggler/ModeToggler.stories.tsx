@@ -1,4 +1,5 @@
 import { useSettings } from '@nuwe/materio'
+
 import { ModeToggler } from './ModeToggler'
 
 const Template = (args: any) => {

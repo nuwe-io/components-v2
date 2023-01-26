@@ -8,7 +8,7 @@
     "dist/**/*"
   ],
   "scripts": {
-    "build:library": "rollup -c",
+    "build:library": "rm -rf dist && rollup -c",
     "lint": "eslint --fix \"src/**/*.{js,ts,jsx,tsx}\"",
     "format": "prettier --write \"src/**/*.{js,ts,jsx,tsx}\"",
     "storybook": "start-storybook -p 6006",
@@ -20,30 +20,20 @@
     "@mui/material": "^5.11.6",
     "@mui/system": "^5.11.5",
     "@mui/utils": "^5.11.2",
+    "@nuwe/lib": "^1.7.13",
     "clipboard-copy": "^4.0.1",
     "clsx": "^1.2.1",
     "date-fns": "^2.29.3",
     "dayjs": "^1.11.6",
-    "i18next": "^22.4.6",
-    "i18next-browser-languagedetector": "^7.0.1",
-    "i18next-http-backend": "^2.1.1",
-    "keen-slider": "^6.8.5",
-    "mdi-material-ui": "^7.6.0",
-    "next": "^13.1.1",
     "react": "18.2.0",
-    "react-apexcharts": "^1.4.0",
     "react-dom": "18.2.0",
-    "react-draft-wysiwyg": "^1.15.0",
-    "react-hook-form": "^7.41.3",
-    "react-i18next": "^12.1.1",
-    "recharts": "^2.2.0"
+    "react-draft-wysiwyg": "^1.15.0"
   },
   "peerDependencies": {
     "@mui/icons-material": "^5.10.15",
     "@mui/material": "^5.10.15",
     "@mui/styles": "^5.10.15",
-    "@nuwe/hooks": "*",
-    "@nuwe/lib": "*",
+    "@nuwe/lib": "^1.7.13",
     "react-hot-toast": "^2.4.0"
   },
   "license": "ISC",

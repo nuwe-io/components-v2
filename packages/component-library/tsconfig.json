@@ -2,31 +2,41 @@
   "compilerOptions": {
     "baseUrl": "src",
     "rootDir": "src",
+    "outDir": "dist", // Needed for rollup to work (generates the bundle)
+    "declaration": true, // Needed for rollup to work (generates .d.ts files)
+    "declarationDir": ".", // Ouput location of generated bundled 
+    "moduleResolution": "node",
+    "jsx": "react-jsx", // Allows to use JSX in .tsx files without importing React and avoiding rollup errors
+    "module": "esnext",
+    "target": "ESNext", // To use the last features of JS use at least ES2015
+    "allowSyntheticDefaultImports": true, // Allows to use default imports from modules that don't have a default export
+    "resolveJsonModule": true, // Allows to import JSON files
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "strict": true, // Stronger type checking (recommended),
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "declaration": true,
-    "module": "esnext",
-    "target": "es2017",
-    "lib": ["es6", "dom", "es2017"],
-    "sourceMap": true,
-    "outDir": "dist",
-    "jsx": "preserve",
-    "moduleResolution": "node",
-    "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noImplicitAny": true,
     "importHelpers": true,
     "strictNullChecks": true,
-    "allowSyntheticDefaultImports": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "strict": true,
-    "resolveJsonModule": true,
-    "noEmit": true,
-    "downlevelIteration": true
+    "lib": [
+      "es6",
+      "dom"
+    ],
+    "sourceMap": true,
   },
-  "include": ["src"],
-  "exclude": ["node_modules", ".storybook", "dist", "build", "jest", "tests"]
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules",
+    ".storybook",
+    "dist",
+    "build",
+    "jest",
+    "tests"
+  ]
 }

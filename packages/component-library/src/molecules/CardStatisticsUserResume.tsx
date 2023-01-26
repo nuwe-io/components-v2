@@ -1,3 +1,6 @@
+import Link from 'next/link'
+import { Fragment, useId, useState } from 'react'
+
 import {
   Box,
   Button,
@@ -9,20 +12,20 @@ import {
   Grid,
   Typography
 } from '@mui/material'
-import { currentLanguage } from '@nuwe/lib'
-import AccountOutline from 'mdi-material-ui/AccountOutline'
+
+import { AccountOutline } from 'mdi-material-ui'
 import CellphoneLink from 'mdi-material-ui/CellphoneLink'
 import CurrencyUsd from 'mdi-material-ui/CurrencyUsd'
 import TrendingUp from 'mdi-material-ui/TrendingUp'
-import Link from 'next/link'
-import { Fragment, useId, useState } from 'react'
 
-import { Avatar } from '@nuwe/materio'
+import { currentLanguage } from '@nuwe/lib'
+
+import { SimpleAvatar } from '../atoms'
 
 type dataType = {
   stats: string
   title: string
-  color: string
+  color: 'primary' | 'secondary' | 'warning' | 'info' | 'success' | 'error' | undefined
   icon: JSX.Element
 }
 
@@ -36,7 +39,7 @@ const salesData: dataType[] = [
   {
     stats: '12.5k',
     title: 'Customers',
-    color: 'success',
+    color: 'secondary',
     icon: <AccountOutline />
   },
   {
@@ -54,13 +57,13 @@ const salesData: dataType[] = [
 ]
 
 const renderStats = (data: dataType[], id: string) => {
-  return data.map((item: any, i: number) => {
+  return data.map((item: dataType) => {
     return (
-      <Grid style={{ margin: '1rem' }} item xs={6} md={3} key={`${id}-${i}`}>
+      <Grid style={{ margin: '1rem' }} item xs={6} md={3} key={id}>
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <Avatar variant='rounded' color={item.color} sx={{ mr: 3, boxShadow: 3 }}>
+          <SimpleAvatar variant='rounded' color={item.color} sx={{ mr: 3, boxShadow: 3 }}>
             {item.icon}
-          </Avatar>
+          </SimpleAvatar>
           <Box sx={{ display: 'flex', flexDirection: 'column' }}>
             <Typography variant='caption'>{item.title}</Typography>
             <Typography variant='h6'>{item.stats}</Typography>

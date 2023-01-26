@@ -1,7 +1,5 @@
-import { LinearProgress, Typography, useTheme } from '@mui/material'
+import { LinearProgress, Typography } from '@mui/material'
 import { memo } from 'react'
-
-import { useStyles } from './style'
 
 interface ProgressBarProps {
   width?: string
@@ -28,7 +26,6 @@ interface ProgressBarProps {
     | 'subtitle2'
     | 'body1'
     | 'body2'
-    | undefined
   textAndValue?: boolean
   isSecondary?: boolean
 }
@@ -38,11 +35,9 @@ interface ProgressBarProps {
  */
 export const ProgressBar = memo(
   ({
-    color = '#569B51',
-    height = '15px',
+    height = '10px',
     isSecondary = false,
     label = false,
-    labelColor = '#000',
     labelPosition = 'bottom',
     radius = '10px',
     text = '',
@@ -51,30 +46,18 @@ export const ProgressBar = memo(
     value = 0,
     width = '100%'
   }: ProgressBarProps) => {
-    const muiTheme = useTheme()
-
-    const { progress } = useStyles({
-      width,
-      height,
-      color,
-      background: muiTheme.palette.divider,
-      value,
-      radius,
-      labelColor
-    })
-
     return (
       <>
         {label && labelPosition === 'top' && <span>{`${value}%`}</span>}
         {textAndValue && (
-          <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between' }}>
+          <div style={{ display: 'flex', width: width, justifyContent: 'space-between' }}>
             <Typography variant={textVariant}>{text}</Typography>
             <Typography variant={textVariant}>{`${value}%`}</Typography>
           </div>
         )}
 
         <LinearProgress
-          sx={{ height: '10px', borderRadius: '10px' }}
+          sx={{ height: height, borderRadius: radius }}
           color={isSecondary ? 'secondary' : 'primary'}
           variant='determinate'
           value={value}

@@ -1,16 +1,9 @@
-import { createContext, useReducer } from 'react'
+import { useReducer } from 'react'
 
+import { withProviders } from '../../HOC'
 import { initiState, severities, snackbarReducer } from './snackbar.reducer'
 import { SnackbarAlert } from './SnackbarAlert.container'
-
-import { withProviders } from '@nuwe/lib'
-
-export const SnackbarContext = createContext<any>({
-  snackbar: initiState,
-  severities,
-  handleSnackbarClose: () => {},
-  handleSnackbarChange: () => {}
-})
+import { SnackbarContext } from './SnackbarContext'
 
 export const SnackbarProvider = ({ children }: any) => {
   const [snackbar, dispatch] = useReducer(snackbarReducer, initiState)

@@ -68,6 +68,7 @@ export default {
     }),
     scss(),
     babel({
+      babelHelpers: 'bundled',
       exclude: 'node_modules/**',
       presets: [
         [

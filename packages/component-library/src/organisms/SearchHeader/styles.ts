@@ -17,7 +17,7 @@ export const Card: any = styled(MuiCard)(({ theme }) => ({
 }))
 
 // Styled TextField component
-export const TextField = styled(MuiTextField)(({ theme }) => ({
+export const TextField: any = styled(MuiTextField)(({ theme }) => ({
   width: '100%',
   '& .MuiOutlinedInput-root': {
     backgroundColor: theme.palette.background.paper

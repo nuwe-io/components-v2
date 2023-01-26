@@ -1,6 +1,5 @@
 // ** Icon Import
 import CircleOutline from '@mui/icons-material/Circle'
-import { TruckCheckOutline } from 'mdi-material-ui'
 
 export const themeConfig: any = {
   // ** Layout Configs
@@ -71,7 +70,7 @@ export const businessThemeConfig: any = {
   // ** Other Configs
   responsiveFontSizes: true /* true | false */,
   disableRipple: false /* true | false */,
-  disableCustomizer: TruckCheckOutline /* true | false */,
+  disableCustomizer: true /* true | false */,
   toastPosition:
     'top-right' /* top-left | top-center | top-right | bottom-left | bottom-center | bottom-right */
 }

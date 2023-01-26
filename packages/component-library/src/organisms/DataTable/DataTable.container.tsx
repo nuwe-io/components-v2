@@ -1,7 +1,7 @@
 import { Card } from '@mui/material'
 import { DataGrid, GridDensity } from '@mui/x-data-grid'
+import { TableHeader } from 'molecules'
 
-import { TableHeader } from '@nuwe/materio'
 import { MessageAlert } from '../MessageAlert'
 
 interface DataTableProps {
@@ -76,6 +76,8 @@ const DataTable = ({
   width,
   displayedTexts
 }: DataTableProps) => {
+  const onSelectionModelChange = (newSelectionModel: any) => setSelectionModel(newSelectionModel)
+  const onEditCellPropsChange = (newEditCellProps: any) => handleCellChange(newEditCellProps)
   return (
     <div style={{ width, height }}>
       <MessageAlert
@@ -98,23 +100,11 @@ const DataTable = ({
           density={tableDensity || 'standard'}
           checkboxSelection={checkboxSelection}
           disableColumnMenu={disableColumnMenu}
-          onSelectionModelChange={(newSelectionModel) => setSelectionModel(newSelectionModel)}
-          onEditCellPropsChange={(newEditCellProps) => handleCellChange(newEditCellProps)}
+          onSelectionModelChange={onSelectionModelChange}
+          onEditCellPropsChange={onEditCellPropsChange}
           components={{
             Toolbar: showHeader ? TableHeader : null,
-            NoRowsOverlay: () => (
-              <div
-                style={{
-                  height: '100%',
-                  width: '100%',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}
-              >
-                {noRowsLabel || 'No results found'}
-              </div>
-            )
+            NoRowsOverlay: () => <NoRowsOverlay noRowsLabel={noRowsLabel} />
           }}
           componentsProps={{
             toolbar: {
@@ -138,5 +128,23 @@ const DataTable = ({
     </div>
   )
 }
+
+interface NoRowsOverlayProps {
+  noRowsLabel: string
+}
+
+const NoRowsOverlay = ({ noRowsLabel }: NoRowsOverlayProps) => (
+  <div
+    style={{
+      height: '100%',
+      width: '100%',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center'
+    }}
+  >
+    {noRowsLabel || 'No results found'}
+  </div>
+)
 
 export default DataTable

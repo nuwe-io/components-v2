@@ -1,18 +1,17 @@
-import sucrase from '@rollup/plugin-sucrase'
-import typescript from '@rollup/plugin-typescript'
-import babel from 'rollup-plugin-babel'
-import commonjs from 'rollup-plugin-commonjs'
-import resolve from 'rollup-plugin-node-resolve'
-import external from 'rollup-plugin-peer-deps-external'
+import commonjs from '@rollup/plugin-commonjs'
 import postcss from 'rollup-plugin-postcss'
+import visualizer from 'rollup-plugin-visualizer'
+
+import { babel } from '@rollup/plugin-babel'
+import resolve from '@rollup/plugin-node-resolve'
+import typescript from '@rollup/plugin-typescript'
+import external from 'rollup-plugin-peer-deps-external'
 import scss from 'rollup-plugin-scss'
 import { terser } from 'rollup-plugin-terser'
-import visualizer from 'rollup-plugin-visualizer'
-import tsconfig from './tsconfig.json'
 
 import pkg from './package.json'
 
-const extensions = ['.js', '.jsx', '.ts', '.tsx']
+const extensions = ['.ts', '.tsx']
 
 export default {
   input: './src/index.ts',
@@ -35,10 +34,6 @@ export default {
       filename: './bundle-report.html',
       open: false
     }),
-    sucrase({
-      exclude: ['node_modules/**'],
-      transforms: ['typescript', 'jsx']
-    }),
     external({
       includeDependencies: true
     }),
@@ -47,25 +42,14 @@ export default {
       modulesOnly: true
     }),
     commonjs({
-      include: 'node_modules/**',
-      namedExports: {
-        'node_modules/react/index.js': [
-          'cloneElement',
-          'createContext',
-          'Component',
-          'createElement'
-        ],
-        'node_modules/react-dom/index.js': ['render', 'hydrate'],
-        'node_modules/react-is/index.js': ['isElement', 'isValidElementType', 'ForwardRef', 'Memo']
-      }
+      include: 'node_modules/**'
     }),
-    postcss({
-      plugins: [],
-      minimize: true
+    typescript({
+      tsconfig: './tsconfig.json'
     }),
-    scss(),
     babel({
       exclude: 'node_modules/**',
+      babelHelpers: 'bundled',
       presets: [
         [
           '@babel/preset-react',
@@ -75,9 +59,11 @@ export default {
         ]
       ]
     }),
-    typescript({
-      compilerOptions: tsconfig.compilerOptions
+    postcss({
+      plugins: [],
+      minimize: true
     }),
+    scss(),
     terser()
   ],
   external: [
@@ -88,6 +74,7 @@ export default {
     'prop-types',
     'hoist-non-react-statics',
     'react',
+    'react-dom',
     'react/jsx-runtime',
     '@mui/icons-material/Circle',
     '@mui/material',

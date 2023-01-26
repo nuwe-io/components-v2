@@ -1,7 +1,8 @@
-import { useAvatar } from '../useAvatar'
+import { Dropdown } from 'molecules/Dropdown'
 
-import { AvatarSelector } from '.'
-import { Dropdown } from '../../../molecules'
+import { AvatarSelector } from './AvatarSelector'
+
+import { useAvatar } from '../useAvatar'
 
 interface SourceSelectorProps {
   displayedTexts: {

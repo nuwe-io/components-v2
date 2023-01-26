@@ -1,9 +1,12 @@
 import { Dialog, DialogContent, Hidden, TextField, Typography } from '@mui/material'
 
-import { CollapseAlert, Dropdown, MaterialBaseDialogActions } from '../../../molecules'
+import { MaterialBaseDialogActions } from 'molecules/BaseDialogActions'
+import { CollapseAlert } from 'molecules/CollapseAlert'
+import { Dropdown } from 'molecules/Dropdown'
 
-import { AvatarImage, SourceSelector } from '.'
 import { useAvatar } from '../useAvatar'
+import { AvatarImage } from './AvatarImage'
+import { SourceSelector } from './SourceSelector'
 
 interface AvatarPickerProps {
   displayedTexts: {

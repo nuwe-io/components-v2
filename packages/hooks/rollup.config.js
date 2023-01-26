@@ -46,6 +46,7 @@ export default {
     ...Object.keys(pkg.dependencies || {}),
     ...Object.keys(pkg.peerDependencies || {}),
     'deepmerge',
-    'hoist-non-react-statics'
+    'hoist-non-react-statics',
+    'next/router'
   ]
 }

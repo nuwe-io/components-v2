@@ -5,7 +5,7 @@ import CardContent from '@mui/material/CardContent'
 import { styled, useTheme } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 
-import { BadgeRank } from '../molecules'
+import { BadgeRank } from '../molecules/BadgeRanks'
 
 // Styled component for the trophy image
 const RankSVG = styled('div')({

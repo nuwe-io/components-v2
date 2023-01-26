@@ -3,6 +3,7 @@
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
+
 import { authService } from '../../domain'
 import { authRepository } from '../../infrastructure'
 
