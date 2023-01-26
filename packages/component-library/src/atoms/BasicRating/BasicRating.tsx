@@ -1,6 +1,7 @@
+import { useState } from 'react'
+
 import { Star } from '@mui/icons-material'
 import { Rating } from '@mui/material'
-import { useState } from 'react'
 
 interface BasicRatingProps {
   defaultValue: number

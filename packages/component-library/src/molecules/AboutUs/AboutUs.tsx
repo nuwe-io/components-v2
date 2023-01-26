@@ -1,4 +1,5 @@
 import { Typography } from '@mui/material'
+
 import { useStyles } from './styles'
 
 interface TextBodyProps {

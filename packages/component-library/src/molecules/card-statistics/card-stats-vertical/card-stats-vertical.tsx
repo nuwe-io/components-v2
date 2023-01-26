@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography'
 import DotsVertical from 'mdi-material-ui/DotsVertical'
 
 // ** Custom Components Imports
-import { Avatar } from '@nuwe/materio'
+import { SimpleAvatar } from '../../../atoms'
 
 interface CardStatsVerticalProps {
   title: string
@@ -36,9 +36,9 @@ const CardStatsVertical = (props: CardStatsVerticalProps) => {
             justifyContent: 'space-between'
           }}
         >
-          <Avatar color={color} sx={{ boxShadow: 3, mr: 4 }}>
+          <SimpleAvatar color={color} sx={{ boxShadow: 3, mr: 4 }}>
             {icon}
-          </Avatar>
+          </SimpleAvatar>
           <IconButton
             size='small'
             aria-label='settings'

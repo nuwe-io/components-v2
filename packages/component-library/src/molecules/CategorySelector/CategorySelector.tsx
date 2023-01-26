@@ -1,6 +1,7 @@
 import { Chip, Typography } from '@mui/material'
 
-import { AutocompleteSkills } from '@nuwe/materio'
+import { AutocompleteSkills } from '../Autocomplete'
+
 import { ConditionalText } from '../../atoms'
 
 const options = [

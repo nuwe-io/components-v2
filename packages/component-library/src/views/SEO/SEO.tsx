@@ -21,7 +21,7 @@ const CommonSEO = ({
 }: CommonSEOProps) => {
   const router = useRouter()
   return (
-    <Head>
+    <Head key='seo-header'>
       <title>{title}</title>
       <meta name='robots' content='follow, index' />
       <meta name='description' content={description} />

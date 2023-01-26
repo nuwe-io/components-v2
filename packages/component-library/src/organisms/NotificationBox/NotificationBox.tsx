@@ -2,11 +2,13 @@ import Box from '@mui/material/Box'
 import { styled } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 
+//** Nuwe libs
 import { createdAt } from '@nuwe/lib'
-import { Avatar } from '@nuwe/materio'
+
+import { SimpleAvatar } from '../../atoms'
 
 // ** Styled Avatar component
-const AvatarStyled = styled(Avatar)({
+const AvatarStyled = styled(SimpleAvatar)({
   width: '2.375rem',
   height: '2.375rem',
   fontSize: '1.125rem'

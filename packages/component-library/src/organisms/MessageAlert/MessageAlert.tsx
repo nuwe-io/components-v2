@@ -8,8 +8,8 @@ import SaveIcon from '@mui/icons-material/Save'
 
 import Box from '@mui/material/Box'
 import { styled } from '@mui/material/styles'
-import { Avatar } from '@nuwe/materio'
-import { ButtonLoader } from '../../atoms'
+
+import { ButtonLoader, SimpleAvatar } from '../../atoms'
 
 interface ActionAlertGroupProps {
   save?: () => void
@@ -89,7 +89,7 @@ const ActionAlertGroup = ({
   )
 }
 
-const AvatarStyled: any = styled(Avatar)({
+const AvatarStyled: any = styled(SimpleAvatar)({
   width: '2.375rem',
   height: '2.375rem',
   fontSize: '1.125rem'
