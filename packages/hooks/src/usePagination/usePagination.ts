@@ -1,4 +1,5 @@
 import { useCallback, useReducer } from 'react'
+
 import { PaginationState } from '../../types'
 
 const paginationReducer = (state: PaginationState, action: any) => {

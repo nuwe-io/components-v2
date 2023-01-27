@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
-import { useRouter } from 'next/router'
 import React, { createContext, useContext, useEffect, useState } from 'react'
 
 import toast from 'react-hot-toast'
@@ -12,16 +11,16 @@ const AuthStatusContext = createContext(undefined) as any
 
 export const AuthStatusProvider = ({
   API_URL,
-  children
+  children,
+  router
 }: {
   API_URL: string
   children?: React.ReactNode
+  router: any
 }) => {
   const { login, logout, companyStatus, getUserById, signup, verifyVotinSignUp } = authService(
     authRepository(API_URL)
   )
-
-  const router = useRouter()
 
   const [authStatus, setAuthStatus] = useState({
     status: 'loading',
