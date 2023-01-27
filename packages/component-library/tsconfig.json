@@ -4,7 +4,7 @@
     "rootDir": "src",
     "outDir": "dist", // Needed for rollup to work (generates the bundle)
     "declaration": true, // Needed for rollup to work (generates .d.ts files)
-    "declarationDir": "types", // Ouput location of generated bundled 
+    "declarationDir": ".", // Ouput location of generated bundled 
     "moduleResolution": "node",
     "emitDeclarationOnly": true,
     "jsx": "react-jsx", // Allows to use JSX in .tsx files without importing React and avoiding rollup errors
