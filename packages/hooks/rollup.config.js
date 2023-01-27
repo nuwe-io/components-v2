@@ -1,9 +1,9 @@
-import typescript from '@rollup/plugin-typescript'
+import typescript from 'rollup-plugin-ts'
+
 import commonjs from 'rollup-plugin-commonjs'
 import resolve from 'rollup-plugin-node-resolve'
 
 import pkg from './package.json'
-import tsconfig from './tsconfig.json'
 
 const extensions = ['.js', '.jsx', '.ts', '.tsx']
 
@@ -39,7 +39,8 @@ export default {
       }
     }),
     typescript({
-      compilerOptions: tsconfig.compilerOptions
+      tsconfig: './tsconfig.json',
+      transpiler: 'babel'
     })
   ],
   external: [
@@ -47,6 +48,8 @@ export default {
     ...Object.keys(pkg.peerDependencies || {}),
     'deepmerge',
     'hoist-non-react-statics',
-    'next/router'
+    'next/router',
+    'react-is',
+    'prop-types'
   ]
 }
