@@ -1,1 +1,1 @@
-export { AuthStateHook } from './useAuthStatus'
+export * from './useAuthStatus'
