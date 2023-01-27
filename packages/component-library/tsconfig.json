@@ -4,11 +4,13 @@
     "rootDir": "src",
     "outDir": "dist", // Needed for rollup to work (generates the bundle)
     "declaration": true, // Needed for rollup to work (generates .d.ts files)
-    "declarationDir": ".", // Ouput location of generated bundled 
+    "declarationDir": "types", // Ouput location of generated bundled 
     "moduleResolution": "node",
+    "emitDeclarationOnly": true,
     "jsx": "react-jsx", // Allows to use JSX in .tsx files without importing React and avoiding rollup errors
-    "module": "ESNext",
-    "target": "ES2015", // To use the last features of JS use at least ES2015
+    "module": "esnext",
+    "skipLibCheck": true,
+    "target": "ESNext", // To use the last features of JS use at least ES2015
     "allowSyntheticDefaultImports": true, // Allows to use default imports from modules that don't have a default export
     "resolveJsonModule": true, // Allows to import JSON files
     "esModuleInterop": true,
