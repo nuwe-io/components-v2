@@ -91,6 +91,7 @@ export default {
     'react/jsx-runtime',
     '@mui/icons-material/Circle',
     '@mui/material',
+    '@mui/utils',
     '@babel/runtime/helpers/extends',
     'stylis',
     'date-fns'

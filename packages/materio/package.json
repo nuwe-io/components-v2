@@ -1,6 +1,6 @@
 {
   "name": "@nuwe/materio",
-  "version": "0.0.8",
+  "version": "1.2.35",
   "private": false,
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
@@ -18,8 +18,6 @@
     "@casl/ability": "^6.3.3",
     "@emotion/cache": "^11.10.5",
     "@mui/material": "^5.11.6",
-    "@mui/system": "^5.11.5",
-    "@mui/utils": "^5.11.2",
     "@nuwe/lib": "^1.7.13",
     "clipboard-copy": "^4.0.1",
     "clsx": "^1.2.1",
@@ -34,7 +32,9 @@
     "@mui/material": "^5.10.15",
     "@mui/styles": "^5.10.15",
     "@nuwe/lib": "^1.7.13",
-    "react-hot-toast": "^2.4.0"
+    "@mui/utils": "^5.11.2",
+    "react-hot-toast": "^2.4.0",
+    "@mui/system": "^5.11.5"
   },
   "license": "ISC",
   "devDependencies": {

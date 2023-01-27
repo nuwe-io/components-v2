@@ -28,7 +28,7 @@ export const ThemeComponentService = (themeProps: ThemeComponentServiceProps) =>
     const { GlobalStyles, createTheme, responsiveFontSizes, deepmerge, AdapterDayjs } = themeProps
 
     // ** Merged ThemeOptions of Core and User
-    const coreThemeConfig = themeOptions(settings)
+    const coreThemeConfig = themeOptions(deepmerge)(settings)
 
     // ** Pass ThemeOptions to CreateTheme Function to create partial theme without component overrides
     let theme = createTheme(coreThemeConfig)

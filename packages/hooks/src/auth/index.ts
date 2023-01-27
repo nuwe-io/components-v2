@@ -1,2 +1,2 @@
-export { useAuthStatus } from './application/useAuthStatus'
+export { AuthStateHook } from './application/useAuthStatus'
 export { authRepository } from './infrastructure'

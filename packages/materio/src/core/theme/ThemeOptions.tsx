@@ -1,5 +1,4 @@
 // ** MUI Theme Provider
-import { deepmerge } from '@mui/utils'
 
 import { Settings } from '../../../types'
 import { UserThemeOptions } from './UserThemeOptions'
@@ -10,7 +9,7 @@ import { Palette } from './palette'
 import { Shadows } from './shadows'
 import spacing from './spacing'
 
-export const themeOptions = (settings: Settings) => {
+export const themeOptions = (deepmerge: any) => (settings: Settings) => {
   // ** Vars
   const { skin, mode, direction, themeColor } = settings
 

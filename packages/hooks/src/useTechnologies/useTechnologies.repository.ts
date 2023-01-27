@@ -1,9 +1,6 @@
 import axios from 'axios'
 
-const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL
-
 const instance = axios.create({
-  baseURL: BACKEND_URL,
   headers: {
     'Content-Type': 'application/json'
   },
@@ -17,6 +14,6 @@ const catchAxios = async (fn: any) =>
       return false
     })
 
-export const technologiesRepository = {
+export const technologiesRepository = (BACKEND_URL: string) => ({
   getAllTechnologies: async () => catchAxios(instance.get(`${BACKEND_URL}/technologies`))
-}
+})

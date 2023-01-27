@@ -14,7 +14,7 @@ export const authService = (authRepository: any) => {
     if (userId) return userId
 
     const res = await authRepository.companyStatus()
-    if (res.status === 200) {
+    if (res?.status === 200) {
       sessionStorage.setItem('userId', res.data.auth.id)
       return res.data.auth.id
     }
