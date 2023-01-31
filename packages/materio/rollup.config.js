@@ -1,6 +1,4 @@
 import babel from '@rollup/plugin-babel'
-import sucrase from '@rollup/plugin-sucrase'
-import typescript from '@rollup/plugin-typescript'
 import commonjs from 'rollup-plugin-commonjs'
 import resolve from 'rollup-plugin-node-resolve'
 import external from 'rollup-plugin-peer-deps-external'
@@ -8,7 +6,8 @@ import postcss from 'rollup-plugin-postcss'
 import scss from 'rollup-plugin-scss'
 import { terser } from 'rollup-plugin-terser'
 import visualizer from 'rollup-plugin-visualizer'
-import tsconfig from './tsconfig.json'
+
+import typescript from 'rollup-plugin-ts'
 
 import pkg from './package.json'
 
@@ -35,15 +34,8 @@ export default {
       filename: './bundle-report.html',
       open: false
     }),
-    sucrase({
-      exclude: ['node_modules/**'],
-      transforms: ['typescript', 'jsx']
-    }),
     external({
       includeDependencies: true
-    }),
-    typescript({
-      compilerOptions: tsconfig.compilerOptions
     }),
     resolve({
       extensions,
@@ -61,6 +53,10 @@ export default {
         'node_modules/react-dom/index.js': ['render', 'hydrate'],
         'node_modules/react-is/index.js': ['isElement', 'isValidElementType', 'ForwardRef', 'Memo']
       }
+    }),
+    typescript({
+      tsconfig: './tsconfig.json',
+      transpiler: 'babel'
     }),
     postcss({
       plugins: [],
@@ -89,9 +85,6 @@ export default {
     'prop-types',
     'hoist-non-react-statics',
     'react/jsx-runtime',
-    '@mui/icons-material/Circle',
-    '@mui/material',
-    '@mui/utils',
     '@babel/runtime/helpers/extends',
     'stylis',
     'date-fns'
