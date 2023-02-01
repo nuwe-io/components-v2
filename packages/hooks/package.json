@@ -1,6 +1,6 @@
 {
   "name": "@nuwe/hooks",
-  "version": "1.6.5",
+  "version": "1.6.82",
   "description": "Reusable custom hooks from nuwe.io and nuwe components library",
   "private": false,
   "homepage": "https://github.com/nuwe-io/components-v2#readme",

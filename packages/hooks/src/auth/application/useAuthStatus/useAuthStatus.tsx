@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { createContext, useContext, useEffect, useReducer } from 'react'
+import React, { createContext, useContext, useEffect, useMemo, useReducer } from 'react'
 
 import toast from 'react-hot-toast'
 
@@ -22,24 +22,25 @@ export const AuthStatusProvider = ({
   const { login, logout, companyStatus, getUserById, signup, verifyVotinSignUp } = authService(
     authRepository(API_URL)
   )
-  const [state, dispatch] = useReducer(authStatusReducer, initialState)
 
+  const [state, dispatch] = useReducer(authStatusReducer, initialState)
   const handleUpdate = (type: string, payload?: unknown) => dispatch({ type, payload })
   const authorize = (user: unknown) => handleUpdate(actionTypes.AUTHORIZE, user)
   const reject = () => handleUpdate(actionTypes.REJECT_AUTH)
   const updateLoading = (status: Status) => handleUpdate(actionTypes.UPDATE_LOADING, status)
 
   useEffect(() => {
-    if (state.user === null && state.status === Status.authorized) updateUserIfNull()
-  }, [state.user, state.status])
+    if (state.user === null) updateUserIfNull()
+  }, [])
 
   const updateUserIfNull = async () => {
     const statusResponse = await companyStatus()
-    if (!statusResponse) return reject()
+    if (statusResponse) {
+      const user = await getUserById(statusResponse)
+      authorize(user.data)
+    }
 
-    const user = await getUserById(statusResponse)
-    if (!user) return reject()
-    return authorize(user.data)
+    return reject()
   }
 
   const handleLogin = async (data: any) => {
@@ -48,12 +49,11 @@ export const AuthStatusProvider = ({
 
     if (!res) {
       reject()
-      // return toast.error('Email or password are not correct, please try again.')
+      return toast.error('Email or password are not correct, please try again.')
     }
 
     authorize(res.user)
     return res.user
-    // return toast.success('Login success!')
   }
 
   const handleVotingVerification = async (data: any, url: string) => {
@@ -91,19 +91,18 @@ export const AuthStatusProvider = ({
     })
   }
 
-  return (
-    <AuthStatusContext.Provider
-      value={{
-        ...state,
-        signup: handleSignup,
-        logout: handlerLogout,
-        login: handleLogin,
-        verifyVotinSignUp: handleVotingVerification
-      }}
-    >
-      {children}
-    </AuthStatusContext.Provider>
+  const value = useMemo(
+    () => ({
+      ...state,
+      signup: handleSignup,
+      logout: handlerLogout,
+      login: handleLogin,
+      verifyVotinSignUp: handleVotingVerification
+    }),
+    [state]
   )
+
+  return <AuthStatusContext.Provider value={value}>{children}</AuthStatusContext.Provider>
 }
 
 export const useAuthStatus = () => {
