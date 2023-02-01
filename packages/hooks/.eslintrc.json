@@ -5,8 +5,13 @@
     "commonjs": true
   },
   "parser": "@typescript-eslint/parser",
-  "extends": ["plugin:@typescript-eslint/recommended", "plugin:prettier/recommended"],
-  "plugins": ["import"],
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": [
+    "import"
+  ],
   "parserOptions": {
     "ecmaVersion": 12,
     "sourceType": "module"

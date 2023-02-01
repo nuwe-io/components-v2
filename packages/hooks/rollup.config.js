@@ -48,8 +48,8 @@ export default {
     ...Object.keys(pkg.peerDependencies || {}),
     'deepmerge',
     'hoist-non-react-statics',
-    'next/router',
     'react-is',
-    'prop-types'
+    'prop-types',
+    'react/jsx-runtime'
   ]
 }

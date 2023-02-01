@@ -1,11 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-
-import React, { createContext, useContext, useEffect, useState } from 'react'
+import React, { createContext, useContext, useEffect, useMemo, useReducer } from 'react'
 
 import toast from 'react-hot-toast'
 
 import { authService } from '../../domain'
 import { authRepository } from '../../infrastructure'
+
+import { actionTypes, authStatusReducer, initialState, Status } from './authStatus.reducer'
 
 const AuthStatusContext = createContext(undefined) as any
 
@@ -22,50 +23,37 @@ export const AuthStatusProvider = ({
     authRepository(API_URL)
   )
 
-  const [authStatus, setAuthStatus] = useState({
-    status: 'loading',
-    user: null
-  })
-
-  const accepted = (pre: any, user: any) => {
-    return {
-      ...pre,
-      status: 'authorized',
-      user
-    }
-  }
-
-  const rejected = (pre: any) => {
-    return {
-      ...pre,
-      status: 'unauthorized',
-      user: null
-    }
-  }
+  const [state, dispatch] = useReducer(authStatusReducer, initialState)
+  const handleUpdate = (type: string, payload?: unknown) => dispatch({ type, payload })
+  const authorize = (user: unknown) => handleUpdate(actionTypes.AUTHORIZE, user)
+  const reject = () => handleUpdate(actionTypes.REJECT_AUTH)
+  const updateLoading = (status: Status) => handleUpdate(actionTypes.UPDATE_LOADING, status)
 
   useEffect(() => {
-    if (authStatus.user === null)
-      companyStatus().then((statusResponse) => {
-        if (statusResponse)
-          return getUserById(statusResponse).then((user) => {
-            setAuthStatus((pre) => accepted(pre, user.data))
-          })
-
-        return setAuthStatus((pre) => rejected(pre))
-      })
+    if (state.user === null) updateUserIfNull()
   }, [])
 
-  const handleLogin = async (data: any) => {
-    setAuthStatus((pre) => ({ ...pre, status: 'loading' }))
-    const res = await login(data)
-    if (!res) {
-      setAuthStatus((prev) => rejected(prev))
+  const updateUserIfNull = async () => {
+    const statusResponse = await companyStatus()
+    if (statusResponse) {
+      const user = await getUserById(statusResponse)
+      authorize(user.data)
+    }
 
+    return reject()
+  }
+
+  const handleLogin = async (data: any) => {
+    updateLoading(Status.loading)
+    const res = await login(data)
+
+    if (!res) {
+      reject()
       return toast.error('Email or password are not correct, please try again.')
     }
 
-    setAuthStatus((prev) => accepted(prev, res.data))
-    return toast.success('Login success!')
+    authorize(res.user)
+    return res.user
   }
 
   const handleVotingVerification = async (data: any, url: string) => {
@@ -75,41 +63,44 @@ export const AuthStatusProvider = ({
       error: 'Verifcation code is not correct, please try again.'
     })
 
-    if (res) return setAuthStatus((prev: any) => accepted(prev, res.data))
+    if (res) return authorize(res.data)
 
-    return setAuthStatus((prev) => rejected(prev))
+    return reject()
   }
 
   const handleSignup = async (data: any) => {
-    setAuthStatus((pre) => ({ ...pre, status: 'loading' }))
+    updateLoading(Status.loading)
     const res = await signup(data)
     if (!res) {
-      setAuthStatus((prev) => rejected(prev))
+      reject()
       return toast.error(
         'It seems you are not linked to a company. Please contact your company admin or get in touch with hello@nuwe.io.'
       )
     }
 
-    setAuthStatus((prev) => accepted(prev, res.data))
+    authorize(res.data)
     toast.success('Signup success, welcome!')
     return router.push('/home')
   }
 
   const handlerLogout = () => {
-    setAuthStatus((pre) => ({ ...pre, status: 'loading' }))
+    updateLoading(Status.loading)
     logout().then(() => {
-      setAuthStatus((pre) => rejected(pre))
+      reject()
       router.push('/login')
     })
   }
 
-  const value = {
-    ...authStatus,
-    signup: handleSignup,
-    logout: handlerLogout,
-    login: handleLogin,
-    verifyVotinSignUp: handleVotingVerification
-  }
+  const value = useMemo(
+    () => ({
+      ...state,
+      signup: handleSignup,
+      logout: handlerLogout,
+      login: handleLogin,
+      verifyVotinSignUp: handleVotingVerification
+    }),
+    [state]
+  )
 
   return <AuthStatusContext.Provider value={value}>{children}</AuthStatusContext.Provider>
 }

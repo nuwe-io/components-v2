@@ -1,11 +1,14 @@
 {
   "extends": "../../tsconfig.json",
   "include": [
-    "src/**/*.ts",
+    "src",
     "src/useTechnologies/useTechnologies.tsx",
-    "src/auth/application/useAuthStatus/useAuthStatus.tsx"
+    "src/auth/application/useAuthStatus/useAuthStatus.tsx",
+    "tests"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "dist",
+    "build",
   ]
 }
