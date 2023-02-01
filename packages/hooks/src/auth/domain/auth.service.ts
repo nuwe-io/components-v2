@@ -22,10 +22,12 @@ export const authService = (authRepository: any) => {
     sessionStorage.removeItem('userId')
     return false
   }
+
   const logout = async () => {
     sessionStorage.removeItem('userId')
     return authRepository.logout()
   }
+
   const getUserById = async (id: number) => authRepository.getUserById(id)
 
   const verifyVotinSignUp = async (data: any, url: string) => {
