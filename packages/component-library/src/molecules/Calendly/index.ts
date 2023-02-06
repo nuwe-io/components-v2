@@ -1,1 +1,0 @@
-export { Calendly } from './Calendly'

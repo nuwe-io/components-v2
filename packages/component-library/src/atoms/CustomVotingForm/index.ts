@@ -1,1 +1,0 @@
-export { CustomVotingForm } from './CustomVotingForm'

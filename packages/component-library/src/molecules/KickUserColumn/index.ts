@@ -1,1 +1,0 @@
-export { KickUserColumn } from './KickUserColumn'

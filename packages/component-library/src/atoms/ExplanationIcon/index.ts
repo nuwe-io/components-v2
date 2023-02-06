@@ -1,1 +1,0 @@
-export { ExplanationIcon } from './ExplanationIcon'
