@@ -1,6 +1,6 @@
 {
   "name": "@nuwe/hooks",
-  "version": "1.6.92",
+  "version": "1.6.94",
   "description": "Reusable custom hooks from nuwe.io and nuwe components library",
   "private": false,
   "homepage": "https://github.com/nuwe-io/components-v2#readme",
@@ -34,6 +34,7 @@
     "@swc/jest": "^0.2.20",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
+    "@testing-library/react-hooks": "^8.0.1",
     "@types/jest": "^27.4.1",
     "@types/react": "^18.0.26",
     "@typescript-eslint/eslint-plugin": "^5.21.0",
@@ -54,10 +55,10 @@
     "tsconfig-paths-webpack-plugin": "3.5.2",
     "tslint-config-prettier": "1.18.0",
     "tslint-eslint-rules": "5.4.0",
-    "typescript": "^4.6.3",
-    "@testing-library/react-hooks": "^8.0.1"
+    "typescript": "^4.6.3"
   },
   "dependencies": {
+    "@casl/react": "^3.1.0",
     "axios": "^1.2.2",
     "react": "18.2.0",
     "react-dom": "18.2",

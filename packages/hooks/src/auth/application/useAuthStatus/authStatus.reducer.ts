@@ -1,13 +1,4 @@
-export enum Status {
-  loading = 'loading',
-  authorized = 'authorized',
-  unauthorized = 'unauthorized'
-}
-
-interface IAuthState {
-  status: Status
-  user?: unknown | null
-}
+import { AuthEntity, Status } from '../../domain'
 
 interface Action {
   type?: string
@@ -21,17 +12,17 @@ export const actionTypes = {
   AUTHORIZE: 'AUTHORIZE'
 }
 
-export const initialState: IAuthState = {
+export const initialState: AuthEntity = {
   status: Status.loading,
   user: null
 }
 
-const updateLoading = (state: IAuthState, payload: Status) => ({
+const updateLoading = (state: AuthEntity, payload: Status) => ({
   ...state,
   status: payload
 })
 
-const authorize = (state: IAuthState, payload: unknown) => {
+const authorize = (state: AuthEntity, payload: unknown) => {
   return {
     ...state,
     status: Status.authorized,
@@ -39,7 +30,7 @@ const authorize = (state: IAuthState, payload: unknown) => {
   }
 }
 
-const reject = (state: IAuthState) => ({
+const reject = (state: AuthEntity) => ({
   ...state,
   status: Status.unauthorized,
   user: null
@@ -51,7 +42,7 @@ const actionMap = new Map<string, any>([
   [actionTypes.REJECT_AUTH, reject]
 ])
 
-export const authStatusReducer = (state: IAuthState = initialState, { type, payload }: Action) => {
+export const authStatusReducer = (state: AuthEntity = initialState, { type, payload }: Action) => {
   const action = actionMap.get(type)
   return action ? action(state, payload) : state
 }
