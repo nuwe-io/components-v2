@@ -1,6 +1,6 @@
 {
   "name": "@nuwe/materio",
-  "version": "1.3.71",
+  "version": "1.3.74",
   "private": false,
   "main": "dist/index.js",
   "module": "dist/index.esm.js",

@@ -13,7 +13,7 @@ export const themeConfig: any = {
   // ** Routing Configs
   routingLoader: true /* true | false */,
   // ** Navigation (Menu) Configs
-  navHidden: false /* true | false */,
+  navHidden: true /* true | false */,
   menuTextTruncate: true /* true | false */,
   navSubItemIcon: CircleOutline /* Icon Element */,
   verticalNavToggleType:

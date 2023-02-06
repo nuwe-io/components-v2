@@ -1,7 +1,5 @@
-import babel from '@rollup/plugin-babel'
 import commonjs from 'rollup-plugin-commonjs'
 import resolve from 'rollup-plugin-node-resolve'
-import external from 'rollup-plugin-peer-deps-external'
 import postcss from 'rollup-plugin-postcss'
 import scss from 'rollup-plugin-scss'
 import { terser } from 'rollup-plugin-terser'
@@ -34,9 +32,7 @@ export default {
       filename: './bundle-report.html',
       open: false
     }),
-    external({
-      includeDependencies: true
-    }),
+
     resolve({
       extensions,
       modulesOnly: true
@@ -63,18 +59,6 @@ export default {
       minimize: true
     }),
     scss(),
-    babel({
-      babelHelpers: 'bundled',
-      exclude: 'node_modules/**',
-      presets: [
-        [
-          '@babel/preset-react',
-          {
-            runtime: 'automatic'
-          }
-        ]
-      ]
-    }),
     terser()
   ],
   external: [
@@ -87,6 +71,7 @@ export default {
     'react/jsx-runtime',
     '@babel/runtime/helpers/extends',
     'stylis',
-    'date-fns'
+    'date-fns',
+    '@mui/icons-material/Circle'
   ]
 }

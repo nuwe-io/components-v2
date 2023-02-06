@@ -1,5 +1,5 @@
 // ** React Imports
-import React, { createContext, useEffect, useState } from 'react'
+import React, { createContext, useEffect } from 'react'
 
 import { themeConfig } from '../../configs'
 
@@ -87,7 +87,7 @@ interface SettingsProviderProps {
 
 export const SettingsProvider = ({ children, pageSettings }: SettingsProviderProps) => {
   // ** State
-  const [settings, setSettings] = useState<Settings>({ ...initialSettings })
+  const [settings, setSettings] = React.useState<Settings>({ ...initialSettings })
   useEffect(() => {
     const restoredSettings = restoreSettings()
     if (restoredSettings) {

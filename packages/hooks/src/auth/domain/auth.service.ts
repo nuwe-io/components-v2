@@ -1,37 +1,40 @@
-export const authService = (authRepository: any) => {
-  const login = async (data: any) => {
-    const res = await authRepository.login(data)
+import { IAuthRepository } from '../infrastructure/auth.repository'
+
+export const authService = (authRepository: IAuthRepository) => {
+  const login = async (apiUrl: string, data: any) => {
+    const res = await authRepository.login(apiUrl, data)
     if (res?.status !== 200 || res.code === 401) return false
 
     return res.data
   }
 
-  const signup = async (data: any) => authRepository.signup(data)
+  const signup = async (apiUrl: string, data: any) => authRepository.signup(apiUrl, data)
 
-  const companyStatus = async () => {
-    const userId = sessionStorage.getItem('userId')
+  const companyStatus = async (apiUrl: string) => {
+    const userId = sessionStorage?.getItem('userId')
 
     if (userId) return userId
 
-    const res = await authRepository.companyStatus()
+    const res = await authRepository.companyStatus(apiUrl)
+
     if (res?.status === 200) {
-      sessionStorage.setItem('userId', res.data.auth.id)
+      sessionStorage?.setItem('userId', res.data.auth.id)
       return res.data.auth.id
     }
 
-    sessionStorage.removeItem('userId')
+    sessionStorage?.removeItem('userId')
     return false
   }
 
-  const logout = async () => {
+  const logout = async (apiUrl: string) => {
     sessionStorage.removeItem('userId')
-    return authRepository.logout()
+    return authRepository.logout(apiUrl)
   }
 
-  const getUserById = async (id: number) => authRepository.getUserById(id)
+  const getUserById = async (apiUrl: string, id: number) => authRepository.getUserById(apiUrl, id)
 
-  const verifyVotinSignUp = async (data: any, url: string) => {
-    const res = await authRepository.verifyVotinSignUp(data, url)
+  const verifyVotinSignUp = async (apiUrl: string, data: any, url: string) => {
+    const res = await authRepository.verifyVotinSignUp(apiUrl, data, url)
     if (res?.status !== 200) return Promise.reject(false)
     return Promise.resolve('Verification success')
   }
