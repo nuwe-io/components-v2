@@ -10,10 +10,10 @@ module.exports = {
   webpackFinal: async (config, { configType }) => {
     config.resolve.alias = {
       ...config.resolve.alias,
-      '@atoms': path.resolve(__dirname, '../src/atoms'),
-      '@molecules': path.resolve(__dirname, '../src/molecules'),
-      '@organisms': path.resolve(__dirname, '../src/organisms'),
-      '@templates': path.resolve(__dirname, '../src/templates')
+      atoms: path.resolve(__dirname, '../src/atoms'),
+      molecules: path.resolve(__dirname, '../src/molecules'),
+      organisms: path.resolve(__dirname, '../src/organisms'),
+      templates: path.resolve(__dirname, '../src/templates')
     }
 
     return config

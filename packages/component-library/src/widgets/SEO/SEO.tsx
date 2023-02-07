@@ -1,6 +1,6 @@
 import { siteMetadataDev as siteMetadata } from '@nuwe/lib'
 import Head from 'next/head'
-import { useRouter } from 'next/router'
+// import { useRouter } from 'next/router'
 
 interface CommonSEOProps {
   title: string
@@ -9,6 +9,7 @@ interface CommonSEOProps {
   ogImage: string
   twImage: string
   canonicalUrl?: string
+  router: any
 }
 
 const CommonSEO = ({
@@ -17,9 +18,9 @@ const CommonSEO = ({
   ogType,
   ogImage,
   twImage,
-  canonicalUrl
+  canonicalUrl,
+  router
 }: CommonSEOProps) => {
-  const router = useRouter()
   return (
     <Head key='seo-header'>
       <title>{title}</title>
@@ -56,13 +57,15 @@ const CommonSEO = ({
 interface PageSEOProps {
   title: string
   description: string
+  router: any
 }
 
-export const PageSEO = ({ title, description }: PageSEOProps) => {
+export const PageSEO = ({ title, description, router }: PageSEOProps) => {
   const ogImageUrl = siteMetadata.siteUrl + siteMetadata.linkedinBanner
   const twImageUrl = siteMetadata.siteUrl + siteMetadata.socialBanner
   return (
     <CommonSEO
+      router={router}
       title={title}
       description={description}
       ogType='website'
