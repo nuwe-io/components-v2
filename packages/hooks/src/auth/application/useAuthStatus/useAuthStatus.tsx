@@ -1,9 +1,9 @@
 import React, { createContext, useCallback, useContext, useEffect, useReducer } from 'react'
 
-import { authService } from '../../domain'
+import { authService, Status } from '../../domain'
 import { authRepository } from '../../infrastructure'
 
-import { actionTypes, authStatusReducer, initialState, Status } from './authStatus.reducer'
+import { actionTypes, authStatusReducer, initialState } from './authStatus.reducer'
 
 const AuthStatusContext = createContext(undefined) as any
 

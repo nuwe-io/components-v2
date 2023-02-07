@@ -1,11 +1,10 @@
-// const AuthEntity = ({ status }) => Object.freeze({ status })
-
-// export default AuthEntity
-
-const AuthEntity = {
-  status: 'Unauthorized',
-  isAuthorized: false,
-  isLoading: false,
-  isLoggedIn: false
+export enum Status {
+  loading = 'loading',
+  authorized = 'authorized',
+  unauthorized = 'unauthorized'
 }
-export default AuthEntity
+
+export interface AuthEntity {
+  status: Status
+  user?: null | any
+}
