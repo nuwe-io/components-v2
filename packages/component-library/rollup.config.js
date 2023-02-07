@@ -1,4 +1,4 @@
-import commonjs from '@rollup/plugin-commonjs'
+import commonjs from 'rollup-plugin-commonjs'
 import resolve from 'rollup-plugin-node-resolve'
 import postcss from 'rollup-plugin-postcss'
 import scss from 'rollup-plugin-scss'
@@ -33,7 +33,19 @@ export default {
       extensions,
       modulesOnly: true
     }),
-    commonjs(),
+    commonjs({
+      include: 'node_modules/**',
+      namedExports: {
+        'node_modules/react/index.js': [
+          'cloneElement',
+          'createContext',
+          'Component',
+          'createElement'
+        ],
+        'node_modules/react-dom/index.js': ['render', 'hydrate'],
+        'node_modules/react-is/index.js': ['isElement', 'isValidElementType', 'ForwardRef', 'Memo']
+      }
+    }),
     typescript({
       tsconfig: './tsconfig.json',
       transpiler: 'babel'

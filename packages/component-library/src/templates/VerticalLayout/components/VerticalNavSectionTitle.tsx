@@ -87,7 +87,7 @@ export const VerticalNavSectionTitle = (props: VerticalNavSectionTitleProps) => 
         }}
       >
         {navCollapsed && !navHover ? null : (
-          <TypographyHeaderText noWrap>item.sectionTitle</TypographyHeaderText>
+          <TypographyHeaderText noWrap>{item.sectionTitle}</TypographyHeaderText>
         )}
       </Divider>
     </ListSubheader>

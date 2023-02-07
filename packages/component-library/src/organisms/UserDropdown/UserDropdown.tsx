@@ -183,6 +183,7 @@ const DynamicMenuItems = ({
 
   return <UserDropdownItem text={loginText} onClick={login} Icon={LoginIcon} />
 }
+
 const UserDropdownBadge = ({ onClick, name, image, isLoggedIn }: UserDropdownBadgeProps) => {
   if (!isLoggedIn)
     return (

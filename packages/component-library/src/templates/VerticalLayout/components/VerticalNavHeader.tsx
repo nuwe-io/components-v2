@@ -2,6 +2,7 @@
 
 // ** MUI Imports
 import IconButton from '@mui/material/IconButton'
+
 import { Logo } from 'atoms'
 
 // ** Icons
@@ -31,7 +32,7 @@ export const VerticalNavHeader = (props: VerticalNavHeaderProps) => {
     navHover,
     settings,
     saveSettings,
-    collapsedNavWidth,
+    collapsedNavWidth = 0,
     toggleNavVisibility,
     navigationBorderWidth = 0,
     menuLockedIcon: userMenuLockedIcon,
@@ -48,7 +49,7 @@ export const VerticalNavHeader = (props: VerticalNavHeaderProps) => {
       if (userVerticalNavMenuBranding) {
         return 0
       } else {
-        return (collapsedNavWidth ?? 0 - navigationBorderWidth - 30) / 8
+        return (collapsedNavWidth - navigationBorderWidth - 30) / 8
       }
     } else {
       return 6
