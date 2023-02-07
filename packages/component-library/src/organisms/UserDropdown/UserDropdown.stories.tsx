@@ -11,22 +11,42 @@ export default {
 
 const Template = (args: UserDropdownProps) => <UserDropdown {...args} />
 
-export const Default = Template.bind({}) as any
+export const Logout = Template.bind({}) as any
 
-Default.args = {
-  router: {
-    push: (url: string) => console.log(url),
-    pathname: ''
-  },
+Logout.args = {
   user: {
     name: 'John Doe',
     image: 'https://via.placeholder.com/150'
   },
-  logout: () => {},
   titles: {
     logout: 'Logout',
     reportProblem: 'Report a problem',
-    blog: 'Blog'
+    blog: 'Blog',
+    contact: 'Contact',
+    login: 'Login'
+  },
+  problemReportUrl: 'https://forms.clickup.com/20463730/f/kgg3j-18865/EADM21P4CELDYPQW7E',
+  items: [],
+  logout: () => {},
+  naviagate: (url: string) => console.log(url),
+  openWindow: (url: string, target?: string) => window.open(url, target)
+}
+
+export const LoggedIn = Template.bind({}) as any
+
+LoggedIn.args = {
+  user: {
+    name: 'John Doe',
+    image: 'https://via.placeholder.com/150',
+    isLoggedIn: true
+  },
+  problemReportUrl: 'https://forms.clickup.com/20463730/f/kgg3j-18865/EADM21P4CELDYPQW7E',
+  titles: {
+    logout: 'Logout',
+    reportProblem: 'Report a problem',
+    blog: 'Blog',
+    contact: 'Contact',
+    login: 'Login'
   },
   items: [
     {
@@ -44,5 +64,10 @@ Default.args = {
       text: 'Settings',
       onClick: () => console.log('Settings')
     }
-  ]
+  ],
+  naviagate: (url: string) => console.log(url),
+  openWindow: (url: string, target?: string) => window.open(url, target),
+  logout: () => {},
+  openContactDialog: () => {},
+  goToLogin: () => {}
 }
