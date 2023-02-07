@@ -3,9 +3,8 @@ import resolve from 'rollup-plugin-node-resolve'
 import postcss from 'rollup-plugin-postcss'
 import scss from 'rollup-plugin-scss'
 import { terser } from 'rollup-plugin-terser'
-import visualizer from 'rollup-plugin-visualizer'
-
 import typescript from 'rollup-plugin-ts'
+import visualizer from 'rollup-plugin-visualizer'
 
 import pkg from './package.json'
 
@@ -32,7 +31,6 @@ export default {
       filename: './bundle-report.html',
       open: false
     }),
-
     resolve({
       extensions,
       modulesOnly: true

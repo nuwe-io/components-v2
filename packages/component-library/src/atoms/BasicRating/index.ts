@@ -1,1 +1,0 @@
-export { BasicRating } from './BasicRating'

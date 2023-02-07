@@ -1,1 +1,0 @@
-export { CommentsPopup } from './CommentsPopup'

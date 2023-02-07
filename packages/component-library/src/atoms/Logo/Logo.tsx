@@ -6,7 +6,7 @@ interface LogoProps {
   onlyIcon?: boolean
 }
 
-export const Logo = ({ width, height, onlyIcon }: LogoProps) => {
+export const Logo = ({ width = 150, height, onlyIcon }: LogoProps) => {
   const theme = useTheme()
 
   return (

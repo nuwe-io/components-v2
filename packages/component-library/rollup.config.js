@@ -1,15 +1,14 @@
-import commonjs from '@rollup/plugin-commonjs'
-import resolve from '@rollup/plugin-node-resolve'
-import typescript from '@rollup/plugin-typescript'
-import external from 'rollup-plugin-peer-deps-external'
+import commonjs from 'rollup-plugin-commonjs'
+import resolve from 'rollup-plugin-node-resolve'
 import postcss from 'rollup-plugin-postcss'
 import scss from 'rollup-plugin-scss'
 import { terser } from 'rollup-plugin-terser'
+import typescript from 'rollup-plugin-ts'
 import visualizer from 'rollup-plugin-visualizer'
 
 import pkg from './package.json'
 
-const extensions = ['.ts', '.tsx']
+const extensions = ['.js', '.jsx', '.ts', '.tsx']
 
 export default {
   input: './src/index.ts',
@@ -30,13 +29,31 @@ export default {
       filename: './bundle-report.html',
       open: false
     }),
-    external(),
-    resolve(),
-    commonjs(),
-    typescript({
-      tsconfig: './tsconfig.json'
+    resolve({
+      extensions,
+      modulesOnly: true
     }),
-    postcss(),
+    commonjs({
+      include: 'node_modules/**',
+      namedExports: {
+        'node_modules/react/index.js': [
+          'cloneElement',
+          'createContext',
+          'Component',
+          'createElement'
+        ],
+        'node_modules/react-dom/index.js': ['render', 'hydrate'],
+        'node_modules/react-is/index.js': ['isElement', 'isValidElementType', 'ForwardRef', 'Memo']
+      }
+    }),
+    typescript({
+      tsconfig: './tsconfig.json',
+      transpiler: 'babel'
+    }),
+    postcss({
+      plugins: [],
+      minimize: true
+    }),
     scss(),
     terser()
   ],

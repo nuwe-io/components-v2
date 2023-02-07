@@ -1,1 +1,0 @@
-export { BadgeRank } from './BadgeRank'
