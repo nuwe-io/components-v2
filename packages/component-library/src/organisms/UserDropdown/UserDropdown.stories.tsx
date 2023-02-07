@@ -65,7 +65,7 @@ LoggedIn.args = {
       onClick: () => console.log('Settings')
     }
   ],
-  naviagate: (url: string) => console.log(url),
+  navigate: (url: string) => console.log(url),
   openWindow: (url: string, target?: string) => window.open(url, target),
   logout: () => {},
   openContactDialog: () => {},

@@ -2,10 +2,6 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "baseUrl": "src",
-    "outDir": "dist", // Needed for rollup to work (generates the bundle)
-    // "declaration": true, // Needed for rollup to work (generates .d.ts files)
-    // "declarationDir": ".", // Ouput location of generated bundled 
-    // "emitDeclarationOnly": true,
     "noImplicitReturns": false
   },
   "include": [
