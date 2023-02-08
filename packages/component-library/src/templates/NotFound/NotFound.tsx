@@ -5,29 +5,27 @@ import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 
 // ** Layout Import
-
-import { PageSEO, PageSEOProps } from '../../widgets'
-
 import { BoxWrapper } from 'atoms'
 
-export interface NotAuthorizedProps extends PageSEOProps {
+//** SEO Components
+import { PageSEO, PageSEOProps } from '../../widgets'
+
+export interface NotFoundProps extends PageSEOProps {
   logoutTitle: string
   title: string
   description: string
   backToHomeTitle?: string
   homeUrl: string
-  logout: () => void
 }
-export const NotAuthorized = ({
-  logoutTitle = 'Logout',
+
+export const NotFound = ({
   backToHomeTitle = 'Back to Home',
-  title = 'You are not authorized! 🔐',
-  description = `You don't have permission to access this page. Go Home!`,
+  title = 'Page Not Found ⚠️',
+  description = `We couldn't find the page you are looking for.`,
   url,
   Head,
-  homeUrl,
-  logout
-}: NotAuthorizedProps) => {
+  homeUrl
+}: NotFoundProps) => {
   return (
     <>
       <PageSEO url={url} title={title} description={description} Head={Head} />
@@ -42,22 +40,17 @@ export const NotAuthorized = ({
           }}
         >
           <BoxWrapper>
-            <Typography variant='h1'>401</Typography>
+            <Typography variant='h1'>404</Typography>
             <Typography variant='h5' sx={{ mb: 1, fontSize: '1.5rem !important' }}>
               {title}
             </Typography>
             <Typography variant='body2'>{description}</Typography>
           </BoxWrapper>
-          <Box>
-            <Button onClick={logout} variant='outlined' sx={{ px: 5.5, m: 2 }}>
-              {logoutTitle}
+          <Link href={homeUrl}>
+            <Button component='a' variant='contained' sx={{ px: 5.5, mt: 10 }}>
+              {backToHomeTitle}
             </Button>
-            <Link href={homeUrl}>
-              <Button component='a' variant='contained' sx={{ px: 5.5, m: 2 }}>
-                {backToHomeTitle || 'Back to Home'}
-              </Button>
-            </Link>
-          </Box>
+          </Link>
         </Box>
       </Box>
     </>
