@@ -43,17 +43,14 @@ export const HorizontalNavLink = (props: any) => {
   const { menuTextTruncate } = themeConfig
   const Wrapper = !hasParent ? List : Fragment
 
-  const handleURLQueries = () => {
-    if (Object.keys(router.query).length && item.path) {
-      const arr = Object.keys(router.query)
-
-      if (type === 'subNav') return router.asPath === item.path
-      const pathToCheck = router?.query[arr[0]]
-      return router.asPath.includes === item.path && router.asPath.includes(pathToCheck as string)
-    }
+  const handleURLQueries = (pathToCheck: string) => {
+    if (type === 'subNav') return router.pathname === pathToCheck
+    return router.pathname.includes(pathToCheck)
   }
 
-  const isNavLinkActive = () => router.pathname === item.path || handleURLQueries()
+  const itemPath = item.path.replace(router.basePath, '')
+
+  const isNavLinkActive = () => router.pathname === itemPath || handleURLQueries(itemPath)
 
   const theme = useTheme()
 
