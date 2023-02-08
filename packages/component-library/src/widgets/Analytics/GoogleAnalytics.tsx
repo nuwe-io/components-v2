@@ -1,8 +1,10 @@
-import Script from 'next/script'
-
 import { siteMetadataDev as siteMetadata } from '@nuwe/lib'
 
-const GAScript = () => {
+export interface GAScriptProps {
+  Script: React.FC<any>
+}
+
+const GAScript = ({ Script }: GAScriptProps) => {
   return (
     <>
       <Script id='google-tag-manager' strategy='afterInteractive'>
