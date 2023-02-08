@@ -110,12 +110,6 @@ Default.args = {
       onClick: () => console.log('Settings')
     }
   ],
-  router: {
-    push: (path: string) => console.log(path),
-    replace: (path: string) => console.log(path),
-    query: {},
-    pathname: '/home'
-  },
   naviagate: (url: string) => console.log(url),
   openWindow: (url: string, target?: string) => window.open(url, target),
   navigate: () => {},
