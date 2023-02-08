@@ -1,8 +1,8 @@
 // ** React Imports
-import { Fragment, MouseEventHandler, useState } from 'react'
+import React, { Fragment, MouseEventHandler, useState } from 'react'
 
 // ** MUI Imports
-import { Typography } from '@mui/material'
+import { IconButton, Typography } from '@mui/material'
 import Avatar from '@mui/material/Avatar'
 import Badge from '@mui/material/Badge'
 import Box from '@mui/material/Box'
@@ -60,11 +60,11 @@ export interface UserDropdownProps {
   openContactDialog: () => void
   logout: () => void
   goToLogin: () => void
-  children?: any
+  children?: React.ReactNode
 }
 
 export interface UserDropdownBadgeProps {
-  onClick: MouseEventHandler<HTMLDivElement>
+  onClick: MouseEventHandler<HTMLDivElement> | any
   isLoggedIn?: boolean
   name: string
   image: string
@@ -159,8 +159,12 @@ export const UserDropdown = ({
           onClick={openProblemReport}
         />
         <UserDropdownItem Icon={EmailIcon} text={titles.contact} onClick={handleContactDialog} />
-        <Divider />
-        <UserDropdownItem Icon={LogoutVariant} text={titles.logout} onClick={handleLogout} />
+        {isLoggedIn && (
+          <>
+            <Divider />
+            <UserDropdownItem Icon={LogoutVariant} text={titles.logout} onClick={handleLogout} />
+          </>
+        )}
       </Menu>
     </Fragment>
   )
@@ -187,17 +191,15 @@ const DynamicMenuItems = ({
 const UserDropdownBadge = ({ onClick, name, image, isLoggedIn }: UserDropdownBadgeProps) => {
   if (!isLoggedIn)
     return (
-      <Badge
+      <IconButton
+        color='inherit'
         onClick={onClick}
-        overlap='circular'
-        sx={{ ml: 2, cursor: 'pointer', border: 'solid 2px', borderRadius: '50%' }}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'right'
-        }}
+        aria-haspopup='true'
+        aria-controls='customized-menu'
+        sx={{ mx: 0.75 }}
       >
-        <LoginIcon sx={{ width: 35, height: 35, padding: '0.3rem' }} />
-      </Badge>
+        <LoginIcon />
+      </IconButton>
     )
 
   return (

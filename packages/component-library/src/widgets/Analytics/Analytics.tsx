@@ -1,7 +1,9 @@
 import { siteMetadataDev as siteMetadata } from '@nuwe/lib'
 
-import GA from './GoogleAnalytics'
+import GA, { GAScriptProps } from './GoogleAnalytics'
 
-export const Analytics = () => {
-  return <>{siteMetadata.analytics.googleAnalyticsId && <GA />}</>
+type AnalyticsProps = GAScriptProps
+
+export const Analytics = ({ Script }: AnalyticsProps) => {
+  return <>{siteMetadata.analytics.googleAnalyticsId && <GA Script={Script} />}</>
 }

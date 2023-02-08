@@ -1,6 +1,4 @@
 import { siteMetadataDev as siteMetadata } from '@nuwe/lib'
-import Head from 'next/head'
-// import { useRouter } from 'next/router'
 
 interface CommonSEOProps {
   title: string
@@ -9,7 +7,8 @@ interface CommonSEOProps {
   ogImage: string
   twImage: string
   canonicalUrl?: string
-  router: any
+  url: any
+  Head: React.FC<any>
 }
 
 const CommonSEO = ({
@@ -19,7 +18,8 @@ const CommonSEO = ({
   ogImage,
   twImage,
   canonicalUrl,
-  router
+  url,
+  Head
 }: CommonSEOProps) => {
   return (
     <Head key='seo-header'>
@@ -33,7 +33,7 @@ const CommonSEO = ({
       <meta property='og:site_name' content={siteMetadata.title} key='ogsitename' />
       <meta name='author' content={'Nuwe'} />
       <meta property='og:type' content={ogType} key='ogtype' />
-      <meta property='og:url' content={`${siteMetadata.siteUrl}${router.asPath}`} key='ogurl' />
+      <meta property='og:url' content={`${siteMetadata.siteUrl}${url}`} key='ogurl' />
       {/* Twitter */}
       <meta name='twitter:card' content='summary_large_image' />
       <meta name='twitter:site' content={siteMetadata.twitter} />
@@ -46,26 +46,25 @@ const CommonSEO = ({
         content='HR, Hiring, Tech screenning, Pre-employment assessment, Rviewer, Testgorilla, Test Gorilla, Assessment, hackathons, tech challenges, retention, employer branding, branding'
       />
       <meta name='viewport' content='initial-scale=1.0, width=device-width' />
-      <link
-        rel='canonical'
-        href={canonicalUrl ? canonicalUrl : `${siteMetadata.siteUrl}${router.asPath}`}
-      />
+      <link rel='canonical' href={canonicalUrl ? canonicalUrl : `${siteMetadata.siteUrl}${url}`} />
     </Head>
   )
 }
 
-interface PageSEOProps {
+export interface PageSEOProps {
   title: string
   description: string
-  router: any
+  url: string
+  Head: React.FC<any>
 }
 
-export const PageSEO = ({ title, description, router }: PageSEOProps) => {
+export const PageSEO = ({ title, description, url, Head }: PageSEOProps) => {
   const ogImageUrl = siteMetadata.siteUrl + siteMetadata.linkedinBanner
   const twImageUrl = siteMetadata.siteUrl + siteMetadata.socialBanner
   return (
     <CommonSEO
-      router={router}
+      url={url}
+      Head={Head}
       title={title}
       description={description}
       ogType='website'

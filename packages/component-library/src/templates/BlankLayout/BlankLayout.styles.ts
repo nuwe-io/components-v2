@@ -25,3 +25,11 @@ export const BlankLayoutWrapper: React.FC<any> = styled(Box)(({ theme }) => ({
     position: 'relative'
   }
 }))
+
+export const ComponentsWrapper: React.FC<any> = styled(Box)(({ theme }) => ({
+  position: 'absolute',
+  top: '10px',
+  right: '10px',
+  zIndex: 1,
+  padding: theme.spacing(2)
+}))
