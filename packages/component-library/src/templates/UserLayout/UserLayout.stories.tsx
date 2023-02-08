@@ -19,7 +19,7 @@ export const Default = (args: UserLayoutProps) => <UserLayout {...args} />
 
 const navigationElements = () => [
   {
-    title: 'home',
+    title: 'Home',
     icon: HomeOutline,
     path: '/home'
   },
@@ -110,6 +110,10 @@ Default.args = {
       onClick: () => console.log('Settings')
     }
   ],
+  router: {
+    pathname: '/home',
+    basePath: '/business'
+  },
   naviagate: (url: string) => console.log(url),
   openWindow: (url: string, target?: string) => window.open(url, target),
   navigate: () => {},

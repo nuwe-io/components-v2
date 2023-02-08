@@ -51,7 +51,7 @@ const CommonSEO = ({
   )
 }
 
-interface PageSEOProps {
+export interface PageSEOProps {
   title: string
   description: string
   url: string
