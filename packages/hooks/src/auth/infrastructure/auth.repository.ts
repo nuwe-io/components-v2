@@ -28,17 +28,17 @@ export enum AuthTypes {
 export const authRepository = {
   login: async (API_URL: string, type: AuthTypes, data: any) => {
     const loginOptions = {
-      company: fetch({ url: routes(API_URL).companyLogin, method: methods.post, data }),
-      admin: fetch({ url: routes(API_URL).adminLogin, method: methods.post, data })
+      company: () => fetch({ url: routes(API_URL).companyLogin, method: methods.post, data }),
+      admin: () => fetch({ url: routes(API_URL).adminLogin, method: methods.post, data })
     }
-    return loginOptions[type]
+    return loginOptions[type]()
   },
   companyStatus: async (API_URL: string, type: AuthTypes) => {
     const statusOptions = {
-      company: fetch({ url: routes(API_URL).companyStatus, method: methods.get }),
-      admin: fetch({ url: routes(API_URL).adminStatus, method: methods.get })
+      company: () => fetch({ url: routes(API_URL).companyStatus, method: methods.get }),
+      admin: () => fetch({ url: routes(API_URL).adminStatus, method: methods.get })
     }
-    return statusOptions[type]
+    return statusOptions[type]()
   },
   logout: async (API_URL: string) => fetch({ url: routes(API_URL).logout, method: methods.get }),
   getUserById: async (API_URL: string, id: number) =>
