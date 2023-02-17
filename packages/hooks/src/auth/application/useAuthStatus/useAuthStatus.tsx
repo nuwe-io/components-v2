@@ -13,27 +13,30 @@ const { login, logout, companyStatus, getUserById, signup, verifyVotinSignUp } =
 export const AuthStatusProvider = ({
   API_URL,
   children,
-  router
+  router,
+  authType
 }: {
   API_URL: string
   children?: React.ReactNode
   router: any
+  authType: string
 }) => {
   const [state, dispatch] = useReducer(authStatusReducer, initialState)
+
   const handleUpdate = (type: string, payload?: unknown) => dispatch({ type, payload })
   const authorize = useCallback((user: unknown) => handleUpdate(actionTypes.AUTHORIZE, user), [])
   const reject = useCallback(() => handleUpdate(actionTypes.REJECT_AUTH), [])
   const updateLoading = (status: Status) => handleUpdate(actionTypes.UPDATE_LOADING, status)
 
   const updateUserIfNull = useCallback(async () => {
-    const statusResponse = await companyStatus(API_URL)
+    const statusResponse = await companyStatus(API_URL, authType)
     if (statusResponse) {
       const user = await getUserById(API_URL, statusResponse)
       return authorize(user.data)
     }
 
     return reject()
-  }, [authorize, reject, API_URL])
+  }, [authorize, reject, API_URL, authType])
 
   useEffect(() => {
     updateUserIfNull()
@@ -41,7 +44,7 @@ export const AuthStatusProvider = ({
 
   const handleLogin = async (data: any) => {
     updateLoading(Status.loading)
-    const res = await login(API_URL, data)
+    const res = await login(API_URL, authType, data)
 
     if (!res) {
       reject()
