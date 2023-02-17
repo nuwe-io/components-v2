@@ -44,7 +44,7 @@ export const AuthStatusProvider = ({
 
   const handleLogin = async (data: any) => {
     updateLoading(Status.loading)
-    const res = await login(API_URL, authType, data)
+    const res = await login(authType, API_URL, data)
 
     if (!res) {
       reject()
