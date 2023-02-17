@@ -1,8 +1,8 @@
-import { IAuthRepository } from '../infrastructure/auth.repository'
+import { AuthTypes, IAuthRepository } from '../infrastructure/auth.repository'
 
 export const authService = (authRepository: IAuthRepository) => {
-  const login = async (apiUrl: string, data: any) => {
-    const res = await authRepository.login(apiUrl, data)
+  const login = async (type: string, apiUrl: string, data: any) => {
+    const res = await authRepository.login(apiUrl, AuthTypes[type], data)
     if (res?.status !== 200 || res.code === 401) return false
 
     return res.data
@@ -10,12 +10,12 @@ export const authService = (authRepository: IAuthRepository) => {
 
   const signup = async (apiUrl: string, data: any) => authRepository.signup(apiUrl, data)
 
-  const companyStatus = async (apiUrl: string) => {
+  const companyStatus = async (apiUrl: string, type: string) => {
     const userId = sessionStorage?.getItem('userId')
 
     if (userId) return userId
 
-    const res = await authRepository.companyStatus(apiUrl)
+    const res = await authRepository.companyStatus(apiUrl, AuthTypes[type])
 
     if (res?.status === 200) {
       sessionStorage?.setItem('userId', res.data.auth.id)
