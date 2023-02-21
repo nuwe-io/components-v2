@@ -1,3 +1,4 @@
+// Challenge categories
 export const categories = [
   'Algorithmic',
   'Backend',
