@@ -9,7 +9,10 @@ export const categories = [
   'Fullstack',
   'Mobile',
   'Multi',
-  'UX/UI'
+  'UX/UI',
+  'Game Development',
+  'DevOps',
+  'Cloud Engineering'
 ]
 
 export const levels = [
