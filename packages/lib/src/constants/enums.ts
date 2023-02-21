@@ -12,7 +12,12 @@ export const categories = [
   'UX/UI',
   'Game Development',
   'DevOps',
-  'Cloud Engineering'
+  'Cloud Engineering',
+  'Data Engineering',
+  'Machine Learning',
+  'Salesforce',
+  'Big Data',
+  'Unspecified'
 ]
 
 export const levels = [
