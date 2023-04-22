@@ -1,3 +1,4 @@
+import json from '@rollup/plugin-json'
 import typescript from '@rollup/plugin-typescript'
 import commonjs from 'rollup-plugin-commonjs'
 import resolve from 'rollup-plugin-node-resolve'
@@ -37,6 +38,7 @@ export default {
         'node_modules/react-is/index.js': ['isElement', 'isValidElementType', 'ForwardRef']
       }
     }),
+    json(),
     typescript({
       compilerOptions: tsconfig.compilerOptions
     })
