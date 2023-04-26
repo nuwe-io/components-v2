@@ -120,7 +120,7 @@ const scoringTypes = [
 
 const companySizeTypes = ['Small Startup', 'Startup', 'Med-size Company', 'Large Company']
 
-const eventTypes = ['Hackathon', 'League', 'Tech-Hub']
+const eventTypes = ['hackathon', 'league', 'trainning-camp']
 
 const createEventNotRequiredProps = [
   'active',
