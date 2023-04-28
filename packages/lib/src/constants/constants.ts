@@ -50,7 +50,7 @@ const allProfessionals = [
   ...businessProfessionals
 ]
 
-const seniorityLevels = ['Trainee', 'Junior', 'Mid-senior', 'Senior']
+const seniorityLevels = ['Trainee', 'Junior', 'Mid-senior', 'Senior', 'All levels']
 const difficultyLevels = ['Very easy', 'Easy', 'Medium', 'Hard']
 const challengeLevels = ['Explorer', 'Creator', 'Artisan', 'Master']
 
