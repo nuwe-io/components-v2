@@ -85,6 +85,12 @@ const evaluationPoints = {
     codeQuality: 400,
     documentation: 250,
     objectives: 2350
+  },
+  allLevels: {
+    total: 3000,
+    codeQuality: 400,
+    documentation: 250,
+    objectives: 2350
   }
 }
 
