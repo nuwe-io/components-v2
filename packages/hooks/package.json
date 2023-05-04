@@ -22,8 +22,7 @@
   "scripts": {
     "build:library": "rollup -c",
     "lint": "eslint --ignore-path .gitignore . --ext .ts",
-    "lint:fix": "npm run lint -- --fix",
-    "test": "jest"
+    "lint:fix": "npm run lint -- --fix"
   },
   "peerDependencies": {
     "@nuwe/lib": "*"

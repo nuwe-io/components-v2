@@ -25,6 +25,9 @@ jobs:
       - name: Build
         run: lerna run build:library --parallel
 
+      - name: Test
+        run: lerna run test --parallel
+
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
